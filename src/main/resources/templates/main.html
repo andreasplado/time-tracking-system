@@ -1,0 +1,358 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Class Scheduler</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+</head>
+
+<script>
+function editClass(id) {
+   window.location.href="edit-class/"+ id;
+}
+function addClass(){
+    window.location.href="add-class/";
+}
+function deleteClass(id){
+    window.location.href="delete-class/"+ id;
+}
+function search(){
+    var name = $("#searchbox").val();
+    window.location.href="query-result-student-classes/"+ name;
+}
+function viewClassDetails(id){
+    window.location.href="class-details/" + id;
+}
+
+function viewJobDetails(id){
+    window.location.href="job-details/" + id;
+}
+function viewStudentDetails(id){
+    window.location.href="student-details/" + id;
+}
+</script>
+<script>
+  $( function() {
+    var allStudents= [
+        <th:block th:each="student: ${allStudents}" th:inline="text">'[[${student.name}]]',</th:block>
+        ];
+    $( "#searchbox" ).keyup(function(){
+        $( "#searchbox" ).autocomplete({
+          source: allStudents,
+          select: function(event, ui) {
+                $('#searchbox').val(ui.item.value);
+                search();
+                return false;
+            }
+        });
+    });
+    $('#work-begin-time').datetimepicker({
+        "allowInputToggle": true,
+        "showClose": true,
+        "showClear": true,
+        "showTodayButton": true,
+        "format": "MM-DD-YYYY HH:mm:ss",
+    });
+    $('#work-end-time').datetimepicker({
+        "allowInputToggle": true,
+        "showClose": true,
+        "showClear": true,
+        "showTodayButton": true,
+        "format": "MM-DD-YYYY HH:mm:ss",
+    });
+  });
+</script>
+<style>
+    tr{ cursor: pointer; }
+    tr:hover { background-color: #2ECCFA; }
+    body {
+    padding-top: 50px;
+}
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.pull-right {
+    float: right;
+}
+
+.searchbar {
+    margin-bottom: 50px;
+}
+
+.delete-btn:hover, .delete-btn:focus, .delete-btn.focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+    .adv-search {
+        width: 500px;
+        margin: 0 auto;
+        max-width:100%;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px Arial;
+}
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+</style>
+
+
+<body>
+
+<div class="container">
+
+    <!-- HEADING -->
+    <h2>Time-tracking system</h2>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#workHoursTab">My workhours</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#classesTab">Job categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#studentsTab">Workers</a>
+        </li>
+        <li id="search-bar">
+            <div class="container">
+                <div class="row pull-right searchbar">
+                    <div>
+                        <form onsubmit="event.preventDefault(); search()">
+                            <div class="input-group adv-search">
+                                <input id="searchbox" type="text" class="form-control" placeholder="Find workhours by worker name" />
+                                <div class="input-group-btn">
+                                    <div class="btn-group" role="group">
+                                        <button th:onclick="'search()'" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content ">
+        <!--TAB WORKING HOURS-->
+        <div class="tab-pane active" id="workHoursTab">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <form method="post" action="/add-work">
+                            <div class="form-group">
+                                <label for="time">Work begin time:</label>
+                                <div class="input-group date" id="work-begin-time">
+                                    <input type="text" id="time" placeholder="Work begin time" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Work end time:</label>
+                                <div class="input-group date" id="work-end-time">
+                                    <input type="text" id="time2" placeholder="Work end time" class="form-control"/>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success add-class"><i class="fa fa-plus"></i>ADD WORKHOUR</button>
+                        </form>
+                    </div>
+
+                    <div class="col-sm">
+                        <h4>Workhours history</h4>
+                        <div id="div1" style="height: 300px;position:relative;">
+                            <div id="div2" style="max-height:100%;overflow:auto;">
+                                <div id="div3" style="height:1500px;">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Working hours</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:onclick="'viewClassDetails(' + ${scheduleClass.id} +')'" th:each="scheduleClass : ${scheduleClasses}">
+                                            <td th:text="${scheduleClass.name}"></td>
+                                            <td th:text="${scheduleClass.description}"></td>
+                                            <td>
+                                                <form th:action="@{/edit-class/} + ${scheduleClass.id}" method="get">
+                                                    <button type="submit" class="btn btn-default">EDIT</button>
+                                                </form>
+                                                <form th:action="@{/delete-class/} + ${scheduleClass.id}" method="post">
+                                                    <button type="submit" class="btn btn-dark delete-btn">DELETE</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CLASSES-->
+        <div class="tab-pane" id="classesTab">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Teacher</th>
+                    <th>Minutes</th>
+                    <th><button type="button" class="btn btn-success add-class" onclick="addClass()"><i class="fa fa-plus"></i>ADD JOB</button></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:onclick="'viewClassDetails(' + ${job.id} +')'" th:each="job : ${jobs}">
+                    <td th:text="${job.name}"></td>
+                    <td th:text="${scheduleClass.description}"></td>
+                    <td th:text="${scheduleClass.teacherName}"></td>
+                    <td th:text="${scheduleClass.timeMinutes}"></td>
+                    <td>
+                        <form th:action="@{/edit-class/} + ${scheduleClass.id}" method="get">
+                            <button type="submit" class="btn btn-default">EDIT</button>
+                        </form>
+                        <form th:action="@{/delete-class/} + ${scheduleClass.id}" method="post">
+                            <button type="submit" class="btn btn-dark delete-btn">DELETE</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <div class="tab-pane" id="studentsTab">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Classes</th>
+                        <th><button type="button" class="btn btn-success add-class" onclick="addWorker()"><i class="fa fa-plus"></i>ADD WORKER</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="student : ${studentClasses}" th:onclick="'viewStudentDetails(' + ${student.id} +')'">
+                        <td th:text="${student.name}"></td>
+                        <td th:text="${student.email}"></td>
+                        <td>
+                            <p class="mb-1" th:each="scheduleClass : ${student.classes}" th:text="${scheduleClass.name}">
+                            </p>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

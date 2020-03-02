@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Class Scheduler</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
+</head>
+
+<style>
+    .disabled{
+        background-color: coral;
+        pointer-events: none;
+    }
+</style>
+
+<script>
+function editClass(id) {
+   window.location.href="edit-class/"+ id;
+}
+function addClass(){
+    window.location.href="add-class/";
+}
+
+function viewClassDetails(id){
+    window.location.href="../../class-details/" + id;
+}
+
+function search(){
+    var name = $("#searchbox").val();
+    window.location.href= name;
+}
+$("#searchbox").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+        search();
+    }
+});
+
+var seen = {};
+$( document ).ready(function() {
+    $('.start-time').each(function() {
+        var txt = $(this).text();
+        if (seen[txt])
+            $(this).parent().addClass('disabled');
+        else
+            seen[txt] = true;
+    });
+});
+
+
+</script>
+<script>
+   $(document).keyup(function(e) {
+    if (e.which == 27){
+        window.location.href="../";
+    }
+});
+</script>
+<script>
+  $( function() {
+    var allStudents= [
+        <th:block th:each="student: ${allStudents}" th:inline="text">'[[${student.name}]]',</th:block>
+        ];
+    var searchInput = $('#searchbox');
+    var searchStringLength= searchInput.val().length;
+    $( "#searchbox" ).focus();
+    searchInput[0].setSelectionRange(searchStringLength, searchStringLength);
+    $( "#searchbox" ).keyup(function(){
+        $( "#searchbox" ).autocomplete({
+          source: allStudents,
+          select: function(event, ui) {
+                $('#searchbox').val(ui.item.value);
+                search();
+                return false;
+          }
+        });
+    });
+  });
+</script>
+<style>
+    body {
+    padding-top: 50px;
+}
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    #adv-search {
+        width: 500px;
+        margin: 0 auto;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+        min-width: 500px;
+    }
+}
+
+
+
+</style>
+
+
+<body>
+
+<div class="container">
+    <h2><a href="../../"> Time-tracking system </a>/Worker scedule Finder</h2>
+    <br/>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div>
+                <form onsubmit="event.preventDefault(); search()">
+                    <div class="input-group" id="adv-search">
+                        <input th:value="${searchString}" id="searchbox" type="text" class="form-control" placeholder="Search for student"/>
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                <button th:onclick="'search()'" type="button" class="btn btn-primary"><span
+                                        class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br />
+    <h3>Looking for worker <i th:text="${searchString}"></i> workhours</h3>
+    <br />
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Available classes for you</th>
+            <th>Start time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${studentClassesDistinctTime.classesWithClashes}">
+            <td th:text="${student.name}"></td>
+            <td class="start-time" th:text="${student.startTime}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>All classes</th>
+            <th>Start time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="studentClass : ${studentClasses}">
+            <td th:text="${studentClass.name}"></td>
+            <td class="start-time" th:text="${studentClass.startTime}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div th:if="${#lists.isEmpty(studentClasses)}"
+         th:utext="'No classes found for student \''  + ${searchString} +'\''">
+    </div>
+    <br />
+    <br />
+    HINT: <i>press ESC to return to main page.</i>
+</div>
+</body>
+</html>
