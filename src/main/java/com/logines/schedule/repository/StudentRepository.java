@@ -20,8 +20,8 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Query("SELECT * FROM Class " +
             "INNER JOIN StudentClass ON Class.id=StudentClass.classId" +
-            "INNER JOIN Student ON Student.id=studentClass.studentId" +
-            "INNER JOIN ClassSchedule ON ClassSchedule.classId=class.id" +
+            "INNER JOIN Student ON Student.id=studentClass.studentId " +
+            "INNER JOIN ClassSchedule ON ClassSchedule.classId=class.id " +
             "WHERE Student.name=:name")
     List<Class> getAllClassesByStudentName(@Param("name") String name);
 }
