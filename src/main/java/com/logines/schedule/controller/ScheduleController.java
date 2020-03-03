@@ -80,7 +80,7 @@ public class ScheduleController {
     @PostMapping("delete-class/{id}")
     public String deleteClass(Model model, @PathVariable("id") int id,
                               @Valid Class aClass){
-        if(classService.deleteClass(id)){
+        if(classService.deleteClass(aClass)){
             return "class_deleted_successfully";
         }else{
             return "class_not_found";

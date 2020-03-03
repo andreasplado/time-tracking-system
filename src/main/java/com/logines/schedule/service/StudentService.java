@@ -72,7 +72,7 @@ public class StudentService {
     private Student getStudent(int id) {
         String sql = "SELECT * FROM student WHERE id = ?";
 
-        if (studentRepository.exists(id)) {
+        if (studentRepository.existsById(id)) {
             return studentRepository.getOne(id);
         } else {
             return null;

@@ -48,9 +48,9 @@ public class ClassService {
         classRepository.updateClass(aClass.getName(), aClass.getDescription(), aClass.getTeacherName(), aClass.getStartTime(), aClass.getId());
     }
 
-    public boolean deleteClass(int id){
-        if(getAClass(id) != null){
-            classRepository.delete(id);
+    public boolean deleteClass(Class aClass){
+        if(getAClass(aClass.getId()) != null){
+            classRepository.delete(aClass);
             return true;
         }else{
             return false;
