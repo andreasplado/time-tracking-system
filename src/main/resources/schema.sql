@@ -1,8 +1,3 @@
-DROP TABLE IF EXISTS "studet";
-DROP TABLE IF EXISTS "class_schedule";
-DROP TABLE IF EXISTS "student_class";
-DROP TABLE IF EXISTS "student";
-DROP TABLE IF EXISTS "class";
 DROP TABLE IF EXISTS ClassSchedule;
 DROP TABLE IF EXISTS StudentClass;
 DROP TABLE IF EXISTS Student;
