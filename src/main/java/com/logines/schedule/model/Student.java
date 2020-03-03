@@ -1,16 +1,24 @@
 package com.logines.schedule.model;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Student")
 public class Student{
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "classes")
     private List<Class> classes;
+
+    @Column(name = "classesWithClashes")
     private List<Class> classesWithClashes;
 
     public long getId(){

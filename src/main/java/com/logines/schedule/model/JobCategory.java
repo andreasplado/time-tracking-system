@@ -10,16 +10,16 @@ public class JobCategory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "job_category")
+    @Column(name = "jobCategory")
     private String jobCategory;
 
-    @Column(name = "category_description")
+    @Column(name = "categoryDescription")
     private String categoryDescription;
 
-    @Column(name = "created_at")
+    @Column(name = "createdAt")
     private Date createdAt;
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updatedAt", nullable = false)
     private Date updatedAt;
 
     public String getJobCategory() {

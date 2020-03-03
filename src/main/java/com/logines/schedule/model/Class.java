@@ -1,17 +1,27 @@
 package com.logines.schedule.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Class")
 public class Class{
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "teacherName")
     private String teacherName;
+
+    @Column(name = "timeMinutes")
     private int timeMinutes;
+
+    @Column(name = "startTime")
     private String startTime;
 
     public int getId(){
