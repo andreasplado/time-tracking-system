@@ -12,7 +12,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
 public class HsqlDataSource{
-    
+    /*
     @Autowired
     @Qualifier("hsqlDataSource")
     private DataSource dataSource;
@@ -35,5 +35,7 @@ public class HsqlDataSource{
                 .addScript( "database/insert-student_class.sql" )
                 .build();
     }
+
+     */
 
 }
