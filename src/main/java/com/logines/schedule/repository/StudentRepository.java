@@ -12,10 +12,10 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
-    @Query("SELECT * FROM Student WHERE name=:name")
+    @Query("SELECT s FROM Student s WHERE s.name=:name")
     List<Student> findByFirstName(@Param("name") String name);
 
-    @Query("SELECT * FROM StudentClass")
+    @Query("SELECT s FROM StudentClass s")
     List<StudentClass> getAllStudentClasses();
 
     /*@Query("SELECT * FROM Class " +
