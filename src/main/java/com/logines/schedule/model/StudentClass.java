@@ -1,5 +1,10 @@
 package com.logines.schedule.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "StudentClass")
 public class StudentClass {
     private long id;
 
