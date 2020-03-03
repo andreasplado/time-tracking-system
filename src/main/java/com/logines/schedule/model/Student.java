@@ -15,9 +15,13 @@ public class Student{
     @Column(name = "email")
     private String email;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @Column(name = "classes")
     private List<Class> classes;
 
+    @OneToMany(cascade = CascadeType.ALL,
+            orphanRemoval = true)
     @Column(name = "classesWithClashes")
     private List<Class> classesWithClashes;
 
