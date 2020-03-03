@@ -27,12 +27,12 @@ CREATE TABLE Job(
 
 CREATE TABLE Class_schedule (
   id INTEGER PRIMARY KEY,
-  class_id INTEGER FOREIGN KEY REFERENCES Class(id) ON DELETE CASCADE,
+  class_id INTEGER REFERENCES Class(id) ON DELETE CASCADE,
   start_time TIMESTAMP
 );
 
 CREATE TABLE Student_class (
   id INTEGER PRIMARY KEY,
-  student_id INTEGER REFERENCES student(id),
+  student_id INTEGER REFERENCES Student(id),
   class_id INTEGER REFERENCES Class(id) ON DELETE CASCADE
 );
