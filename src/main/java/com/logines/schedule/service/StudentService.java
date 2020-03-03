@@ -82,7 +82,7 @@ public class StudentService {
     }
 
     public List<Class> getAllClassesByStudentName(String studentName) {
-        return studentRepository.getAllClassesByStudentName();
+        return studentRepository.getAllClassesByStudentName(studentName);
     }
 
     private List<StudentClass> getAllStudentClasses() {
