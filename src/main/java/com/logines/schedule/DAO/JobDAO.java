@@ -26,7 +26,7 @@ public class JobDAO  {
     }
 
     public Job viewJob(int id){
-        String selectQuery = "SELECT e FROM job e WHERE id=:id";
+        String selectQuery = "SELECT e FROM Job e WHERE id=:id";
         Job singleResult = (Job) entityManager.createQuery(selectQuery).setParameter("id", id).getSingleResult();
         return  singleResult;
     }
@@ -36,7 +36,7 @@ public class JobDAO  {
         DateTime startTime = job.getStartTime();
         DateTime endTime = job.getEndTime();
 
-        String updateQuery = "UPDATE job " +
+        String updateQuery = "UPDATE Job " +
                 "SET jobTitle='" + jobTitle+"', startTime='"+ startTime.toString()
                 +"', endTime=" + endTime.toString()
                 + "updatedAt = NOW() WHERE id= :id";
@@ -44,7 +44,7 @@ public class JobDAO  {
     }
 
     public void deleteJob(int id) {
-        String selectQuery = "SELECT e FROM ProductEntity e WHERE id= :id";
+        String selectQuery = "SELECT e FROM Job e WHERE id= :id";
         List<Job> jobsToRemove = entityManager.createQuery(selectQuery).setParameter("id", id).getResultList();
         for (Job m: jobsToRemove) {
             entityManager.remove(m);

@@ -10,12 +10,12 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Integer> {
-    @Query("FROM student WHERE name = ?1")
+    @Query("FROM Student WHERE name = ?1")
     List<Student> findByFirstName(String name);
 
-    @Query("SELECT * FROM student_class")
+    @Query("SELECT * FROM Student_class")
     List<StudentClass> getAllStudentClasses();
 
-    @Query("SELECT class.name, class.time_minutes, class_schedule.start_time FROM class INNER JOIN student_class ON class.id=student_class.class_id INNER JOIN student ON student.id=student_class.student_id  INNER JOIN class_schedule ON class_schedule.class_id=class.id WHERE student.name= ?1")
+    @Query("SELECT Class.name, Class.time_minutes, Class_schedule.start_time FROM Class INNER JOIN Student_class ON Class.id=Student_class.class_id INNER JOIN Student ON Student.id=student_class.student_id  INNER JOIN Class_schedule ON Class_schedule.class_id=class.id WHERE Student.name= ?1")
     List<Class> getAllClassesByStudentName();
 }

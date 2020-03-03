@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface ClassRepository extends JpaRepository<Class, Integer> {
     @Modifying(clearAutomatically = true)
-    @Query("UPDATE class set name = :name, description = :description, teacher_name = :teacherName, time_minutes = :timeMinutes where id = :id")
+    @Query("UPDATE Class set name = :name, description = :description, teacher_name = :teacherName, time_minutes = :timeMinutes where id = :id")
     int updateClass(@Param("name") String name, @Param("description") String description, @Param("teacher_name") String teacherName,
                       @Param("timeMinutes") String timeMinutes, @Param("id") int id);
 }
