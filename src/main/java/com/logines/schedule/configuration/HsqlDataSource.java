@@ -22,7 +22,7 @@ public class HsqlDataSource{
         return new NamedParameterJdbcTemplate( dataSource );
     }
 
-    /*@Bean
+    @Bean
     @Qualifier("hsqlDataSource")
     public DataSource dataSource(){
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
@@ -34,6 +34,6 @@ public class HsqlDataSource{
                 .addScript( "database/insert-class_schedule.sql" )
                 .addScript( "database/insert-student_class.sql" )
                 .build();
-    }*/
+    }
 
 }
