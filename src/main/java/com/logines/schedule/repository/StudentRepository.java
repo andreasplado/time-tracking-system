@@ -6,9 +6,10 @@ import com.logines.schedule.model.Student;
 import com.logines.schedule.model.StudentClass;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
+import org.springframework.stereotype.Repository;
 import java.util.List;
 
+@Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query("FROM Student WHERE name = ?1")
     List<Student> findByFirstName(String name);
