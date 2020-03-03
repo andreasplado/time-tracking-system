@@ -15,25 +15,25 @@ CREATE TABLE Class (
   id INTEGER PRIMARY KEY,
   name VARCHAR(30),
   description VARCHAR(300),
-  teacher_name VARCHAR(50),
-  time_minutes INTEGER
+  teacherName VARCHAR(50),
+  timeMinutes INTEGER
 );
 
 CREATE TABLE Job(
   id INTEGER PRIMARY KEY,
   title VARCHAR(255),
-  start_time TIMESTAMP,
-  end_time TIMESTAMP
+  startTime TIMESTAMP,
+  endTime TIMESTAMP
 );
 
 CREATE TABLE ClassSchedule (
   id INTEGER PRIMARY KEY,
-  class_id INTEGER REFERENCES Class(id) ON DELETE CASCADE,
-  start_time TIMESTAMP
+  classId INTEGER REFERENCES Class(id) ON DELETE CASCADE,
+  startTime TIMESTAMP
 );
 
 CREATE TABLE StudentClass (
   id INTEGER PRIMARY KEY,
-  student_id INTEGER REFERENCES Student(id),
-  class_id INTEGER REFERENCES Class(id) ON DELETE CASCADE
+  studentId INTEGER REFERENCES Student(id),
+  classId INTEGER REFERENCES Class(id) ON DELETE CASCADE
 );
