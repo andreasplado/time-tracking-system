@@ -16,7 +16,6 @@ CREATE TABLE Class (
   description VARCHAR(300),
   teacher_name VARCHAR(50),
   time_minutes INTEGER
-
 );
 
 CREATE TABLE Job(
@@ -24,8 +23,7 @@ CREATE TABLE Job(
   title VARCHAR(255),
   start_time TIMESTAMP,
   end_time TIMESTAMP
-
-)
+);
 
 CREATE TABLE Class_schedule (
   id INTEGER PRIMARY KEY,
