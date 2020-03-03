@@ -1,8 +1,14 @@
-DROP TABLE IF EXISTS Class_schedule;
-DROP TABLE IF EXISTS Student_class;
+DROP TABLE IF EXISTS "studet";
+DROP TABLE IF EXISTS "class_schedule";
+DROP TABLE IF EXISTS "student_class";
+DROP TABLE IF EXISTS "student";
+DROP TABLE IF EXISTS "class";
+DROP TABLE IF EXISTS ClassSchedule;
+DROP TABLE IF EXISTS StudentClass;
 DROP TABLE IF EXISTS Student;
 DROP TABLE IF EXISTS Class;
 DROP TABLE IF EXISTS Job;
+
 
 CREATE TABLE Student (
   id INTEGER PRIMARY KEY,
@@ -25,13 +31,13 @@ CREATE TABLE Job(
   end_time TIMESTAMP
 );
 
-CREATE TABLE Class_schedule (
+CREATE TABLE ClassSchedule (
   id INTEGER PRIMARY KEY,
   class_id INTEGER REFERENCES Class(id) ON DELETE CASCADE,
   start_time TIMESTAMP
 );
 
-CREATE TABLE Student_class (
+CREATE TABLE StudentClass (
   id INTEGER PRIMARY KEY,
   student_id INTEGER REFERENCES Student(id),
   class_id INTEGER REFERENCES Class(id) ON DELETE CASCADE

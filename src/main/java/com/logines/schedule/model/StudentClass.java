@@ -11,10 +11,10 @@ public class StudentClass {
     private long id;
 
     @Column(name = "studentId")
-    private long studentId;
+    private int studentId;
 
     @Column(name = "classId")
-    private long classId;
+    private int classId;
 
     public long getId(){
         return id;
@@ -28,7 +28,7 @@ public class StudentClass {
         return studentId;
     }
 
-    public void setStudentId( long studentId ){
+    public void setStudentId( int studentId ){
         this.studentId = studentId;
     }
 
@@ -36,7 +36,7 @@ public class StudentClass {
         return classId;
     }
 
-    public void setClassId( long classId ){
+    public void setClassId( int classId ){
         this.classId = classId;
     }
 }

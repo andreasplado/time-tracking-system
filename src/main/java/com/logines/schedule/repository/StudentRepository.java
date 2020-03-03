@@ -14,7 +14,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query("FROM Student WHERE name = ?1")
     List<Student> findByFirstName(String name);
 
-    @Query("SELECT * FROM Student_class")
+    @Query("SELECT * FROM StudentClass")
     List<StudentClass> getAllStudentClasses();
 
     @Query("SELECT Class.name, Class.time_minutes, Class_schedule.start_time FROM Class INNER JOIN Student_class ON Class.id=Student_class.class_id INNER JOIN Student ON Student.id=student_class.student_id  INNER JOIN Class_schedule ON Class_schedule.class_id=class.id WHERE Student.name= ?1")
