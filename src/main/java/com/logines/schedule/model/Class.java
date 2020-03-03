@@ -2,18 +2,18 @@ package com.logines.schedule.model;
 
 public class Class{
 
-    private long id;
+    private int id;
     private String name;
     private String description;
     private String teacherName;
     private int timeMinutes;
     private String startTime;
 
-    public long getId(){
+    public int getId(){
         return id;
     }
 
-    public void setId( long id ){
+    public void setId( int id ){
         this.id = id;
     }
 

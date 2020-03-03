@@ -78,7 +78,7 @@ public class ScheduleController {
     }
 
     @PostMapping("delete-class/{id}")
-    public String deleteClass(Model model, @PathVariable("id") long id,
+    public String deleteClass(Model model, @PathVariable("id") int id,
                               @Valid Class aClass){
         if(classService.deleteClass(id)){
             return "class_deleted_successfully";
@@ -96,13 +96,13 @@ public class ScheduleController {
         model.addAttribute("studentClasses", studentService.getAllClassesByStudentName(studentName));
         model.addAttribute("searchString", studentName);
         model.addAttribute("allStudents", studentService.getAllStudents());
-        model.addAttribute("studentClassesDistinctTime", studentService.getStudentClassesWithDistinctTime(studentName));
+        //model.addAttribute("studentClassesDistinctTime", studentService.getStudentClassesWithDistinctTime(studentName));
 
         return "student_classes_query_result";
     }
 
     @GetMapping("/student-details/{id}")
-    public String studentDetails(Model model, @PathVariable("id") long id){
+    public String studentDetails(Model model, @PathVariable("id") int id){
         List<Class> classes = classService.getAllClasses();
 
         model.addAttribute("scheduleClasses", classes );

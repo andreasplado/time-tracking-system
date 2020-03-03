@@ -1,0 +1,7 @@
+package com.logines.schedule.repository;
+
+import com.logines.schedule.model.Job;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JobRepository extends JpaRepository<Job, Integer> {
+}

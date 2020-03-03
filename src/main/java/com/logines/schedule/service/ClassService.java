@@ -1,6 +1,7 @@
 package com.logines.schedule.service;
 
 import com.logines.schedule.model.Class;
+import com.logines.schedule.repository.ClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -19,14 +20,14 @@ public class ClassService {
     private static final BeanPropertyRowMapper<Class> CLASS_ROW_MAPPER = BeanPropertyRowMapper.newInstance( Class.class );
 
     @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private ClassRepository classRepository;
 
 
     public List<Class> getAllClasses(){
-        return namedParameterJdbcTemplate.query( "SELECT * FROM class", CLASS_ROW_MAPPER );
+        return classRepository.findAll();
     }
 
     public Class getAClass(long id){
@@ -40,28 +41,16 @@ public class ClassService {
     }
 
     public void saveClass(Class aClass){
-        String sql = "INSERT INTO class(name,description,teacher_name,time_minutes) values (:name, :description, :teacher_name, :time_minutes)";
-
-        Map<String, Serializable> namedParameters = new HashMap<>();
-        namedParameters.put("name", aClass.getName());
-        namedParameters.put("description", aClass.getDescription());
-        namedParameters.put("teacher_name", aClass.getTeacherName());
-        namedParameters.put("time_minutes", aClass.getTimeMinutes());
-        namedParameterJdbcTemplate.update(sql, namedParameters);
+        classRepository.save(aClass);
     }
 
     public void updateClass(Class aClass){
-        String sql = "UPDATE class set name = :name, description = :description, teacher_name = :teacherName, time_minutes = :timeMinutes where id = :id";
-
-        namedParameterJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(aClass));
-
+        classRepository.updateClass(aClass.getName(), aClass.getDescription(), aClass.getTeacherName(), aClass.getStartTime(), aClass.getId());
     }
 
-    public boolean deleteClass(long id){
-        Class aClass = getAClass(id);
-        String sql ="DELETE FROM class WHERE id=" + id;
-        if(aClass != null){
-            namedParameterJdbcTemplate.update(sql, new BeanPropertySqlParameterSource(aClass));
+    public boolean deleteClass(int id){
+        if(getAClass(id) != null){
+            classRepository.delete(id);
             return true;
         }else{
             return false;
