@@ -92,7 +92,7 @@ public class ScheduleController {
 
         model.addAttribute("scheduleClasses", classes );
         model.addAttribute("students", studentService.getAllStudentsWithClasses( classes ) );
-        model.addAttribute("studentClasses", studentService.getAllClassesByStudentName(studentName));
+        //model.addAttribute("studentClasses", studentService.getAllClassesByStudentName(studentName));
         model.addAttribute("searchString", studentName);
         model.addAttribute("allStudents", studentService.getAllStudents());
         //model.addAttribute("studentClassesDistinctTime", studentService.getStudentClassesWithDistinctTime(studentName));

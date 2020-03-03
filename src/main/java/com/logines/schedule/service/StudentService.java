@@ -81,9 +81,9 @@ public class StudentService {
 
     }
 
-    public List<Class> getAllClassesByStudentName(String studentName) {
+    /*public List<Class> getAllClassesByStudentName(String studentName) {
         return studentRepository.getAllClassesByStudentName(studentName);
-    }
+    }*/
 
     private List<StudentClass> getAllStudentClasses() {
         return studentRepository.getAllStudentClasses();
