@@ -12,8 +12,8 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Integer> {
-    @Query("SELECT * FROM Student WHERE name = ?1")
-    List<Student> findByFirstName(String name);
+    @Query("SELECT * FROM Student WHERE name=:name")
+    List<Student> findByFirstName(@Param("name") String name);
 
     @Query("SELECT * FROM StudentClass")
     List<StudentClass> getAllStudentClasses();
