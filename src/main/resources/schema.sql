@@ -36,5 +36,5 @@ CREATE TABLE Class_schedule (
 CREATE TABLE Student_class (
   id INTEGER PRIMARY KEY,
   student_id INTEGER REFERENCES student(id),
-  class_id INTEGER REFERENCES Class(id) ON DELETE CASCADE,
+  class_id INTEGER REFERENCES Class(id) ON DELETE CASCADE
 );
