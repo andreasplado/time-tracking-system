@@ -1,13 +1,12 @@
 package com.logines.schedule.repository;
 
-import com.logines.schedule.model.Class;
-import com.logines.schedule.model.Job;
 import com.logines.schedule.model.Student;
 import com.logines.schedule.model.StudentClass;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 @Repository
