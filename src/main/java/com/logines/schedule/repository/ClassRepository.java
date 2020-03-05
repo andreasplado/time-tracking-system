@@ -9,8 +9,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClassRepository extends JpaRepository<Class, Integer> {
-    @Modifying(clearAutomatically = true)
-    @Query("UPDATE logines_schema.Class set name = :name, description = :description, teacherName = :teacherName, timeMinutes = :timeMinutes where id = :id")
-    int updateClass(@Param("name") String name, @Param("description") String description, @Param("teacherName") String teacherName,
-                      @Param("timeMinutes") String timeMinutes, @Param("id") int id);
 }

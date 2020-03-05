@@ -45,7 +45,7 @@ public class ClassService {
     }
 
     public void updateClass(Class aClass){
-        classRepository.updateClass(aClass.getName(), aClass.getDescription(), aClass.getTeacherName(), aClass.getStartTime(), aClass.getId());
+        classRepository.save(aClass);
     }
 
     public boolean deleteClass(Class aClass){
