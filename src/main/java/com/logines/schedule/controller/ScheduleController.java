@@ -29,12 +29,11 @@ public class ScheduleController {
     @GetMapping("/")
     public String welcome(Model model) {
         List<Class> classes = classService.getAllClasses();
-        List<Job> jobs = jobService.getAllJobs();
 
-        model.addAttribute("jobs", jobs);
+        model.addAttribute("jobs", jobService.getAllJobs());
         model.addAttribute("scheduleClasses", classes );
         model.addAttribute("allStudents", studentService.getAllStudents());
-        model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses( classes ) );
+        model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses(classes ) );
 
         return "main";
     }
