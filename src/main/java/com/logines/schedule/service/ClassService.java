@@ -51,6 +51,7 @@ public class ClassService {
     public boolean deleteClass(Class aClass){
         if(getAClass(aClass.getId()) != null){
             classRepository.delete(aClass);
+            //Lol
             return true;
         }else{
             return false;

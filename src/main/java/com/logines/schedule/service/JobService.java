@@ -1,6 +1,5 @@
 package com.logines.schedule.service;
 
-import com.logines.schedule.DAO.JobDAO;
 import com.logines.schedule.model.Job;
 import com.logines.schedule.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
