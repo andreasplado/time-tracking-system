@@ -31,7 +31,7 @@ public class ClassService {
     }
 
     public Class getAClass(long id){
-        String sql = "SELECT * FROM class WHERE id = ?";
+        String sql = "SELECT * FROM Class WHERE id = ?";
 
         try {
             return jdbcTemplate.queryForObject(sql, new Object[]{id}, CLASS_ROW_MAPPER);
