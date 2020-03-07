@@ -16,7 +16,9 @@ CREATE TABLE Class (
   name VARCHAR(30),
   description VARCHAR(300),
   teacherName VARCHAR(50),
-  timeMinutes INTEGER
+  timeMinutes INTEGER,
+  startTime TIMESTAMP,
+  endTime TIMESTAMP
 );
 
 CREATE TABLE Job(
