@@ -55,6 +55,16 @@ public class ScheduleController {
         return "class_edited_successfully";
     }
 
+    @PostMapping("time/{id}")
+    public String postTime(@PathVariable("id") long id,
+                       @Valid Job job,
+                       BindingResult bindingResult,
+                       Model model){
+        jobService.addJob(job);
+
+        return "class_edited_successfully";
+    }
+
     @GetMapping("/class-details/{id}")
     public String classDetails(Model model, @PathVariable("id") long id){
         Class aClass = classService.getAClass(id);

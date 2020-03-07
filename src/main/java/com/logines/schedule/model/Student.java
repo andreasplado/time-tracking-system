@@ -17,7 +17,7 @@ public class Student{
 
     @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @Column(name = "classes")
+    @Column(name = "class")
     private List<Class> classes;
 
     @OneToMany(cascade = CascadeType.ALL,

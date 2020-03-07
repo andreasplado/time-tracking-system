@@ -3,7 +3,7 @@ package com.logines.schedule.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Class")
+@Table(name = "class")
 public class Class{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
