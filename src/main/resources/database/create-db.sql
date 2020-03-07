@@ -22,15 +22,15 @@ CREATE TABLE class (
 CREATE TABLE job(
   id INTEGER PRIMARY KEY,
   title VARCHAR(255),
-  start_time TIMESTAMP,
-  end_time TIMESTAMP
+  startTime TIMESTAMP,
+  endTime TIMESTAMP
 
 )
 
 CREATE TABLE class_schedule (
   id INTEGER IDENTITY PRIMARY KEY,
-  class_id INTEGER FOREIGN KEY REFERENCES class(id) ON DELETE CASCADE,
-  start_time TIMESTAMP,
+  classId INTEGER FOREIGN KEY REFERENCES class(id) ON DELETE CASCADE,
+  startTime TIMESTAMP,
 
 );
 
