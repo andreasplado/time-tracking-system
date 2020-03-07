@@ -34,7 +34,6 @@ public class WebConfiguration {
     @Bean(initMethod = "migrate")
     public Flyway flyway(DataSource dataSource) {
         Flyway flyway = Flyway.configure().dataSource(dataSource).load();
-        flyway.repair();
         flyway.baseline();
         flyway.migrate();
         return flyway;
