@@ -46,7 +46,7 @@ function viewStudentDetails(id){
 <script th:inline="javascript">
   $( function() {
     var allStudents= [
-       if(${allStudents}!= null"){
+       if(${allStudents}!= null){
             <th:block th:each="student: ${allStudents}" th:inline="text">'[[${student.name}]]',</th:block>
        }
     ];
