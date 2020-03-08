@@ -43,12 +43,12 @@ function viewStudentDetails(id){
     window.location.href="student-details/" + id;
 }
 </script>
-<script type="text/javascript">
+<script th:inline="javascript">
   $( function() {
     var allStudents= [
-        <c:if ${allStudents}!= null">
+       if(${allStudents}!= null"){
             <th:block th:each="student: ${allStudents}" th:inline="text">'[[${student.name}]]',</th:block>
-        </c:if>
+       }
     ];
     $( "#searchbox" ).keyup(function(){
         $( "#searchbox" ).autocomplete({
