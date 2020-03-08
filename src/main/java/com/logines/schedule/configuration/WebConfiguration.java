@@ -25,23 +25,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ConditionalOnProperty(prefix = "spring.flyway", name = "enabled", matchIfMissing = true)
-public class WebConfiguration  extends WebSecurityConfigurerAdapter {
-
-    @Bean
-    @ConfigurationProperties("spring.datasource")
-    public DataSource ds() {
-        return DataSourceBuilder.create().build();
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic()
-                .and()
-                .authorizeRequests()
-                .anyRequest().authenticated();
-    }
-
-
+public class WebConfiguration {
 
     @Bean
     @Primary
@@ -81,19 +65,5 @@ public class WebConfiguration  extends WebSecurityConfigurerAdapter {
         public FlywayInitializerJdbcOperationsDependencyConfiguration() {
             super("flywayInitializer");
         }
-
-    }
-
-    @Bean
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
-    {
-        auth.jdbcAuthentication().dataSource(ds())
-                .authoritiesByUsernameQuery("select USERNAME, ROLE from EMPLOYEE where USERNAME=?")
-                .usersByUsernameQuery("select USERNAME, PASSWORD, 1 as enabled  from EMPLOYEE where USERNAME=?");
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 }
