@@ -47,6 +47,4 @@ public class UserService {
         user.setRoles(new HashSet<>(roleRepository.findAll()));
         userRepository.save(user);
     }
-
-
 }
