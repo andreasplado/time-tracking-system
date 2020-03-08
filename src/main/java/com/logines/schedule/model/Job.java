@@ -16,16 +16,16 @@ public class Job {
     @Column(name = "title")
     private String jobTitle;
 
-    @Column(name = "startTime")
+    @Column(name = "start_time")
     private DateTime startTime;
 
-    @Column(name = "endTime")
+    @Column(name = "end_time")
     private DateTime endTime;
 
-    @Column(name = "createdAt")
+    @Column(name = "created_at")
     private DateTime createdAt;
 
-    @Column(name = "updatedAt", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private DateTime updatedAt;
 
     public int getId() {

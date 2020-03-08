@@ -10,10 +10,10 @@ public class StudentClass {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "studentId")
+    @Column(name = "student_id")
     private int studentId;
 
-    @Column(name = "classId")
+    @Column(name = "class_id")
     private int classId;
 
     public long getId(){

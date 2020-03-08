@@ -15,13 +15,13 @@ public class Class{
     @Column(name = "description")
     private String description;
 
-    @Column(name = "teacherName")
+    @Column(name = "teacher_name")
     private String teacherName;
 
-    @Column(name = "timeMinutes")
+    @Column(name = "time_minutes")
     private int timeMinutes;
 
-    @Column(name = "startTime")
+    @Column(name = "start_time")
     private String startTime;
 
     public int getId(){

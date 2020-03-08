@@ -22,7 +22,7 @@ public class Student{
 
     @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @Column(name = "classesWithClashes")
+    @Column(name = "classes_with_clashes")
     private List<Class> classesWithClashes;
 
     public long getId(){

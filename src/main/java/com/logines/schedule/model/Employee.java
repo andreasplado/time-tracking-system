@@ -22,10 +22,10 @@ public class Employee {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "createdAt")
+    @Column(name = "created_at")
     private Date createdAt;
 
-    @Column(name = "updatedAt", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private Date updatedAt;
 
     @PrePersist
