@@ -46,9 +46,9 @@ function viewStudentDetails(id){
 <script th:inline="javascript">
   $( function() {
     var allStudents= [
-       /*if(${allStudents}!= null){
+       if(${not #lists.isEmpty(allStudents)}){
             <th:block th:each="student: ${allStudents}" th:inline="text">'[[${student.name}]]',</th:block>
-       }*/
+       }
     ];
     $( "#searchbox" ).keyup(function(){
         $( "#searchbox" ).autocomplete({
