@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:form="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Create an account</title>
+
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+    <form th:action="@{/registration}" th:object="${userForm}" method="post">
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"/>
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <textarea class="form-control" rows="5" id="description" placeholder="Enter password" name="password"></textarea>
+        </div>
+        <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
+    </form>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+</body>
+</html>
