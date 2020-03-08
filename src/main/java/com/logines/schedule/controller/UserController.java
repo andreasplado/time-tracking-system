@@ -1,7 +1,6 @@
 package com.logines.schedule.controller;
 
-import com.logines.schedule.model.Job;
-import com.logines.schedule.model.User;
+import com.logines.schedule.model.Users;
 import com.logines.schedule.service.SecurityService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.validator.UserValidator;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -30,25 +28,25 @@ public class UserController {
 
     @GetMapping("/registration")
     public String registration(Model model) {
-        model.addAttribute("userForm", new User());
+        model.addAttribute("userForm", new Users());
 
         return "registration";
     }
 
     @PostMapping("/registration")
     public String registration(@PathVariable("id") long id,
-                               @Valid User user,
+                               @Valid Users users,
                                BindingResult bindingResult,
                                Model model) {
-        userValidator.validate(user, bindingResult);
+        userValidator.validate(users, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "registration";
         }
 
-        userService.save(user);
+        userService.save(users);
 
-        securityService.autoLogin(user.getUsername(), user.getPasswordConfirm());
+        securityService.autoLogin(users.getUsername(), users.getPasswordConfirm());
 
         return "redirect:/";
     }
