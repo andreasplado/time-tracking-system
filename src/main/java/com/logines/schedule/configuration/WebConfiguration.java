@@ -49,7 +49,7 @@ public class WebConfiguration {
      * Additional configuration to ensure that {@link JdbcOperations} beans depend
      * on the {@code flywayInitializer} bean.
      */
-    /*@Configuration
+    @Configuration
     @ConditionalOnClass(JdbcOperations.class)
     @ConditionalOnBean(JdbcOperations.class)
     protected static class FlywayInitializerJdbcOperationsDependencyConfiguration
@@ -59,5 +59,5 @@ public class WebConfiguration {
             super("flywayInitializer");
         }
 
-    }*/
+    }
 }
