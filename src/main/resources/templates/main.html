@@ -44,11 +44,12 @@ function viewStudentDetails(id){
 }
 </script>
 <script th:inline="javascript">
+/*<![CDATA[*/
   $( function() {
     var allStudents= [
-       if(${not #lists.isEmpty(allStudents)}){
-            <th:block th:each="student: ${allStudents}" th:inline="text">'[[${student.name}]]',</th:block>
-       }
+         /*[# th:each="student : ${allStudents}"]*/
+            [[${student.name}]]
+       /*[/]*/
     ];
     $( "#searchbox" ).keyup(function(){
         $( "#searchbox" ).autocomplete({
@@ -75,6 +76,7 @@ function viewStudentDetails(id){
         "format": "MM-DD-YYYY HH:mm:ss",
     });
   });
+/*]]>*/
 </script>
 <style>
     tr{ cursor: pointer; }
