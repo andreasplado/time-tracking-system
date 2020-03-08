@@ -3,6 +3,7 @@ package com.logines.schedule.service;
 import com.logines.schedule.model.Class;
 import com.logines.schedule.model.Student;
 import com.logines.schedule.model.StudentClass;
+import com.logines.schedule.repository.StudentClassRepository;
 import com.logines.schedule.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,8 @@ public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private StudentClassRepository studentClassRepository;
 
     public List<Student> getAllStudentsWithClasses(List<Class> classes) {
         List<Student> students = getAllStudents();
@@ -86,7 +89,7 @@ public class StudentService {
     }*/
 
     private List<StudentClass> getAllStudentClasses() {
-        return studentRepository.getAllStudentClasses();
+        return studentClassRepository.findAll();
     }
 
     private static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
