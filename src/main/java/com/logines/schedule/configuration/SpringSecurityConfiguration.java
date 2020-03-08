@@ -18,8 +18,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private DataSource dataSource;
+
     @Bean
     @ConfigurationProperties("spring.datasource")
     public DataSource ds() {
@@ -38,8 +37,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
     {
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .authoritiesByUsernameQuery("select USERNAME, ROLE from USERS where USERNAME=?")
+        auth.jdbcAuthentication().dataSource(ds())
+                .authoritiesByUsernameQuery("select USERNAME, ROLE from EMPLOYEE where USERNAME=?")
                 .usersByUsernameQuery("select USERNAME, PASSWORD, 1 as enabled  from EMPLOYEE where USERNAME=?");
     }
 
