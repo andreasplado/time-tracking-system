@@ -2,6 +2,7 @@ package com.logines.schedule.configuration;
 
 import com.logines.schedule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+@EnableAutoConfiguration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
