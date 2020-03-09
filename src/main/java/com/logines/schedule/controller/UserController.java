@@ -38,8 +38,7 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    public String registration(@PathVariable("id") Integer id,
-                               @Valid Users users,
+    public String registration(@Valid Users users,
                                BindingResult bindingResult,
                                Model model) {
         userValidator.validate(users, bindingResult);
