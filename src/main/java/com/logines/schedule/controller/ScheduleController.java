@@ -6,6 +6,7 @@ import com.logines.schedule.service.ClassService;
 import com.logines.schedule.service.JobService;
 import com.logines.schedule.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,8 @@ public class ScheduleController {
     private StudentService studentService;
     @Autowired
     private JobService jobService;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @RequestMapping(value="/",method = RequestMethod.GET)
     public String welcome(Model model) {

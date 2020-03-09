@@ -5,6 +5,7 @@ import com.logines.schedule.service.SecurityService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,9 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @GetMapping("/registration")
     public String registration(Model model) {
