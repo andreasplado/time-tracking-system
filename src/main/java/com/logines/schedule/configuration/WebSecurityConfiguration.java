@@ -24,7 +24,7 @@ import javax.sql.DataSource;
 @Configuration
 @Order(1)
 @ComponentScan
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
