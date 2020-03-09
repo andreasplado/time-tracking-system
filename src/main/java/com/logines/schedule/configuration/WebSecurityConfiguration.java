@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -64,6 +65,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @PostConstruct
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return authenticationManager();
+    }
+
+    @Bean
+    LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
+                new LocalContainerEntityManagerFactoryBean();
+        return entityManagerFactoryBean.setDataSource((javax.sql.DataSource) dataSource());
     }
 
 }
