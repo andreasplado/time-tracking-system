@@ -2,6 +2,7 @@ package com.logines.schedule.configuration;
 
 import com.logines.schedule.repository.UserRepository;
 import com.logines.schedule.service.UserService;
+import com.logines.schedule.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
