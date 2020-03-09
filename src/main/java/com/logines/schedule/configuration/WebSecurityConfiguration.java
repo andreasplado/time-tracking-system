@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+@Order(1)
 @EnableAutoConfiguration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -45,7 +46,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    @Order(1)
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
