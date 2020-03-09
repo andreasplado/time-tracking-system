@@ -30,7 +30,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
     }
 
-    @Autowired
+    @Bean
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
     {
         auth.jdbcAuthentication().dataSource(ds())
