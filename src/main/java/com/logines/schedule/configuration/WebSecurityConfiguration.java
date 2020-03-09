@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 @Configuration
@@ -51,12 +52,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
+    @PostConstruct
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
     @Bean
+    @PostConstruct
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return authenticationManager();
     }
