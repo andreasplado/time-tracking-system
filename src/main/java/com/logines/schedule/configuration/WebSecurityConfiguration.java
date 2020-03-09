@@ -71,7 +71,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
                 new LocalContainerEntityManagerFactoryBean();
-        return entityManagerFactoryBean.setDataSource((javax.sql.DataSource) dataSource());
+        entityManagerFactoryBean.setDataSource((javax.sql.DataSource) ds());
+        return entityManagerFactoryBean;
     }
 
 }
