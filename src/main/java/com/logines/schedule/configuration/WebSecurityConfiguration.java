@@ -17,13 +17,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
+@Configuration
 @Order(1)
 @ComponentScan
-@Component
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
