@@ -62,6 +62,7 @@ public class UserController {
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
+        model.addAttribute("jobs", securityService.findLoggedInUsername());
 
         return "login";
     }
