@@ -38,7 +38,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.userDetailsService(userDetailsService);
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/registration").permitAll()
@@ -63,6 +62,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
+    @Override
     @Bean
     public UserDetailsService userDetailsService() {
         return super.userDetailsService();
