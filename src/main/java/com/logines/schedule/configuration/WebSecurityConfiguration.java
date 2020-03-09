@@ -2,6 +2,7 @@ package com.logines.schedule.configuration;
 
 import com.logines.schedule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -24,55 +25,39 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 @Configuration
-@Order(1)
-@ComponentScan
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-    @Bean
-    @ConfigurationProperties("spring.datasource")
-    public DataSource ds() {
-        return DataSourceBuilder.create().build();
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic()
-                .and()
-                .authorizeRequests()
-                .anyRequest().authenticated();
-    }
-
+    @Qualifier("userDetailsServiceImpl")
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
-    {
-        auth.parentAuthenticationManager(authenticationManagerBean());
-        auth.jdbcAuthentication().dataSource(ds())
-                .authoritiesByUsernameQuery("select USERNAME, ROLE from EMPLOYEE where USERNAME=?")
-                .usersByUsernameQuery("select USERNAME, PASSWORD, 1 as enabled  from EMPLOYEE where USERNAME=?");
-        auth.userDetailsService(auth.getDefaultUserDetailsService()).passwordEncoder(passwordEncoder());
-    }
+    private UserDetailsService userDetailsService;
 
     @Bean
-    @PostConstruct
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/resources/**", "/registration").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();
+    }
+
     @Bean
-    @PostConstruct
-    public AuthenticationManager authenticationManagerBean() throws Exception {
+    public AuthenticationManager customAuthenticationManager() throws Exception {
         return authenticationManager();
     }
 
-    @Bean
-    LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
-                new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource((javax.sql.DataSource) ds());
-        return entityManagerFactoryBean;
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
-
 }
