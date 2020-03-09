@@ -33,6 +33,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
     {
+        auth.parentAuthenticationManager(authenticationManagerBean());
         auth.jdbcAuthentication().dataSource(ds())
                 .authoritiesByUsernameQuery("select USERNAME, ROLE from EMPLOYEE where USERNAME=?")
                 .usersByUsernameQuery("select USERNAME, PASSWORD, 1 as enabled  from EMPLOYEE where USERNAME=?");
