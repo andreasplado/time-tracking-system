@@ -29,7 +29,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Qualifier("userDetailsService")
+    @Qualifier("userService")
     @Autowired
     private UserDetailsService userDetailsService;
 
