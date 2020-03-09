@@ -1,5 +1,6 @@
 package com.logines.schedule.configuration;
 
+import com.logines.schedule.repository.UserRepository;
 import com.logines.schedule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -65,9 +66,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
-    @Override
     @Bean
     public UserDetailsService userDetailsService() {
-        return super.userDetailsService();
-    }
+        return new UserService();
+    };
 }
