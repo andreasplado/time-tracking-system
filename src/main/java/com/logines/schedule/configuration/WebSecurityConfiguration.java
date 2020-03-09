@@ -36,7 +36,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated();
     }
 
-    @Bean
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception
     {
         auth.parentAuthenticationManager(authenticationManagerBean());
