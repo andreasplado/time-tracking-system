@@ -18,7 +18,6 @@ import javax.sql.DataSource;
 
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-
     @Bean
     @ConfigurationProperties("spring.datasource")
     public DataSource ds() {
@@ -45,7 +44,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Order(1)
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
