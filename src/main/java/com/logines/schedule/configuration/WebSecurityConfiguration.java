@@ -76,5 +76,5 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     };
 
     @Bean
-    private UserValidator userValidator(){ return new UserValidator(); }
+    public UserValidator userValidator(){ return new UserValidator(); }
 }
