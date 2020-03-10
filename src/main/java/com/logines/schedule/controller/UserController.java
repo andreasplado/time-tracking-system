@@ -32,7 +32,7 @@ public class UserController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("userForm", new Users());
+        model.addAttribute("registerForm", new Users());
 
         return "register";
     }
