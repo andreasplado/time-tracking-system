@@ -30,21 +30,21 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @GetMapping("/registration")
-    public String registration(Model model) {
+    @GetMapping("/register")
+    public String register(Model model) {
         model.addAttribute("userForm", new Users());
 
-        return "registration";
+        return "register";
     }
 
-    @PostMapping("/registration")
-    public String registration(@Valid Users users,
-                               BindingResult bindingResult,
-                               Model model) {
+    @PostMapping("/register")
+    public String register(@Valid Users users,
+                           BindingResult bindingResult,
+                           Model model) {
         userValidator.validate(users, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "register";
         }
 
         userService.save(users);
