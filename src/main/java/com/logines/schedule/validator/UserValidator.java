@@ -23,20 +23,22 @@ public class UserValidator implements Validator {
         Users users = (Users) o;
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
-        if (users.getUsername().length() < 6 || users.getUsername().length() > 32) {
-            errors.rejectValue("username", "Size.userForm.username");
-        }
-        if (userService.findByUsername(users.getUsername()) != null) {
-            errors.rejectValue("username", "Duplicate.userForm.username");
-        }
+        if(users != null) {
+            if (users.getUsername().length() < 6 || users.getUsername().length() > 32) {
+                errors.rejectValue("username", "Size.userForm.username");
+            }
+            if (userService.findByUsername(users.getUsername()) != null) {
+                errors.rejectValue("username", "Duplicate.userForm.username");
+            }
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
-        if (users.getPassword().length() < 8 || users.getPassword().length() > 32) {
-            errors.rejectValue("password", "Size.userForm.password");
-        }
+            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+            if (users.getPassword().length() < 8 || users.getPassword().length() > 32) {
+                errors.rejectValue("password", "Size.userForm.password");
+            }
 
-        if (!users.getPasswordConfirm().equals(users.getPassword())) {
-            errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+            if (!users.getPasswordConfirm().equals(users.getPassword())) {
+                errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+            }
         }
     }
 }
