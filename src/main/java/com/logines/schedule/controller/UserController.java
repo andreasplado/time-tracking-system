@@ -50,6 +50,7 @@ public class UserController {
         userValidator.validate(users, bindingResult);
 
         if (bindingResult.hasErrors()) {
+            System.out.print("Error");
             return "register";
         }
 
