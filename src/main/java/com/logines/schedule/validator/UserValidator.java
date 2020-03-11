@@ -24,6 +24,8 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Users users = (Users) o;
 
+        System.out.print("Valideerimise funktsioon käivitati");
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
         if(users != null) {
             if (users.getUsername().length() < 6 || users.getUsername().length() > 32) {
