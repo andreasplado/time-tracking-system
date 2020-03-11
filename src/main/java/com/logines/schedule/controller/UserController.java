@@ -41,8 +41,6 @@ public class UserController {
     public String register(@Valid Users users,
                            BindingResult bindingResult,
                            Model model) {
-
-        UserValidator userValidator = new UserValidator();
         userValidator.validate(users, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -67,6 +65,4 @@ public class UserController {
 
         return "login";
     }
-
-
 }
