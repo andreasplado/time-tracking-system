@@ -9,7 +9,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -29,6 +31,11 @@ public class UserController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder){
+        webDataBinder.setValidator(userValidator);
+    }
 
     @GetMapping("/register")
     public String register(Model model) {
