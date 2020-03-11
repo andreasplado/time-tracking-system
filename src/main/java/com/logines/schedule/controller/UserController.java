@@ -26,7 +26,6 @@ public class UserController {
     @Autowired
     private SecurityService securityService;
 
-    @Autowired
     private UserValidator userValidator;
 
     @Autowired
@@ -71,5 +70,10 @@ public class UserController {
         model.addAttribute("jobs", securityService.findLoggedInUsername());
 
         return "login";
+    }
+
+    @Autowired
+    private void setUserValidator(UserValidator userValidator) {
+        this.userValidator = userValidator;
     }
 }
