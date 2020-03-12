@@ -30,19 +30,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Transactional(readOnly = true)
-    public UserDetails findByUsername(String username){
-        Users users =  userRepository.findByUsername(username);
-        if(users == null) throw  new UsernameNotFoundException(username);
-
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for(Role role : users.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-
-        return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), grantedAuthorities);
-    }
-
     public void save(Users users) {
         users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
         users.setRoles(new HashSet<>(roleRepository.findAll()));
@@ -50,6 +37,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Users users =  userRepository.findByUsername(username);
         if (users == null) throw new UsernameNotFoundException(username);
