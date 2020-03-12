@@ -35,34 +35,23 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register(Users users) {
+    public String register(Model model) {
+        model.addAttribute("userForm", new Users());
 
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(@Valid Users users,
-                           Errors error, Model model) {
-        if(error.hasErrors()){
-            return "register";
-        }else{
-            model.addAttribute("message", "Registration successfully...");
-            userService.save(users);
+    public String register(@ModelAttribute("userForm") Users users, BindingResult bindingResult) {
+        userValidator.validate(userForm, bindingResult);
 
-            securityService.autoLogin(users.getUsername(), users.getPasswordConfirm());
+        if (bindingResult.hasErrors()) {
+            return "registration";
         }
-        userValidator.validate(users, error );
-        System.out.println("Username" + users.getUsername());
 
+        userService.save(users);
 
-        /*if (bindingResult.hasErrors()) {
-
-
-            System.out.print("Error");
-            return "register";
-        }*/
-
-
+        securityService.autoLogin(users.getUsername(), users.getPasswordConfirm());
 
         return "redirect:/";
     }
