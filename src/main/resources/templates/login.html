@@ -29,14 +29,16 @@
 <body>
 
 <div class="container">
-    <form th:action="@{/login}" th:object="${login}" method="post">
+    <form th:action="@{/}" th:object="${login}" method="post">
         <div class="form-group">
             <label>Username:</label>
             <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"/>
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
         </div>
         <div class="form-group">
             <label>Password:</label>
             <input type="password" class="form-control" id="password" placeholder="Enter password" name="password"/>
+            <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Password errors</div>
         </div>
         <button class="btn btn-success" type="submit">Login</button>
         <button onclick="registerClick()" class="btn btn-primary">Register</button>
