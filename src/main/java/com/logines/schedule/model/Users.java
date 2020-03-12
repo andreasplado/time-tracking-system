@@ -2,6 +2,9 @@ package com.logines.schedule.model;
 
 import javax.persistence.*;
 import java.util.Set;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Users")
@@ -10,8 +13,12 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min=2, max=30)
     private String username;
 
+    @NotNull
+    @Min(18)
     private String password;
 
     @Transient

@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register( @ModelAttribute Users users,
+    public String register(@Valid Users users,
                            BindingResult bindingResult) {
         userValidator.validate(users, bindingResult);
         System.out.println("Username" + users.getUsername());
