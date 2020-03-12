@@ -47,6 +47,7 @@ public class UserController {
     public String register(@Valid Users users,
                            BindingResult bindingResult,
                            Model model) {
+        model.addAttribute("userForm" , users);
         userValidator.validate(users, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -71,16 +72,6 @@ public class UserController {
         model.addAttribute("jobs", securityService.findLoggedInUsername());
 
         return "login";
-    }
-
-    @PostMapping("/login")
-    public String checkPersonInfo(@Valid Users users, BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            return "login";
-        }
-
-        return "redirect:/";
     }
 
     @Autowired
