@@ -43,9 +43,8 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(@Valid Users users, BindingResult bindingResult, Model model) {
-        userValidator.validate(users, bindingResult);
-
         model.addAttribute("users", users);
+        userValidator.validate(users, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "registration";
@@ -59,7 +58,8 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
+    public String login(@Valid Users users, Model model, String error, String logout) {
+        model.addAttribute("users", users);
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
