@@ -27,6 +27,7 @@ public class UserValidator implements Validator {
         System.out.print("Valideerimise funktsioon käivitati");
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        /*
         if(users != null) {
             if (users.getUsername().length() < 6 || users.getUsername().length() > 32) {
                 errors.rejectValue("username", "Size.userForm.username");
@@ -44,5 +45,6 @@ public class UserValidator implements Validator {
                 errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
             }
         }
+        */
     }
 }
