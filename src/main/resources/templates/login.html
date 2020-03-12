@@ -32,7 +32,7 @@
     <form th:action="@{/}" th:object="${register}" method="post">
         <div class="form-group">
             <label>Username:</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter name" name="username" th:field="*{username}"/>
+            <input type="text" th:field="*{username}" class="form-control" placeholder="Enter name"/>
             <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
         </div>
         <div class="form-group">
