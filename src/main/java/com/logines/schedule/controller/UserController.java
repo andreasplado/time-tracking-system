@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,16 +35,23 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register(Model model) {
-        model.addAttribute("registerForm", new Users());
+    public String register(Users users) {
 
         return "register";
     }
 
     @PostMapping("/register")
     public String register(@Valid Users users,
-                           BindingResult bindingResult) {
-        userValidator.validate(users, bindingResult);
+                           Errors error, Model model) {
+        if(error.hasErrors()){
+            return "register";
+        }else{
+            model.addAttribute("message", "Registration successfully...");
+            userService.save(users);
+
+            securityService.autoLogin(users.getUsername(), users.getPasswordConfirm());
+        }
+        userValidator.validate(users, error );
         System.out.println("Username" + users.getUsername());
 
 
@@ -54,9 +62,7 @@ public class UserController {
             return "register";
         }*/
 
-        userService.save(users);
 
-        securityService.autoLogin(users.getUsername(), users.getPasswordConfirm());
 
         return "redirect:/";
     }
