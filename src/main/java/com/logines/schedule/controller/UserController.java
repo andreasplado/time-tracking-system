@@ -73,6 +73,16 @@ public class UserController {
         return "login";
     }
 
+    @PostMapping("/login")
+    public String checkPersonInfo(@Valid Users users, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "login";
+        }
+
+        return "redirect:/";
+    }
+
     @Autowired
     private void setUserValidator(UserValidator userValidator) {
         this.userValidator = userValidator;
