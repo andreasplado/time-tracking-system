@@ -14,6 +14,9 @@ public class Users {
 
     private String password;
 
+    @Transient
+    private String passwordConfirm;
+
     @ManyToMany
     private Set<Role> roles;
 
@@ -39,6 +42,14 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
     public Set<Role> getRoles() {

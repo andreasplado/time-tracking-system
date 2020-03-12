@@ -56,7 +56,7 @@ public class UserController {
 
         userService.save(users);
 
-        securityService.autoLogin(users.getUsername(), users.getPassword());
+        securityService.autoLogin(users.getUsername(), users.getPasswordConfirm());
 
         return "redirect:/";
     }
