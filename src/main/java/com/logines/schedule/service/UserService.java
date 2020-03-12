@@ -34,6 +34,7 @@ public class UserService implements UserDetailsService {
         users.setPassword(bCryptPasswordEncoder.encode(users.getPassword()));
         users.setRoles(new HashSet<>(roleRepository.findAll()));
         userRepository.save(users);
+        System.out.println("Saving users");
     }
 
     @Override
