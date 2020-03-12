@@ -45,10 +45,12 @@ public class UserController {
                            BindingResult bindingResult) {
         userValidator.validate(users, bindingResult);
 
-        if (bindingResult.hasErrors()) {
+        /*if (bindingResult.hasErrors()) {
+
+
             System.out.print("Error");
             return "register";
-        }
+        }*/
 
         userService.save(users);
 
