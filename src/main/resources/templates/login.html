@@ -29,7 +29,7 @@
 <body>
 
 <div class="container">
-    <!-- <form th:action="@{/}" th:object="${users}" method="post">
+    <form th:action="@{/}" th:object="${users}" method="post">
         <div class="form-group">
             <label>Username:</label>
             <input type="text" th:field="*{username}" class="form-control" placeholder="Enter name"/>
@@ -43,9 +43,9 @@
 
         <button onclick="registerClick()" class="btn btn-primary">Register</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-    </form> -->
+    </form>
 
-    <form th:action="@{/login}" th:object="${users}" method="post">
+    <!--<form th:action="@{/login}" th:object="${users}" method="post">
         <table>
             <tr>
                 <td>Name:</td>
@@ -61,7 +61,7 @@
                 <td><button type="submit"><button class="btn btn-success" type="submit">Login</button></button></td>
             </tr>
         </table>
-    </form>
+    </form> -->
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
