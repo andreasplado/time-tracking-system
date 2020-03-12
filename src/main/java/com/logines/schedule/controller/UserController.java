@@ -41,10 +41,11 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register( Model model,
+    public String register( @ModelAttribute Users users,
                            BindingResult bindingResult) {
-        model.addAttribute("users", new Users());
-        userValidator.validate(model.getAttribute("users"), bindingResult);
+        userValidator.validate(users, bindingResult);
+        System.out.println("Username" + users.getUsername());
+
 
         /*if (bindingResult.hasErrors()) {
 
@@ -55,7 +56,7 @@ public class UserController {
 
         userService.save(users);
 
-        securityService.autoLogin(users.getUsername(), users.getPasswordConfirm());
+        securityService.autoLogin(users.getUsername(), model.getPasswordConfirm());
 
         return "redirect:/";
     }
