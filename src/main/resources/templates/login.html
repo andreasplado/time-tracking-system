@@ -32,12 +32,12 @@
     <form th:action="@{/}" th:object="${userForm}" method="post">
         <div class="form-group">
             <label>Username:</label>
-            <input type="text" th:value="${userForm.username != null} ? ${userForm.username} : ${userForm.username}" class="form-control" placeholder="Enter name"/>
+            <input type="text" th:attr="value = ${userForm.username}" class="form-control" placeholder="Enter name" name="username"/>
             <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
         </div>
         <div class="form-group">
             <label>Password:</label>
-            <input type="password" th:value="${userForm.password != null} ? ${userForm.password} : ${userForm.password}" class="form-control" id="password" placeholder="Enter password" name="password"/>
+            <input type="password" th:attr="value = ${userForm.password}" class="form-control" id="password" placeholder="Enter password" name="password"/>
             <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
         </div>
 
