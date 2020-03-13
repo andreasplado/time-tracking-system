@@ -57,7 +57,8 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(Model model, String error, String logout) {
+    public String loginPage(Model model, @Valid Users userForm, BindingResult bindingResult, String error, String logout) {
+        model.addAttribute("user" , userForm);
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
