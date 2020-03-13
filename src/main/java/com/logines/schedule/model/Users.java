@@ -12,13 +12,8 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotNull
-    @Size(min=2, max=30, message = "Username should be between 2 to 30 characters long")
     private String username;
 
-    @NotNull
-    @Size(min=2, max=30, message = "Password should be 10 to 30 characters long")
     private String password;
 
     @Transient
