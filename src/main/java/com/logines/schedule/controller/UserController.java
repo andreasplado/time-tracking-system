@@ -57,7 +57,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(Model model, @Valid Users userForm BindingResult bindingResult) {
+    public String loginPage(Model model, @Valid Users userForm, BindingResult bindingResult) {
         model.addAttribute("loginForm", userForm);
         if (bindingResult.hasErrors()){
             return "login";
