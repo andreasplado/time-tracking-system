@@ -46,7 +46,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@Valid @ModelAttribute("userForm") Users userForm, BindingResult bindingResult) {
+    public String postRegister(@Valid @ModelAttribute("registerForm") Users userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
         LOG.error("ERROR:::::::::::::: "  + bindingResult.hasErrors());
