@@ -57,13 +57,13 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(@ModelAttribute("user") @Valid Users users, BindingResult bindingResult, Model model) {
-        userValidator.validate(users, bindingResult);
+    public String loginPage(Users users) {
+        //userValidator.validate(users, bindingResult);
         return "login";
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("user") @Valid Users users, Model model, BindingResult bindingResult) {
+    public String login(@ModelAttribute("user") @Valid Users users, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             return "login";
         }else{
