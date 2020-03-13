@@ -3,8 +3,10 @@ package com.logines.schedule.configuration;
 import com.logines.schedule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -58,4 +60,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         return new UserService();
     };
+
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("/WEB-INF/messages");
+        return messageSource;
+    }
 }
