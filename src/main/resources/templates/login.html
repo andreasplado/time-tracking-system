@@ -32,7 +32,7 @@
     <form th:action="@{/login}" th:object="${user}" method="post">
         <div class="form-group">
             <label>Username:</label>
-            <input type="text" th:attr="value = ${user.username}" class="form-control" placeholder="Enter name" name="username"/>
+            <input type="text" th:attr="value = ${username}" class="form-control" placeholder="Enter name" name="username"/>
             <p th:if="${#fields.hasErrors('username')}? fieldError" th:errors="*{username}">Username Error</p>
             <ul th:if="${#fields.hasErrors('*')}">
                 <li th:each="err : ${#fields.errors('*')}" th:text="${error}">Input is incorrect</li>
