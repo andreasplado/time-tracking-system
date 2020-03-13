@@ -57,8 +57,12 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(Users users) {
+    public String loginPage(Users users, Model model) {
+        if(users != null) {
+            model.addAttribute("user", users);
+        }
         //userValidator.validate(users, bindingResult);
+
         return "login";
     }
 
