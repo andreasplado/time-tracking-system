@@ -68,7 +68,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String postLogin(@ModelAttribute("user") @Valid Users users, BindingResult bindingResult) {
+    public String postLogin(@ModelAttribute Users users, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             return "login";
         }else{
