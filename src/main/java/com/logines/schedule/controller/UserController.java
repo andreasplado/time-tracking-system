@@ -57,12 +57,12 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(@Valid @ModelAttribute("employee") Users users, BindingResult bindingResult) {
-        //model.addAttribute("user", new Users());
+    public String loginPage(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
 
-        /*if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully."); */
-        //model.addAttribute("jobs", securityService.findLoggedInUsername());
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
 
         return "login";
     }
