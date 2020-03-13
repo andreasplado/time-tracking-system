@@ -40,15 +40,19 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String getRegister(Model model) {
+    public String getRegister(Model model, String error) {
         model.addAttribute("registerForm", new Users());
+
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
+
         return "register";
     }
 
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
         model.addAttribute("userForm", new Users());
-        LOG.error("ERROR::::::::::::::"  + error);
+
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
