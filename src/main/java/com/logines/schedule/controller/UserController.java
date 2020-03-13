@@ -4,6 +4,8 @@ import com.logines.schedule.model.Users;
 import com.logines.schedule.service.SecurityService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.validator.UserValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +32,8 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder){
         webDataBinder.setValidator(userValidator);
@@ -38,7 +42,6 @@ public class UserController {
     @GetMapping("/register")
     public String getRegister(Model model) {
         model.addAttribute("registerForm", new Users());
-
         return "register";
     }
 
@@ -61,6 +64,7 @@ public class UserController {
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
         model.addAttribute("userForm", new Users());
+        logger.trace("ERROR::::::::::::::"  + error);
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
