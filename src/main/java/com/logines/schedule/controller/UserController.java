@@ -6,6 +6,7 @@ import com.logines.schedule.service.UserService;
 import com.logines.schedule.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,7 +48,7 @@ public class UserController {
         userValidator.validate(users, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "register";
         }
 
         userService.save(users);
@@ -58,11 +59,26 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(@Valid Users users, Model model, BindingResult bindingResult, String logout) {
+    public String loginPage(@Valid Users users, Model model, BindingResult bindingResult, String logout) {
         model.addAttribute("users", users);
         if (bindingResult.hasErrors()){
             return "login";
         }
+
+        /*if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully."); */
+        //model.addAttribute("jobs", securityService.findLoggedInUsername());
+
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String login(@Valid Users users, Model model, BindingResult bindingResult, String logout) {
+        model.addAttribute("users", users);
+        securityService.autoLogin(users.getUsername(), users.getPassword());
+        return "login";
+    }
+
 
         /*if (logout != null)
             model.addAttribute("message", "You have been logged out successfully."); */
