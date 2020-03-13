@@ -58,7 +58,9 @@ public class UserController {
 
     @GetMapping("/login")
     public String loginPage(Users users, Model model) {
-        System.out.println(users);
+        System.out.println(users.getUsername());
+        System.out.println(users.getPassword());
+        System.out.println(users.getRoles());
         if(users != null) {
             model.addAttribute("user", users);
         }
