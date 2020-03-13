@@ -59,7 +59,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login(Model model, @Valid @ModelAttribute("userForm") Users userForm, String error, String logout) {
+    public String login(Model model, String error, String logout) {
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
@@ -70,7 +70,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String postLogin(@ModelAttribute Users users, BindingResult bindingResult, Model model) {
+    public String postLogin(@Valid @ModelAttribute("userForm") Users users, BindingResult bindingResult, Model model) {
+        userValidator.validate(users, bindingResult);
         if(bindingResult.hasErrors()) {
             return "login";
         }else{
