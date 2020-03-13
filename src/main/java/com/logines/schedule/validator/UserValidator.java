@@ -24,9 +24,7 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Users users = (Users) o;
 
-        System.out.print("Valideerimise funktsioon käivitati");
-
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty.userForm.username");
         errors.addAllErrors(errors);
         if(users.getUsername() != null && users.getPassword() != null) {
             if (users.getUsername().length() < 6 || users.getUsername().length() > 32) {
@@ -36,7 +34,7 @@ public class UserValidator implements Validator {
                 errors.rejectValue("username", "Duplicate.userForm.username");
             }
 
-            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty.userForm.username");
+            ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty.userForm.password");
             if (users.getPassword().length() < 8 || users.getPassword().length() > 32) {
                 errors.rejectValue("password", "Size.userForm.password");
             }
