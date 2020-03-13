@@ -43,9 +43,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid Users users, BindingResult bindingResult, Model model) {
-        model.addAttribute("users", users);
-        userValidator.validate(users, bindingResult);
+    public String register(@ModelAttribute("userForm") Users userForm, BindingResult bindingResult, Model model) {
+        //model.addAttribute("users", userForm);
+        userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
             return "register";
@@ -73,7 +73,11 @@ public class UserController {
     @PostMapping("/login")
     public String login(@Valid Users users, Model model, BindingResult bindingResult, String logout) {
         model.addAttribute("users", users);
-        securityService.autoLogin(users.getUsername(), users.getPassword());
+        if(bindingResult.hasErrors()) {
+
+        }else{
+
+        }
         return "login";
     }
 
