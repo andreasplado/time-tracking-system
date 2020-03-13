@@ -38,8 +38,8 @@
         <div class="form-group">
             <label>Password:</label>
             <input type="password" th:attr="value = ${userForm.password}" class="form-control" id="password" placeholder="Enter password" name="password"/>
-            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
         </div>
+        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
         <button class="btn btn-success" type="submit">LOG IN</button>
         <button onclick="registerClick()" class="btn btn-primary">REGISTER</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
