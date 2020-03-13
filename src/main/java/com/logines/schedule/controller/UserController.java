@@ -44,7 +44,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String postRegister(Model model, @Valid Users userForm, BindingResult bindingResult) {
-        model.addAttribute("userForm", userForm);
+        model.addAttribute("registerForm", userForm);
         userValidator.validate(userForm, bindingResult);
 
         System.out.println("Has errors: " +  bindingResult.hasErrors());
@@ -61,6 +61,7 @@ public class UserController {
     @GetMapping("/login")
     public String login(Model model, @Valid @ModelAttribute("userForm") Users userForm, BindingResult bindingResult, String error, String logout) {
         if (error != null)
+            System.out.println(error);
             model.addAttribute("error", "Your username and password is invalid.");
 
         if (logout != null)
