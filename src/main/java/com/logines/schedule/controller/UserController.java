@@ -71,11 +71,10 @@ public class UserController {
     public String login(@Valid Users users, Model model, BindingResult bindingResult, String logout) {
         model.addAttribute("users", users);
         if(bindingResult.hasErrors()) {
-
+            return "login";
         }else{
-
+            return  "redirect:/";
         }
-        return "login";
     }
 
 
