@@ -32,7 +32,7 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    Logger logger = LoggerFactory.getLogger(UserController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder){
@@ -49,7 +49,7 @@ public class UserController {
     public String postRegister(@Valid @ModelAttribute("userForm") Users userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
-        logger.trace("ERROR:::::::::::::: "  + bindingResult.hasErrors());
+        LOG.error("ERROR:::::::::::::: "  + bindingResult.hasErrors());
 
         if (bindingResult.hasErrors()) {
             return "register";
