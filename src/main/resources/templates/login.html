@@ -31,6 +31,7 @@
 <div class="container">
     <form th:action="@{/login}" th:object="${userForm}" method="post">
         <div class="form-group">
+            <span>${message}</span>
             <label>Username:</label>
             <input type="text" th:attr="value = ${userForm.username}" class="form-control" placeholder="Enter name" name="username"/>
             <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
@@ -38,8 +39,9 @@
         <div class="form-group">
             <label>Password:</label>
             <input type="password" th:attr="value = ${userForm.password}" class="form-control" id="password" placeholder="Enter password" name="password"/>
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
         </div>
-        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+        <span>${error}</span>
         <button class="btn btn-success" type="submit">LOG IN</button>
         <button onclick="registerClick()" class="btn btn-primary">REGISTER</button>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
