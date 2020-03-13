@@ -57,8 +57,8 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(Model model, @Valid Users userForm, BindingResult bindingResult) {
-        model.addAttribute("user", new Users());
+    public String loginPage(@Valid @ModelAttribute("employee") Users users, BindingResult bindingResult) {
+        //model.addAttribute("user", new Users());
 
         /*if (logout != null)
             model.addAttribute("message", "You have been logged out successfully."); */
