@@ -47,6 +47,8 @@ public class UserController {
         model.addAttribute("userForm", userForm);
         userValidator.validate(userForm, bindingResult);
 
+        System.out.println("Has errors: " +  bindingResult.hasErrors());
+
         if (bindingResult.hasErrors()) {
             return "register";
         }

@@ -14,7 +14,6 @@ public class Users {
     @NotBlank(message = "Username is mandatory")
     private String username;
 
-    @NotBlank(message = "Please specify password")
     private String password;
 
     @Transient
