@@ -27,6 +27,7 @@ public class UserController {
     @Autowired
     private SecurityService securityService;
 
+    @Autowired
     private UserValidator userValidator;
 
     @Autowired
