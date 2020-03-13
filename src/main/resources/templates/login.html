@@ -29,10 +29,10 @@
 <body>
 
 <div class="container">
-    <form th:action="@{/login}" th:object="${user}" method="post">
+    <form th:action="@{/login}" th:object="${userForm}" method="post">
         <div class="form-group">
             <label>Username:</label>
-            <input type="text" th:attr="value = ${username}" class="form-control" placeholder="Enter name" name="username"/>
+            <input type="text" th:attr="value = ${userForm.username}" class="form-control" placeholder="Enter name" name="username"/>
             <p th:if="${#fields.hasErrors('username')}? fieldError" th:errors="*{username}">Username Error</p>
             <ul th:if="${#fields.hasErrors('*')}">
                 <li th:each="err : ${#fields.errors('*')}" th:text="${error}">Input is incorrect</li>
@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label>Password:</label>
-            <input type="password" th:attr="value = ${user.password}" class="form-control" id="password" placeholder="Enter password" name="password"/>
+            <input type="password" th:attr="value = ${userForm.password}" class="form-control" id="password" placeholder="Enter password" name="password"/>
             <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
         </div>
         <button class="btn btn-success" type="submit">LOG IN</button>
