@@ -45,6 +45,19 @@ public class UserController {
         return "register";
     }
 
+    @GetMapping("/login")
+    public String login(Model model, String error, String logout) {
+        model.addAttribute("userForm", new Users());
+        LOG.error("ERROR::::::::::::::"  + error);
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
+
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
+
+        return "login";
+    }
+
     @PostMapping("/register")
     public String postRegister(@Valid @ModelAttribute("registerForm") Users userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
@@ -60,21 +73,8 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/login")
-    public String login(Model model, String error, String logout) {
-        model.addAttribute("userForm", new Users());
-        LOG.error("ERROR::::::::::::::"  + error);
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
-        return "login";
-    }
-
     @PostMapping("/login")
-    public String postLogin(@Valid @ModelAttribute("userForm") Users users, BindingResult bindingResult, Model model) {
+    public String postLogin(@Valid @ModelAttribute("userForm") Users users, BindingResult bindingResult) {
         userValidator.validate(users, bindingResult);
         if(bindingResult.hasErrors()) {
             return "login";
