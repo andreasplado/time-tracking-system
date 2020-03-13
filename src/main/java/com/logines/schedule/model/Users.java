@@ -14,11 +14,11 @@ public class Users {
     private Long id;
 
     @NotNull
-    @Size(min=2, max=30, message = "Length should be in between 2 to 30")
+    @Size(min=2, max=30, message = "Username should be between 2 to 30 characters long")
     private String username;
 
     @NotNull
-    @Min(value = 10, message = "Password should be 18 chars long")
+    @Size(min=2, max=30, message = "Password should be 10 to 30 characters long")
     private String password;
 
     @Transient

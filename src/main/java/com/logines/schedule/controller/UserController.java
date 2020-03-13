@@ -37,7 +37,7 @@ public class UserController {
 
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("userForm", new Users());
+        model.addAttribute("registerForm", new Users());
 
         return "register";
     }
@@ -52,15 +52,13 @@ public class UserController {
         }
 
         userService.save(users);
-
         securityService.autoLogin(users.getUsername(), users.getPasswordConfirm());
-
         return "redirect:/";
     }
 
     @GetMapping("/login")
-    public String loginPage(@Valid Users users, Model model, BindingResult bindingResult, String logout) {
-        model.addAttribute("users", users);
+    public String loginPage(Model model, BindingResult bindingResult, String logout) {
+        model.addAttribute("loginForm", new Users());
         if (bindingResult.hasErrors()){
             return "login";
         }
