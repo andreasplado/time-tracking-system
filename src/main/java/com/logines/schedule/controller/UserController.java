@@ -84,9 +84,6 @@ public class UserController {
             model.addAttribute("message", "You have been logged out successfully."); */
         //model.addAttribute("jobs", securityService.findLoggedInUsername());
 
-        return "login";
-    }
-
     @Autowired
     private void setUserValidator(UserValidator userValidator) {
         this.userValidator = userValidator;
