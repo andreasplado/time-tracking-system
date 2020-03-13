@@ -45,11 +45,9 @@
         </div>
         <p th:text="${error}">Test</p>
         <button class="btn btn-success" type="submit">LOG IN</button>
-        <form action="../register">
-            <button class="btn btn-primary" type="submit">REGISTER</button>
-        </form>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
+    <form action="../register"><button class="btn btn-primary" type="submit">REGISTER</button>
 
     <!--<form th:action="@{/login}" th:object="${users}" method="post">
         <table>
