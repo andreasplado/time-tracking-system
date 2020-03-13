@@ -29,16 +29,16 @@
 <body>
 
 <div class="container">
-    <form th:action="@{/}" th:object="${users}" method="post">
+    <form th:action="@{/}" th:object="${user}" method="post">
         <div class="form-group">
             <label>Username:</label>
-            <input type="text" th:attr="value = ${users.username}" class="form-control" placeholder="Enter name" name="username"/>
-            <p th:if="${#fields.hasErrors('users.username')}" th:errors="*{users.username}">Username Error</p>
+            <input type="text" th:attr="value = ${user.username}" class="form-control" placeholder="Enter name" name="username"/>
+            <p th:if="${#fields.hasErrors('user.username')}" th:errors="*{user.username}">Username Error</p>
         </div>
         <div class="form-group">
             <label>Password:</label>
-            <input type="password" th:attr="value = ${users.password}" class="form-control" id="password" placeholder="Enter password" name="password"/>
-            <p th:if="${#fields.hasErrors('users.password')}" th:errors="*{users.password}">Password Error</p>
+            <input type="password" th:attr="value = ${user.password}" class="form-control" id="password" placeholder="Enter password" name="password"/>
+            <p th:if="${#fields.hasErrors('user.password')}" th:errors="*{user.password}">Password Error</p>
         </div>
 
         <button onclick="registerClick()" class="btn btn-primary">Register</button>
