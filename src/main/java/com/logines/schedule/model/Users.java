@@ -2,10 +2,7 @@ package com.logines.schedule.model;
 
 import javax.persistence.*;
 import java.util.Set;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "Users")
@@ -14,9 +11,10 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message="{username.notempty}")
+    @NotBlank(message = "Username is mandatory")
     private String username;
 
+    @NotBlank(message = "Please specify password")
     private String password;
 
     @Transient
