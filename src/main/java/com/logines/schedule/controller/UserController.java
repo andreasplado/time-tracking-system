@@ -57,13 +57,7 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(Users users, Model model) {
-        System.out.println(users.getUsername());
-        System.out.println(users.getPassword());
-        System.out.println(users.getRoles());
-        if(users != null) {
-            model.addAttribute("user", users);
-        }
+    public String loginPage(@ModelAttribute("user") @Valid Users users, BindingResult bindingResult) {
         //userValidator.validate(users, bindingResult);
 
         return "login";
