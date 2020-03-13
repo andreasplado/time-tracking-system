@@ -70,8 +70,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid Users users, Model model, BindingResult bindingResult, String logout) {
-        model.addAttribute("user", users);
+    public String login(@ModelAttribute("user") @Valid Users users, Model model, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             return "login";
         }else{
