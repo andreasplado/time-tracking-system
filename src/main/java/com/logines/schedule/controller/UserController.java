@@ -36,14 +36,14 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register(Model model) {
+    public String getRegister(Model model) {
         model.addAttribute("registerForm", new Users());
 
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(Model model, @Valid Users userForm, BindingResult bindingResult) {
+    public String postRegister(Model model, @Valid Users userForm, BindingResult bindingResult) {
         model.addAttribute("userForm", userForm);
         userValidator.validate(userForm, bindingResult);
 
@@ -57,14 +57,18 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String loginPage(@ModelAttribute("user") @Valid Users users, BindingResult bindingResult) {
-        //userValidator.validate(users, bindingResult);
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
+
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
 
         return "login";
     }
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("user") @Valid Users users, BindingResult bindingResult) {
+    public String postLogin(@ModelAttribute("user") @Valid Users users, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             return "login";
         }else{
