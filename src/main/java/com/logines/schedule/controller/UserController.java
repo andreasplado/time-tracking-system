@@ -49,7 +49,7 @@ public class UserController {
     public String postRegister(@Valid @ModelAttribute("userForm") Users userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
-        System.out.println("Has errors: " +  bindingResult.hasErrors());
+        logger.trace("ERROR:::::::::::::: "  + bindingResult.hasErrors());
 
         if (bindingResult.hasErrors()) {
             return "register";
