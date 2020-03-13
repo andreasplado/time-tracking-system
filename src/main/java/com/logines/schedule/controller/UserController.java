@@ -61,7 +61,7 @@ public class UserController {
     @GetMapping("/login")
     public String login(Model model, @Valid @ModelAttribute("userForm") Users userForm, BindingResult bindingResult, String error, String logout) {
         if (error != null)
-            System.out.println(error);
+            System.out.println("ERROR ::::::::::::::::::::::::::" +error);
             model.addAttribute("error", "Your username and password is invalid.");
 
         if (logout != null)
