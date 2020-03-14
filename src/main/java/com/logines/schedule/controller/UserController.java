@@ -81,6 +81,7 @@ public class UserController {
     @PostMapping("/login")
     public String postLogin(@Valid @ModelAttribute("userForm") Users users, BindingResult bindingResult) {
         userValidator.validate(users, bindingResult);
+        LOG.error(users.getUsername());
         if(bindingResult.hasErrors()) {
             return "login";
         }else{
