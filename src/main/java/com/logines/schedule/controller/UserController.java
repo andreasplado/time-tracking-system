@@ -33,10 +33,8 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
-
     @InitBinder
-    public void initBinder(WebDataBinder webDataBinder){
+    public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(userValidator);
     }
 
@@ -55,7 +53,7 @@ public class UserController {
         model.addAttribute("userForm", new Users());
 
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+            model.addAttribute("error", "Your username and password are invalid.");
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
@@ -64,35 +62,18 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@RequestBody @Valid @ModelAttribute("registerForm") Users userForm, BindingResult bindingResult) {
-        userValidator.validate(userForm, bindingResult);
-
-        LOG.error("ERROR:::::::::::::: "  + bindingResult.hasErrors());
-
+    public String postRegister(@RequestBody @Valid @ModelAttribute("registerForm") Users registerForm, BindingResult bindingResult) {
+        userValidator.validate(registerForm, bindingResult);
         if (bindingResult.hasErrors()) {
             return "register";
-        }
-
-        userService.save(userForm);
-        securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
-        return "redirect:/";
-    }
-
-    @PostMapping("/login")
-    public String postLogin(@RequestBody @Valid @ModelAttribute("userForm") Users users, BindingResult bindingResult) {
-        userValidator.validate(users, bindingResult);
-        LOG.error(users.getUsername());
-        if(bindingResult.hasErrors()) {
-            return "login";
-        }else{
-            return  "redirect:/";
+        } else {
+            userService.save(registerForm);
+            securityService.autoLogin(registerForm.getUsername(), registerForm.getPasswordConfirm());
+            return "redirect:/";
         }
     }
 
-
-        /*if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully."); */
-        //model.addAttribute("jobs", securityService.findLoggedInUsername());
+    //We don't define login it is defined by spring security already
 
     @Autowired
     private void setUserValidator(UserValidator userValidator) {

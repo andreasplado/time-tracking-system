@@ -23,7 +23,7 @@
 <body>
 
 <div class="container">
-    <form th:action="@{/register}" th:object="${registerForm}" method="post">
+    <form th:action="@{/register}" th:object="${registerForm}" method="POST">
         <div class="form-group">
             <label>Username:</label>
             <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"/>
@@ -41,6 +41,7 @@
         </div>
         <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
     </form>
+    <form action="../login"><button class="btn btn-primary" type="submit">LOGIN</button></form>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
