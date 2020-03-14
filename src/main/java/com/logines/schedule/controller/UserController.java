@@ -64,7 +64,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@Valid @ModelAttribute("registerForm") Users userForm, BindingResult bindingResult) {
+    public String postRegister(@RequestBody @Valid @ModelAttribute("registerForm") Users userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
         LOG.error("ERROR:::::::::::::: "  + bindingResult.hasErrors());
@@ -79,7 +79,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String postLogin(@Valid @ModelAttribute("userForm") Users users, BindingResult bindingResult) {
+    public String postLogin(@RequestBody @Valid @ModelAttribute("userForm") Users users, BindingResult bindingResult) {
         userValidator.validate(users, bindingResult);
         LOG.error(users.getUsername());
         if(bindingResult.hasErrors()) {
