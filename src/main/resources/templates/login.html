@@ -25,7 +25,7 @@
 <body>
 
 <div class="container">
-    <form action="../login" method="POST">
+    <form th:action="@{/login}" method="POST">
         <p th:text="${message}">Test</p>
         <div class="form-group">
             <label>Username:</label>
@@ -38,6 +38,7 @@
             <input type="password" class="form-control" id="password" placeholder="Enter password" name="password"/>
         </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <p th:text="${error}">Test</p>
         <button class="btn btn-success" type="submit">LOG IN</button>
     </form>
     <form action="../register"><button class="btn btn-primary" type="submit">REGISTER</button></form>
