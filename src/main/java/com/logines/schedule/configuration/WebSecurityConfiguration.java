@@ -49,22 +49,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         //http.csrf().disable();
 
-        http.headers().frameOptions().deny()
-                .and()
+        http
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .exceptionHandling().accessDeniedPage("/user-login")
                 .formLogin()
-                .loginPage("/user-login")
-                .successHandler(appAuthenticationSuccessHandler())
+                .loginPage("/login")
                 .permitAll()
-                .defaultSuccessUrl("/welcome")
                 .and()
                 .logout()
                 .permitAll();
-        http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }
 
 
