@@ -58,7 +58,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage("/user-login")
                 .successHandler(appAuthenticationSuccessHandler())
                 .permitAll()
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/welcome")
                 .and()
                 .logout()
                 .permitAll();
