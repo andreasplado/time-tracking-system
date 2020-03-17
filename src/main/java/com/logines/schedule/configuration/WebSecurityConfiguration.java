@@ -1,5 +1,6 @@
 package com.logines.schedule.configuration;
 
+import com.logines.schedule.service.UserDetailsServiceImpl;
 import com.logines.schedule.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Qualifier("userService")
+    @Qualifier("userDetailsServiceImpl")
     @Autowired
     private UserDetailsService userService;
 
@@ -60,6 +61,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new UserServiceImpl();
+        return new UserDetailsServiceImpl();
     };
 }
