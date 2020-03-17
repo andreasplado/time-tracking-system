@@ -45,10 +45,8 @@ public class UserController {
         return "register";
     }
 
-    @GetMapping("/user-login")
+    @RequestMapping(value="/user-login", method=RequestMethod.GET)
     public String login(Model model, String error, String logout) {
-        model.addAttribute("userForm", new Users());
-
         if (error != null)
             model.addAttribute("error", "Your username and password are invalid.");
 
