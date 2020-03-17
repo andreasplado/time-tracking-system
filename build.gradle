@@ -29,6 +29,7 @@ repositories {
 
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.2.5.RELEASE'
+    compile 'org.springframework.security:spring-security-config:3.2.5.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.5.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.2.5.RELEASE'
     compile group: 'org.springframework', name: 'spring-jdbc', version: '5.2.4.RELEASE'

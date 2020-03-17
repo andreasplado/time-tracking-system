@@ -2,7 +2,7 @@ package com.logines.schedule.controller;
 
 import com.logines.schedule.model.Users;
 import com.logines.schedule.service.SecurityService;
-import com.logines.schedule.service.UserServiceImpl;
+import com.logines.schedule.service.UserService;
 import com.logines.schedule.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,13 +13,12 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashSet;
 
 @Controller
 public class UserController {
 
     @Autowired
-    private UserServiceImpl userServiceImpl;
+    private UserService userService;
 
     @Autowired
     private SecurityService securityService;
@@ -63,7 +62,7 @@ public class UserController {
             model.addAttribute("error", "Your username and password are invalid.");
             return "register";
         } else {
-            userServiceImpl.save(registerForm);
+            userService.save(registerForm);
             securityService.autoLogin(registerForm.getUsername(), registerForm.getPasswordConfirm());
             return "redirect:/welcome";
         }
