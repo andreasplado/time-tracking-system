@@ -34,8 +34,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.requiresChannel()
                 .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
                 .requiresSecure();
-        http
-                .authorizeRequests()
+
+        http.authorizeRequests()
                 .antMatchers("/resources/**", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -49,10 +49,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Bean(name = BeanIds.AUTHENTICATION_MANAGER)
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    @Bean
+    public AuthenticationManager customAuthenticationManager() throws Exception {
+        return authenticationManager();
     }
 
     @Autowired

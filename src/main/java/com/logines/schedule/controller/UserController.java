@@ -62,7 +62,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String postRegister(@RequestBody @Valid @ModelAttribute("registerForm") Users registerForm, BindingResult bindingResult) {
+    public String postRegister(@RequestBody @Valid @ModelAttribute("registerForm") Users registerForm, BindingResult bindingResult,String error) {
         userValidator.validate(registerForm, bindingResult);
         if (bindingResult.hasErrors()) {
             return "register";
@@ -72,6 +72,11 @@ public class UserController {
             //return "redirect:/";
             return "404";
         }
+    }
+
+    @GetMapping("/404")
+    public String pageNotFound(){
+        return "404";
     }
 
     //We don't define login it is defined by spring security already
