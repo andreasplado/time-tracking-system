@@ -44,5 +44,5 @@ dependencies {
     compile('org.webjars:bootstrap:4.0.0-beta.2')
     compile 'joda-time:joda-time:2.10.5'
     compile group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.5.RELEASE'
 }
