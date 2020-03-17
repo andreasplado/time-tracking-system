@@ -2,18 +2,17 @@ package com.logines.schedule.validator;
 
 import com.logines.schedule.model.Users;
 import com.logines.schedule.service.UserService;
+import com.logines.schedule.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import javax.annotation.PostConstruct;
-
 @Component
 public class UserValidator implements Validator {
     @Autowired
-    private UserService userService;
+    private UserService userServiceImpl;
 
     @Override
     public boolean supports(Class<?> aClass) {
@@ -30,7 +29,7 @@ public class UserValidator implements Validator {
             if (users.getUsername().length() < 6 || users.getUsername().length() > 32) {
                 errors.rejectValue("username", "Size.userForm.username");
             }
-            if (userService.loadUserByUsername(users.getUsername()) != null) {
+            if (userServiceImpl.findByUsername(users.getUsername()) != null) {
                 errors.rejectValue("username", "Duplicate.userForm.username");
             }
 
