@@ -36,10 +36,12 @@
             <label>Repeat password:</label>
             <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password" name="passwordConfirm" th:field="*{passwordConfirm}"/>
         </div>
-        <select th:field="*{role}">
-            <option th:value="'USER'" th:text="USER"></option>
-            <option th:value="'ADMIN'" th:text="ADMIN"></option>
-        </select>
+        <div class="form-group">
+            <select th:field="*{role}">
+                <option th:value="'USER'" th:text="USER"></option>
+                <option th:value="'ADMIN'" th:text="ADMIN"></option>
+            </select>
+        </div>
         <p th:text="${error}">Test</p>
         <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
