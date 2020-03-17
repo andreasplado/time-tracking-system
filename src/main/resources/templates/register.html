@@ -38,6 +38,7 @@
         </div>
         <p th:text="${error}">Test</p>
         <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
     <br />
     <form action="../login"><button class="btn btn-primary" type="submit">LOGIN</button></form>
