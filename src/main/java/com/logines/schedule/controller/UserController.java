@@ -45,7 +45,7 @@ public class UserController {
         return "register";
     }
 
-    @GetMapping("/user/login")
+    @GetMapping("/user-login")
     public String login(Model model, String error, String logout) {
         model.addAttribute("userForm", new Users());
 
@@ -55,7 +55,7 @@ public class UserController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "login";
+        return "user-login";
     }
 
     @RequestMapping(value="/register", method=RequestMethod.POST, headers = "Content-type=application/*")
