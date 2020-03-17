@@ -24,6 +24,7 @@
 
 <div class="container">
     <form th:action="@{/login}" th:object="${login}" method="POST">
+        <p th:text="${message}">Test</p>
         <div class="form-group">
             <label>Username:</label>
             <input type="text" class="form-control" id="username" placeholder="Enter name" name="username" th:field="*{username}"/>
@@ -35,6 +36,7 @@
         <p th:text="${error}">Test</p>
         <button class="btn btn-success" type="submit">LOGIN</button>&nbsp;&nbsp;
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <p th:text="${error}">Test</p>
     </form>
     <br />
     <form th:action="@{/register}"><button class="btn btn-primary" type="submit">REGISTER</button></form>
