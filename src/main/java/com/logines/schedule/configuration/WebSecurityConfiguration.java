@@ -55,6 +55,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                .exceptionHandling().accessDeniedPage("/user-login")
                 .formLogin()
                 .loginPage("/user-login")
                 .successHandler(appAuthenticationSuccessHandler())
