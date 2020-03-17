@@ -36,6 +36,7 @@
             <label>Repeat password:</label>
             <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password" name="passwordConfirm" th:field="*{passwordConfirm}"/>
         </div>
+        <p th:text="${error}">Test</p>
         <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
     </form>
     <br />
