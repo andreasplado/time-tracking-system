@@ -53,7 +53,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .successHandler(new AppAuthenticationSuccessHandler())
+                .successHandler(appAuthenticationSuccessHandler())
                 .loginPage("/user-login")
                 .permitAll()
                 .and()
