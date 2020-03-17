@@ -1,5 +1,3 @@
-<c:set var="contextPath" value="${pageContext.request.contextPath}"
-       xmlns:c="http://www.springframework.org/schema/beans"/>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -25,7 +23,7 @@
 <body>
 
 <div class="container">
-    <form action="/login" method="POST">
+    <form th:action="@{/login}" method="POST">
         <p th:text="${message}">Test</p>
         <div class="form-group">
             <label>Username:</label>
