@@ -39,9 +39,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //force to use https!
-        http.requiresChannel()
+        /*http.requiresChannel()
                 .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
-                .requiresSecure();
+                .requiresSecure();*/
 
         //http.csrf().disable();
 
