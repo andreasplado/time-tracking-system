@@ -23,7 +23,7 @@
 <body>
 
 <div class="container">
-    <form th:action="@{/login}" th:object="${login}" enctype="application/x-www-form-urlencoded" method="POST">
+    <!--<form th:action="@{/login}" th:object="${login}" enctype="application/x-www-form-urlencoded" method="POST">
         <p th:text="${message}">Test</p>
         <div class="form-group">
             <label>Username:</label>
@@ -37,6 +37,14 @@
         <button class="btn btn-success" type="submit">LOGIN</button>&nbsp;&nbsp;
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <p th:text="${error}">Test</p>
+    </form> -->
+    <p th:if="${loginError}" class="error">Wrong user or password</p>
+    <form th:action="@{/user-login}" method="post">
+        <label for="username">Username</label>:
+        <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+        <label for="password">Password</label>:
+        <input type="password" id="password" name="password" /> <br />
+        <input type="submit" value="Log in" />
     </form>
     <br />
     <form th:action="@{/register}"><button class="btn btn-primary" type="submit">REGISTER</button></form>

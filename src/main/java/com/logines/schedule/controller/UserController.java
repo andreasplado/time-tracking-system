@@ -56,6 +56,12 @@ public class UserController {
         return "user-login";
     }
 
+    @RequestMapping("/login-error")
+    public String loginError(Model model) {
+        model.addAttribute("loginError", true);
+        return "user-login";
+    }
+
     @RequestMapping(value="/register", method=RequestMethod.POST, headers = "Content-type=application/*")
     public String postRegister(Model model, @RequestBody @Valid @ModelAttribute("registerForm") Users registerForm, BindingResult bindingResult) {
         userValidator.validate(registerForm, bindingResult);

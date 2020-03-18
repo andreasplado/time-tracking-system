@@ -27,11 +27,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsServiceImpl;
 
     @Bean
-    public AuthenticationSuccessHandler appAuthenticationSuccessHandler(){
-        return new AppAuthenticationSuccessHandler();
-    }
-
-    @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -58,9 +53,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .successHandler(new RefererRedirectionAuthenticationSuccessHandler())
                 .loginPage("/user-login")
+                .failureUrl("/login-error?error")
                 .permitAll()
                 .and()
                 .logout()
+                .logoutSuccessUrl("/user-login")
                 .permitAll();
     }
 
