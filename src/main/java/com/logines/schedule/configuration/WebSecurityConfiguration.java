@@ -36,6 +36,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationSuccessHandler appAuthenticationSuccessHandler(){
+        return new AppAuthenticationSuccessHandler();
+    }
+
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder());
@@ -57,6 +62,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .successHandler(appAuthenticationSuccessHandler())
                 .loginPage("/user-login").permitAll()
                 .and()
                 .logout().invalidateHttpSession(true)
