@@ -48,7 +48,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         //http.csrf().disable();
         http.formLogin()
-                .defaultSuccessUrl("/welcome");
+                .defaultSuccessUrl("/welcome").usernameParameter("username").passwordParameter("password");
 
         http
                 .authorizeRequests()
