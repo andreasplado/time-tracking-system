@@ -79,7 +79,8 @@ public class UserController {
     public String userLogin(Model model, @RequestBody @Valid @ModelAttribute("user") Users registerForm, BindingResult bindingResult) {
         //userValidator.validate(registerForm, bindingResult);
         if (bindingResult.hasErrors()) {
-            model.addAttribute("error", "Your username and password are invalid.");
+
+            model.addAttribute("error", bindingResult.getAllErrors());
             return "register";
         } else {
             securityService.autoLogin(registerForm.getUsername(), registerForm.getPasswordConfirm());
