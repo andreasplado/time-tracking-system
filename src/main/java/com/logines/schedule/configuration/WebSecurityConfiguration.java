@@ -53,7 +53,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll()
+                .antMatchers("/login", "/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -62,7 +62,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/user-login").permitAll();
+                .logoutSuccessUrl("/user-login?error").permitAll();
         /*
         http
                 .authorizeRequests()
