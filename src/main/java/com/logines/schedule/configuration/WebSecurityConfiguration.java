@@ -56,7 +56,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/user-login")
+                .loginPage("/login")
                 .failureUrl("/login-error?error")
                 .successForwardUrl("/welcome")
                 .failureForwardUrl("/404")
