@@ -75,18 +75,6 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value="/login/process", method=RequestMethod.POST, headers = "Content-type=application/*")
-    public String loginProcessing(Model model, @RequestBody @Valid @ModelAttribute("login") Users registerForm, BindingResult bindingResult) {
-        userValidator.validate(registerForm, bindingResult);
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("error", "Your username and password are invalid.");
-            return "register";
-        } else {
-            securityService.autoLogin(registerForm.getUsername(), registerForm.getPassword());
-            return "redirect:/welcome";
-        }
-    }
-
     @GetMapping("/404")
     public String pageNotFound(){
         return "404";

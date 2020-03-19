@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.SecurityBuilder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,6 +20,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -30,12 +33,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsServiceImpl;
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    public PasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder());
     }
 
@@ -47,9 +50,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
-        http.formLogin()
-                .defaultSuccessUrl("/welcome").usernameParameter("username").passwordParameter("password");
 
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/user-login").permitAll()
+                .and()
+                .logout().invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/user-login").permitAll();
+        /*
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/register").permitAll()
@@ -64,7 +79,17 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll();
+                .permitAll();*/
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+
+        provider.setUserDetailsService(userDetailsServiceImpl);
+        provider.setPasswordEncoder(bCryptPasswordEncoder());
+
+        return  provider;
     }
 
 
