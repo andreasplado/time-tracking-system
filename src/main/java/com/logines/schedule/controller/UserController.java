@@ -74,6 +74,17 @@ public class UserController {
             return "redirect:/welcome";
         }
     }
+    @RequestMapping(value = "/signin", method = RequestMethod.POST)
+    public String signin(@RequestParam("username") String username,
+                         @RequestParam("password") String password) {
+
+
+        if ("error@1.1".equalsIgnoreCase(username)) {
+            return "error";
+        } else {
+            return "demo";
+        }
+    }
 
     @GetMapping("/404")
     public String pageNotFound(){
