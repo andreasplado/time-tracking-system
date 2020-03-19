@@ -82,7 +82,6 @@ public class UserController {
             model.addAttribute("error", "Your username and password are invalid.");
             return "register";
         } else {
-            userService.save(registerForm);
             securityService.autoLogin(registerForm.getUsername(), registerForm.getPasswordConfirm());
             return "redirect:/welcome";
         }
