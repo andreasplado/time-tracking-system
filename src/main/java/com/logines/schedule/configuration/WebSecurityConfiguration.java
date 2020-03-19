@@ -56,7 +56,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .successHandler(new RefererRedirectionAuthenticationSuccessHandler())
                 .loginPage("/user-login")
-                .failureUrl("/login-error?error")
+                .failureUrl("/login-error?error").passwordParameter("my-pass").usernameParameter("my-user")
                 .permitAll()
                 .and()
                 .logout()

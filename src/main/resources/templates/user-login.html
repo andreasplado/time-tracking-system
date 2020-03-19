@@ -27,11 +27,11 @@
         <p th:text="${message}">Test</p>
         <div class="form-group">
             <label>Username:</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter name" name="username" th:field="*{username}"/>
+            <input type="text" class="form-control" id="username" placeholder="Enter name" name="my-user" th:field="*{username}"/>
         </div>
         <div class="form-group">
             <label>Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" th:field="*{password}" />
+            <input type="password" class="form-control" id="password" placeholder="Enter password" name="my-pass" th:field="*{password}" />
         </div>
         <p th:text="${error}">Test</p>
         <button class="btn btn-success" type="submit">LOGIN</button>&nbsp;&nbsp;
