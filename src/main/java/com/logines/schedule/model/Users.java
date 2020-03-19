@@ -18,7 +18,6 @@ public class Users {
     private String password;
 
     @Transient
-    @Null
     private String passwordConfirm;
 
     @ManyToMany
