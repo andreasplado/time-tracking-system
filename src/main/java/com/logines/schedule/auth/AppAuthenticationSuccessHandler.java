@@ -1,15 +1,17 @@
 package com.logines.schedule.auth;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
-public class AppAuthenticationSuccessHandler extends
-        SimpleUrlAuthenticationSuccessHandler
-        implements AuthenticationSuccessHandler {
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-    public AppAuthenticationSuccessHandler() {
-        super();
-        setUseReferer(true);
+public class AppAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler{
+    protected void handle(HttpServletRequest request, HttpServletResponse response,
+                          Authentication authentication) throws IOException, ServletException {
     }
 
 }
