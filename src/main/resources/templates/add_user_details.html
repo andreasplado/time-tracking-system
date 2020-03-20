@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Class Scheduler</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+</head>
+<body>
+<style>
+    td{ cursor: pointer; }
+    td:hover { background-color: #2ECCFA; }
+</style>
+<script>
+   $(document).keyup(function(e) {
+    if (e.which == 27){
+        window.location.href="../";
+    }
+});
+</script>
+
+<div class="container">
+    <h5>Tere tulemast <h5 th:text="${username}">Test</h5></h5>
+    <h2><a href="../../"> Time-tracking system </a>/Edit Class</h2>
+
+    <div class="tab-content ">
+        <div class="tab-pane active" id="classesTab">
+            <table class="table" id="tableForm">
+
+                <form th:action="@{/add-user-details/}" th:object="${scheduleClass}" method="post">
+                    <div class="form-group">
+                        <label>Name:</label>
+                        <input type="text" class="form-control" id="name" th:attr="value = ${scheduleClass.name}" placeholder="Enter name" name="name"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea class="form-control" rows="5" id="description" th:text="${scheduleClass.description}" placeholder="Enter description" name="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Teacher:</label>
+                        <input type="text" class="form-control" id="teacher" th:attr="value = ${scheduleClass.teacherName}" placeholder="Enter teacher" name="teacherName"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Minutes:</label>
+                        <input type="number" class="form-control" id="minutes" th:attr="value = ${scheduleClass.timeMinutes}" placeholder="Enter duration" name="timeMinutes"/>
+                    </div>
+                    <button type="submit" class="btn btn-success">EDIT</button>&nbsp;&nbsp;
+                </form>
+                <form th:action="@{/delete-class/} + ${scheduleClass.id}" th:object="${scheduleClass}" method="post">
+                    <button type="submit" class="btn btn-dark">DELETE</button>
+                </form>
+                <br />
+                <br />
+                HINT: <i>press ESC to return to main page.</i>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

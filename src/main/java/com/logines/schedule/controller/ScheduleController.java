@@ -2,9 +2,11 @@ package com.logines.schedule.controller;
 
 import com.logines.schedule.model.Class;
 import com.logines.schedule.model.Job;
+import com.logines.schedule.model.UserDetails;
 import com.logines.schedule.service.ClassService;
 import com.logines.schedule.service.JobService;
 import com.logines.schedule.service.StudentService;
+import com.logines.schedule.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -23,21 +26,29 @@ public class ScheduleController {
     @Autowired
     private StudentService studentService;
     @Autowired
+    private UserDetailsService userDetailsService;
+    @Autowired
     private JobService jobService;
     @Autowired
     private AuthenticationManager authenticationManager;
 
     //@RequestMapping(value="/",method = RequestMethod.GET)
     @GetMapping({"/", "/home"})
-    public String welcome(Model model) {
+    public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
+        UserDetails userDetails = userDetailsService.findByUsername(principal.getName());
+        model.addAttribute("username", principal.getName());
+        //Kui kasutajaandmeid on lisatud
+        if(userDetails != null) {
 
-        model.addAttribute("jobs", jobService.getAllJobs());
-        model.addAttribute("scheduleClasses", classes );
-        model.addAttribute("allStudents", studentService.getAllStudents());
-        model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses(classes ) );
-
-        return "main";
+            model.addAttribute("jobs", jobService.getAllJobs());
+            model.addAttribute("scheduleClasses", classes);
+            model.addAttribute("allStudents", studentService.getAllStudents());
+            model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses(classes));
+            return "main";
+        }else{
+            return "add_user_details";
+        }
     }
 
     @GetMapping("/edit-class/{id}")
