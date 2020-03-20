@@ -67,7 +67,6 @@ public class UserController {
         userValidator.validate(registerForm, bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", "Something went wrong. Please check all credentials.");
-            model.addAttribute("status", "Something went wrong:" + bindingResult.getModel().get("username"));
             return "register";
         } else {
             userService.save(registerForm);
