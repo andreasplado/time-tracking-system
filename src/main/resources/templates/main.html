@@ -355,7 +355,7 @@ input[type=submit] {
             </table>
         </div>
         <div class="tab-pane" id="myprofileTab">
-            <form th:action="@{/add-user-details/}" method="post">
+            <form th:action="@{/add-user-details/}" th:object="${addNewClass}" method="post">
                 <div class="form-group">
                     <label>Username:</label>
                     <input type="text" th:value="${username}" class="form-control" id="username" placeholder="Enter your fullname" name="username" readonly/>
