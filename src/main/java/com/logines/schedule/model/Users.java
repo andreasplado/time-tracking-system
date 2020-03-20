@@ -20,7 +20,7 @@ public class Users {
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public Long getId() {
