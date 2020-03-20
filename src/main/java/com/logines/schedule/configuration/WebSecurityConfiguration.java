@@ -74,7 +74,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/user-login?error").permitAll();
         */
-        http
+        /*http
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/register").permitAll()
                 .anyRequest().authenticated()
@@ -88,7 +88,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll();
+                .permitAll();*/
+
+        http.authorizeRequests().antMatchers("/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll().anyRequest().authenticated()
+                .and().formLogin().loginPage("/user-login").permitAll().and().logout().permitAll();
+
 
     }
 
