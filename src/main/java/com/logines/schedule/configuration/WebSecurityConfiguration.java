@@ -44,6 +44,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder());
+        auth.inMemoryAuthentication()
+                .withUser("user").password("password").roles("USER")
+                .and()
+                .withUser("admin").password("password").roles("USER", "ADMIN");
     }
 
     @Override
@@ -69,7 +73,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/user-login?error").permitAll();
-        /*
+        */
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**", "/register").permitAll()
@@ -84,18 +88,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll();*/
+                .permitAll();
 
-        http.authorizeRequests()
-                .antMatchers("/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register")
-                .permitAll().anyRequest().authenticated()
-                .and()
-                .formLogin().loginPage("/user-login")
-                .defaultSuccessUrl("/")
-                .failureUrl("/user-login?error")
-                .usernameParameter("username").passwordParameter("password")
-                .and()
-                .logout().logoutSuccessUrl("/user-login?logout");
     }
 
     @Bean
