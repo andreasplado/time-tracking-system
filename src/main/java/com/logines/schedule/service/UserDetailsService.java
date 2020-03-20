@@ -4,9 +4,11 @@ import com.logines.schedule.model.Job;
 import com.logines.schedule.model.UserDetails;
 import com.logines.schedule.repository.UserDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class UserDetailsService {
     @Autowired
     private UserDetailsRepository userDetailsRepository;
