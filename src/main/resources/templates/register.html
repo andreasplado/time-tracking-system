@@ -42,6 +42,7 @@
                 <option th:value="2" th:text="ADMIN"></option>
             </select>
         </div> -->
+        <p th:text="${status}">Test</p>
         <p th:text="${error}">Test</p>
         <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
