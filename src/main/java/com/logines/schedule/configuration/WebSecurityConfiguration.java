@@ -82,7 +82,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/user-login")
                 .loginProcessingUrl("/user-login")
-                .failureUrl("/login-error?error")
+                .failureUrl("/user-login?error")
                 .successForwardUrl("/")
                 .failureForwardUrl("/404")
                 .permitAll()
