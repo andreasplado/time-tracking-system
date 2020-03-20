@@ -90,8 +90,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();*/
 
-        http.authorizeRequests().antMatchers("/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll().anyRequest().authenticated()
-                .and().formLogin().loginPage("/user-login").permitAll().and().logout().permitAll();
+        http.authorizeRequests().antMatchers("/user-login", "/login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll().anyRequest().authenticated()
+                .and().formLogin().permitAll().and().logout().permitAll();
 
 
     }
