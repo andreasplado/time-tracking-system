@@ -80,7 +80,7 @@ public class UserController {
         //userValidator.validate(registerForm, bindingResult);
         if (bindingResult.hasErrors()) {
 
-            model.addAttribute("error", bindingResult.getAllErrors());
+            model.addAttribute("help", bindingResult.getAllErrors());
             return "register";
         } else {
             securityService.autoLogin(registerForm.getUsername(), registerForm.getPasswordConfirm());

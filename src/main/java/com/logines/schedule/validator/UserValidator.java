@@ -2,7 +2,6 @@ package com.logines.schedule.validator;
 
 import com.logines.schedule.model.Users;
 import com.logines.schedule.service.UserService;
-import com.logines.schedule.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
