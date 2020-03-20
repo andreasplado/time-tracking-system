@@ -23,7 +23,7 @@
 <body>
 
 <div class="container">
-    <form th:action="@{/user-login}" th:object="${user}" method="POST">
+    <form th:action="@{/login}" enctype="application/x-www-form-urlencoded" method="POST">
         <p th:text="${message}">Test</p>
         <div class="form-group">
             <label>Username:</label>
