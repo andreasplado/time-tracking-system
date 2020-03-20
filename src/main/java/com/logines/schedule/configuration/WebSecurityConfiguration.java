@@ -95,7 +95,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureUrl("/user-login?error")
                 .usernameParameter("username").passwordParameter("password")
                 .and()
-                .logout().logoutSuccessUrl("/loginPage?logout");
+                .logout().logoutSuccessUrl("/user-login?logout");
     }
 
     @Bean
