@@ -90,9 +90,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register")
                 .permitAll().anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/loginPage")
+                .formLogin().loginPage("/user-login")
                 .defaultSuccessUrl("/")
-                .failureUrl("/loginPage?error")
+                .failureUrl("/user-login?error")
                 .usernameParameter("username").passwordParameter("password")
                 .and()
                 .logout().logoutSuccessUrl("/loginPage?logout");
