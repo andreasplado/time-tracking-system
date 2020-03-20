@@ -44,7 +44,7 @@ public class UserController {
         return "register";
     }
 
-    @RequestMapping(value="/user-login", method=RequestMethod.GET)
+    @RequestMapping(value="/login", method=RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         model.addAttribute("login", new Users());
         if (error != null)

@@ -28,7 +28,7 @@ public class ScheduleController {
     private AuthenticationManager authenticationManager;
 
     //@RequestMapping(value="/",method = RequestMethod.GET)
-    @GetMapping({"/", "/welcome"})
+    @GetMapping({"/", "/home"})
     public String welcome(Model model) {
         List<Class> classes = classService.getAllClasses();
 
