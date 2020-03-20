@@ -40,7 +40,7 @@ public class ScheduleController {
         model.addAttribute("username", principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userDetails != null) {
-
+            model.addAttribute("userDetails", userDetails);
             model.addAttribute("jobs", jobService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
             model.addAttribute("allStudents", studentService.getAllStudents());

@@ -20,7 +20,7 @@ public class UserDetailsController {
     private UserDetailsService userDetailsService;
 
     @PostMapping("/add-user-details")
-    public String edit(@Valid UserDetails userDetails,
+    public String addUserDetails(@Valid UserDetails userDetails,
                        BindingResult bindingResult,
                        Model model){
         userDetailsService.addUserDetails(userDetails);
