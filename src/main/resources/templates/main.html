@@ -355,7 +355,7 @@ input[type=submit] {
             </table>
         </div>
         <div class="tab-pane" id="myprofileTab">
-            <form th:action="@{/add-user-details/}" th:object="${addNewClass}" method="post">
+            <form th:action="@{/add-user-details/}" th:object="${userDetails}" method="post">
                 <div class="form-group">
                     <label>Username:</label>
                     <input type="text" th:value="${username}" class="form-control" id="username" placeholder="Enter your fullname" name="username" readonly/>
@@ -377,7 +377,7 @@ input[type=submit] {
                     <input type="number" class="form-control" id="minutes" placeholder="Enter your phone number" name="phone"/>
                 </div>
                 <input type="hidden" th:name="${username}" th:value="${username}" />
-                <button type="submit" class="btn btn-success">EDIT</button>&nbsp;&nbsp;
+                <button type="submit" class="btn btn-success">CHANGE USER DATA</button>&nbsp;&nbsp;
             </form>
         </div>
 
