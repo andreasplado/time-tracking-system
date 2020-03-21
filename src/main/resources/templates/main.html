@@ -328,7 +328,7 @@ input[type=submit] {
             </div>
         </div>
         <div class="tab-pane" id="myprofileTab">
-            <form th:action="@{/update-user-details/}" th:object="${userProfile}" method="POST">
+            <form th:action="@{/update-user-details/}" th:object="${userProfile}" enctype="application/x-www-form-urlencoded" method="POST">
                 <div class="form-group">
                     <label>Username:</label>
                     <input type="text" th:value="${username}" class="form-control" id="username" placeholder="Enter your fullname" name="username" readonly/>

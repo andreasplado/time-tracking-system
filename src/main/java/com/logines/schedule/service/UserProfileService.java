@@ -26,11 +26,11 @@ public class UserProfileService {
         return userProfileRepository.save(userProfile);
     }
 
-    public UserProfile findUserProfile(String id){
+    public UserProfile findUserProfile(String username){
         String sql = "SELECT * FROM user_profile WHERE username = ?";
 
         try {
-            return jdbcTemplate.queryForObject(sql, new Object[]{id}, CLASS_ROW_MAPPER);
+            return jdbcTemplate.queryForObject(sql, new Object[]{username}, CLASS_ROW_MAPPER);
         }catch (EmptyResultDataAccessException e){
             return null;
         }
