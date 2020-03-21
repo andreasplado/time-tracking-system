@@ -32,9 +32,16 @@ public class UserProfileController {
     @RequestMapping(value = "/add-user-details", method = RequestMethod.POST, headers = "Content-type=application/*")
     public String addUserDetails(@Valid UserProfile userProfile,
                                  BindingResult bindingResult,
-                                 Model model) {
+                                 Model model, String error) {
         userValidator.validate(userProfile, bindingResult);
-        userProfileService.addUserProfile(userProfile);
-        return "user_details_added_successfully";
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("error", "Please check all data.");
+            return "add_user_details";
+        }else{
+            userProfileService.addUserProfile(userProfile);
+            return "user_details_added_successfully";
+        }
+
     }
 }
