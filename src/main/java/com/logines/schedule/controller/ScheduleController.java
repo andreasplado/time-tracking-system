@@ -36,7 +36,6 @@ public class ScheduleController {
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
-        int usernameId = (int)((UserDetails)principal).getId();
         UserDetails userDetailModel = (UserDetails)principal;
         UserDetails userDetails = userDetailsService.findById((int)userDetailModel.getId());
 
