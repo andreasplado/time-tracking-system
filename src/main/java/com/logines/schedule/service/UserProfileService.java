@@ -22,8 +22,8 @@ public class UserProfileService {
     @Autowired
     private UserProfileRepository userProfileRepository;
 
-    public UserProfile addUserDetails(UserProfile userProfile){
-        return userProfileRepository.save(userProfile);
+    public void addUserProfile(UserProfile userProfile){
+        userProfileRepository.save(userProfile);
     }
 
     public UserProfile findUserProfile(String username){

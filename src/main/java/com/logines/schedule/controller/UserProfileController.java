@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -22,10 +21,7 @@ public class UserProfileController {
     public String addUserDetails(@Valid UserProfile userProfile,
                        BindingResult bindingResult,
                        Model model){
-        if(!bindingResult.hasErrors()){
-            userProfileService.addUserDetails(userProfile);
-            return "user_details_added_successfully";
-        }else{
+            userProfileService.addUserProfile(userProfile);
             return "user_details_added_successfully";
         }
     }
