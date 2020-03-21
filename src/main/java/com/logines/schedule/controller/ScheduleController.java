@@ -36,7 +36,9 @@ public class ScheduleController {
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
-        UserDetails userDetails = userDetailsService.findByUsername(principal.getName());
+        int usernameId = (int)((UserDetails)principal).getId();
+        UserDetails userDetails = userDetailsService.findById(usernameId);
+
         model.addAttribute("username", principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userDetails != null) {

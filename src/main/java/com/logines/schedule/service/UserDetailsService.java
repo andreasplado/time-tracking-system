@@ -17,7 +17,7 @@ public class UserDetailsService {
         return userDetailsRepository.save(userDetails);
     }
 
-    public UserDetails viewUserDetails(int id){
+    public UserDetails findById(int id){
         return userDetailsRepository.getOne(id);
     }
 
