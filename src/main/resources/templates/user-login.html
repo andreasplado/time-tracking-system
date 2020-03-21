@@ -37,8 +37,11 @@
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <!-- Not required: presentational-only.css only contains CSS for prettifying the demo -->
+    <link rel="stylesheet" th:href="@{/presentational-only/presentational-only.css}">
+
     <!-- responsive-full-background-image.css stylesheet contains the code you want -->
-    <link rel="stylesheet" th:src="@{/static/responsive-full-background-image.css}">
+    <link rel="stylesheet" th:href="@{/responsive-full-background-image.css}">
 
 </head>
 
