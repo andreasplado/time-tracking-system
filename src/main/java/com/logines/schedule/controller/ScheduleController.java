@@ -40,7 +40,7 @@ public class ScheduleController {
         List<Class> classes = classService.getAllClasses();
         model.addAttribute("username", principal.getName());
 
-        UserProfile userProfile = userProfileService.findUserProfile(UserUtils.getCurrentUserId().intValue());
+        UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userProfile != null) {
             model.addAttribute("userProfile", userProfile);
