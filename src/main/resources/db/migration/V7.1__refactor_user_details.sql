@@ -1,0 +1,2 @@
+ALTER TABLE IF EXISTS UserDetails
+RENAME TO UserProfile;

@@ -3,8 +3,8 @@ package com.logines.schedule.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "UserDetails")
-public class UserDetails{
+@Table(name = "UserProfile")
+public class UserProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
