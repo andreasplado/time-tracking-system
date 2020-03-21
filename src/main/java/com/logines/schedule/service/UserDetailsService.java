@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserDetailsService {
@@ -16,8 +17,8 @@ public class UserDetailsService {
         return userDetailsRepository.save(userProfile);
     }
 
-    public UserProfile findById(int id){
-        return userDetailsRepository.getOne(id);
+    public Optional<UserProfile> findById(int id){
+        return userDetailsRepository.findById(id);
     }
 
     public List<UserProfile> getAllUserDetails(){
