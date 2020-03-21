@@ -30,7 +30,7 @@
         <div class="tab-pane active" id="classesTab">
             <table class="table" id="tableForm">
 
-                <form th:action="@{/add-user-details/}" th:object="${userProfile}" method="post">
+                <form th:action="@{/add-user-details/}" th:object="${userProfile}" enctype="application/x-www-form-urlencoded" method="post">
                     <div class="form-group">
                         <label>Username:</label>
                         <input type="text" class="form-control" th:value="${username}" id="username" placeholder="Enter your fullname" name="username" readonly/>
