@@ -41,10 +41,10 @@ public class ScheduleController {
         List<Class> classes = classService.getAllClasses();
         model.addAttribute("username", principal.getName());
 
-        UserProfile userDetails = userDetailsService.findById(UserAuthenticatedUtils.getCurrentUserId());
+        UserProfile userProfile = userDetailsService.findById(UserAuthenticatedUtils.getCurrentUserId().intValue());
         //Kui kasutajaandmeid on lisatud
-        if(userDetails != null) {
-            model.addAttribute("userProfile", userDetails);
+        if(userProfile != null) {
+            model.addAttribute("userProfile", userProfile);
             model.addAttribute("jobs", jobService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
             model.addAttribute("allStudents", studentService.getAllStudents());

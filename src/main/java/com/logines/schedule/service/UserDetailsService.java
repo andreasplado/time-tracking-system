@@ -16,8 +16,8 @@ public class UserDetailsService {
         return userDetailsRepository.save(userProfile);
     }
 
-    public UserProfile findById(long id){
-        return userDetailsRepository.getOne((int)id);
+    public UserProfile findById(int id){
+        return userDetailsRepository.getOne(id);
     }
 
     public List<UserProfile> getAllUserDetails(){
