@@ -39,6 +39,7 @@ public class ScheduleController {
     public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
         model.addAttribute("username", principal.getName());
+        model.addAttribute("userProfileObj", new UserProfile());
 
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud

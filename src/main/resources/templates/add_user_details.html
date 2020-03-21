@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Logines time-tracking</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -30,7 +30,7 @@
         <div class="tab-pane active" id="classesTab">
             <table class="table" id="tableForm">
 
-                <form th:action="@{/add-user-details/}" method="post">
+                <form th:object="${userProfileObj}" th:action="@{/add-user-details/}" method="post">
                     <div class="form-group">
                         <label>Username:</label>
                         <input type="text" th:value="${username}" class="form-control" id="username" placeholder="Enter your fullname" name="username" readonly/>
