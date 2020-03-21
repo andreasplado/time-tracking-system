@@ -36,7 +36,7 @@ public class ScheduleController {
 
     //@RequestMapping(value="/",method = RequestMethod.GET)
     @GetMapping({"/", "/home"})
-    public String welcome(Model model, Principal principal) {
+    public String welcome(Model model, Principal principal, String error) {
         List<Class> classes = classService.getAllClasses();
         model.addAttribute("usernameText", principal.getName());
 
@@ -50,6 +50,8 @@ public class ScheduleController {
             model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses(classes));
             return "main";
         }else{
+            if (error != null)
+                model.addAttribute("error", "Your username and password is invalid.");
             model.addAttribute("userProfileForm", new UserProfile());
             return "add_user_profile";
         }
