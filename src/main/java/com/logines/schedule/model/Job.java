@@ -75,4 +75,5 @@ public class Job {
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
+
 }
