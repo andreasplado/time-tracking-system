@@ -23,7 +23,7 @@ public class UserProfileService {
     private UserProfileRepository userProfileRepository;
 
     public void addUserProfile(UserProfile userProfile){
-        userProfileRepository.save(userProfile);
+        userProfileRepository.saveAndFlush(userProfile);
     }
 
     public UserProfile findUserProfile(String username){
