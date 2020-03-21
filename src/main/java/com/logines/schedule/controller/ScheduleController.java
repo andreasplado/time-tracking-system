@@ -37,12 +37,13 @@ public class ScheduleController {
     public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
         int usernameId = (int)((UserDetails)principal).getId();
-        UserDetails userDetails = userDetailsService.findById(usernameId);
+        UserDetails userDetailModel = (UserDetails)principal;
+        UserDetails userDetails = userDetailsService.findById((int)userDetailModel.getId());
 
         model.addAttribute("username", principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userDetails != null) {
-            model.addAttribute("userDetails", userDetails);
+            model.addAttribute("userData", userDetails);
             model.addAttribute("jobs", jobService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
             model.addAttribute("allStudents", studentService.getAllStudents());
