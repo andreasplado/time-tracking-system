@@ -6,7 +6,7 @@ import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.ClassService;
 import com.logines.schedule.service.JobService;
 import com.logines.schedule.service.StudentService;
-import com.logines.schedule.service.UserDetailsService;
+import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +28,7 @@ public class ScheduleController {
     @Autowired
     private StudentService studentService;
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserProfileService userProfileService;
     @Autowired
     private JobService jobService;
     @Autowired
@@ -40,9 +40,9 @@ public class ScheduleController {
         List<Class> classes = classService.getAllClasses();
         model.addAttribute("username", principal.getName());
 
-        Optional<UserProfile> userProfile = userDetailsService.findById(UserUtils.getCurrentUserId().intValue());
+        UserProfile userProfile = userProfileService.findUserProfile(UserUtils.getCurrentUserId().intValue());
         //Kui kasutajaandmeid on lisatud
-        if(userProfile.isPresent()) {
+        if(userProfile != null) {
             model.addAttribute("userProfile", userProfile);
             model.addAttribute("jobs", jobService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);

@@ -1,7 +1,7 @@
 package com.logines.schedule.service;
 
 import com.logines.schedule.model.UserProfile;
-import com.logines.schedule.repository.UserDetailsRepository;
+import com.logines.schedule.repository.UserProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,27 +9,31 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserDetailsService {
+public class UserProfileService {
     @Autowired
-    private UserDetailsRepository userDetailsRepository;
+    private UserProfileRepository userProfileRepository;
 
     public UserProfile addUserDetails(UserProfile userProfile){
-        return userDetailsRepository.save(userProfile);
+        return userProfileRepository.save(userProfile);
+    }
+
+    public UserProfile findUserProfile(int id){
+        return userProfileRepository.getOne(id);
     }
 
     public Optional<UserProfile> findById(int id){
-        return userDetailsRepository.findById(id);
+        return userProfileRepository.findById(id);
     }
 
     public List<UserProfile> getAllUserDetails(){
-        return userDetailsRepository.findAll();
+        return userProfileRepository.findAll();
     }
 
     public void updateUserDetails(UserProfile userProfile){
-        userDetailsRepository.save(userProfile);
+        userProfileRepository.save(userProfile);
     }
 
     public void deleteUserDetails(int id){
-        userDetailsRepository.deleteById(id);
+        userProfileRepository.deleteById(id);
     }
 }
