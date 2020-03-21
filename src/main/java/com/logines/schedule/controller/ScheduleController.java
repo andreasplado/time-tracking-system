@@ -51,7 +51,7 @@ public class ScheduleController {
             return "main";
         }else{
             model.addAttribute("userProfileForm", new UserProfile());
-            return "add_user_details";
+            return "add_user_profile";
         }
     }
 
