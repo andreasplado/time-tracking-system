@@ -2,12 +2,14 @@ package com.logines.schedule.controller;
 
 import com.logines.schedule.model.Class;
 import com.logines.schedule.model.Job;
+import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.ClassService;
 import com.logines.schedule.service.JobService;
 import com.logines.schedule.service.StudentService;
 import com.logines.schedule.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,8 +37,8 @@ public class ScheduleController {
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
-        //UserDetails userDetailModel = (UserDetails)principal;
-        //UserDetails userDetails = userDetailsService.findById((int)userDetailModel.getId());
+        UserProfile userDetailModel = (UserProfile) principal;
+        UserProfile userDetails = userDetailsService.findById((int)userDetailModel.getId());
 
         model.addAttribute("username", principal.getName());
         //Kui kasutajaandmeid on lisatud
