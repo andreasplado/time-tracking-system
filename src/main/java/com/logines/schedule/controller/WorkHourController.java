@@ -1,8 +1,7 @@
 package com.logines.schedule.controller;
 
-import com.logines.schedule.model.Job;
-import com.logines.schedule.model.UserProfile;
-import com.logines.schedule.service.JobService;
+import com.logines.schedule.model.WorkHour;
+import com.logines.schedule.service.WorkHourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +13,13 @@ import javax.validation.Valid;
 @Controller
 public class WorkHourController {
     @Autowired
-    private JobService jobService;
+    private WorkHourService workHourService;
 
     @PostMapping("/add-work-hour")
-    public String addWorkHour(@Valid Job job,
+    public String addWorkHour(@Valid WorkHour workHour,
                                  BindingResult bindingResult,
                                  Model model){
-        jobService.addJob(job);
+        workHourService.addJob(workHour);
 
         return "workhour_added_successfully";
     }

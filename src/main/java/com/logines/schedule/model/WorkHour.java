@@ -5,8 +5,8 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Job")
-public class Job {
+@Table(name = "workHour")
+public class WorkHour {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

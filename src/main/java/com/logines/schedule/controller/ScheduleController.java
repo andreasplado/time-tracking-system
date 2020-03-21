@@ -1,13 +1,12 @@
 package com.logines.schedule.controller;
 
 import com.logines.schedule.model.Class;
-import com.logines.schedule.model.Job;
+import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.ClassService;
-import com.logines.schedule.service.JobService;
+import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.service.StudentService;
 import com.logines.schedule.service.UserProfileService;
-import com.logines.schedule.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ScheduleController {
@@ -30,7 +28,7 @@ public class ScheduleController {
     @Autowired
     private UserProfileService userProfileService;
     @Autowired
-    private JobService jobService;
+    private WorkHourService workHourService;
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -44,7 +42,7 @@ public class ScheduleController {
         //Kui kasutajaandmeid on lisatud
         if(userProfile != null) {
             model.addAttribute("userProfile", userProfile);
-            model.addAttribute("jobs", jobService.getAllJobs());
+            model.addAttribute("jobs", workHourService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
             model.addAttribute("allStudents", studentService.getAllStudents());
             model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses(classes));
@@ -76,10 +74,10 @@ public class ScheduleController {
 
     @PostMapping("time/{id}")
     public String postTime(@PathVariable("id") long id,
-                       @Valid Job job,
+                       @Valid WorkHour workHour,
                        BindingResult bindingResult,
                        Model model){
-        jobService.addJob(job);
+        workHourService.addJob(workHour);
 
         return "class_edited_successfully";
     }
@@ -143,10 +141,10 @@ public class ScheduleController {
 
     @GetMapping("/job-details/{id}")
     public String jobDetails(Model model, @PathVariable("id") int id){
-        Job job = jobService.viewJob(id);
+        WorkHour workHour = workHourService.viewJob(id);
         List<Class> classes = classService.getAllClasses();
         model.addAttribute("scheduleClasses", classes);
-        model.addAttribute("job", job );
+        model.addAttribute("job", workHour);
 
         return "job_details";
     }

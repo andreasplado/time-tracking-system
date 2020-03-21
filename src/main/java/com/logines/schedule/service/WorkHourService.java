@@ -1,6 +1,6 @@
 package com.logines.schedule.service;
 
-import com.logines.schedule.model.Job;
+import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,26 +10,26 @@ import java.util.List;
 
 @Service
 @Transactional
-public class JobService {
+public class WorkHourService {
 
 
     @Autowired
     private JobRepository jobRepository;
 
-    public Job addJob(Job job){
-        return jobRepository.save(job);
+    public WorkHour addJob(WorkHour workHour){
+        return jobRepository.save(workHour);
     }
 
-    public Job viewJob(int id){
+    public WorkHour viewJob(int id){
         return jobRepository.getOne(id);
     }
 
-    public List<Job> getAllJobs(){
+    public List<WorkHour> getAllJobs(){
         return jobRepository.findAll();
     }
 
-    public void updateJob(Job job){
-        jobRepository.save(job);
+    public void updateJob(WorkHour workHour){
+        jobRepository.save(workHour);
     }
 
     public void deleteJob(int id){
