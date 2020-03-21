@@ -1,6 +1,7 @@
 package com.logines.schedule.controller;
 
 import com.logines.schedule.model.UserProfile;
+import com.logines.schedule.model.Users;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.validator.UserProfileValidator;
 import com.logines.schedule.validator.UserValidator;
@@ -9,9 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -29,16 +28,17 @@ public class UserProfileController {
         webDataBinder.setValidator(userValidator);
     }
 
-    @RequestMapping(value = "/add-user-details", method = RequestMethod.POST, headers = "Content-type=application/*")
-    public String addUserDetails(@Valid UserProfile userProfile,
+    @RequestMapping(value = "/add-user-profile", method = RequestMethod.POST, headers = "Content-type=application/*")
+    public String addUserDetails(Model model, @RequestBody @Valid @ModelAttribute UserProfile userProfile,
                                  BindingResult bindingResult,
-                                 Model model, String error) {
+                                 String error) {
+        model.addAttribute("userProfile", new UserProfile());
         userValidator.validate(userProfile, bindingResult);
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             model.addAttribute("error", "Please check all data.");
             return "add_user_details";
-        }else{
+        } else {
             userProfileService.addUserProfile(userProfile);
             return "user_details_added_successfully";
         }
