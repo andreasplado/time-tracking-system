@@ -17,12 +17,11 @@ public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
 
-    @RequestMapping(value="/add-user-details", method= RequestMethod.POST, headers = "Content-type=application/*")
+    @RequestMapping(value = "/add-user-details", method = RequestMethod.POST, headers = "Content-type=application/*")
     public String addUserDetails(@Valid UserProfile userProfile,
-                       BindingResult bindingResult,
-                       Model model){
-            userProfileService.addUserProfile(userProfile);
-            return "user_details_added_successfully";
-        }
+                                 BindingResult bindingResult,
+                                 Model model) {
+        userProfileService.addUserProfile(userProfile);
+        return "user_details_added_successfully";
     }
 }
