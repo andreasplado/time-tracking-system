@@ -217,6 +217,10 @@ input[type=submit] {
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="btn-light float-right" type="submit">LOG OUT</button>
     </form>
+    <div style="float:left;">
+        <span style="display:inline;">Welcome </span>
+        <span th:text="${username}" style="display:inline;">Second Span</span>
+    </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
             <a class="nav-link active" data-toggle="tab" href="#workHoursTab">My workhours</a>
