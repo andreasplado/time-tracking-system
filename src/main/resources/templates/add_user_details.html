@@ -33,15 +33,23 @@
                 <form th:action="@{/add-user-profile}" th:object="${userProfile}" method="POST">
                     <div class="form-group">
                         <label>Username:</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter name" name="username" th:field="*{username}"/>
+                        <input type="text" class="form-control" id="username" th:value="${username}" placeholder="Enter name" name="username" readonly/>
                     </div>
                     <div class="form-group">
-                        <label>Password:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" th:field="*{password}" />
+                        <label>Email:</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter password" name="email" />
                     </div>
                     <div class="form-group">
-                        <label>Repeat password:</label>
-                        <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password" name="passwordConfirm" th:field="*{passwordConfirm}"/>
+                        <label>Fullname:</label>
+                        <input type="text" class="form-control" id="password" placeholder="Enter password" name="fullname" />
+                    </div>
+                    <div class="form-group">
+                        <label>ID number:</label>
+                        <input type="text" class="form-control" id="idNumber" placeholder="Confirm password" name="idCode"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone:</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Confirm password" name="phone"/>
                     </div>
                     <!--<div class="form-group">
                         <select th:field="*{roles}">
@@ -51,7 +59,7 @@
                     </div> -->
                     <p th:text="${status}">Test</p>
                     <p th:text="${error}">Test</p>
-                    <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
+                    <button class="btn btn-success" type="submit">INSERT DATA AND PROCCEED</button>&nbsp;&nbsp;
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </form>
             </table>
