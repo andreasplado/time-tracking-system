@@ -50,6 +50,7 @@ public class ScheduleController {
             model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses(classes));
             return "main";
         }else{
+            model.addAttribute("userProfile", new UserProfile());
             return "add_user_details";
         }
     }
