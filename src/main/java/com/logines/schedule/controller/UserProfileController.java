@@ -1,10 +1,8 @@
 package com.logines.schedule.controller;
 
 import com.logines.schedule.model.UserProfile;
-import com.logines.schedule.model.Users;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.validator.UserProfileValidator;
-import com.logines.schedule.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +19,11 @@ public class UserProfileController {
     private UserProfileService userProfileService;
 
     @Autowired
-    private UserProfileValidator userValidator;
+    private UserProfileValidator userProfileValidator;
 
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
-        webDataBinder.setValidator(userValidator);
+        webDataBinder.setValidator(userProfileValidator);
     }
 
     @RequestMapping(value = "/add-user-profile", method = RequestMethod.POST, headers = "Content-type=application/*")
@@ -34,7 +32,7 @@ public class UserProfileController {
                                  String error) {
 
         model.addAttribute("userProfile", new UserProfile());
-        userValidator.validate(userProfile, bindingResult);
+        userProfileValidator.validate(userProfile, bindingResult);
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", "Please check all data.");
@@ -43,6 +41,5 @@ public class UserProfileController {
             userProfileService.addUserProfile(userProfile);
             return "user_details_added_successfully";
         }
-
     }
 }
