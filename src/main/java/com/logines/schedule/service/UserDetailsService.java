@@ -32,8 +32,4 @@ public class UserDetailsService {
     public void deleteUserDetails(int id){
         userDetailsRepository.deleteById(id);
     }
-
-    public UserDetails findByUsername(String username){
-        return userDetailsRepository.findByUsername(username);
-    }
 }
