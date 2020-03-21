@@ -226,9 +226,6 @@ input[type=submit] {
             <a class="nav-link active" data-toggle="tab" href="#workHoursTab">My workhours</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#classesTab">Job categories</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#studentsTab">Workers</a>
         </li>
         <li class="nav-item">
@@ -328,39 +325,6 @@ input[type=submit] {
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- TAB CLASSES-->
-        <div class="tab-pane" id="classesTab">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Job title</th>
-                    <th>Start time</th>
-                    <th>End time</th>
-                    <th>
-                        <button type="button" class="btn btn-success add-class" onclick="addClass()"><i
-                                class="fa fa-plus"></i>ADD JOB
-                        </button>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:onclick="'viewClassDetails(' + ${job.id} +')'" th:each="job : ${jobs}">
-                    <td th:text="${job.title}"></td>
-                    <td th:text="${job.start_time}"></td>
-                    <td th:text="${job.end_time}"></td>
-                    <td>
-                        <form th:action="@{/edit-class/} + ${scheduleClass.id}" method="get">
-                            <button type="submit" class="btn btn-default">EDIT</button>
-                        </form>
-                        <form th:action="@{/delete-class/} + ${scheduleClass.id}" method="post">
-                            <button type="submit" class="btn btn-dark delete-btn">DELETE</button>
-                        </form>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
         </div>
         <div class="tab-pane" id="myprofileTab">
             <form th:action="@{/update-user-details/}" th:object="${userProfile}" method="POST">
