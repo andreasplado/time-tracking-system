@@ -38,7 +38,7 @@ public class ScheduleController {
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
-        model.addAttribute("username", principal.getName());
+        model.addAttribute("usernameText", principal.getName());
         model.addAttribute("userProfileObj", new UserProfile());
 
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
