@@ -43,7 +43,7 @@
                 <form th:action="@{/add-user-profile}" th:object="${userProfileForm}" method="POST">
                     <div class="form-group">
                         <label>Username:</label>
-                        <input type="text" class="form-control" id="username" th:value="${usernameText}" placeholder="Enter name" name="username" th:field="*{username}"/>
+                        <input type="text" class="form-control" id="username" placeholder="Enter name" name="username" th:field="*{usernameText}"/>
                     </div>
                     <div class="form-group">
                         <label>Email:</label>
