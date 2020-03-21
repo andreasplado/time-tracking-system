@@ -27,7 +27,7 @@ public class UserProfileService {
     }
 
     public UserProfile findUserProfile(int id){
-        String sql = "SELECT * FROM userProfile WHERE id = ?";
+        String sql = "SELECT * FROM user_profile WHERE id = ?";
 
         try {
             return jdbcTemplate.queryForObject(sql, new Object[]{id}, CLASS_ROW_MAPPER);
