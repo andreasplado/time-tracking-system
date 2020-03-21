@@ -43,7 +43,7 @@ public class ScheduleController {
 
         UserProfile userProfile = userDetailsService.findById(UserAuthenticatedUtils.getCurrentUserId().intValue());
         //Kui kasutajaandmeid on lisatud
-        if(userProfile.getId() == UserAuthenticatedUtils.getCurrentUserId().intValue()) {
+        if(userProfile.getUsername().equals(principal.getName())) {
             model.addAttribute("userProfile", userProfile);
             model.addAttribute("jobs", jobService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
