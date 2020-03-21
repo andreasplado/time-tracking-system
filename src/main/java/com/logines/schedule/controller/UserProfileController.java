@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 
@@ -16,7 +18,7 @@ public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
 
-    @PostMapping("/add-user-details")
+    @RequestMapping(value="/add-user-details", method= RequestMethod.POST, headers = "Content-type=application/*")
     public String addUserDetails(@Valid UserProfile userProfile,
                        BindingResult bindingResult,
                        Model model){
