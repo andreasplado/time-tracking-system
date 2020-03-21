@@ -8,11 +8,13 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UserProfileService {
 
     private static final BeanPropertyRowMapper<UserProfile> CLASS_ROW_MAPPER = BeanPropertyRowMapper.newInstance( UserProfile.class );
@@ -23,7 +25,7 @@ public class UserProfileService {
     private UserProfileRepository userProfileRepository;
 
     public void addUserProfile(UserProfile userProfile){
-        userProfileRepository.saveAndFlush(userProfile);
+        userProfileRepository.save(userProfile);
     }
 
     public UserProfile findUserProfile(String username){
