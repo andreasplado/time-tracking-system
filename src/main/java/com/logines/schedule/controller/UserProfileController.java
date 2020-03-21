@@ -45,6 +45,6 @@ public class UserProfileController {
     public String edit(Model model){
         model.addAttribute("userProfileForm", new UserProfile());
 
-        return "class_edit";
+        return "add_user_details";
     }
 }
