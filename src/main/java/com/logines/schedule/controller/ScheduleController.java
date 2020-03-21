@@ -7,9 +7,11 @@ import com.logines.schedule.service.ClassService;
 import com.logines.schedule.service.JobService;
 import com.logines.schedule.service.StudentService;
 import com.logines.schedule.service.UserDetailsService;
+import com.logines.schedule.utils.UserAuthenticatedUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,13 +39,12 @@ public class ScheduleController {
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
-        UserProfile userDetailModel = (UserProfile) principal;
-        UserProfile userDetails = userDetailsService.findById((int)userDetailModel.getId());
-
         model.addAttribute("username", principal.getName());
+
+        UserProfile userDetails = userDetailsService.findById(Math.toIntExact(UserAuthenticatedUtils.getCurrentUserId()));
         //Kui kasutajaandmeid on lisatud
-        if(userDetails != null) {
-            model.addAttribute("userData", userDetails);
+        if(userProfile != null) {
+            model.addAttribute("userProfile", userDetails);
             model.addAttribute("jobs", jobService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
             model.addAttribute("allStudents", studentService.getAllStudents());
