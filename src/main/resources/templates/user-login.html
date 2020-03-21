@@ -4,15 +4,26 @@
     <meta charset="utf-8">
     <title>Log in with your account</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" content="Six Revisions">
+    <meta name="description"
+          content="How to use the CSS background-size property to make an image fully span the entire viewport.">
+
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-1.11.1.min.js"
+            integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE="
+            crossorigin="anonymous"></script>
     <link rel="stylesheet"
           href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -20,10 +31,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
     <!--BACKGROUND -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="Six Revisions">
-    <meta name="description" content="How to use the CSS background-size property to make an image fully span the entire viewport.">
-    <link rel="icon" href="http://sixrevisions.com/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="http://sixrevisions.com/favicon.ico" type="image/x-icon"/>
     <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -53,7 +61,7 @@
     <header class="container">
         <section class="content">
             <h1>Logines time-tracking system</h1>
-            <p class="sub-title"><strong>Futuristic time-tracking for</strong> <br />human resources</p>
+            <p class="sub-title"><strong>Futuristic time-tracking for</strong> <br/>human resources</p>
             <!--<p><a class="button" id="load-more-content" href="#top">Load some content</a></p>-->
             <form th:action="@{/login}" enctype="application/x-www-form-urlencoded" method="POST">
                 <p th:text="${message}">Test</p>
@@ -63,46 +71,61 @@
                 </div>
                 <div class="form-group">
                     <label>Password:</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" />
+                    <input type="password" class="form-control" id="password" placeholder="Enter password"
+                           name="password"/>
                 </div>
                 <button class="btn btn-success" type="submit">LOGIN</button>&nbsp;&nbsp;
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
                 <p th:text="${error}">Test</p>
                 <p th:text="${help}">Test</p>
             </form>
-            <br />
-            <form th:action="@{/register}"><button class="btn btn-primary" type="submit">REGISTER</button></form>
+            <br/>
+            <form th:action="@{/register}">
+                <button class="btn btn-primary" type="submit">REGISTER</button>
+            </form>
             <p>Please login to logines time-tracking system.</p>
             <p><a class="button" id="load-more-content" href="#top">About us</a></p>
 
             <!-- Some content to demonstrate viewport scrolling behavior -->
             <div id="more-content">
-                <p><br> We have strong belif to our workers are integrated to <br /> logines.ee time tracking system.</p>
+                <p><br> We have strong belif to our workers are integrated to <br/> logines.ee time tracking system.</p>
                 <blockquote>
-                    Creating a goal-driven statement of what a product or application does results in better product experiences.
+                    Creating a goal-driven statement of what a product or application does results in better product
+                    experiences.
                     It meets expectations because it is focused on solving the problem it was created to address.
                     There is power in doing one thing and it doing it very well.
                     <cite>
                         Francisco Inchauste
-                        From <a href="http://sixrevisions.com/usabilityaccessibility/creating-a-timeless-user-experience/" target="_blank">Creating a Timeless User Experience</a>
+                        From <a
+                            href="http://sixrevisions.com/usabilityaccessibility/creating-a-timeless-user-experience/"
+                            target="_blank">Creating a Timeless User Experience</a>
                     </cite>
                 </blockquote>
                 <blockquote>
-                    Fitts' law is centered around a mathematical equation that is used to illustrate the time it takes to reach a target object.
-                    A target object, in the context of UIs, can be any interactive element, such as a submit button, a hyperlink, and an input field in a web form.
-                    The idea is this: The quicker you can reach a target object, the more convenient and easy it is to use.
+                    Fitts' law is centered around a mathematical equation that is used to illustrate the time it takes
+                    to reach a target object.
+                    A target object, in the context of UIs, can be any interactive element, such as a submit button, a
+                    hyperlink, and an input field in a web form.
+                    The idea is this: The quicker you can reach a target object, the more convenient and easy it is to
+                    use.
                     <cite>
                         Jason Gross
-                        From <a href="http://sixrevisions.com/usabilityaccessibility/improving-usability-with-fitts-law/" target="_blank">Improving Usability with Fitts' Law</a>
+                        From <a
+                            href="http://sixrevisions.com/usabilityaccessibility/improving-usability-with-fitts-law/"
+                            target="_blank">Improving Usability with Fitts' Law</a>
                     </cite>
                 </blockquote>
                 <blockquote>
-                    Visual weight revolves around the idea that distinct elements in a design have varying heaviness relative to each other.
-                    Sometimes visual weight is obvious, such as in the case where larger objects appear heavier than smaller objects because they take up more space.
-                    In certain instances, it’s not so cut and dry, such as in the case of color. Some colors may look as if they are heavier and more dominant than others.
+                    Visual weight revolves around the idea that distinct elements in a design have varying heaviness
+                    relative to each other.
+                    Sometimes visual weight is obvious, such as in the case where larger objects appear heavier than
+                    smaller objects because they take up more space.
+                    In certain instances, it’s not so cut and dry, such as in the case of color. Some colors may look as
+                    if they are heavier and more dominant than others.
                     <cite>
                         Kayla Knight
-                        From <a href="http://sixrevisions.com/graphics-design/visual-weight-designs/" target="_blank">Working with Visual Weight in Your Designs</a>
+                        From <a href="http://sixrevisions.com/graphics-design/visual-weight-designs/" target="_blank">Working
+                        with Visual Weight in Your Designs</a>
                     </cite>
                 </blockquote>
             </div>
@@ -110,13 +133,18 @@
     </header>
 
 
-
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
