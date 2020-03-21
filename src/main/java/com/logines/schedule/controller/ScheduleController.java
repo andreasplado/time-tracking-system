@@ -43,7 +43,7 @@ public class ScheduleController {
 
         UserProfile userDetails = userDetailsService.findById(Math.toIntExact(UserAuthenticatedUtils.getCurrentUserId()));
         //Kui kasutajaandmeid on lisatud
-        if(userProfile != null) {
+        if(userDetails != null) {
             model.addAttribute("userProfile", userDetails);
             model.addAttribute("jobs", jobService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
