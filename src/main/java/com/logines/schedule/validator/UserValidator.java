@@ -1,5 +1,6 @@
 package com.logines.schedule.validator;
 
+import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.model.Users;
 import com.logines.schedule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class UserValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Users.class.equals(aClass);
+        return UserProfile.class.equals(aClass);
     }
 
     @Override
