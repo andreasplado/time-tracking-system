@@ -40,4 +40,11 @@ public class UserProfileController {
             return "user_details_added_successfully";
         }
     }
+
+    @GetMapping("/add-user-profile")
+    public String edit(Model model){
+        model.addAttribute("userProfileForm", new UserProfile());
+
+        return "class_edit";
+    }
 }

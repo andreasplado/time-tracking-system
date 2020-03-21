@@ -30,7 +30,7 @@
         <div class="tab-pane active" id="classesTab">
             <table class="table" id="tableForm">
 
-                <form th:action="@{/add-user-profile/}" th:object="${userProfileForm}" method="POST">
+                <form th:action="@{/add-user-profile}" th:object="${userProfileForm}" method="POST">
                     <div class="form-group">
                         <label>Username:</label>
                         <input type="text" class="form-control" id="username" th:value="${usernameText}" placeholder="Enter name" name="username" th:field="*{username}"/>
@@ -45,11 +45,11 @@
                     </div>
                     <div class="form-group">
                         <label>ID number:</label>
-                        <input type="text" class="form-control" id="idNumber" placeholder="Confirm password" name="idCode" th:field="*{idCode}"/>
+                        <input type="text" class="form-control" id="idNumber" placeholder="Enter your unique ID number" name="idCode" th:field="*{idCode}"/>
                     </div>
                     <div class="form-group">
                         <label>Phone:</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Confirm password" name="phone" th:field="*{phone}"/>
+                        <input type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone" th:field="*{phone}"/>
                     </div>
                     <p th:text="${status}">Test</p>
                     <p th:text="${error}">Test</p>
