@@ -39,7 +39,6 @@ public class ScheduleController {
     public String welcome(Model model, Principal principal) {
         List<Class> classes = classService.getAllClasses();
         model.addAttribute("usernameText", principal.getName());
-        model.addAttribute("userProfileObj", new UserProfile());
 
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
@@ -51,7 +50,7 @@ public class ScheduleController {
             model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses(classes));
             return "main";
         }else{
-            model.addAttribute("userProfile", new UserProfile());
+            model.addAttribute("userProfileForm", new UserProfile());
             return "add_user_details";
         }
     }
