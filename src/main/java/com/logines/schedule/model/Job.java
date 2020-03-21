@@ -3,7 +3,6 @@ package com.logines.schedule.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "Job")
@@ -14,7 +13,7 @@ public class Job {
     private int id;
 
     @Column(name = "title")
-    private String jobTitle;
+    private String title;
 
     @Column(name = "start_time")
     private DateTime startTime;
@@ -68,12 +67,12 @@ public class Job {
         this.updatedAt = new DateTime();
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 }
