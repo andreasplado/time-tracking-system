@@ -6,8 +6,8 @@ import javax.persistence.*;
 @Table(name = "UserDetails")
 public class UserProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "fullname")
     private String fullname;
