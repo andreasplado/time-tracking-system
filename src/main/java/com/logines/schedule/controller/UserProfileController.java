@@ -22,7 +22,6 @@ public class UserProfileController {
     public String addUserDetails(@Valid UserProfile userProfile,
                        BindingResult bindingResult,
                        Model model){
-        model.addAttribute("userProfile", new UserProfile());
         if(!bindingResult.hasErrors()){
             userProfileService.addUserDetails(userProfile);
             return "user_details_added_successfully";
