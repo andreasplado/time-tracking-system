@@ -30,8 +30,6 @@ public class UserProfileController {
     public String addUserDetails(Model model, @RequestBody @Valid @ModelAttribute UserProfile userProfile,
                                  BindingResult bindingResult,
                                  String error) {
-
-        model.addAttribute("userProfile", new UserProfile());
         userProfileValidator.validate(userProfile, bindingResult);
 
         if (bindingResult.hasErrors()) {
