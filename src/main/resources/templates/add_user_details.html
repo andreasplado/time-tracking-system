@@ -47,7 +47,7 @@
                         <label>Phone:</label>
                         <input type="number" class="form-control" id="minutes" placeholder="Enter duration" name="phone"/>
                     </div>
-                    <input type="hidden" th:name="${username}" th:value="${username}" />
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <button type="submit" class="btn btn-success">EDIT</button>&nbsp;&nbsp;
                 </form>
                 <br />
