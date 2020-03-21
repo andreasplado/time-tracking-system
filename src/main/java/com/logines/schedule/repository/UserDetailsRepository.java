@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserDetailsRepository extends JpaRepository<UserDetails, Integer> {
 
-    @Query("SELECT s FROM UserDetails s WHERE s.username=:username")
+    @Query("SELECT s FROM UserDetails s WHERE s.username=:username LIMIT 1")
     UserDetails findByUsername(@Param("username") String name);
 }
