@@ -331,7 +331,7 @@ input[type=submit] {
             <form th:action="@{/update-user-details/}" th:object="${userProfile}" enctype="application/x-www-form-urlencoded" method="POST">
                 <div class="form-group">
                     <label>Username:</label>
-                    <input type="text" th:value="${username}" placeholder="Enter your fullname" class="form-control" th:name="username" th:id="username" readonly/>
+                    <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control" th:name="username" th:id="username" readonly/>
                 </div>
                 <div class="form-group">
                     <label>Fullname:</label>
