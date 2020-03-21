@@ -34,7 +34,7 @@ public class UserProfileController {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", "Please check all data.");
-            return "add_user_details";
+            return "add_user_profile";
         } else {
             userProfileService.addUserProfile(userProfile);
             return "user_details_added_successfully";
@@ -45,6 +45,6 @@ public class UserProfileController {
     public String edit(Model model){
         model.addAttribute("userProfileForm", new UserProfile());
 
-        return "add_user_details";
+        return "add_user_profile";
     }
 }
