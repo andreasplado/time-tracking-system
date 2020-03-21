@@ -335,10 +335,9 @@ input[type=submit] {
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Teacher</th>
-                    <th>Minutes</th>
+                    <th>Job title</th>
+                    <th>Start time</th>
+                    <th>End time</th>
                     <th>
                         <button type="button" class="btn btn-success add-class" onclick="addClass()"><i
                                 class="fa fa-plus"></i>ADD JOB
@@ -348,10 +347,9 @@ input[type=submit] {
                 </thead>
                 <tbody>
                 <tr th:onclick="'viewClassDetails(' + ${job.id} +')'" th:each="job : ${jobs}">
-                    <td th:text="${job.name}"></td>
-                    <td th:text="${scheduleClass.description}"></td>
-                    <td th:text="${scheduleClass.teacherName}"></td>
-                    <td th:text="${scheduleClass.timeMinutes}"></td>
+                    <td th:text="${job.title}"></td>
+                    <td th:text="${job.start_time}"></td>
+                    <td th:text="${job.end_time}"></td>
                     <td>
                         <form th:action="@{/edit-class/} + ${scheduleClass.id}" method="get">
                             <button type="submit" class="btn btn-default">EDIT</button>
