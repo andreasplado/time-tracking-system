@@ -18,9 +18,12 @@ public class WorkHourController {
     @PostMapping("/add-work-hour")
     public String addWorkHour(@Valid WorkHour workHour,
                                  BindingResult bindingResult,
-                                 Model model){
+                                 Model model, String error){
+        if(bindingResult.hasErrors()) {
+            model.addAttribute("workhouraddingError", "Form posting failed.");
+            return "workhour_adding_error";
+        }
         workHourService.addJob(workHour);
-
         return "workhour_added_successfully";
     }
 }
