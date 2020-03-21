@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
-    <title>Log in with your account</title>
+    <title >Log in with your account</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="author" content="Six Revisions">
@@ -38,14 +38,14 @@
     <![endif]-->
 
     <!-- Not required: presentational-only.css only contains CSS for prettifying the demo -->
-    <link rel="stylesheet" href="presentational-only/presentational-only.css">
+    <link rel="stylesheet" th:src="@{presentational-only/presentational-only.css}">
 
     <!-- responsive-full-background-image.css stylesheet contains the code you want -->
-    <link rel="stylesheet" href="responsive-full-background-image.css">
+    <link rel="stylesheet" th:src="@{responsive-full-background-image.css}">
 
     <!-- Not required: jquery.min.js and presentational-only.js is only used to demonstrate scrolling behavior of the viewport  -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="presentational-only/presentational-only.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script th:src="@{presentational-only/presentational-only.js}"></script>
 </head>
 
 <body>
