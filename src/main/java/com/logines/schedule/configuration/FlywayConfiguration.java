@@ -25,7 +25,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @ConditionalOnProperty(prefix = "spring.flyway", name = "enabled", matchIfMissing = true)
-public class WebConfiguration {
+public class FlywayConfiguration {
 
     @Bean
     @Primary
@@ -41,8 +41,8 @@ public class WebConfiguration {
     @Bean(initMethod = "migrate")
     public Flyway flyway(DataSource dataSource) {
         Flyway flyway = Flyway.configure().dataSource(dataSource).load();
-        flyway.clean();
-        flyway.repair();
+        /*flyway.clean();
+        flyway.repair();*/
         flyway.migrate();
         return flyway;
     }
