@@ -36,7 +36,6 @@ public class UserProfileController {
 
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("error", "Please check all data.");
             return "add_user_profile";
         } else {
             userProfileService.addUserProfile(userProfile);
