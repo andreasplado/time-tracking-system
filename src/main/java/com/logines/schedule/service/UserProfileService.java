@@ -49,4 +49,8 @@ public class UserProfileService {
     public void deleteUserDetails(int id){
         userProfileRepository.deleteById(id);
     }
+
+    public void deleteByUsername(String username){
+        userProfileRepository.deleteByFirstName(username);
+    }
 }

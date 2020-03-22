@@ -75,20 +75,6 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value="/user-login", method=RequestMethod.POST, headers = "Content-type=application/*")
-    public String userLogin(Model model, @RequestBody @Valid @ModelAttribute("user") Users loginForm, BindingResult bindingResult) {
-        userValidator.validate(loginForm, bindingResult);
-        if (bindingResult.hasErrors()) {
-            System.out.println("USER LOGIN FAILED");
-            model.addAttribute("help", bindingResult.getAllErrors());
-            return "register";
-        } else {
-            System.out.println("USER LOGIN");
-            securityService.autoLogin(loginForm.getUsername(), loginForm.getPassword());
-            return "redirect:/welcome";
-        }
-    }
-
     @GetMapping("/404")
     public String pageNotFound(){
         return "404";

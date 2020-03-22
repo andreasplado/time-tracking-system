@@ -1,5 +1,6 @@
 package com.logines.schedule.controller;
 
+import com.logines.schedule.model.Class;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.validator.UserProfileValidator;
@@ -43,9 +44,18 @@ public class UserProfileController {
     }
 
     @GetMapping("/add-user-profile")
-    public String edit(Model model){
+    public String edit(Model model) {
         model.addAttribute("userProfileForm", new UserProfile());
 
         return "add_user_profile";
+    }
+
+    @PostMapping("delete-user-profile/{username}")
+    public String deleteClass(Model model, @PathVariable("username") String username,
+                              @Valid Class aClass) {
+        userProfileService.deleteByUsername(username);
+
+        return "class_deleted_successfully";
+
     }
 }
