@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "workHour")
+@Table(name = "work_hour")
 public class WorkHour {
 
     @Id
