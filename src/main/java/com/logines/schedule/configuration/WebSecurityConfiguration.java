@@ -96,7 +96,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         */
         http
                 .authorizeRequests()
-                .antMatchers("/home", "/register", "/lol").permitAll()
+                .antMatchers("/resources/**", "/home", "/register", "/lol").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
