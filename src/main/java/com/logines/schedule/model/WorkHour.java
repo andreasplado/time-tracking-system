@@ -16,6 +16,9 @@ public class WorkHour {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "username")
+    private String username;
+
     @Column(name = "start_time")
     private String startTime;
 

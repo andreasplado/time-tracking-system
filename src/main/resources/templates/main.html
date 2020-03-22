@@ -356,7 +356,8 @@ input[type=submit] {
             </form>
             <form id="delete_User_data" method="POST" th:action="@{/delete-user-profile/} + ${usernameText}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <button class="btn btn-danger ml-1" type="submit" th:text="'Delete ' + ${usernameText} + ' details'">DELETE</button>
+                <br />
+                <button class="btn btn-danger ml-1" type="submit" th:text="'DELETE YOUR PROFILE'">DELETE</button>
             </form>
         </div>
 
