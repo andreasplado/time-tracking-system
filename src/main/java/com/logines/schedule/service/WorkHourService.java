@@ -20,7 +20,7 @@ public class WorkHourService {
         return jobRepository.save(workHour);
     }
 
-    public WorkHour viewJob(int id){
+    public WorkHour viewWorkHour(int id){
         return jobRepository.getOne(id);
     }
 

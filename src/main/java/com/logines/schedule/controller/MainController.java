@@ -17,10 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
-public class ScheduleController {
+public class MainController {
 
     @Autowired
     private UserProfileService userProfileService;
@@ -51,7 +50,7 @@ public class ScheduleController {
 
     @GetMapping("/edit-work-hour/{id}")
     public String edit(Model model, @PathVariable("id") int id){
-        model.addAttribute("scheduleClass", workHourService.viewJob(id));
+        model.addAttribute("scheduleClass", workHourService.viewWorkHour(id));
 
         return "work_hour_edit";
     }
@@ -79,7 +78,7 @@ public class ScheduleController {
 
     @GetMapping("/work-hour-details/{id}")
     public String classDetails(Model model, @PathVariable("id") int id){
-        WorkHour workHour = workHourService.viewJob(id);
+        WorkHour workHour = workHourService.viewWorkHour(id);
         if(workHour != null){
             model.addAttribute("scheduleClass", workHour);
             return "work_hour_details";
@@ -106,13 +105,5 @@ public class ScheduleController {
             model.addAttribute("message", "Workhour not found...");
             return "successful_page";
         }
-    }
-
-    @GetMapping("/work-hour-details/{id}")
-    public String jobDetails(Model model, @PathVariable("id") int id){
-        WorkHour workHour = workHourService.viewJob(id);
-        model.addAttribute("job", workHour);
-
-        return "work_hour_details";
     }
 }
