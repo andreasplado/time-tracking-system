@@ -51,8 +51,7 @@ public class UserProfileController {
     }
 
     @PostMapping("delete-user-profile/{username}")
-    public String deleteClass(Model model, @PathVariable("username") String username,
-                              @Valid Class aClass) {
+    public String deleteClass(Model model, @PathVariable("username") String username) {
         userProfileService.deleteByUsername(username);
 
         return "class_deleted_successfully";
