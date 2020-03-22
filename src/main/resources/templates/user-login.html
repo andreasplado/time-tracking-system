@@ -46,12 +46,15 @@
 <body>
 
 <div class="container">
+    <form th:action="@{/register}" style="float:right; margin: 30px;">
+        <button class="btn btn-primary" type="submit">REGISTER</button>
+    </form>
     <header class="container">
         <section class="content">
             <h1>Logines time-tracking system</h1>
             <p class="sub-title"><strong>Futuristic time-tracking for</strong> <br/>human resources</p>
             <!--<p><a class="button" id="load-more-content" href="#top">Load some content</a></p>-->
-            <form th:action="@{/login}" enctype="application/x-www-form-urlencoded" method="POST" style="display: inline-block;">
+            <form th:action="@{/login}" enctype="application/x-www-form-urlencoded" method="POST">
                 <p th:text="${message}">Test</p>
                 <div class="form-group">
                     <label>Username:</label>
@@ -64,12 +67,10 @@
                 </div>
                 <button class="btn btn-success" type="submit">LOGIN</button>&nbsp;&nbsp;
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <p th:text="${error}">Test</p>
+                <p th:text="${help}">Test</p>
             </form>
-            <form th:action="@{/register}" style="display: inline-block;">
-                <button class="btn btn-primary" type="submit">REGISTER</button>
-            </form>
-            <p th:text="${error}">Test</p>
-            <p th:text="${help}">Test</p>
+            <br/>
         </section>
     </header>
 
