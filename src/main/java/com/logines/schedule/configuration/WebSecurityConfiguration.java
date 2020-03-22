@@ -96,7 +96,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         */
         http
                 .authorizeRequests()
-                .antMatchers("/resources/**",  "/presentational-only/presentational-only.css", "/home", "/register", "/lol").permitAll()
+                .antMatchers("/resources/**", "/home", "/register", "/lol").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -106,6 +106,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
 
+    }
+
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/resources/**"); // #3
     }
 
     @Bean
