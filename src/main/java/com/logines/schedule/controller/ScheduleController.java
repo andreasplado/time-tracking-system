@@ -8,13 +8,17 @@ import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.service.StudentService;
 import com.logines.schedule.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StreamUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -91,6 +95,15 @@ public class ScheduleController {
         }else {
             return "404";
         }
+    }
+
+    @GetMapping(value = "/images/{image}", produces = {MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    public @ResponseBody
+    byte[] getImage(@PathVariable String image) throws IOException {
+        ClassPathResource file = new ClassPathResource("static/images/" + image);
+        byte[] bytes;
+        bytes = StreamUtils.copyToByteArray(file.getInputStream());
+        return bytes;
     }
 
     @GetMapping("/add-class")
