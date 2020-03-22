@@ -45,6 +45,7 @@ public class ScheduleController {
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userProfile != null) {
+            model.addAttribute("workHour", new WorkHour());
             model.addAttribute("userProfile", userProfile);
             model.addAttribute("jobs", workHourService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
