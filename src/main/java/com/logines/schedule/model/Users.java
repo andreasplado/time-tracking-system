@@ -20,9 +20,6 @@ public class Users {
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles;
-
     public Long getId() {
         return id;
     }
@@ -53,13 +50,5 @@ public class Users {
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 }
