@@ -36,10 +36,10 @@
             <label>Repeat password:</label>
             <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password" name="passwordConfirm" th:field="*{passwordConfirm}"/>
         </div>
-        <!--<div class="form-group">
-            <select th:field="*{roles}">
-                <option th:value="1" th:text="USER"></option>
-                <option th:value="2" th:text="ADMIN"></option>
+        <div class="form-group">
+            <select th:field="*{role}">
+                <option th:value="user" th:text="USER"></option>
+                <option th:value="admin" th:text="ADMIN"></option>
             </select>
         </div> -->
         <p th:text="${status}">Test</p>
