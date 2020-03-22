@@ -3,9 +3,10 @@ package com.logines.schedule.model;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.time.OffsetDateTime;
 
 @Entity
-@Table(name = "workhour")
+@Table(name = "wor_khour")
 public class WorkHour {
 
     @Id
@@ -22,10 +23,10 @@ public class WorkHour {
     private String endTime;
 
     @Column(name = "created_at")
-    private DateTime createdAt;
+    private OffsetDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
-    private DateTime updatedAt;
+    private OffsetDateTime updatedAt;
 
     public int getId() {
         return id;
@@ -53,18 +54,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.createdAt == null) createdAt = new DateTime();
-        if (this.updatedAt == null) updatedAt = new DateTime();
+        if (this.createdAt == null) createdAt = OffsetDateTime.now();
+        if (this.updatedAt == null) updatedAt = OffsetDateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updatedAt = new DateTime();
+        this.updatedAt = OffsetDateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updatedAt = new DateTime();
+        this.updatedAt = OffsetDateTime.now();
     }
 
     public String getTitle() {
