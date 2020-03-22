@@ -26,4 +26,6 @@ public class WorkHourController {
         workHourService.addJob(workHour);
         return "workhour_added_successfully";
     }
+
+
 }
