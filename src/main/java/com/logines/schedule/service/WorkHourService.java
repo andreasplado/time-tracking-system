@@ -16,7 +16,7 @@ public class WorkHourService {
     @Autowired
     private JobRepository jobRepository;
 
-    public WorkHour addJob(WorkHour workHour){
+    public WorkHour addWorkHour(WorkHour workHour){
         return jobRepository.save(workHour);
     }
 
@@ -24,7 +24,7 @@ public class WorkHourService {
         return jobRepository.getOne(id);
     }
 
-    public List<WorkHour> getAllJobs(){
+    public List<WorkHour> getAllWorkHours(){
         return jobRepository.findAll();
     }
 
@@ -32,7 +32,14 @@ public class WorkHourService {
         jobRepository.save(workHour);
     }
 
-    public void deleteJob(int id){
-        jobRepository.deleteById(id);
+    public boolean deleteJob(int id){
+        if(jobRepository.existsById(id)){
+            jobRepository.deleteById(id);
+
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }

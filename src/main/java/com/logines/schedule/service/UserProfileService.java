@@ -1,6 +1,5 @@
 package com.logines.schedule.service;
 
-import com.logines.schedule.model.Class;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.repository.UserProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional

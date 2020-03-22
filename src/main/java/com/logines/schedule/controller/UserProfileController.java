@@ -1,6 +1,5 @@
 package com.logines.schedule.controller;
 
-import com.logines.schedule.model.Class;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.validator.UserProfileValidator;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.Principal;
 
 @Controller
 public class UserProfileController {

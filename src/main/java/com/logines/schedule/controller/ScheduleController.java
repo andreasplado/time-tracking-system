@@ -1,9 +1,7 @@
 package com.logines.schedule.controller;
 
-import com.logines.schedule.model.Class;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
-import com.logines.schedule.service.ClassService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +23,6 @@ import java.util.List;
 public class ScheduleController {
 
     @Autowired
-    private ClassService classService;
-    @Autowired
     private UserProfileService userProfileService;
     @Autowired
     private WorkHourService workHourService;
@@ -36,7 +32,6 @@ public class ScheduleController {
     //@RequestMapping(value="/",method = RequestMethod.GET)
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal, String error) {
-        List<Class> classes = classService.getAllClasses();
         model.addAttribute("usernameText", principal.getName());
 
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
@@ -44,8 +39,7 @@ public class ScheduleController {
         if(userProfile != null) {
             model.addAttribute("workHour", new WorkHour());
             model.addAttribute("userProfile", userProfile);
-            model.addAttribute("jobs", workHourService.getAllJobs());
-            model.addAttribute("scheduleClasses", classes);
+            model.addAttribute("jobs", workHourService.getAllWorkHours());
             return "main";
         }else{
             if (error != null)
@@ -55,20 +49,19 @@ public class ScheduleController {
         }
     }
 
-    @GetMapping("/edit-class/{id}")
-    public String edit(Model model, @PathVariable("id") long id){
-        model.addAttribute("scheduleClass", classService.getAClass(id));
+    @GetMapping("/edit-work-hour/{id}")
+    public String edit(Model model, @PathVariable("id") int id){
+        model.addAttribute("scheduleClass", workHourService.viewJob(id));
 
-        return "class_edit";
+        return "work_hour_edit";
     }
 
-    @PostMapping("/edit-class/{id}")
+    @PostMapping("/edit-work-hour/{id}")
     public String edit(@PathVariable("id") long id,
                        @Valid Class aClass,
                        BindingResult bindingResult,
                        Model model){
-        classService.updateClass(aClass);
-        model.addAttribute("message", "Class edited successfully...");
+        model.addAttribute("message", "Workhour edited successfully...");
 
         return "successful_page";
     }
@@ -78,18 +71,18 @@ public class ScheduleController {
                        @Valid WorkHour workHour,
                        BindingResult bindingResult,
                        Model model){
-        workHourService.addJob(workHour);
+        workHourService.addWorkHour(workHour);
         model.addAttribute("message", "Workhour edited successfully...");
 
         return "successful_page";
     }
 
-    @GetMapping("/class-details/{id}")
-    public String classDetails(Model model, @PathVariable("id") long id){
-        Class aClass = classService.getAClass(id);
-        if(aClass != null){
-            model.addAttribute("scheduleClass", aClass);
-            return "class_details";
+    @GetMapping("/work-hour-details/{id}")
+    public String classDetails(Model model, @PathVariable("id") int id){
+        WorkHour workHour = workHourService.viewJob(id);
+        if(workHour != null){
+            model.addAttribute("scheduleClass", workHour);
+            return "work_hour_details";
         }else {
             return "404";
         }
@@ -104,56 +97,22 @@ public class ScheduleController {
         return bytes;
     }
 
-    @GetMapping("/add-class")
-    public String addClass(){
-        return "class_add";
-    }
-
-    @PostMapping("/add-class")
-    public String classSubmit(@ModelAttribute Class aClass){
-        classService.saveClass(aClass);
-
-        return "successful_page";
-    }
-
-    @PostMapping("delete-class/{id}")
-    public String deleteClass(Model model, @PathVariable("id") int id,
-                              @Valid Class aClass){
-        if(classService.deleteClass(aClass)){
-            return "class_deleted_successfully";
+    @PostMapping("delete-work-hour/{id}")
+    public String deleteWorkHour(Model model, @PathVariable("id") int id){
+        if(workHourService.deleteJob(id)){
+            model.addAttribute("message", "Workhour deleted successfully...");
+            return "successful_page";
         }else{
-            return "class_not_found";
+            model.addAttribute("message", "Workhour not found...");
+            return "successful_page";
         }
     }
 
-    @GetMapping("/query-result-student-classes/{studentName}")
-    public String studentClasses(Model model, @PathVariable("studentName") String studentName){
-        List<Class> classes = classService.getAllClasses();
-
-        model.addAttribute("scheduleClasses", classes );
-        //model.addAttribute("studentClasses", studentService.getAllClassesByStudentName(studentName));
-        model.addAttribute("searchString", studentName);
-        //model.addAttribute("studentClassesDistinctTime", studentService.getStudentClassesWithDistinctTime(studentName));
-
-        return "student_classes_query_result";
-    }
-
-    @GetMapping("/student-details/{id}")
-    public String studentDetails(Model model, @PathVariable("id") int id){
-        List<Class> classes = classService.getAllClasses();
-
-        model.addAttribute("scheduleClasses", classes );
-
-        return "student_details";
-    }
-
-    @GetMapping("/job-details/{id}")
+    @GetMapping("/work-hour-details/{id}")
     public String jobDetails(Model model, @PathVariable("id") int id){
         WorkHour workHour = workHourService.viewJob(id);
-        List<Class> classes = classService.getAllClasses();
-        model.addAttribute("scheduleClasses", classes);
         model.addAttribute("job", workHour);
 
-        return "job_details";
+        return "work_hour_details";
     }
 }

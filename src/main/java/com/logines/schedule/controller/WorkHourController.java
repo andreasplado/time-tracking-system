@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -25,7 +24,7 @@ public class WorkHourController {
             return "workhour_adding_error";
         }
         model.addAttribute("message", "Workhour added successfully...");
-        workHourService.addJob(workHour);
+        workHourService.addWorkHour(workHour);
         return "successful_page";
     }
 }
