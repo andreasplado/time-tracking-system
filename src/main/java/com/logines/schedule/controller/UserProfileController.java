@@ -34,6 +34,7 @@ public class UserProfileController {
                                  String error) {
         userProfileValidator.validate(userProfile, bindingResult);
 
+
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", "Please check all data.");
             return "add_user_profile";
