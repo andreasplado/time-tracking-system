@@ -1,1 +1,0 @@
-ALTER TABLE Users ADD COLUMN id_code VARCHAR;

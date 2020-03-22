@@ -1,7 +1,26 @@
-CREATE TABLE USERS(
-  USERNAME varchar(50) NOT NULL,
-  PASSWORD varchar(65) NOT NULL,
-  ROLE varchar(15) NOT NULL);
+CREATE TABLE Users(
+  id INTEGER PRIMARY KEY,
+  username varchar(50) NOT NULL,
+  password varchar(65) NOT NULL,
+  role varchar(15) NOT NULL);
 
-INSERT INTO USERS VALUES ('user','$2a$10$5e3dB36HeRcozRgp8xQfw.tfD3Qsut8xu/NT9g/DSpVKg9Kzuitrq','USER');
-INSERT INTO USERS VALUES ('admin','$2a$10$5e3dB36HeRcozRgp8xQfw.tfD3Qsut8xu/NT9g/DSpVKg9Kzuitrq','ADMIN');
+CREATE TABLE UserProfile(
+  id INTEGER PRIMARY KEY,
+  fullname VARCHAR(255),
+  email VARCHAR(255),
+  idCode VARCHAR(255),
+  username VARCHAR(255),
+  phone VARCHAR(255),
+  startTime TIMESTAMP,
+  endTime TIMESTAMP
+);
+
+CREATE TABLE WorkHour (
+  id INTEGER PRIMARY KEY,
+  title VARCHAR(255),
+  email  VARCHAR(255),
+  end_time  VARCHAR(255),
+  start_tme  VARCHAR(255),
+  created_at  VARCHAR(255),
+  updated_at  VARCHAR(255)
+);
