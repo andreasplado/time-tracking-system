@@ -16,10 +16,10 @@ public class WorkHour {
     private String title;
 
     @Column(name = "start_time")
-    private DateTime startTime;
+    private String startTime;
 
     @Column(name = "end_time")
-    private DateTime endTime;
+    private String endTime;
 
     @Column(name = "created_at")
     private DateTime createdAt;
