@@ -1,6 +1,7 @@
 package com.logines.schedule.model;
 
 import javax.persistence.*;
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Entity
@@ -23,25 +24,25 @@ public class Employee {
     private String phone;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private OffsetDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
-    private Date updatedAt;
+    private OffsetDateTime updatedAt;
 
     @PrePersist
     protected void prePersist() {
-        if (this.createdAt == null) createdAt = new Date();
-        if (this.updatedAt == null) updatedAt = new Date();
+        if (this.createdAt == null) createdAt = OffsetDateTime.now();
+        if (this.updatedAt == null) updatedAt = OffsetDateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updatedAt = new Date();
+        this.updatedAt = OffsetDateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updatedAt = new Date();
+        this.updatedAt = OffsetDateTime.now();
     }
 
     public String getFirstname() {

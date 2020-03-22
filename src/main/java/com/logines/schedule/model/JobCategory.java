@@ -1,6 +1,7 @@
 package com.logines.schedule.model;
 
 import javax.persistence.*;
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Entity
@@ -17,10 +18,10 @@ public class JobCategory {
     private String categoryDescription;
 
     @Column(name = "created_at")
-    private Date createdAt;
+    private OffsetDateTime createdAt;
 
     @Column(name = "updated_at", nullable = false)
-    private Date updatedAt;
+    private OffsetDateTime updatedAt;
 
     public String getJobCategory() {
         return jobCategory;
@@ -38,19 +39,19 @@ public class JobCategory {
         this.categoryDescription = categoryDescription;
     }
 
-    public Date getCreatedAt() {
+    public OffsetDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 }

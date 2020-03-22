@@ -1,6 +1,7 @@
 package com.logines.schedule.model;
 
 import javax.persistence.*;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "Class")
@@ -22,7 +23,7 @@ public class Class{
     private int timeMinutes;
 
     @Column(name = "start_time")
-    private String startTime;
+    private OffsetDateTime startTime;
 
     public int getId(){
         return id;
@@ -64,11 +65,11 @@ public class Class{
         this.timeMinutes = timeMinutes;
     }
 
-    public String getStartTime() {
+    public OffsetDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(OffsetDateTime startTime) {
         this.startTime = startTime;
     }
 }
