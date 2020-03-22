@@ -37,8 +37,9 @@
             <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password" name="passwordConfirm" th:field="*{passwordConfirm}"/>
         </div>
         <div class="form-group">
-            <select th:field="*{role}" >
-                <option th:each="perm : ${perms}" th:value="${perm .id}" th:text="${perm.name}"></option>
+            <select class="form-control" id="role" name="role" th:field="*{role}">
+                <option th:value="'USER'" th:text="USER">USER</option>
+                <option th:value="'ADMIN'" th:text="ADMIN">ADMIN</option>
             </select>
         </div>
         <p th:text="${status}">Test</p>
