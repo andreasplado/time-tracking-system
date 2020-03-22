@@ -5,7 +5,6 @@ import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.ClassService;
 import com.logines.schedule.service.WorkHourService;
-import com.logines.schedule.service.StudentService;
 import com.logines.schedule.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -28,8 +27,6 @@ public class ScheduleController {
     @Autowired
     private ClassService classService;
     @Autowired
-    private StudentService studentService;
-    @Autowired
     private UserProfileService userProfileService;
     @Autowired
     private WorkHourService workHourService;
@@ -49,8 +46,6 @@ public class ScheduleController {
             model.addAttribute("userProfile", userProfile);
             model.addAttribute("jobs", workHourService.getAllJobs());
             model.addAttribute("scheduleClasses", classes);
-            model.addAttribute("allStudents", studentService.getAllStudents());
-            model.addAttribute("studentClasses", studentService.getAllStudentsWithClasses(classes));
             return "main";
         }else{
             if (error != null)
@@ -136,10 +131,8 @@ public class ScheduleController {
         List<Class> classes = classService.getAllClasses();
 
         model.addAttribute("scheduleClasses", classes );
-        model.addAttribute("students", studentService.getAllStudentsWithClasses( classes ) );
         //model.addAttribute("studentClasses", studentService.getAllClassesByStudentName(studentName));
         model.addAttribute("searchString", studentName);
-        model.addAttribute("allStudents", studentService.getAllStudents());
         //model.addAttribute("studentClassesDistinctTime", studentService.getStudentClassesWithDistinctTime(studentName));
 
         return "student_classes_query_result";
@@ -150,7 +143,6 @@ public class ScheduleController {
         List<Class> classes = classService.getAllClasses();
 
         model.addAttribute("scheduleClasses", classes );
-        model.addAttribute("studentWithClasses", studentService.getStudentWithClasses( classes, id ) );
 
         return "student_details";
     }
