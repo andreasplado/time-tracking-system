@@ -1,0 +1,1 @@
+ALTER TABLE WorkHour RENAME start_tme TO start_time;
