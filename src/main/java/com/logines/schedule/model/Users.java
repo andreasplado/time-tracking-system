@@ -8,8 +8,8 @@ import javax.validation.constraints.*;
 @Table(name = "Users")
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     @NotBlank(message = "Username is mandatory")
     private String username;
@@ -20,11 +20,11 @@ public class Users {
     @Transient
     private String passwordConfirm;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

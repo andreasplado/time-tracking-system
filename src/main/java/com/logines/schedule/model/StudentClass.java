@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class StudentClass {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Column(name = "student_id")
     private int studentId;
@@ -15,11 +15,11 @@ public class StudentClass {
     @Column(name = "class_id")
     private int classId;
 
-    public long getId(){
+    public int getId(){
         return id;
     }
 
-    public void setId( long id ){
+    public void setId( int id ){
         this.id = id;
     }
 

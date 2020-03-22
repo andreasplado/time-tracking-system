@@ -7,7 +7,7 @@ import java.util.List;
 public class Student{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
@@ -25,11 +25,11 @@ public class Student{
     @Column(name = "classes_with_clashes")
     private List<Class> classesWithClashes;
 
-    public long getId(){
+    public int getId(){
         return id;
     }
 
-    public void setId( long id ){
+    public void setId( int id ){
         this.id = id;
     }
 
