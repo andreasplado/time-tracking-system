@@ -284,7 +284,7 @@ input[type=submit] {
                             <button type="submit" class="btn btn-success add-class"><i class="fa fa-plus"></i>ADD
                                 WORKHOUR
                             </button>
-                            <input type="hidden" id="username" name="username" value="${usernameText}"/>
+                            <input type="hidden" id="username" name="username" placeholder="Work end time" class="form-control" th:value="${usernameText}" th:field="*{username}"/>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         </form>
                     </div>
@@ -351,7 +351,6 @@ input[type=submit] {
                     <label>Phone:</label>
                     <input type="number" class="form-control" th:value="${userProfile.phone}" id="phone" placeholder="Enter your phone number" name="phone"/>
                 </div>
-                <input type="hidden" th:name="${username}" th:value="${username}" />
                 <button type="submit" class="btn btn-success">CHANGE USER DATA</button>&nbsp;&nbsp;
             </form>
             <form id="delete_User_data" method="POST" th:action="@{/delete-user-profile/} + ${usernameText}">
