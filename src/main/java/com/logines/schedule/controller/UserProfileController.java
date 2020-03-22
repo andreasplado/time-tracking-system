@@ -39,7 +39,8 @@ public class UserProfileController {
             return "add_user_profile";
         } else {
             userProfileService.addUserProfile(userProfile);
-            return "user_details_added_successfully";
+            model.addAttribute("message", "User details added successfully...");
+            return "successful_message";
         }
     }
 
@@ -53,8 +54,9 @@ public class UserProfileController {
     @PostMapping("delete-user-profile/{username}")
     public String deleteClass(Model model, @PathVariable("username") String username) {
         userProfileService.deleteByUsername(username);
+        model.addAttribute("message", "Class deleted successfully...");
 
-        return "class_deleted_successfully";
+        return "successful_message";
 
     }
 }

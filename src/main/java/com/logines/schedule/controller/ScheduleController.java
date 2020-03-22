@@ -73,8 +73,9 @@ public class ScheduleController {
                        BindingResult bindingResult,
                        Model model){
         classService.updateClass(aClass);
+        model.addAttribute("message", "Class edited successfully...");
 
-        return "class_edited_successfully";
+        return "successful_page";
     }
 
     @PostMapping("time/{id}")
@@ -83,8 +84,9 @@ public class ScheduleController {
                        BindingResult bindingResult,
                        Model model){
         workHourService.addJob(workHour);
+        model.addAttribute("message", "Workhour edited successfully...");
 
-        return "class_edited_successfully";
+        return "successful_page";
     }
 
     @GetMapping("/class-details/{id}")
@@ -116,7 +118,7 @@ public class ScheduleController {
     public String classSubmit(@ModelAttribute Class aClass){
         classService.saveClass(aClass);
 
-        return "class_submitted_successfully";
+        return "successful_page";
     }
 
     @PostMapping("delete-class/{id}")

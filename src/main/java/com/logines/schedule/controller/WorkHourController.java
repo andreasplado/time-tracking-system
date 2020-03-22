@@ -23,8 +23,9 @@ public class WorkHourController {
             model.addAttribute("workhouraddingError", "Form posting failed.");
             return "workhour_adding_error";
         }
+        model.addAttribute("message", "Workhour added successfully...");
         workHourService.addJob(workHour);
-        return "workhour_added_successfully";
+        return "successful_message";
     }
 
 
