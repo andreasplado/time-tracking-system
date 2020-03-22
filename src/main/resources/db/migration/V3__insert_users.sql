@@ -1,8 +1,8 @@
 CREATE TABLE Users(
   id INTEGER PRIMARY KEY,
-  username varchar(50) NOT NULL,
-  password varchar(65) NOT NULL,
-  role varchar(15) NOT NULL);
+  username VARCHAR(50) NOT NULL,
+  password VARCHAR(65) NOT NULL,
+  role VARCHAR(15) NOT NULL);
 
 CREATE TABLE UserProfile(
   id INTEGER PRIMARY KEY,
@@ -10,17 +10,15 @@ CREATE TABLE UserProfile(
   email VARCHAR(255),
   idCode VARCHAR(255),
   username VARCHAR(255),
-  phone VARCHAR(255),
-  startTime TIMESTAMP,
-  endTime TIMESTAMP
+  phone VARCHAR(255)
 );
 
 CREATE TABLE WorkHour (
   id INTEGER PRIMARY KEY,
   title VARCHAR(255),
-  username  VARCHAR(255),
-  end_time  VARCHAR(255),
-  start_tme  VARCHAR(255),
-  created_at  DATE NOT NULL DEFAULT CURRENT_DATE,
-  updated_at  DATE
+  username VARCHAR(255),
+  end_time VARCHAR(255),
+  start_tme VARCHAR(255),
+  created_at TIMESTAMP,
+  updated_at TIMESTAMP
 );
