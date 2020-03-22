@@ -40,7 +40,7 @@ public class UserProfileController {
         } else {
             userProfileService.addUserProfile(userProfile);
             model.addAttribute("message", "User details added successfully...");
-            return "successful_message";
+            return "successful_page";
         }
     }
 
@@ -56,7 +56,7 @@ public class UserProfileController {
         userProfileService.deleteByUsername(username);
         model.addAttribute("message", "Class deleted successfully...");
 
-        return "successful_message";
+        return "successful_page";
 
     }
 }

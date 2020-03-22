@@ -25,7 +25,7 @@ public class WorkHourController {
         }
         model.addAttribute("message", "Workhour added successfully...");
         workHourService.addJob(workHour);
-        return "successful_message";
+        return "successful_page";
     }
 
 
