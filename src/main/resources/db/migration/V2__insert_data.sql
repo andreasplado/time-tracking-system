@@ -1,4 +1,3 @@
-DROP TABLE student_classes;
 DROP TABLE studentclass;
 ALTER TABLE Job DROP COLUMN starttime;
 ALTER TABLE Job DROP COLUMN endtime;
