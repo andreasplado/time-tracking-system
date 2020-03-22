@@ -46,8 +46,10 @@ public class UserProfileController {
     }
 
     @GetMapping("/add-user-profile")
-    public String edit(Model model) {
+    public String edit(Model model, String error) {
         model.addAttribute("userProfileForm", new UserProfile());
+        if (error != null)
+            model.addAttribute("error", "There is a problem with adding user profile. Please check all fields!");
 
         return "add_user_profile";
     }
