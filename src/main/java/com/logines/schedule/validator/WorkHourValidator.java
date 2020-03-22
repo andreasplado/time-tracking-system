@@ -24,6 +24,5 @@ public class WorkHourValidator implements Validator {
         if(workHour.getTitle() == null){
             errors.rejectValue("title", "NotEmpty.workHour.title");
         }
-
     }
 }
