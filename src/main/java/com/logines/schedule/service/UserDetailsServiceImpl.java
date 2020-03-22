@@ -1,6 +1,5 @@
 package com.logines.schedule.service;
 
-import com.logines.schedule.model.Role;
 import com.logines.schedule.model.Users;
 import com.logines.schedule.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
