@@ -53,16 +53,16 @@
                         <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"th:value="${usernameText}" readonly/>
                     </div>
                     <div class="form-group">
+                        <label>Fullname:</label>
+                        <input type="text" class="form-control" id="fullname" placeholder="Enter fullname" name="fullname" th:field="*{fullname}" />
+                    </div>
+                    <div class="form-group">
                         <label>Email:</label>
                         <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" th:field="*{email}" />
                     </div>
                     <div class="form-group">
-                        <label>Fullname:</label>
-                        <input type="text" class="form-control" id="password" placeholder="Enter fullname" name="fullname" th:field="*{fullname}" />
-                    </div>
-                    <div class="form-group">
                         <label>ID number:</label>
-                        <input type="text" class="form-control" id="idNumber" placeholder="Enter your unique ID number" name="idCode" th:field="*{idCode}"/>
+                        <input type="text" class="form-control" id="idCode" placeholder="Enter your unique ID number" name="idCode" th:field="*{idCode}"/>
                     </div>
                     <div class="form-group">
                         <label>Phone:</label>
