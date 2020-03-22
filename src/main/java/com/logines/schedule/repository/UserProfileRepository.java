@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface UserProfileRepository extends JpaRepository<UserProfile, Integer> {
 
-    @Query("DELETE s FROM UserProfile s WHERE s.username=:username")
+    @Query("DELETE s FROM user_profile s WHERE s.username=:username")
     void deleteByFirstName(@Param("username") String username);
 }
