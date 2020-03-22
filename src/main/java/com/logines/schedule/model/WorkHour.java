@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.OffsetDateTime;
 
 @Entity
-@Table(name = "work_hour")
+@Table(name = "work_hour", schema = "logines")
 public class WorkHour {
 
     @Id
