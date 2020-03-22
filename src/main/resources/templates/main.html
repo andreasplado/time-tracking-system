@@ -261,6 +261,7 @@ input[type=submit] {
                 <div class="row">
                     <div class="col-sm">
                         <form method="post" th:action="@{/add-work-hour}" th:object="${workHour}">
+                            <input type="hidden" th:value="${usernameText}" name="username" th:field="*{username}"/>
                             <div class="form-group">
                                 <label for="time">Work begin time:</label>
                                 <div class="input-group date" id="work-begin-time">
@@ -281,7 +282,7 @@ input[type=submit] {
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success add-class"><i class="fa fa-plus"></i>ADD WORKHOUR</button>
-                            <input type="hidden" id="username" name="username" th:value="${usernameText}" th:field="*{username}"/>
+                            <!--<input type="hidden" id="username" name="username" th:value="${usernameText}" th:field="*{username}"/> -->
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                         </form>
                     </div>
