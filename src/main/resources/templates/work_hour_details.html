@@ -24,7 +24,7 @@
 </script>
 
 <div class="container">
-    <h2><a href="../../"> Time-tracker system </a>/<p th:text="${workHour.username}"></p> workhour details</h2>
+    <h2 th:text="${'<a href=\'../../\'> Time-tracker system </a>' + workHour.username + ' work details'}">/<p ></p> workhour details</h2>
 
     <div class="tab-content ">
         <div class="tab-pane active" id="classesTab">
