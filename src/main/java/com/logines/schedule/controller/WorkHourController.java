@@ -1,6 +1,8 @@
 package com.logines.schedule.controller;
 
+import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.model.WorkHour;
+import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.WorkHourValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +14,15 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class WorkHourController {
     @Autowired
     private WorkHourService workHourService;
+
+    @Autowired
+    private UserProfileService userProfileService;
 
     @Autowired
     private WorkHourValidator workHourValidator;
@@ -30,11 +36,16 @@ public class WorkHourController {
 
     @PostMapping("/add-work-hour")
     public String addWorkHour(@Valid WorkHour workHour,
-                                 BindingResult bindingResult,
-                                 Model model, String error){
+                              BindingResult bindingResult,
+                              Model model, String error, Principal principal){
         workHourValidator.validate(workHour, bindingResult);
         if(bindingResult.hasErrors()) {
-            return "main";
+            UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
+            if(userProfile != null){
+                model.addAttribute("userProfile", userProfile);
+                return "main";
+            }
+
         }
         model.addAttribute("message", "Workhour added successfully...");
         workHourService.addWorkHour(workHour);
