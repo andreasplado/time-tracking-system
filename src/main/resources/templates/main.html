@@ -235,6 +235,18 @@ input[type=submit] {
         <span th:text="${usernameText}" style="display:inline;">Second Span</span>
     </div>
 </form>
+<form onsubmit="event.preventDefault(); search()">
+    <div class="input-group adv-search">
+        <input id="searchbox" type="text" class="form-control"
+               placeholder="Find workhours by worker name"/>
+        <div class="input-group-btn">
+            <div class="btn-group" role="group">
+                <button th:onclick="'search()'" type="button" class="btn btn-primary"><span
+                        class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </div>
+</form>
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <nav class="cd-tabs__navigation">
         <ul class="cd-tabs__list">
@@ -394,41 +406,6 @@ input[type=submit] {
     </ul> <!-- cd-tabs__panels -->
 </div> <!-- cd-tabs -->
 <div class="container">
-
-    <!-- HEADING -->
-    <h2>Time-tracking system</h2>
-
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#workHoursTab">My workhours</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#allWorkHoursTab">All workhours</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#myprofileTab">My profile</a>
-        </li>
-        <li id="search-bar">
-            <div class="container">
-                <div class="row pull-right searchbar">
-                    <div>
-                        <form onsubmit="event.preventDefault(); search()">
-                            <div class="input-group adv-search">
-                                <input id="searchbox" type="text" class="form-control"
-                                       placeholder="Find workhours by worker name"/>
-                                <div class="input-group-btn">
-                                    <div class="btn-group" role="group">
-                                        <button th:onclick="'search()'" type="button" class="btn btn-primary"><span
-                                                class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
 </div>
 <script src="/assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
 <script src="/assets/js/main.js"></script>
