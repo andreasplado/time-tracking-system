@@ -39,7 +39,7 @@ public class MainController {
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userProfile != null) {
-            List<WorkHour> allWorkhours = workHourService.findByUsername(principal.getName());
+            List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
             Collections.reverse(allWorkhours);
             List<WorkHour> userWorkHours = workHourService.findByUsername(principal.getName());
             model.addAttribute("workHourForm", new WorkHour());
