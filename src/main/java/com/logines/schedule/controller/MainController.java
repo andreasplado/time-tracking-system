@@ -2,8 +2,8 @@ package com.logines.schedule.controller;
 
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
-import com.logines.schedule.service.WorkHourServiceImpl;
 import com.logines.schedule.service.UserProfileService;
+import com.logines.schedule.service.WorkHourServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
@@ -39,7 +39,7 @@ public class MainController {
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userProfile != null) {
-            List<WorkHour> allWorkhours = workHourServiceImpl.getAllWorkHours();
+            List<WorkHour> allWorkhours = workHourServiceImpl.findByUsername(principal.getName());
             Collections.reverse(allWorkhours);
             List<WorkHour> userWorkHours = workHourServiceImpl.findByUsername(principal.getName());
             model.addAttribute("workHourForm", new WorkHour());
