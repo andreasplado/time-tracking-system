@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -35,7 +37,7 @@ public class WorkHourController {
 
 
     @PostMapping("/add-work-hour")
-    public String addWorkHour(@Valid WorkHour workHour,
+    public String addWorkHour(@RequestBody @Valid @ModelAttribute WorkHour workHour,
                               BindingResult bindingResult,
                               Model model, String error, Principal principal){
         workHourValidator.validate(workHour, bindingResult);
