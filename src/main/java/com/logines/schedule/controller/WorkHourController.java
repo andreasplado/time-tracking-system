@@ -34,8 +34,7 @@ public class WorkHourController {
                                  Model model, String error){
         workHourValidator.validate(workHour, bindingResult);
         if(bindingResult.hasErrors()) {
-            model.addAttribute("workhouraddingError", "Form posting failed.");
-            return "workhour_adding_error";
+            return "main";
         }
         model.addAttribute("message", "Workhour added successfully...");
         workHourService.addWorkHour(workHour);
