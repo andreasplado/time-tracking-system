@@ -26,6 +26,41 @@
     td{ cursor: pointer; }
     td:hover { background-color: #2ECCFA; }
 </style>
+<script th:inline="javascript">
+/*<![CDATA[*/
+  $( function() {
+    var allStudents= [
+         /*[# th:each="student : ${allStudents}"]*/
+            [[${student.name}]]
+       /*[/]*/
+    ];
+    $( "#searchbox" ).keyup(function(){
+        $( "#searchbox" ).autocomplete({
+          source: allStudents,
+          select: function(event, ui) {
+                $('#searchbox').val(ui.item.value);
+                search();
+                return false;
+            }
+        });
+    });
+    $('#work-begin-time').datetimepicker({
+        "allowInputToggle": true,
+        "showClose": true,
+        "showTodayButton": true,
+        "format": "YYYY-MM-DDTHH:mm:ss",
+    });
+    $('#work-end-time').datetimepicker({
+        "allowInputToggle": true,
+        "showClose": true,
+        "showTodayButton": true,
+        "format": "YYYY-MM-DDTHH:mm:ss",
+    });
+  });
+/*]]>*/
+
+
+</script>
 <script>
    $(document).keyup(function(e) {
     if (e.which == 27){
@@ -35,7 +70,7 @@
 </script>
 
 <div class="container">
-    <h2><a href="../../"> Time-tracking system </a>/Edit Class</h2>
+    <h2><a href="../../"> Time-tracking system </a>/Edit workhour</h2>
 
     <div class="tab-content ">
         <div class="tab-pane active" id="classesTab">
@@ -65,8 +100,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Minutes:</label>
-                        <input type="text" class="form-control" id="created_at" th:attr="value =${created_at}" placeholder="Enter name" name="created_at" readonly/>
+                        <label>Workhour added:</label>
+                        <input type="text" class="form-control" id="created_at" th:attr="value =${createdAt}" placeholder="Enter name" name="created_at" readonly/>
                     </div>
                     <button type="submit" class="btn btn-success">EDIT</button>&nbsp;&nbsp;
                 </form>
