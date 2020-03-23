@@ -222,14 +222,10 @@ input[type=submit] {
 <body>
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
-    <h6>Human resource handling</h6>
+    <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <form id="logoutForm" method="POST" th:action="@{/logout}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <button class="btn btn-primary float-right" type="submit">LOG OUT</button>
-        <div class="float-right" style="padding-right:20px;">
-            <span style="display:inline;">Welcome </span>
-            <span th:text="${usernameText}" style="display:inline;">Second Span</span>
-        </div>
+        <button class="btn btn-primary float-right" type="submit">LOG OUT</button><br />
     </form>
 </header>
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
@@ -243,7 +239,7 @@ input[type=submit] {
 
             <li>
                 <a href="#tab-workhours" class="cd-tabs__item">
-                    <i class="fa fa-briefcase fa-4x" aria-hidden="true"></i>
+                    <i class="fa fa-briefcase fa-4x" style="color:#269DD5;" aria-hidden="true"></i>
                 </a>
             </li>
 
