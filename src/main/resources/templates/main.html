@@ -24,7 +24,7 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"/>
     <script>document.getElementsByTagName("html")[0].className += " js";</script>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://kit.fontawesome.com/f20d7f9a27.js" crossorigin="anonymous"></script>
 </head>
 
@@ -213,18 +213,9 @@ input[type=submit] {
 
 <body>
 <header class="text-component text-center">
-    <h1>Logines time-tracking system</h1>
-    <h5>Human resource handling</h5>
+    <p>š‘ <a href="https://codyhouse.co/gem/responsive-tabbed-navigation/" class="cd-article-link">Logines time-tracking system</a></p>
+    <h1>Responsive Tabbed Navigation</h1>
 </header>
-
-<form id="logoutForm" method="POST" th:action="@{/logout}">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <button class="btn btn-primary float-right" type="submit">LOG OUT</button>
-    <div class="float-right" style="padding-right:20px;">
-        <span style="display:inline;">Welcome </span>
-        <span th:text="${usernameText}" style="display:inline;">Second Span</span>
-    </div>
-</form>
 
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <nav class="cd-tabs__navigation">
@@ -254,6 +245,74 @@ input[type=submit] {
 
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
+            <p>Inbox Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum recusandae rem animi accusamus quisquam reprehenderit sed voluptates, numquam, quibusdam velit dolores repellendus tempora corrupti accusantium obcaecati voluptate totam eveniet laboriosam?</p>
+
+            <p>Inbox Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum recusandae rem animi accusamus quisquam reprehenderit sed voluptates, numquam, quibusdam velit dolores repellendus tempora corrupti accusantium obcaecati voluptate totam eveniet laboriosam?</p>
+        </li>
+
+        <li id="tab-workhours" class="cd-tabs__panel text-component">
+            <p>New Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non a voluptatibus, ex odit totam cumque nihil eos asperiores ea, labore rerum. Doloribus tenetur quae impedit adipisci, laborum dolorum eaque ratione quaerat, eos dicta consequuntur atque ex facere voluptate cupiditate incidunt.</p>
+
+            <p>New Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non a voluptatibus, ex odit totam cumque nihil eos asperiores ea, labore rerum. Doloribus tenetur quae impedit adipisci, laborum dolorum eaque ratione quaerat, eos dicta consequuntur atque ex facere voluptate cupiditate incidunt.</p>
+        </li>
+
+        <li id="tab-my-profile" class="cd-tabs__panel text-component">
+            <p>Gallery Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque tenetur aut, cupiditate, libero eius rerum incidunt dolorem quo in officia.</p>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ipsa vero, culpa doloremque voluptatum consectetur mollitia, atque expedita unde excepturi id, molestias maiores delectus quos molestiae. Ab iure provident adipisci eveniet quisquam ratione libero nam inventore error pariatur optio facilis assumenda sint atque cumque, omnis perspiciatis. Maxime minus quam voluptatum provident aliquam voluptatibus vel rerum. Soluta nulla tempora aspernatur maiores! Animi accusamus officiis neque exercitationem dolore ipsum maiores delectus asperiores reprehenderit pariatur placeat, quaerat sed illum optio qui enim odio temporibus, nulla nihil nemo quod dicta consectetur obcaecati vel. Perspiciatis animi corrupti quidem fugit deleniti, atque mollitia labore excepturi ut.</p>
+        </li>
+
+    </ul> <!-- cd-tabs__panels -->
+</div> <!-- cd-tabs -->
+<div class="container">
+
+    <!-- HEADING -->
+    <h2>Time-tracking system</h2>
+    <form id="logoutForm" method="POST" th:action="@{/logout}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <button class="btn btn-primary float-right" type="submit">LOG OUT</button>
+        <div class="float-right" style="padding-right:20px;">
+            <span style="display:inline;">Welcome </span>
+            <span th:text="${usernameText}" style="display:inline;">Second Span</span>
+        </div>
+    </form>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#workHoursTab">My workhours</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#allWorkHoursTab">All workhours</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#myprofileTab">My profile</a>
+        </li>
+        <li id="search-bar">
+            <div class="container">
+                <div class="row pull-right searchbar">
+                    <div>
+                        <form onsubmit="event.preventDefault(); search()">
+                            <div class="input-group adv-search">
+                                <input id="searchbox" type="text" class="form-control"
+                                       placeholder="Find workhours by worker name"/>
+                                <div class="input-group-btn">
+                                    <div class="btn-group" role="group">
+                                        <button th:onclick="'search()'" type="button" class="btn btn-primary"><span
+                                                class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content ">
+        <!--TAB WORKING HOURS-->
+        <div class="tab-pane active" id="workHoursTab">
+
             <div class="container">
                 <div class="row">
                     <div class="col-sm">
@@ -334,32 +393,8 @@ input[type=submit] {
                     </div>
                 </div>
             </div>
-        </li>
-
-        <li id="tab-workhours" class="cd-tabs__panel text-component">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Start time</th>
-                    <th>End time</th>
-                    <button type="button" class="btn btn-success add-class" onclick="addWorker()"><i
-                            class="fa fa-plus"></i>ADD WORKHOUR
-                    </button>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="allWorkHour : ${allWorkHours}" th:onclick="'viewWorkHour(' + ${allWorkHour.id} +')'">
-                    <td th:text="${allWorkHour.username}"></td>
-                    <td th:text="${allWorkHour.start_time}"></td>
-                    <td th:text="${allWorkHour.end_time}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </li>
-
-        <li id="tab-my-profile" class="cd-tabs__panel text-component">
+        </div>
+        <div class="tab-pane" id="myprofileTab">
             <form th:action="@{/update-user-details/}" th:object="${userProfile}"
                   enctype="application/x-www-form-urlencoded" method="POST">
                 <div class="form-group">
@@ -394,55 +429,6 @@ input[type=submit] {
                 <br/>
                 <button class="btn btn-danger ml-1" type="submit" th:text="'DELETE YOUR PROFILE'">DELETE</button>
             </form>
-        </li>
-    </ul> <!-- cd-tabs__panels -->
-</div> <!-- cd-tabs -->
-<div class="container">
-
-    <!-- HEADING -->
-    <h2>Time-tracking system</h2>
-
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#workHoursTab">My workhours</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#allWorkHoursTab">All workhours</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#myprofileTab">My profile</a>
-        </li>
-        <li id="search-bar">
-            <div class="container">
-                <div class="row pull-right searchbar">
-                    <div>
-                        <form onsubmit="event.preventDefault(); search()">
-                            <div class="input-group adv-search">
-                                <input id="searchbox" type="text" class="form-control"
-                                       placeholder="Find workhours by worker name"/>
-                                <div class="input-group-btn">
-                                    <div class="btn-group" role="group">
-                                        <button th:onclick="'search()'" type="button" class="btn btn-primary"><span
-                                                class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
-
-    <!-- TAB CONTENT -->
-    <div class="tab-content ">
-        <!--TAB WORKING HOURS-->
-        <div class="tab-pane active" id="workHoursTab">
-
-
-        </div>
-        <div class="tab-pane" id="myprofileTab">
-
         </div>
 
 
