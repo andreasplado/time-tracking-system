@@ -24,15 +24,11 @@
 </script>
 
 <div class="container">
-    <h2><a href="../../"> Time-tracker system </a>/Worker details</h2>
+    <h2><a href="../../"> Time-tracker system </a>/<p th:text="${workHour.username}"></p> workhour details</h2>
 
     <div class="tab-content ">
         <div class="tab-pane active" id="classesTab">
             <table class="table" id="tableForm">
-                <div class="form-group">
-                    <label>Worker username:</label>
-                    <p th:text="${workHour.username}"></p>
-                </div>
                 <div class="form-group">
                     <label>Start time :</label>
                     <p th:text="${workHour.start_time}"></p>
