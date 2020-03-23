@@ -18,18 +18,11 @@ public class WorkHourController {
     @Autowired
     private WorkHourService workHourService;
 
-    @Autowired
-    private WorkHourValidator workHourValidator;
-
-    @InitBinder
-    public void initBinder(WebDataBinder webDataBinder) {
-        webDataBinder.setValidator(workHourValidator);
-    }
-
     @PostMapping("/add-work-hour")
     public String addWorkHour(@Valid WorkHour workHour,
                                  BindingResult bindingResult,
                                  Model model, String error){
+        WorkHourValidator workHourValidator = new WorkHourValidator();
         workHourValidator.validate(workHour, bindingResult);
         if(bindingResult.hasErrors()) {
             model.addAttribute("workhouraddingError", "Form posting failed.");
