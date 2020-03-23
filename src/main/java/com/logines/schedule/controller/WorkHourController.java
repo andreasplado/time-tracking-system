@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -30,33 +31,27 @@ public class WorkHourController {
     @Autowired
     private WorkHourValidator workHourValidator;
 
-    @Autowired
-    private UserProfileValidator userProfileValidator;
-
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(workHourValidator);
-    }
-
-    @InitBinder
-    public void initBinder2(WebDataBinder webDataBinder) {
-        webDataBinder.setValidator(userProfileValidator);
     }
 
 
     @PostMapping("/add-work-hour")
     public String addWorkHour(@RequestBody @Valid @ModelAttribute WorkHour workHour,
                               BindingResult bindingResult,
-                              Model model, String error, Principal principal){
+                              Model model, String error, Principal principal,
+                              final RedirectAttributes redirectAttributes){
         workHourValidator.validate(workHour, bindingResult);
         if(bindingResult.hasErrors()) {
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
             if(userProfile != null){
+                redirectAttributes.addFlashAttribute("error", bindingResult);
                 model.addAttribute("userProfile", userProfile);
-                return "main";
             }
-
+            return "main";
         }
+
         model.addAttribute("message", "Workhour added successfully...");
         workHourService.addWorkHour(workHour);
         return "successful_page";
