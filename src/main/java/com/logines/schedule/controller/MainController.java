@@ -36,9 +36,9 @@ public class MainController {
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userProfile != null) {
-            model.addAttribute("workHour", new WorkHour());
+            model.addAttribute("workHourForm", new WorkHour());
             model.addAttribute("userProfile", userProfile);
-            model.addAttribute("jobs", workHourService.getAllWorkHours());
+            model.addAttribute("workhours", workHourService.getAllWorkHours());
             return "main";
         }else{
             model.addAttribute("userProfileForm", new UserProfile());

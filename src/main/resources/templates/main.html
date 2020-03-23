@@ -36,12 +36,8 @@ function search(){
     var name = $("#searchbox").val();
     window.location.href="query-result-student-classes/"+ name;
 }
-function viewClassDetails(id){
-    window.location.href="class-details/" + id;
-}
-
-function viewJobDetails(id){
-    window.location.href="workHour-details/" + id;
+function viewWorkHour(id){
+    window.location.href="work-hour-details/" + id;
 }
 function viewStudentDetails(id){
     window.location.href="student-details/" + id;
@@ -260,7 +256,7 @@ input[type=submit] {
             <div class="container">
                 <div class="row">
                     <div class="col-sm">
-                        <form method="post" th:action="@{/add-work-hour}" th:object="${workHour}">
+                        <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}">
                             <input type="hidden" th:value="${usernameText}" name="username" th:field="*{username}"/>
                             <div class="form-group">
                                 <label for="time">Work begin time:</label>
@@ -296,20 +292,22 @@ input[type=submit] {
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Working hours</th>
+                                            <th>Work start time</th>
+                                            <th>Work end time</th>
+                                            <th>Description</th>
+                                            <th>Added</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr th:onclick="'viewClassDetails(' + ${scheduleClass.id} +')'"
-                                            th:each="scheduleClass : ${scheduleClasses}">
-                                            <td th:text="${scheduleClass.name}"></td>
-                                            <td th:text="${scheduleClass.description}"></td>
+                                        <tr th:onclick="'viewWorkHourDetails(' + ${workHour.id} +')'"
+                                            th:each="workHour : ${workhours}">
+                                            <td th:text="${workHour.start_time}"></td>
+                                            <td th:text="${workHour.end_time}"></td>
                                             <td>
-                                                <form th:action="@{/edit-class/} + ${scheduleClass.id}" method="get">
+                                                <form th:action="@{/edit-work-hour/} + ${workHour.id}" method="get">
                                                     <button type="submit" class="btn btn-default">EDIT</button>
                                                 </form>
-                                                <form th:action="@{/delete-class/} + ${scheduleClass.id}" method="post">
+                                                <form th:action="@{/delete-work-hour/} + ${workHour.id}" method="post">
                                                     <button type="submit" class="btn btn-dark delete-btn">DELETE
                                                     </button>
                                                 </form>
