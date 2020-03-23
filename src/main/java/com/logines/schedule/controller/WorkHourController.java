@@ -3,10 +3,8 @@ package com.logines.schedule.controller;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.UserProfileService;
-import com.logines.schedule.service.WorkHourService;
-import com.logines.schedule.validator.UserProfileValidator;
+import com.logines.schedule.service.WorkHourServiceImpl;
 import com.logines.schedule.validator.WorkHourValidator;
-import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.beans.PropertyEditor;
 import java.security.Principal;
 
 @Controller
 public class WorkHourController {
     @Autowired
-    private WorkHourService workHourService;
+    private WorkHourServiceImpl workHourServiceImpl;
 
     @Autowired
     private UserProfileService userProfileService;
@@ -54,7 +51,7 @@ public class WorkHourController {
         }
 
         model.addAttribute("message", "Workhour added successfully...");
-        workHourService.addWorkHour(workHour);
+        workHourServiceImpl.addWorkHour(workHour);
         return "successful_page";
     }
 }
