@@ -390,7 +390,7 @@ input[type=submit] {
                 </thead>
                 <tbody>
                 <tr th:each="allWorkHour : ${allWorkHours}" th:onclick="'viewWorkHour(' + ${allWorkHour.id} +')'">
-                    <td th:text="${allWorkHour.usenrame}"></td>
+                    <td th:text="${allWorkHour.usenrname}"></td>
                     <td th:text="${allWorkHour.start_time}"></td>
                     <td th:text="${allWorkHour.end_time}"></td>
                 </tr>
