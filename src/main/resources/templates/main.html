@@ -51,6 +51,7 @@ function viewStudentDetails(id){
 
 
 
+
 </script>
 <script th:inline="javascript">
 /*<![CDATA[*/
@@ -84,6 +85,7 @@ function viewStudentDetails(id){
     });
   });
 /*]]>*/
+
 
 
 
@@ -151,6 +153,17 @@ function viewStudentDetails(id){
 body {
   font: 16px Arial;
 }
+body{
+    background-image: url(https://logines-time-tracking.herokuapp.com/images/background-photo.jpg);
+}
+@media only screen and (max-width: 767px) {
+  body {
+    /* The file size of this background image is 93% smaller
+     * to improve page load speed on mobile internet connections */
+    background-image: url(https://logines-time-tracking.herokuapp.com/images/background-photo-mobile-devices.jpg);
+    color: aqua;
+  }
+}
 
 .autocomplete {
   /*the container must be positioned relative:*/
@@ -208,12 +221,14 @@ input[type=submit] {
 
 
 
+
 </style>
 
 
 <body>
 <header class="text-component text-center">
-    <p>š‘ <a href="https://codyhouse.co/gem/responsive-tabbed-navigation/" class="cd-article-link">Logines time-tracking system</a></p>
+    <p>š‘ <a href="https://codyhouse.co/gem/responsive-tabbed-navigation/" class="cd-article-link">Logines
+        time-tracking system</a></p>
     <h1>Responsive Tabbed Navigation</h1>
 </header>
 
@@ -314,8 +329,6 @@ input[type=submit] {
                     </div>
                 </div>
             </div>
-
-            <p>Inbox Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum recusandae rem animi accusamus quisquam reprehenderit sed voluptates, numquam, quibusdam velit dolores repellendus tempora corrupti accusantium obcaecati voluptate totam eveniet laboriosam?</p>
         </li>
 
         <li id="tab-workhours" class="cd-tabs__panel text-component">
@@ -339,9 +352,6 @@ input[type=submit] {
                 </tr>
                 </tbody>
             </table>
-            <p>New Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non a voluptatibus, ex odit totam cumque nihil eos asperiores ea, labore rerum. Doloribus tenetur quae impedit adipisci, laborum dolorum eaque ratione quaerat, eos dicta consequuntur atque ex facere voluptate cupiditate incidunt.</p>
-
-            <p>New Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non a voluptatibus, ex odit totam cumque nihil eos asperiores ea, labore rerum. Doloribus tenetur quae impedit adipisci, laborum dolorum eaque ratione quaerat, eos dicta consequuntur atque ex facere voluptate cupiditate incidunt.</p>
         </li>
 
         <li id="tab-my-profile" class="cd-tabs__panel text-component">
@@ -379,9 +389,6 @@ input[type=submit] {
                 <br/>
                 <button class="btn btn-danger ml-1" type="submit" th:text="'DELETE YOUR PROFILE'">DELETE</button>
             </form>
-            <p>Gallery Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque tenetur aut, cupiditate, libero eius rerum incidunt dolorem quo in officia.</p>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ipsa vero, culpa doloremque voluptatum consectetur mollitia, atque expedita unde excepturi id, molestias maiores delectus quos molestiae. Ab iure provident adipisci eveniet quisquam ratione libero nam inventore error pariatur optio facilis assumenda sint atque cumque, omnis perspiciatis. Maxime minus quam voluptatum provident aliquam voluptatibus vel rerum. Soluta nulla tempora aspernatur maiores! Animi accusamus officiis neque exercitationem dolore ipsum maiores delectus asperiores reprehenderit pariatur placeat, quaerat sed illum optio qui enim odio temporibus, nulla nihil nemo quod dicta consectetur obcaecati vel. Perspiciatis animi corrupti quidem fugit deleniti, atque mollitia labore excepturi ut.</p>
         </li>
 
     </ul> <!-- cd-tabs__panels -->
