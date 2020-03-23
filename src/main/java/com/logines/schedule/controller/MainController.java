@@ -3,7 +3,7 @@ package com.logines.schedule.controller;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.UserProfileService;
-import com.logines.schedule.service.WorkHourServiceImpl;
+import com.logines.schedule.service.WorkHourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ public class MainController {
     @Autowired
     private UserProfileService userProfileService;
     @Autowired
-    private WorkHourServiceImpl workHourServiceImpl;
+    private WorkHourService workHourService;
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -39,9 +39,9 @@ public class MainController {
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userProfile != null) {
-            List<WorkHour> allWorkhours = workHourServiceImpl.findByUsername(principal.getName());
+            List<WorkHour> allWorkhours = workHourService.findByUsername(principal.getName());
             Collections.reverse(allWorkhours);
-            List<WorkHour> userWorkHours = workHourServiceImpl.findByUsername(principal.getName());
+            List<WorkHour> userWorkHours = workHourService.findByUsername(principal.getName());
             model.addAttribute("workHourForm", new WorkHour());
             model.addAttribute("userProfile", userProfile);
             model.addAttribute("userWorkHours", userWorkHours);
@@ -57,9 +57,9 @@ public class MainController {
 
     @GetMapping("/edit-work-hour/{id}")
     public String edit(Model model, @PathVariable("id") int id){
-        WorkHour workHour = workHourServiceImpl.viewWorkHour(id);
+        WorkHour workHour = workHourService.viewWorkHour(id);
         String createdAt  = workHour.getCreated_at().format(DateTimeFormatter.ISO_DATE_TIME);
-        model.addAttribute("workHour", workHourServiceImpl.viewWorkHour(id));
+        model.addAttribute("workHour", workHourService.viewWorkHour(id));
         model.addAttribute("createdAt", createdAt );
 
         return "work_hour_edit";
@@ -80,7 +80,7 @@ public class MainController {
                        @Valid WorkHour workHour,
                        BindingResult bindingResult,
                        Model model){
-        workHourServiceImpl.addWorkHour(workHour);
+        workHourService.addWorkHour(workHour);
         model.addAttribute("message", "Workhour edited successfully...");
 
         return "successful_page";
@@ -88,7 +88,7 @@ public class MainController {
 
     @GetMapping("/work-hour-details/{id}")
     public String classDetails(Model model, @PathVariable("id") int id){
-        WorkHour workHour = workHourServiceImpl.viewWorkHour(id);
+        WorkHour workHour = workHourService.viewWorkHour(id);
         if(workHour != null){
             model.addAttribute("scheduleClass", workHour);
             return "work_hour_details";
@@ -108,7 +108,7 @@ public class MainController {
 
     @PostMapping("delete-work-hour/{id}")
     public String deleteWorkHour(Model model, @PathVariable("id") int id){
-        if(workHourServiceImpl.deleteJob(id)){
+        if(workHourService.deleteJob(id)){
             model.addAttribute("message", "Workhour deleted successfully...");
             return "successful_page";
         }else{

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class WorkHourServiceImpl implements WorkHourService {
+public class WorkHourService {
 
 
     @Autowired
@@ -48,7 +48,6 @@ public class WorkHourServiceImpl implements WorkHourService {
 
     }
 
-    @Override
     public List<WorkHour> findByUsername(String username) {
         return workHourRepository.findWorkHoursByUsername(username);
     }
