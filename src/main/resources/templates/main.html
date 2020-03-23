@@ -286,7 +286,7 @@ input[type=submit] {
                                               name="title" th:field="*{title}"></textarea>
                                 </div>
                             </div>
-                            <input type="text" th:id="username" th:name="username" th:value="${usernameText}"  th:field="*{username}" class="form-control" style="display:none;"/>
+                            <input type="hidden"  th:value="${usernameText}" th:name="username" th:id="username" th:field="*{username}" />
                             <button type="submit" class="btn btn-success add-class"><i class="fa fa-plus"></i>ADD
                                 WORKHOUR
                             </button>
