@@ -30,18 +30,20 @@
         <div class="tab-pane active" id="classesTab">
             <table class="table" id="tableForm">
                 <div class="form-group">
-                    <label>Name:</label>
-                    <p th:text="${studentWithClasses.name}"></p>
+                    <label>Worker username:</label>
+                    <p th:text="${workHour.username}"></p>
                 </div>
                 <div class="form-group">
-                    <label>Email:</label>
-                    <p th:text="${studentWithClasses.email}"></p>
+                    <label>Start time :</label>
+                    <p th:text="${workHour.start_time}"></p>
                 </div>
                 <div class="form-group">
-                    <label>Student classes:</label>
-                    <div th:each="studentWithClasses : ${studentWithClasses.classes}">
-                        <p th:text="${studentWithClasses.name}"></p>
-                    </div>
+                    <label>End time:</label>
+                    <p th:text="${workHour.end_time}"></p>
+                </div>
+                <div class="form-group">
+                    <label>Workhour notes:</label>
+                    <p th:text="${workHour.title}"></p>
                 </div>
                 <br />
                 <br />

@@ -90,7 +90,7 @@ public class MainController {
     public String classDetails(Model model, @PathVariable("id") int id){
         WorkHour workHour = workHourService.viewWorkHour(id);
         if(workHour != null){
-            model.addAttribute("scheduleClass", workHour);
+            model.addAttribute("workHour", workHour);
             return "work_hour_details";
         }else {
             return "404";
