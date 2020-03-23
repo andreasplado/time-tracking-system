@@ -12,7 +12,7 @@ import org.springframework.validation.Validator;
 public class WorkHourValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
-        return WorkHour.class.equals(clazz);
+       return WorkHour.class.isAssignableFrom(clazz);
     }
 
     @Override

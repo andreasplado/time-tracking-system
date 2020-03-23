@@ -1,6 +1,7 @@
 package com.logines.schedule.validator;
 
 import com.logines.schedule.model.UserProfile;
+import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public class UserProfileValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return UserProfile.class.equals(aClass);
+        return UserProfile.class.isAssignableFrom(aClass);
     }
 
     @Override
