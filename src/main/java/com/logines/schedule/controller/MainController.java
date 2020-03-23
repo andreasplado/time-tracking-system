@@ -32,7 +32,6 @@ public class MainController {
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal, String error) {
         model.addAttribute("usernameText", principal.getName());
-        model.addAttribute("userProfileForm", new UserProfile());
 
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
@@ -42,9 +41,9 @@ public class MainController {
             model.addAttribute("jobs", workHourService.getAllWorkHours());
             return "main";
         }else{
+            model.addAttribute("userProfileForm", new UserProfile());
             if (error != null)
                 model.addAttribute("error", "Your username and password is invalid.");
-            model.addAttribute("userProfileForm", new UserProfile());
             return "add_user_profile";
         }
     }
