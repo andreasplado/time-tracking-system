@@ -12,6 +12,6 @@ import java.util.List;
 @Repository
 public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
 
-    @Query("SELECT s FROM work_hour s WHERE s.username=:username")
+    @Query("SELECT s FROM workHour s WHERE s.username=:username")
     List<WorkHour> findWorkHoursByUsername(@Param("username") String name);
 }
