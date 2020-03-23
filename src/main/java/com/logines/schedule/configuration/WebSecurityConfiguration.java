@@ -2,6 +2,7 @@ package com.logines.schedule.configuration;
 
 import com.logines.schedule.auth.AppAuthenticationSuccessHandler;
 import com.logines.schedule.auth.RefererRedirectionAuthenticationSuccessHandler;
+import com.logines.schedule.validator.WorkHourValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
