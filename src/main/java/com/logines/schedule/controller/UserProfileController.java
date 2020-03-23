@@ -21,7 +21,7 @@ public class UserProfileController {
     @Autowired
     private UserProfileValidator userProfileValidator;
 
-    @InitBinder
+    @InitBinder("user_profile")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(userProfileValidator);
     }

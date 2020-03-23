@@ -6,6 +6,7 @@ import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.UserProfileValidator;
 import com.logines.schedule.validator.WorkHourValidator;
+import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.beans.PropertyEditor;
 import java.security.Principal;
 
 @Controller
@@ -31,11 +33,10 @@ public class WorkHourController {
     @Autowired
     private WorkHourValidator workHourValidator;
 
-    @InitBinder
+    @InitBinder("work_hour")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(workHourValidator);
     }
-
 
     @PostMapping("/add-work-hour")
     public String addWorkHour(@RequestBody @Valid @ModelAttribute WorkHour workHour,

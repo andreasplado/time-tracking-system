@@ -29,7 +29,7 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @InitBinder
+    @InitBinder("user")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(userValidator);
     }
