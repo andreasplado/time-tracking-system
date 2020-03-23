@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.security.Principal;
 import java.time.OffsetDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -38,9 +40,11 @@ public class MainController {
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
         if(userProfile != null) {
+            List<WorkHour> workHours = workHourService.getAllWorkHours();
+            Collections.reverse(workHours);
             model.addAttribute("workHourForm", new WorkHour());
             model.addAttribute("userProfile", userProfile);
-            model.addAttribute("workhours", workHourService.getAllWorkHours());
+            model.addAttribute("workhours", workHours);
             return "main";
         }else{
             model.addAttribute("userProfileForm", new UserProfile());
