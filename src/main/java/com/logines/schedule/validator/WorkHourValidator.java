@@ -2,9 +2,12 @@ package com.logines.schedule.validator;
 
 
 import com.logines.schedule.model.WorkHour;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+@Component
 public class WorkHourValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {

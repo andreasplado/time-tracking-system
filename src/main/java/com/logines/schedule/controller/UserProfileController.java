@@ -18,12 +18,18 @@ public class UserProfileController {
     @Autowired
     private UserProfileService userProfileService;
 
+    @Autowired
+    private UserProfileValidator userProfileValidator;
+
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(userProfileValidator);
+    }
 
     @RequestMapping(value = "/add-user-profile", method = RequestMethod.POST, headers = "Content-type=application/*")
     public String addUserDetails(Model model, @RequestBody @Valid @ModelAttribute UserProfile userProfile,
                                  BindingResult bindingResult,
                                  String error) {
-        UserProfileValidator userProfileValidator = new UserProfileValidator();
         userProfileValidator.validate(userProfile, bindingResult);
 
 
