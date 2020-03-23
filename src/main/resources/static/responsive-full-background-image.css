@@ -19,21 +19,11 @@ body {
   background-size: cover;
   
   /* Pick a solid background color that will be displayed while the background image is loading */
-  background-color:#464646;
+  background-color:#565758;
 
-  color: aqua;
+  color: #317BFD;
   
   /* SHORTHAND CSS NOTATION
    * background: url(background-photo.jpg) center center cover no-repeat fixed;
    */
-}
-
-/* For mobile devices */
-@media only screen and (max-width: 767px) {
-  body {
-    /* The file size of this background image is 93% smaller
-     * to improve page load speed on mobile internet connections */
-    background-image: url(https://logines-time-tracking.herokuapp.com/images/background-photo-mobile-devices.jpg);
-    color: aqua;
-  }
 }
