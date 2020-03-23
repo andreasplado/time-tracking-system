@@ -32,6 +32,7 @@ public class MainController {
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal, String error) {
         model.addAttribute("usernameText", principal.getName());
+        model.addAttribute("userProfileForm", new UserProfile());
 
         UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
         //Kui kasutajaandmeid on lisatud
