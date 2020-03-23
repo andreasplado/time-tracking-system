@@ -11,7 +11,7 @@ import org.springframework.validation.Validator;
 public class WorkHourValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return WorkHour.class.equals(clazz);
     }
 
     @Override

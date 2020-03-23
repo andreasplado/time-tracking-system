@@ -1,9 +1,7 @@
 package com.logines.schedule.validator;
 
 import com.logines.schedule.model.UserProfile;
-import com.logines.schedule.model.Users;
 import com.logines.schedule.service.UserProfileService;
-import com.logines.schedule.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -27,8 +25,8 @@ public class UserProfileValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty.userProfile.username");
         errors.addAllErrors(errors);
         if(userProfile.getUsername() != null) {
-            if (userProfile.getUsername().length() < 6 || userProfile.getUsername().length() > 32) {
-                errors.rejectValue("username", "Size.userForm.username");
+            if (userProfile.getFullname().length() < 6 || userProfile.getUsername().length() > 32) {
+                errors.rejectValue("fullname", "Size.userForm.fullname");
             }
             if (userServiceImpl.findUserProfile(userProfile.getUsername()) != null) {
                 errors.rejectValue("username", "Duplicate.userForm.username");
