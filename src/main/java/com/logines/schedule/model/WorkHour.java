@@ -84,4 +84,11 @@ public class WorkHour {
     public String getEnd_time(){
         return this.end_time;
     }
+
+    public OffsetDateTime getCreated_at(){
+        return this.created_at;
+    }
+    public void setCreated_at(OffsetDateTime offsetDateTime){
+        this.created_at = offsetDateTime;
+    }
 }

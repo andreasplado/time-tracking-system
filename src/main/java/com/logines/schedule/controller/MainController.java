@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class MainController {
@@ -50,7 +52,10 @@ public class MainController {
 
     @GetMapping("/edit-work-hour/{id}")
     public String edit(Model model, @PathVariable("id") int id){
+        WorkHour workHour = workHourService.viewWorkHour(id);
+        String createdAt  = workHour.getCreated_at().format(DateTimeFormatter.ISO_DATE_TIME);
         model.addAttribute("workHour", workHourService.viewWorkHour(id));
+        model.addAttribute("createdAt", createdAt );
 
         return "work_hour_edit";
     }
