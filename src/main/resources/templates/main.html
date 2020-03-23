@@ -286,10 +286,10 @@ input[type=submit] {
                                               name="title" th:field="*{title}"></textarea>
                                 </div>
                             </div>
+                            <input type="hidden" th:value="${usernameText}" th:name="username" th:id="username" />
                             <button type="submit" class="btn btn-success add-class"><i class="fa fa-plus"></i>ADD
                                 WORKHOUR
                             </button>
-                            <input type="hidden" th:value="${usernameText}" th:name="username" th:id="username" />
                             <!--<input type="hidden" id="username" name="username" th:value="${usernameText}" th:field="*{username}"/> -->
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         </form>
