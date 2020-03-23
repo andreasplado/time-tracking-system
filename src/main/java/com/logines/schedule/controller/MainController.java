@@ -50,7 +50,7 @@ public class MainController {
 
     @GetMapping("/edit-work-hour/{id}")
     public String edit(Model model, @PathVariable("id") int id){
-        model.addAttribute("scheduleClass", workHourService.viewWorkHour(id));
+        model.addAttribute("workHour", workHourService.viewWorkHour(id));
 
         return "work_hour_edit";
     }
