@@ -74,12 +74,16 @@ function viewStudentDetails(id){
         "showClose": true,
         "showTodayButton": true,
         "format": "YYYY-MM-DDTHH:mm:ss",
+    }).on('changeDate', function(e){
+        $(this).datetimepicker('hide');
     });
     $('#work-end-time').datetimepicker({
         "allowInputToggle": true,
         "showClose": true,
         "showTodayButton": true,
         "format": "YYYY-MM-DDTHH:mm:ss",
+    }).on('changeDate', function(e){
+        $(this).datetimepicker('hide');
     });
   });
 /*]]>*/
@@ -405,6 +409,5 @@ input[type=submit] {
 </div> <!-- cd-tabs -->
 <script src="/assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
 <script src="/assets/js/main.js"></script>
-<div class="navbar navbar-fixed-bottom" th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>
