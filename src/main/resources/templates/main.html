@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 
 
-
     <!-- NEW CONTENT -->
     <meta name="author" content="Logines">
     <meta name="description"
@@ -58,7 +57,9 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script src="https://cdn.datedropper.com/get/qsn9j0v26bkqfwe4oo4gvlxgjioau7om"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <![endif]-->
 </head>
 
@@ -87,6 +88,7 @@ function viewStudentDetails(id){
 
 
 
+
 </script>
 <script th:inline="javascript">
 /*<![CDATA[*/
@@ -106,26 +108,28 @@ function viewStudentDetails(id){
             }
         });
     });
-    /*$('#work-begin-time').datetimepicker({
-        "allowInputToggle": true,
-        "showClose": true,
-        "showTodayButton": true,
-        "format": "YYYY-MM-DDTHH:mm:ss",
-    }).on('changeDate', function(e){
-        $(this).datetimepicker('hide');
-    });
-    $('#work-end-time').datetimepicker({
-        "allowInputToggle": true,
-        "showClose": true,
-        "showTodayButton": true,
-        "format": "YYYY-MM-DDTHH:mm:ss",
-    }).on('changeDate', function(e){
-        $(this).datetimepicker('hide');
-    });*/
-  });
+
   $('#work-end-time').dateDropper();
   $('#work-begin-time').dateDropper();
+
+    $( "#work-end-time" ).dateDropper({
+        minYear: currentYear,
+        maxYear: currentYear+1,
+        lock: "from",
+        lang: "en",
+        format: "Y-m-d",
+        color: "#f39c12"
+    });
+    $( "#work-end-time" ).dateDropper({
+        minYear: currentYear,
+        maxYear: currentYear+1,
+        lock: "from",
+        lang: "en",
+        format: "Y-m-d",
+        color: "#f39c12"
+    });
 /*]]>*/
+
 
 
 
@@ -270,9 +274,6 @@ input[type=submit] {
     margin-bottom: 30px;
 }
 
-
-
-
 </style>
 
 
@@ -280,7 +281,8 @@ input[type=submit] {
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
     <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
-    <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;" th:action="@{/logout}">
+    <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
+          th:action="@{/logout}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="btn btn-primary float-right logout-btn" type="submit">LOG OUT</button>
         <br/>
