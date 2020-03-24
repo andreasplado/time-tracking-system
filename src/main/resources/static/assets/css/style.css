@@ -875,8 +875,6 @@ img,video,svg{
     --heading-line-height: 1.2
 }
 body{
-    font-size: 1.5em;
-    font-size:var(--text-base-size, 1em);
     font-family:'PT Sans', sans-serif;
     font-family:var(--font-primary, sans-serif);
     color:hsl(240, 4%, 20%);
@@ -887,34 +885,6 @@ h1,h2,h3,h4{
     color:var(--color-contrast-higher, #1c1c21);
     line-height:1.2;
     line-height:var(--heading-line-height, 1.2)
-}
-.text-xxxl{
-    font-size:2.48832em;
-    font-size:var(--text-xxxl, 2.488em)
-}
-h1,.text-xxl{
-    font-size:2.0736em;
-    font-size:var(--text-xxl, 2.074em)
-}
-h2,.text-xl{
-    font-size:1.728em;
-    font-size:var(--text-xl, 1.728em)
-}
-h3,.text-lg{
-    font-size:1.44em;
-    font-size:var(--text-lg, 1.44em)
-}
-h4,.text-md{
-    font-size:1.2em;
-    font-size:var(--text-md, 1.2em)
-}
-small,.text-sm{
-    font-size:0.83333em;
-    font-size:var(--text-sm, 0.833em)
-}
-.text-xs{
-    font-size:0.69444em;
-    font-size:var(--text-xs, 0.694em)
 }
 a,.link{
     color:hsl(220, 90%, 56%);
@@ -1048,34 +1018,6 @@ u,.text-underline{
     -ms-flex-negative:0;
     flex-shrink:0
 }
-.icon--xxs{
-    font-size:12px;
-    font-size:var(--icon-xxs)
-}
-.icon--xs{
-    font-size:16px;
-    font-size:var(--icon-xs)
-}
-.icon--sm{
-    font-size:24px;
-    font-size:var(--icon-sm)
-}
-.icon--md{
-    font-size:32px;
-    font-size:var(--icon-md)
-}
-.icon--lg{
-    font-size:48px;
-    font-size:var(--icon-lg)
-}
-.icon--xl{
-    font-size:64px;
-    font-size:var(--icon-xl)
-}
-.icon--xxl{
-    font-size:128px;
-    font-size:var(--icon-xxl)
-}
 .icon--is-spinning{
     -webkit-animation:icon-spin 1s infinite linear;
     animation:icon-spin 1s infinite linear
@@ -1115,8 +1057,6 @@ u,.text-underline{
     white-space:nowrap;
     text-decoration:none;
     line-height:1;
-    font-size:1em;
-    font-size:var(--btn-font-size, 1em);
     padding-top:0.5em;
     padding-top:var(--btn-padding-y, 0.5em);
     padding-bottom:0.5em;
@@ -1149,18 +1089,7 @@ u,.text-underline{
 .btn--disabled{
     cursor:not-allowed
 }
-.btn--sm{
-    font-size:0.8em;
-    font-size:var(--btn-font-size-sm, 0.8em)
-}
-.btn--md{
-    font-size:1.2em;
-    font-size:var(--btn-font-size-md, 1.2em)
-}
-.btn--lg{
-    font-size:1.4em;
-    font-size:var(--btn-font-size-lg, 1.4em)
-}
+
 .btn--icon{
     padding:0.5em;
     padding:var(--btn-padding-y, 0.5em)
@@ -1203,8 +1132,6 @@ u,.text-underline{
     color:hsl(240, 8%, 12%);
     color:var(--color-contrast-higher, #1c1c21);
     line-height:1.2;
-    font-size:1.2em;
-    font-size:var(--text-md, 1.2em);
     margin-bottom:0.375em;
     margin-bottom:var(--space-xxs)
 }
@@ -1216,8 +1143,6 @@ u,.text-underline{
     background-color:var(--color-error, #f54251);
     color:hsl(0, 0%, 100%);
     color:var(--color-white, #fff);
-    font-size:0.83333em;
-    font-size:var(--text-sm, 0.833em);
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     padding:0.5em;
@@ -2882,8 +2807,6 @@ mark{
     height:1px
 }
 .text-component figcaption{
-    font-size:0.83333em;
-    font-size:var(--text-sm);
     color:hsl(240, 1%, 48%);
     color:var(--color-contrast-medium)
 }
@@ -2892,10 +2815,6 @@ mark{
     --text-vspace-multiplier: 1.2
 }
 :root{
-    --btn-font-size: 1em;
-    --btn-font-size-sm: calc(var(--btn-font-size) - 0.2em);
-    --btn-font-size-md: calc(var(--btn-font-size) + 0.2em);
-    --btn-font-size-lg: calc(var(--btn-font-size) + 0.4em);
     --btn-radius: 0.25em;
     --btn-padding-x: var(--space-sm);
     --btn-padding-y: var(--space-xs)
@@ -2954,10 +2873,6 @@ mark{
     box-shadow:0 0 0 3px hsla(355, 90%, 61%, 0.2);
     box-shadow:0 0 0 3px var(--color-shadow)
 }
-.form-label{
-    font-size:0.83333em;
-    font-size:var(--text-sm)
-}
 :root{
     --cd-color-1:hsl(225, 31%, 23%);
     --cd-color-1-h:225;
@@ -2986,14 +2901,10 @@ body{
 h1{
     color:hsl(54, 42%, 95%);
     color:var(--cd-color-2);
-    font-size:1.44em;
-    font-size:var(--text-lg)
 }
 .cd-article-link{
     color:hsl(225, 31%, 52.9%);
     color:hsl(var(--cd-color-1-h), var(--cd-color-1-s), calc(var(--cd-color-1-l)*2.3));
-    font-size:0.83333em;
-    font-size:var(--text-sm)
 }
 .cd-tabs{
     position:relative
@@ -3110,8 +3021,6 @@ h1{
     align-items:center;
     height:60px;
     width:60px;
-    font-size:0.76388em;
-    font-size:calc(var(--text-xs)*1.1);
     font-weight:700;
     color:hsl(54, 8%, 75%);
     color:var(--cd-color-3);
@@ -3200,8 +3109,6 @@ h1{
 }
 @media (min-width: 64rem){
     .cd-tabs__panel p{
-        font-size:0.83333em;
-        font-size:var(--text-sm)
     }
 }
 .js .cd-tabs__panel{
