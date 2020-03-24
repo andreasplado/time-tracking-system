@@ -318,7 +318,7 @@ input[type=submit] {
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHours.id} +')'"
+                <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
                     th:each="userWorkHour : ${userWorkHours}">
                     <td th:text="${userWorkHour.start_time}"></td>
                     <td th:text="${userWorkHour.end_time}"></td>
