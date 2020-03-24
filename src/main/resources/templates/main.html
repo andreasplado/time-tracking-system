@@ -57,6 +57,8 @@
     <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="https://cdn.datedropper.com/get/qsn9j0v26bkqfwe4oo4gvlxgjioau7om"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <![endif]-->
 </head>
 
@@ -121,6 +123,8 @@ function viewStudentDetails(id){
         $(this).datetimepicker('hide');
     });*/
   });
+  $('#work-end-time').dateDropper();
+  $('#work-begin-time').dateDropper();
 /*]]>*/
 
 
@@ -314,7 +318,7 @@ input[type=submit] {
                     <label for="time">Work begin time:</label>
                     <div class="input-group date" id="work-begin-time">
                         <input type="text" id="start_time" name="start_time" placeholder="Work begin time"
-                               class="form-control" th:field="*{start_time}"  data-datetimepicker/>
+                               class="form-control datedropper-init" th:field="*{start_time}"  data-datetimepicker/>
                         <p th:text="${flashAttr}">Lol</p>
                     </div>
                 </div>
