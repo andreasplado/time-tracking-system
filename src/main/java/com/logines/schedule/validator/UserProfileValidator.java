@@ -29,9 +29,6 @@ public class UserProfileValidator implements Validator {
             if (userProfile.getFullname().length() < 6 || userProfile.getUsername().length() > 32) {
                 errors.rejectValue("fullname", "Size.userForm.fullname");
             }
-            if (userServiceImpl.findUserProfile(userProfile.getUsername()) != null) {
-                errors.rejectValue("username", "Duplicate.userForm.username");
-            }
 
             ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty.userForm.password");
             if (userProfile.getEmail().length() < 8 || userProfile.getEmail().length() > 32) {
