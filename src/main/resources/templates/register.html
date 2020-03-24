@@ -8,8 +8,11 @@
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -19,33 +22,132 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 </head>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Log in with your account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" content="Six Revisions">
+    <meta name="description"
+          content="How to use the CSS background-size property to make an image fully span the entire viewport."/>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-1.11.1.min.js"
+            integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!--BACKGROUND -->
+    <link rel="icon" href="http://sixrevisions.com/favicon.ico" type="image/x-icon"/>
+    <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- responsive-full-background-image.css stylesheet contains the code you want -->
+    <link rel="stylesheet" href="/responsive-full-background-image.css">
+
+
+</head>
 
 <body>
-
 <div class="container">
-    <form th:action="@{/register}" th:object="${registerForm}" method="POST">
-        <div class="form-group">
-            <label>Username:</label>
-            <input type="text" class="form-control" id="username" placeholder="Enter name" name="username" th:field="*{username}"/>
-        </div>
-        <div class="form-group">
-            <label>Password:</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" th:field="*{password}" />
-        </div>
-        <div class="form-group">
-            <label>Repeat password:</label>
-            <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password" name="passwordConfirm" th:field="*{passwordConfirm}"/>
-        </div>
-        <p th:text="${status}">Test</p>
-        <p th:text="${error}">Test</p>
-        <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <form th:action="@{/register}" style="float:right; margin: 30px;">
+        <button class="btn btn-primary" type="submit">REGISTER</button>
     </form>
-    <br />
-    <form action="@{/user-login}"><button class="btn btn-primary" type="submit">LOGIN</button></form>
+    <header class="container">
+        <section class="content">
+            <h1>Logines time-tracking system</h1>
+            <p class="sub-title"><strong>Futuristic time-tracking for</strong> <br/>human resources</p>
+
+            <h2><strong>Register new user</strong></h2>
+
+            <form th:action="@{/register}" th:object="${registerForm}" method="POST">
+                <div class="form-group">
+                    <label>Username:</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"
+                           th:field="*{username}"/>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password"
+                           name="password"
+                           th:field="*{password}"/>
+                </div>
+                <div class="form-group">
+                    <label>Repeat password:</label>
+                    <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password"
+                           name="passwordConfirm" th:field="*{passwordConfirm}"/>
+                </div>
+                <p th:text="${status}">Test</p>
+                <p th:text="${error}">Test</p>
+                <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+            <!--<p><a class="button" id="load-more-content" href="#top">Load some content</a></p>-->
+            <br/>
+        </section>
+    </header>
+    <div class="container">
+        <div class="row text-dark">
+            <div class="col-sm col-xs-12">
+                <div class="card custom-card">
+                    <h1> User tracking system</h1>
+                    <p class="card-text">This system is used to track user work-hours.</p>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="col-sm col-xs-12">
+                <div class="card custom-card">
+                    <h1> Persitent content</h1>
+                    <p class="card-text">If you ever feel that you might lose evidence of your work-time hold on! This
+                        data is fully persistant.</p>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div class="col-sm col-xs-12">
+                <div class="card custom-card">
+                    <h1>Automatic data deletion on fly</h1>
+                    <p class="card-text">This system is used to delete old records of a work-hour within 30 days.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div th:replace="fragments/footer :: footer">...</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
