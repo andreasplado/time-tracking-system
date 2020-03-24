@@ -33,4 +33,7 @@ body {
 a.footer-text:hover {
     color:#DFDFDF;
 }
+.custom-card{
+    padding:30px;
+}
 
