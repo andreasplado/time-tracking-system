@@ -113,6 +113,7 @@ $( function() {
         });
     });
 
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
     $( "#start-working" ).click(function() {
     console.log("klikkisid");
 
@@ -123,13 +124,11 @@ $( function() {
     if($("#start-working").is(":hidden")){
         $("#time-data").css('visibility', 'hidden');
         $( "#start-working" ).css('visibility', 'visible');
+        setInterval( function(){
+            $("#seconds").html(pad(++sec%60));
+            $("#minutes").html(pad(parseInt(sec/60,10)));
+        }, 1000);
     }
-
-    function pad ( val ) { return val > 9 ? val : "0" + val; }
-    setInterval( function(){
-        $("#seconds").html(pad(++sec%60));
-        $("#minutes").html(pad(parseInt(sec/60,10)));
-    }, 1000);
     });
  });
 
@@ -354,7 +353,7 @@ input[type=submit] {
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
             <button class="btn btn-success add-class" id="start-working">START WORKING</button>
-            <div style="display:none;" id="time-data">
+            <div style="display:none; font-size:25%;" id="time-data">
                 <span id="minutes"></span>:<span id="seconds"></span>
             </div>
 
