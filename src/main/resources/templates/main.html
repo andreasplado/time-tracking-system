@@ -60,8 +60,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel='stylesheet' id='flatpickr-style-css'  href='https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css?ver=5.2.4' type='text/css' media='all' />
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/flatpickr?ver=5.2.4'></script>
     <![endif]-->
 </head>
 
@@ -111,8 +111,14 @@ $( function() {
             }
         });
     });
- $("#start_time").flatpickr();
- $("#end_time").flatpickr();
+    var config =  {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        minDate: "today",
+        maxDate: new Date().fp_incr(365)
+    };
+    $('#start_time').flatpickr(config);
+    $('#end_time').flatpickr(config);
  });
 
 /*]]>*/
