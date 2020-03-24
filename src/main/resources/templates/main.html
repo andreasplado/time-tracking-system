@@ -313,7 +313,7 @@ input[type=submit] {
                     <label for="time">Work begin time:</label>
                     <div class="input-group date" id="work-begin-time">
                         <input type="text" id="start_time" name="start_time" placeholder="Work begin time"
-                               class="form-control datedropper-init" th:field="*{start_time}"/>
+                               class="form-control" th:field="*{start_time}"/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -321,21 +321,7 @@ input[type=submit] {
                     <label for="time">Work end time:</label>
                     <div class="input-group date" id="work-end-time">
                         <input type="text" id="end_time" name="end_time" placeholder="Work end time"
-                               class="form-control datedropper-init" th:field="*{end_time}"/>
-                    </div>
-                    <div class="container">
-                        <div class="row">
-                            <div class='col-sm-6'>
-                                <div class="form-group">
-                                    <div class='input-group date' id='datetimepicker1'>
-                                        <input type='text' class="form-control" />
-                                        <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                               class="form-control" th:field="*{end_time}"/>
                     </div>
                 </div>
                 <div class="form-group">
