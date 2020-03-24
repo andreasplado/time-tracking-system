@@ -307,8 +307,9 @@ input[type=submit] {
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
 
+
             <h4>My working history</h4>
-            <table class="table">
+            <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
                 <thead>
                 <tr>
                     <th>Work start time</th>
@@ -335,6 +336,9 @@ input[type=submit] {
                 </tr>
                 </tbody>
             </table>
+            <div th:unless="${userWorkHours.empty}">
+                <div th:text="You don't have any record of the workhour">Hi, User</div>
+            </div>
         </li>
 
         <li id="tab-workhours" class="cd-tabs__panel text-component">
