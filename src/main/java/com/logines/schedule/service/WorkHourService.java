@@ -33,7 +33,7 @@ public class WorkHourService {
         return workHourRepository.findAll();
     }
 
-    public void updateJob(WorkHour workHour){
+    public void updateWorkHour(WorkHour workHour){
         workHourRepository.save(workHour);
     }
 

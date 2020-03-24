@@ -4,6 +4,7 @@ import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.WorkHourService;
+import com.logines.schedule.validator.WorkHourValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -30,6 +32,13 @@ public class MainController {
     private WorkHourService workHourService;
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private WorkHourValidator workHourValidator;
+
+    @InitBinder("work_hour")
+    public void initBinder(WebDataBinder webDataBinder) {
+        webDataBinder.setValidator(workHourValidator);
+    }
 
     //@RequestMapping(value="/",method = RequestMethod.GET)
     @GetMapping({"/", "/home"})
@@ -67,12 +76,17 @@ public class MainController {
 
     @PostMapping("/edit-work-hour/{id}")
     public String edit(@PathVariable("id") long id,
-                       @Valid Class aClass,
+                       @Valid WorkHour workHour,
                        BindingResult bindingResult,
                        Model model){
-        model.addAttribute("message", "Workhour edited successfully...");
-
-        return "successful_page";
+        workHourValidator.validate(workHour, bindingResult);
+        if(bindingResult.hasErrors()){
+            return "main";
+        }else{
+            workHourService.updateWorkHour(workHour);
+            model.addAttribute("message", "Workhour edited successfully...");
+            return "successful_page";
+        }
     }
 
     @PostMapping("time/{id}")
