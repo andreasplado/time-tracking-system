@@ -231,6 +231,9 @@ input[type=submit] {
 .cd-tabs__panels{
     width: 99%!important;
 }
+.logout-form{
+    margin-bottom: 30px;
+}
 
 
 
@@ -241,7 +244,7 @@ input[type=submit] {
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
     <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
-    <form id="logoutForm" method="POST" th:action="@{/logout}">
+    <form id="logoutForm" class="logout-form" method="POST" th:action="@{/logout}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button class="btn btn-primary float-right logout-btn" type="submit">LOG OUT</button><br />
     </form>
