@@ -87,23 +87,6 @@ function viewStudentDetails(id){
 }
 var sec = 0;
 
-$( "#start-working" ).click(function() {
-    console.log("klikkisid");
-
-    if($("#start-working").is(":visible")){
-        $( "#start-working" ).css('visibility', 'hidden');
-    }
-    if($("#start-working").is(":hidden")){
-        $( "#start-working" ).css('visibility', 'visible');
-    }
-
-    function pad ( val ) { return val > 9 ? val : "0" + val; }
-    setInterval( function(){
-        $("#seconds").html(pad(++sec%60));
-        $("#minutes").html(pad(parseInt(sec/60,10)));
-    }, 1000);
-});
-
 
 
 
@@ -129,11 +112,22 @@ $( function() {
             }
         });
     });
-    $( "#start_time" ).click(function() {
-        $( "#start_time" ).datetimepicker();
-    });
-    $( "#end_time" ).click(function() {
-        $( "#end_time" ).datetimepicker();
+
+    $( "#start-working" ).click(function() {
+    console.log("klikkisid");
+
+    if($("#start-working").is(":visible")){
+        $( "#start-working" ).css('visibility', 'hidden');
+    }
+    if($("#start-working").is(":hidden")){
+        $( "#start-working" ).css('visibility', 'visible');
+    }
+
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        $("#seconds").html(pad(++sec%60));
+        $("#minutes").html(pad(parseInt(sec/60,10)));
+    }, 1000);
     });
  });
 
