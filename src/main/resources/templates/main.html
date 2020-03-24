@@ -336,8 +336,8 @@ input[type=submit] {
                 </tr>
                 </tbody>
             </table>
-            <div th:unless="${userWorkHours.empty}">
-                <div th:text="You don't have any record of the workhour">Hi, User</div>
+            <div th:if="${userWorkHours==null and userWorkHours.empty}">
+                <p>You havn't added any worktime yet</p>
             </div>
         </li>
 
