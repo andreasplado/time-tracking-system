@@ -85,6 +85,24 @@ function viewWorkHour(id){
 function viewStudentDetails(id){
     window.location.href="student-details/" + id;
 }
+var sec = 0;
+
+$( "#start-working" ).click(function() {
+    console.log("klikkisid");
+
+    if($("#start-working").is(":visible")){
+        $( "#start-working" ).css('visibility', 'hidden');
+    }
+    if($("#start-working").is(":hidden")){
+        $( "#start-working" ).css('visibility', 'visible');
+    }
+
+    function pad ( val ) { return val > 9 ? val : "0" + val; }
+    setInterval( function(){
+        $("#seconds").html(pad(++sec%60));
+        $("#minutes").html(pad(parseInt(sec/60,10)));
+    }, 1000);
+});
 
 
 
@@ -310,7 +328,7 @@ input[type=submit] {
             <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}">
                 <input type="hidden" th:value="${usernameText}" name="username" th:field="*{username}"/>
                 <div class="form-group">
-                    <label for="time">Work begin time:</label>
+                    <label>Work begin time:</label>
                     <div class="input-group date" id="work-begin-time">
                         <input type="text" id="start_time" name="start_time" placeholder="Work begin time"
                                class="form-control" th:field="*{start_time}"/>
@@ -318,14 +336,14 @@ input[type=submit] {
                 </div>
                 <div class="form-group">
                     <p th:text="${workhouraddingError}">Test</p>
-                    <label for="time">Work end time:</label>
+                    <label>Work end time:</label>
                     <div class="input-group date" id="work-end-time">
                         <input type="text" id="end_time" name="end_time" placeholder="Work end time"
                                class="form-control" th:field="*{end_time}"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="time">Notes:</label>
+                    <label>Notes:</label>
                     <div class="input-group date" id="description">
                                     <textarea class="form-control" rows="5" id="title" placeholder="Enter description"
                                               name="title" th:field="*{title}"></textarea>
@@ -339,6 +357,11 @@ input[type=submit] {
                 <!--<input type="hidden" id="username" name="username" th:value="${usernameText}" th:field="*{username}"/> -->
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
+            <button class="btn btn-success add-class" id="start-working">START WORKING</button>
+            <div style="display:none;" id="time-data">
+                <span id="minutes"></span>:<span id="seconds"></span>
+            </div>
+
 
 
             <h4>My working history</h4>

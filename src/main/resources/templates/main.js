@@ -54,4 +54,5 @@ $(document).ready(function(){
     $("#currentDate").html(date);
     console.log(date);
     alert(date);
+
 });
