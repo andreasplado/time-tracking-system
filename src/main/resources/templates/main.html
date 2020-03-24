@@ -96,7 +96,7 @@ function viewStudentDetails(id){
 </script>
 <script th:inline="javascript">
 /*<![CDATA[*/
-    $( function() {
+$( function() {
     var allStudents= [
          /*[# th:each="student : ${allStudents}"]*/
             [[${student.name}]]
@@ -112,10 +112,10 @@ function viewStudentDetails(id){
             }
         });
     });
-    });
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
-    });
+ $("#start_time").flatpickr();
+ $("#end_time").flatpickr();
+ });
+
 /*]]>*/
 
 
