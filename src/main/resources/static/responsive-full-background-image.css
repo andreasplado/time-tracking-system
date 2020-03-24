@@ -30,4 +30,7 @@ body {
 .footer-text{
     color: lightblue;
 }
+a.footer-text:hover {
+    color:#DFDFDF;
+}
 
