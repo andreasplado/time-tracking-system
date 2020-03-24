@@ -72,9 +72,6 @@
 
 <body>
 <div class="container">
-    <form th:action="@{/register}" style="float:right; margin: 30px;">
-        <button class="btn btn-primary" type="submit">REGISTER</button>
-    </form>
     <header class="container">
         <section class="content">
             <h1>Logines time-tracking system</h1>
@@ -101,7 +98,7 @@
                 </div>
                 <p th:text="${status}">Test</p>
                 <p th:text="${error}">Test</p>
-                <button class="btn btn-success" type="submit">REGISTER</button>&nbsp;&nbsp;
+                <button class="btn btn-success" type="submit">REGISTER AND START USING TIME-TRACKING</button>&nbsp;&nbsp;
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
             <!--<p><a class="button" id="load-more-content" href="#top">Load some content</a></p>-->
