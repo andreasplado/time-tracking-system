@@ -82,3 +82,7 @@
     resizing = false;
   };
 })();
+
+$(document).ready(function(){
+
+});
