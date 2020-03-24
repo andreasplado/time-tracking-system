@@ -102,9 +102,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/assets/js/util.js",
                         "/assets/css/style.scss",
                         "/images/background.svg",
-                        "/images/dashboard.svg",
-                        "/images/user.svg",
-                        "/images/working-hours.svg"
+                        "/images/dashboard.png",
+                        "/images/user.png",
+                        "/images/working-hours.png"
                 ).permitAll()
                 .anyRequest().authenticated()
                 .and()
