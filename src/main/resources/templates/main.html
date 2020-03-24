@@ -65,6 +65,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/assets/js/main_heading.js"></script>
+    <script src="https://cdn.datedropper.com/get/qsn9j0v26bkqfwe4oo4gvlxgjioau7om"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <![endif]-->
 </head>
 
@@ -119,6 +121,9 @@ $( function() {
 /*]]>*/
 
 document.getElementById("work-end-time").flatpickr({});
+$( document ).ready(function() {
+    $('#date-input').dateDropper();
+});
 
 
 
@@ -336,11 +341,11 @@ input[type=submit] {
                 <!--<input type="hidden" id="username" name="username" th:value="${usernameText}" th:field="*{username}"/> -->
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
-            <button class="btn btn-success add-class" id="start-working">START WORKING</button>
-            <div style="display:none; font-size:25%;" id="time-data">
-                <span id="minutes"></span>:<span id="seconds"></span>
-            </div>
 
+            <input class="datedropper-init" type="text">
+            <!-- data-datedropper attribute -->
+            <input type="text" data-datedropper>
+            <input id="date-input" type="text">
 
 
             <h4>My working history</h4>
