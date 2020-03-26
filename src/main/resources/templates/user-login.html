@@ -34,7 +34,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
     <!--BACKGROUND -->
-    <link rel="icon" href="http://sixrevisions.com/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/login_style/favicon.ico" type="image/x-icon"/>
     <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -65,14 +65,15 @@
     <div class="container-login100">
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" data-tilt>
-                <img src="images/img-01.png" alt="IMG">
+                <img src="/login_style/images/img-01.png">
             </div>
 
             <form class="login100-form validate-form" th:action="@{/login}" enctype="application/x-www-form-urlencoded" method="POST">
 					<span class="login100-form-title">
 						Member Login
 					</span>
-                    <h3 th:text="${error}">Test</h3>
+                    <br />
+                    <span class="login100-form-error" th:text="${error}">Test</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                     <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"/>
