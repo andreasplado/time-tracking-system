@@ -55,11 +55,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
+        String[] resources = new String[]{
+                "/", "/home","/register",
+                "/assets/**","/images/**", "/datetimepicker/**", "login/", "js/**"
+        };
+
         http
                 .authorizeRequests()
-                .antMatchers("/resources/**",
-                        "/home", "/register"
-                        ).permitAll()
+                .antMatchers(resources).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
