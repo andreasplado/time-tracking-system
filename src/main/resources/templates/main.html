@@ -21,10 +21,19 @@
           href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"/>
     <script>document.getElementsByTagName("html")[0].className += " js";</script>
+
+    <!--DATETIME PICKER-->
+    <link rel="stylesheet" type="text/css" href="DateTimePicker.css" />
+    <script type="text/javascript" src="DateTimePicker.js"></script>
+
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" type="text/css" href="/datetimepicker/DateTimePicker-ltie9.css" />
+    <script type="text/javascript" src="/datetimepicker/DateTimePicker-ltie9.js"></script>
+    <![endif]-->
+
+    <!-- For i18n Support -->
+    <script type="text/javascript" src="/datetimepicker/DateTimePicker-i18n.js"></script>
 
 
 
@@ -54,7 +63,6 @@
           href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
     <!--BACKGROUND -->
     <link rel="icon" href="http://sixrevisions.com/favicon.ico" type="image/x-icon"/>
@@ -65,8 +73,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="/assets/js/main_heading.js"></script>
@@ -318,7 +324,7 @@ input[type=submit] {
                 <div class="form-group">
                     <label>Work begin time:</label>
                     <div class="input-group date" id="work-begin-time">
-                        <input type="text" id="start_time" name="start_time" placeholder="Work begin time"
+                        <input type="text" id="start_time" name="start_time" data-field="datetime" readonly
                                class="form-control" th:field="*{start_time}"/>
                     </div>
                 </div>
@@ -326,7 +332,7 @@ input[type=submit] {
                     <p th:text="${workhouraddingError}">Test</p>
                     <label>Work end time:</label>
                     <div class="input-group date" id="work-end-time">
-                        <input type="text" id="end_time" name="end_time" placeholder="Work end time"
+                        <input type="text" id="end_time" name="end_time" data-field="datetime" readonly
                                class="form-control" th:field="*{end_time}"/>
                     </div>
                 </div>
