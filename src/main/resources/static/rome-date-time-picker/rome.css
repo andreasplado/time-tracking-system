@@ -106,3 +106,6 @@
 .rd-day-selected, .rd-time-selected, .rd-time-option:hover{
     background-color: #36A;
 }
+.rd-day-prev-month, .rd-day-next-month {
+    color: #952;
+}
