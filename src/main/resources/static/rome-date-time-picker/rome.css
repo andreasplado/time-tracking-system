@@ -21,6 +21,9 @@
   display: inline-block;
   margin-right: 25px;
 }
+.rd-date{
+  padding:30px;
+}
 .rd-month:last-child {
   margin-right: 0;
 }
