@@ -54,6 +54,15 @@ $(document).ready(function(){
     $("#currentDate").html(date);
     console.log(date);
 
+    $( "#start_time" ).click(function() {
+        Swal.fire({
+          title: 'Error!',
+          text: 'Do you want to continue',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        });
+    });
+
 });
 
 
