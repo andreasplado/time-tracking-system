@@ -76,16 +76,13 @@
                     <span class="login100-form-error" th:text="${error}">Test</span>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"/>
+                    <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"/><span class="fa fa-envelope" aria-hidden="true"></span>
                     <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
                     <input type="password" class="form-control" id="password" placeholder="Enter password"
-                           name="password"/><i class="fa fa-lock" aria-hidden="true"></i>
+                           name="password"/><span class="fa fa-lock" aria-hidden="true"></span>
                     <span class="focus-input100"></span>
 
                 </div>
