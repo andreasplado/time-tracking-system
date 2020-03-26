@@ -53,11 +53,7 @@ $(document).ready(function(){
     var date = today.getFullYear()+"-"+(today.getMonth()+1)+"-"+today.getDate();
     $("#currentDate").html(date);
     console.log(date);
-    alert(date);
 
 });
-
-var startTime = new Pikaday({ field: document.getElementById('start_time') });
-var endTime = new Pikaday({ field: document.getElementById('end_time') });
 
 
