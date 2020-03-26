@@ -102,3 +102,7 @@
 .rd-day-body{
   padding:6px;
 }
+
+.rd-day-selected, .rd-time-selected, .rd-time-option:hover{
+    background-color: #36A;
+}
