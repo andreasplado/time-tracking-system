@@ -55,8 +55,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
-        String[] resources = new String[]{"/register",
-                "/assets/**","/images/**", "/datetimepicker/**", "login/", "js/**"
+        String[] resources = new String[]{"/register"
         };
 
         http
@@ -71,11 +70,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
 
-        String[] ignoredResources = new String[]{"/register",
-                "/assets/**","/images/**", "/datetimepicker/**", "login/", "js/**"
-        };
-        http.authorizeRequests().antMatchers(ignoredResources).not().authenticated();
+    }
 
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring()
+                .antMatchers("/resources/**");
     }
 
     @Bean
