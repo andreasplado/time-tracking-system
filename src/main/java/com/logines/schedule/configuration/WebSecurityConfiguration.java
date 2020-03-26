@@ -58,8 +58,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers(
-                        "/responsive-full-background-image.css",
-                        "/home", "/register", "/resources/**", "/static/**"
+                        "/home", "/register", "/responsive-full-background-image.css", "/resources/**", "/static/**"
                         ).permitAll()
                 .anyRequest().authenticated()
                 .and()
