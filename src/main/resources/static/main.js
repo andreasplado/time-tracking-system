@@ -57,11 +57,7 @@ $(document).ready(function(){
 
 });
 
-//datetime picker
- $(document).ready(function()
- {
-     $("#start_time").DateTimePicker();
-     $("#end_time").DateTimePicker();
+var startTime = new Pikaday({ field: document.getElementById('start_time') });
+var endTime = new Pikaday({ field: document.getElementById('end_time') });
 
- });
 
