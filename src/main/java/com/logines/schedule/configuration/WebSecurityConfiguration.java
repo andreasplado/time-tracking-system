@@ -104,7 +104,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/images/background.svg",
                         "/images/dashboard.png",
                         "/images/user.png",
-                        "/images/working-hours.png"
+                        "/images/working-hours.png",
+                        "/datetimepicker/**",
+                        "/login_style/**"
                 ).permitAll()
                 .anyRequest().authenticated()
                 .and()
