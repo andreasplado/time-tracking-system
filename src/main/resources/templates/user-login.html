@@ -61,64 +61,6 @@
 </head>
 
 <body>
-<div class="container">
-    <form th:action="@{/register}" style="float:right; margin: 30px;">
-        <button class="btn btn-primary" type="submit">REGISTER</button>
-    </form>
-    <header class="container">
-        <section class="content">
-            <h1>Logines time-tracking system</h1>
-            <p class="sub-title"><strong>Futuristic time-tracking for</strong> <br/>human resources</p>
-            <!--<p><a class="button" id="load-more-content" href="#top">Load some content</a></p>-->
-            <form th:action="@{/login}" enctype="application/x-www-form-urlencoded" method="POST">
-                <p th:text="${message}">Test</p>
-                <div class="form-group">
-                    <label>Username:</label>
-                    <!--<input type="text" class="form-control" id="username" placeholder="Enter name" name="username"/>-->
-                </div>
-                <div class="form-group">
-                    <label>Password:</label>
-                    <!--<input type="password" class="form-control" id="password" placeholder="Enter password"
-                           name="password"/> -->
-                </div>
-                <button class="btn btn-success" type="submit">LOGIN</button>&nbsp;&nbsp;
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                <p th:text="${error}">Test</p>
-                <p th:text="${help}">Test</p>
-            </form>
-            <br/>
-        </section>
-    </header>
-    <div class="container">
-        <div class="row text-dark">
-            <div class="col-sm col-xs-12">
-                <div class="card custom-card">
-                    <h1> User tracking system</h1>
-                    <p class="card-text">This system is used to track user work-hours.</p>
-                </div>
-            </div>
-            <br />
-            <br />
-            <div class="col-sm col-xs-12">
-                <div class="card custom-card">
-                    <h1> Persitent content</h1>
-                    <p class="card-text">If you ever feel that you might lose evidence of your work-time hold on! This data is fully persistant.</p>
-                </div>
-            </div>
-            <br />
-            <br />
-            <div class="col-sm col-xs-12">
-                <div class="card custom-card">
-                    <h1>Automatic data deletion on fly</h1>
-                    <p class="card-text">This system is used to delete old records of a work-hour within 30 days.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -130,6 +72,7 @@
 					<span class="login100-form-title">
 						Member Login
 					</span>
+                    <h3 th:text="${error}">Test</h3>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                     <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"/>
