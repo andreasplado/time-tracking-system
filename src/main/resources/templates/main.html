@@ -157,6 +157,7 @@ $( function() {
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
 
             <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}">
+                <input type="hidden" th:value="${usernameText}" th:id="username" name="username" th:field="*{username}"/>
                 <div class="form-group">
                     <label>Work begin time:</label>
                     <div class="input-group date" id="work-begin-time">
@@ -179,8 +180,8 @@ $( function() {
                                               name="title" th:field="*{title}"></textarea>
                     </div>
                 </div>
-                <input type="text" th:value="${usernameText}" style="display: none;" class="form-control"
-                       th:name="username" th:id="username" readonly/>
+                <!--<input type="text" th:value="${usernameText}" style="display: none;" class="form-control"
+                       th:name="username"  readonly/> -->
                 <button type="submit" class="btn btn-success add-class"><i class="fa fa-plus"></i>ADD
                     WORKHOUR
                 </button>
