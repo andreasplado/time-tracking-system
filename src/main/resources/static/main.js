@@ -62,6 +62,7 @@ $(document).ready(function(){
           confirmButtonText: 'Cool'
         });
     });
+    alert("loaded");
 
 });
 
