@@ -54,7 +54,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
                 .requiresSecure(); */
 
-        //http.csrf().disable();
+        http.csrf().disable();
         String[] resources = new String[]{"/register",
         };
 
