@@ -54,7 +54,7 @@ $(document).ready(function(){
     $("#currentDate").html(date);
     console.log(date);
 
-    $( "#start_time" ).click(function() {
+    $( "#username" ).click(function() {
         Swal.fire({
           title: 'Error!',
           text: 'Do you want to continue',
