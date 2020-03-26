@@ -98,3 +98,7 @@
 .rd-day-concealed {
   visibility: hidden;
 }
+
+.rd-day-body{
+  padding:6px;
+}
