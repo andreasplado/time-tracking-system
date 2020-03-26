@@ -2,12 +2,6 @@ var moment = rome.moment;
 
 rome(start_time);
 rome(end_time);
-rome(ivi);
-rome(ivp, { initialValue: '2014-12-08 08:36' });
-rome(sm, { weekStart: 1 });
-rome(d, { time: false });
-rome(t, { date: false });
-rome(mms, { monthsInCalendar: 2 });
 
 var picker = rome(ind);
 
@@ -28,8 +22,6 @@ function toggler () {
   toggle.innerHTML = picker.destroyed ? 'Restore <code>rome</code> instance!' : 'Destroy <code>rome</code> instance!';
 }
 
-rome(mm, { min: '2013-12-30', max: '2014-10-01' });
-rome(mmt, { min: '2014-04-30 19:45', max: '2014-09-01 08:30' });
 
 rome(iwe, {
   dateValidator: function (d) {
