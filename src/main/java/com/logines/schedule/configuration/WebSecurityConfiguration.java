@@ -55,57 +55,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
-
-        /*http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/login", "/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .successHandler(appAuthenticationSuccessHandler())
-                .loginPage("/user-login").permitAll()
-                .and()
-                .logout().invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/user-login?error").permitAll();
-        */
-        /*http
-                .authorizeRequests()
-                .antMatchers("/resources/**", "/register").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/user-login")
-                .loginProcessingUrl("/user-login")
-                .failureUrl("/user-login?error")
-                .successForwardUrl("/")
-                .failureForwardUrl("/404")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();*/
-        //WORKING
-        /*http.authorizeRequests().antMatchers("/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll().anyRequest().authenticated()
-                .and().formLogin().loginPage("/user-login").permitAll().and().logout().permitAll();
-
-        */
         http
                 .authorizeRequests()
                 .antMatchers(
-                        "/responsive-full-background-image.css", "/images/background-photo.jpg",
+                        "/responsive-full-background-image.css",
                         "/home", "/register", "/lol",
-                        "/images/background-photo-mobile-devices.jpg",
-                        "/assets/css/style.css",
-                        "/assets/js/main.js",
-                        "/assets/js/util.js",
-                        "/assets/css/style.scss",
-                        "/images/background.svg",
-                        "/images/dashboard.png",
-                        "/images/user.png",
-                        "/images/working-hours.png",
-                        "/assets/js/main_heading.js",
                         "/assets/**",
                         "/images/**",
                         "/static/**"
