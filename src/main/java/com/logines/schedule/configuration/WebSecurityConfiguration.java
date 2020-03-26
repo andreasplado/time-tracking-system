@@ -54,15 +54,48 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
                 .requiresSecure(); */
 
-        http.csrf().disable();
-        String[] resources = new String[]{"/register",
-        };
+        //http.csrf().disable();
 
+        /*http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/login", "/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .successHandler(appAuthenticationSuccessHandler())
+                .loginPage("/user-login").permitAll()
+                .and()
+                .logout().invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/user-login?error").permitAll();
+        */
+        /*http
+                .authorizeRequests()
+                .antMatchers("/resources/**", "/register").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/user-login")
+                .loginProcessingUrl("/user-login")
+                .failureUrl("/user-login?error")
+                .successForwardUrl("/")
+                .failureForwardUrl("/404")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();*/
+        //WORKING
+        /*http.authorizeRequests().antMatchers("/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll().anyRequest().authenticated()
+                .and().formLogin().loginPage("/user-login").permitAll().and().logout().permitAll();
+
+        */
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**",
                         "/responsive-full-background-image.css", "/static/**", "/images/background-photo.jpg",
-                        "/home", "/register",
+                        "/home", "/register", "/lol",
                         "/images/background-photo-mobile-devices.jpg",
                         "/assets/css/style.css",
                         "/assets/js/main.js",
@@ -71,9 +104,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/images/background.svg",
                         "/images/dashboard.png",
                         "/images/user.png",
-                        "/images/working-hours.png",
-                        "/assets/**",
-                        "/assets", "/datetimepicker", "/images", "/js", "/login_style"
+                        "/images/working-hours.png"
                 ).permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -84,13 +115,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
 
-    }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring()
-                .antMatchers("/assets", "/datetimepicker", "/images", "/js", "/login");
     }
 
     @Bean
