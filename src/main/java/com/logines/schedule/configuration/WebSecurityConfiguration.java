@@ -60,8 +60,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/responsive-full-background-image.css",
                         "/home", "/register", "/lol",
-                        "/assets/**",
-                        "/images/**",
                         "/static/**"
 
                 ).permitAll()
