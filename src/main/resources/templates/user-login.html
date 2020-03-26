@@ -85,11 +85,9 @@
 
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
                     <input type="password" class="form-control" id="password" placeholder="Enter password"
-                           name="password"/>
+                           name="password"/><i class="fa fa-lock" aria-hidden="true"></i>
                     <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
+
                 </div>
 
                 <div class="container-login100-form-btn">
@@ -98,25 +96,13 @@
                     </button>
                 </div>
 
-                <div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-                    <a class="txt2" href="#">
-                        Username / Password?
-                    </a>
-                </div>
-
                 <div class="text-center p-t-136">
-                    <a class="txt2" href="#">
+                    <a class="/register" href="#">
                         Create your Account
                         <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                     </a>
                 </div>
-                <p th:text="${message}">Test</p>
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                <p th:text="${error}">Test</p>
-                <p th:text="${help}">Test</p>
             </form>
         </div>
     </div>
