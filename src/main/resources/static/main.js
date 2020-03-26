@@ -56,3 +56,12 @@ $(document).ready(function(){
     alert(date);
 
 });
+
+//datetime picker
+ $(document).ready(function()
+ {
+     $("#start_time").DateTimePicker();
+     $("#end_time").DateTimePicker();
+
+ });
+
