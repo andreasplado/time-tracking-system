@@ -4,6 +4,7 @@ import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.WorkHourService;
+import com.logines.schedule.validator.UserValidator;
 import com.logines.schedule.validator.WorkHourValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -35,6 +36,9 @@ public class MainController {
     @Autowired
     private WorkHourValidator workHourValidator;
 
+    @Autowired
+    private UserValidator userValidator;
+
     @InitBinder("work_hour")
     public void initBinder(WebDataBinder webDataBinder) {
         webDataBinder.setValidator(workHourValidator);
@@ -43,33 +47,38 @@ public class MainController {
     //@RequestMapping(value="/",method = RequestMethod.GET)
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal, String error) {
-        model.addAttribute("usernameText", principal.getName());
+        if (principal.getName() != null) {
+            model.addAttribute("usernameText", principal.getName());
 
-        UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
-        //Kui kasutajaandmeid on lisatud
-        if(userProfile != null) {
-            List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
-            Collections.reverse(allWorkhours);
-            List<WorkHour> userWorkHours = workHourService.findByUsername(principal.getName());
-            model.addAttribute("workHourForm", new WorkHour());
-            model.addAttribute("userProfile", userProfile);
-            model.addAttribute("userWorkHours", userWorkHours);
-            model.addAttribute("allWorkHours", allWorkhours);
-            return "main";
+
+            UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
+            //Kui kasutajaandmeid on lisatud
+            if (userProfile != null) {
+                List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
+                Collections.reverse(allWorkhours);
+                List<WorkHour> userWorkHours = workHourService.findByUsername(principal.getName());
+                model.addAttribute("workHourForm", new WorkHour());
+                model.addAttribute("userProfile", userProfile);
+                model.addAttribute("userWorkHours", userWorkHours);
+                model.addAttribute("allWorkHours", allWorkhours);
+                return "main";
+            } else {
+                model.addAttribute("userProfileForm", new UserProfile());
+                if (error != null)
+                    model.addAttribute("error", "Your username and password is invalid.");
+                return "add_user_profile";
+            }
         }else{
-            model.addAttribute("userProfileForm", new UserProfile());
-            if (error != null)
-                model.addAttribute("error", "Your username and password is invalid.");
-            return "add_user_profile";
+            return "user-login";
         }
     }
 
     @GetMapping("/edit-work-hour/{id}")
-    public String edit(Model model, @PathVariable("id") int id){
+    public String edit(Model model, @PathVariable("id") int id) {
         WorkHour workHour = workHourService.viewWorkHour(id);
-        String createdAt  = workHour.getCreated_at().format(DateTimeFormatter.ISO_DATE_TIME);
+        String createdAt = workHour.getCreated_at().format(DateTimeFormatter.ISO_DATE_TIME);
         model.addAttribute("workHour", workHourService.viewWorkHour(id));
-        model.addAttribute("createdAt", createdAt );
+        model.addAttribute("createdAt", createdAt);
 
         return "work_hour_edit";
     }
@@ -78,11 +87,11 @@ public class MainController {
     public String edit(@PathVariable("id") long id,
                        @Valid WorkHour workHour,
                        BindingResult bindingResult,
-                       Model model){
+                       Model model) {
         workHourValidator.validate(workHour, bindingResult);
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "main";
-        }else{
+        } else {
             workHourService.updateWorkHour(workHour);
             model.addAttribute("message", "Workhour edited successfully...");
             return "successful_page";
@@ -91,9 +100,9 @@ public class MainController {
 
     @PostMapping("time/{id}")
     public String postTime(@PathVariable("id") long id,
-                       @Valid WorkHour workHour,
-                       BindingResult bindingResult,
-                       Model model){
+                           @Valid WorkHour workHour,
+                           BindingResult bindingResult,
+                           Model model) {
         workHourService.addWorkHour(workHour);
         model.addAttribute("message", "Workhour edited successfully...");
 
@@ -101,12 +110,12 @@ public class MainController {
     }
 
     @GetMapping("/work-hour-details/{id}")
-    public String classDetails(Model model, @PathVariable("id") int id){
+    public String classDetails(Model model, @PathVariable("id") int id) {
         WorkHour workHour = workHourService.viewWorkHour(id);
-        if(workHour != null){
+        if (workHour != null) {
             model.addAttribute("workHour", workHour);
             return "work_hour_details";
-        }else {
+        } else {
             return "404";
         }
     }
@@ -121,11 +130,11 @@ public class MainController {
     }
 
     @PostMapping("delete-work-hour/{id}")
-    public String deleteWorkHour(Model model, @PathVariable("id") int id){
-        if(workHourService.deleteJob(id)){
+    public String deleteWorkHour(Model model, @PathVariable("id") int id) {
+        if (workHourService.deleteJob(id)) {
             model.addAttribute("message", "Workhour deleted successfully...");
             return "successful_page";
-        }else{
+        } else {
             model.addAttribute("message", "Workhour not found...");
             return "successful_page";
         }
