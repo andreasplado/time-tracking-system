@@ -138,21 +138,22 @@
                 <br />
 
                 <label><span class="fa fa-envelope" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"/></label>
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                <div class="wrap-input100 validate-input">
                     <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"
                            th:field="*{username}"/>
                     <span class="focus-input100"></span>
                 </div>
 
                 <label><span class="fa fa-lock" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                <div class="wrap-input100 validate-input">
                     <input type="password" class="form-control" id="password" placeholder="Enter password"
                            name="password"
                            th:field="*{password}"/>
                     <span class="focus-input100"></span>
 
                 </div>
-                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                <label><span class="fa fa-key" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <div class="wrap-input100 validate-input">
                     <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password"
                            name="passwordConfirm" th:field="*{passwordConfirm}"/>
                     <span class="focus-input100"></span>
