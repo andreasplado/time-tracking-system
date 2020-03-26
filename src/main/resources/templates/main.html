@@ -171,7 +171,7 @@ $( function() {
                     <label>Work begin time:</label>
                     <div class="input-group date" id="work-begin-time">
                         <input type="text" id="start_time" name="start_time" th:attr="data-field='datetime'"
-                               class="form-control" th:field="*{start_time}" data-field="start_time"/>
+                               class="form-control" th:field="*{start_time}" data-field="start_time" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -179,7 +179,7 @@ $( function() {
                     <label>Work end time:</label>
                     <div class="input-group date" id="work-end-time">
                         <input type="text" id="end_time" name="end_time" th:attr="data-field='datetime'"
-                               class="form-control" th:field="*{end_time}" data-field="end_time"/>
+                               class="form-control" th:field="*{end_time}" data-field="end_time" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
