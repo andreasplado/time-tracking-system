@@ -55,12 +55,26 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
-        String[] resources = new String[]{"/register"
+        String[] resources = new String[]{"/register",
         };
 
         http
                 .authorizeRequests()
-                .antMatchers(resources).permitAll()
+                .antMatchers("/resources/**",
+                        "/responsive-full-background-image.css", "/static/**", "/images/background-photo.jpg",
+                        "/home", "/register",
+                        "/images/background-photo-mobile-devices.jpg",
+                        "/assets/css/style.css",
+                        "/assets/js/main.js",
+                        "/assets/js/util.js",
+                        "/assets/css/style.scss",
+                        "/images/background.svg",
+                        "/images/dashboard.png",
+                        "/images/user.png",
+                        "/images/working-hours.png",
+                        "/assets/**",
+                        "/assets", "/datetimepicker", "/images", "/js", "/login_style"
+                ).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
