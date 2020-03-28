@@ -38,12 +38,14 @@ public class WorkHourController {
     @PostMapping("/add-work-hour")
     public String addWorkHour(@RequestBody @Valid @ModelAttribute WorkHour workHour,
                               BindingResult bindingResult,
-                              Model model, String error, Principal principal,
-                              final RedirectAttributes redirectAttributes) {
+                              Model model, String error, Principal principal) {
         workHourValidator.validate(workHour, bindingResult);
+
+        if(error != null)
+            model.addAttribute("error", "Something went wrong. Please check all form fields.");
+
         if (bindingResult.hasErrors()) {
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
-            model.addAttribute("error", "Something went wrong. Please check all form fields.");
             if (userProfile != null) {
                 model.addAttribute("userProfile", userProfile);
                 return "main";
