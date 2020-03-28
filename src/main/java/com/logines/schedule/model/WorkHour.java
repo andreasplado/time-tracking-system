@@ -23,6 +23,9 @@ public class WorkHour {
     @Column(name = "end_time")
     private String end_time;
 
+    @Column(name = "lunch_time")
+    private String lunch_time;
+
     @Column(name = "created_at")
     private OffsetDateTime created_at;
 
@@ -90,5 +93,12 @@ public class WorkHour {
     }
     public void setCreated_at(OffsetDateTime offsetDateTime){
         this.created_at = offsetDateTime;
+    }
+
+    public void setLunch_time(String lunch_time) {
+        this.lunch_time = lunch_time;
+    }
+    public String  getLunch_time(String lunch_time) {
+        return this.lunch_time;
     }
 }
