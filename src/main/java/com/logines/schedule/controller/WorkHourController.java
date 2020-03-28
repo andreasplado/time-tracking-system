@@ -40,6 +40,17 @@ public class WorkHourController {
                               BindingResult bindingResult,
                               Model model, String error, Principal principal) {
         workHourValidator.validate(workHour, bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
+            if (userProfile != null) {
+                model.addAttribute("userProfile", userProfile);
+                return "main";
+            } else {
+                return "redirect:/";
+            }
+        }
+
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", "Something went wrong. Please check all credentials.");
             return "main";
@@ -49,14 +60,5 @@ public class WorkHourController {
             return "successful_page";
         }
 
-        /*if (bindingResult.hasErrors()) {
-            UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
-            if (userProfile != null) {
-                model.addAttribute("userProfile", userProfile);
-                return "main";
-            } else {
-                return "redirect:/";
-            }
-        } */
     }
 }
