@@ -46,8 +46,11 @@ public class WorkHourController {
             if(userProfile != null){
                 redirectAttributes.addFlashAttribute("error", bindingResult);
                 model.addAttribute("userProfile", userProfile);
+                return "main";
+            }else{
+                return "redirect:/";
             }
-            return "main";
+
         }
 
         model.addAttribute("message", "Workhour added successfully...");
