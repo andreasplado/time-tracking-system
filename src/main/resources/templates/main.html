@@ -208,7 +208,7 @@ $( function() {
             </form>
 
             <h4 th:if="${!userWorkHours.empty}">My working history</h4>
-            <h4 th:if="${userWorkHours.empty}">You don't have any records in your workhour history</h4>
+            <p th:if="${userWorkHours.empty}">You don't have any records in your workhour history</p>
             <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
                 <thead>
                 <tr>
@@ -246,7 +246,8 @@ $( function() {
         </li>
 
         <li id="tab-workhours" class="cd-tabs__panel text-component">
-            <table class="table">
+            <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
+            <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
                 <thead>
                 <tr>
                     <th>Username</th>
