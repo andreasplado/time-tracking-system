@@ -98,7 +98,8 @@ public class WorkHour {
     public void setLunch_time(String lunch_time) {
         this.lunch_time = lunch_time;
     }
-    public String  getLunch_time(String lunch_time) {
+
+    public String getLunch_time() {
         return this.lunch_time;
     }
 }
