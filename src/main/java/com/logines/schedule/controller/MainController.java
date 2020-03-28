@@ -47,11 +47,9 @@ public class MainController {
     //@RequestMapping(value="/",method = RequestMethod.GET)
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal, String error) {
+        model.addAttribute("workHourForm", new WorkHour());
         if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
-            model.addAttribute("workHourForm", new WorkHour());
-
-
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
             //Kui kasutajaandmeid on lisatud
             if (userProfile != null) {
