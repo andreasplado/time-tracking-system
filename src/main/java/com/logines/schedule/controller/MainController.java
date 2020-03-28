@@ -49,6 +49,7 @@ public class MainController {
     public String welcome(Model model, Principal principal, String error) {
         if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
+            model.addAttribute("workHourForm", new WorkHour());
 
 
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
@@ -57,7 +58,6 @@ public class MainController {
                 List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
                 Collections.reverse(allWorkhours);
                 List<WorkHour> userWorkHours = workHourService.findByUsername(principal.getName());
-                model.addAttribute("workHourForm", new WorkHour());
                 model.addAttribute("userProfile", userProfile);
                 model.addAttribute("userWorkHours", userWorkHours);
                 model.addAttribute("allWorkHours", allWorkhours);
