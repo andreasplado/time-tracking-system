@@ -158,7 +158,7 @@ $( function() {
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
 
             <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}">
-                <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
+                <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control" style="display:none;"
                        th:name="username" th:id="username" readonly/>
                 <!--<input type="hidden" th:value="${usernameText}" th:id="username" name="username" th:field="*{username}"/> -->
                 <div class="form-group">
