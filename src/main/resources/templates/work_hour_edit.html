@@ -143,32 +143,8 @@ $( function() {
     </form>
 </header>
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
-    <nav class="cd-tabs__navigation">
-        <ul class="cd-tabs__list">
-            <li>
-                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected">
-                    <img src="images/dashboard.png" width="50px" height="50px">
-                </a>
-            </li>
-
-            <li>
-                <a href="#tab-workhours" class="cd-tabs__item">
-                    <img src="/images/working-hours.png" width="50px" height="50px">
-                </a>
-            </li>
-
-            <li>
-                <a href="#tab-my-profile" class="cd-tabs__item">
-                    <img src="/images/user.png" width="50px" height="50px">
-                </a>
-            </li>
-        </ul> <!-- cd-tabs__list -->
-    </nav>
-
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-
-
             <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                 <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control" style="display:none;"
@@ -206,113 +182,10 @@ $( function() {
                 </div>
                 <button type="submit" class="btn btn-success add-class">
                     <i class="fa fa-plus"></i>
-                    ADD WORKHOUR
+                    EDIT WORKHOUR
                 </button>
                 <!--<input type="hidden" id="username" name="username" th:value="${usernameText}" th:field="*{username}"/> -->
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
-
-            <h4 th:if="${!userWorkHours.empty}">My working history</h4>
-            <p th:if="${userWorkHours.empty}">You don't have any records in your workhour history</p>
-            <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
-                <thead>
-                <tr>
-                    <th>Work start time</th>
-                    <th>Work end time</th>
-                    <th>Title</th>
-                    <th>Lunch time</th>
-                    <th>Added</th>
-
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
-                    th:each="userWorkHour : ${userWorkHours}">
-                    <td th:text="${userWorkHour.start_time}"></td>
-                    <td th:text="${userWorkHour.end_time}"></td>
-                    <td th:text="${userWorkHour.title}"></td>
-                    <td th:text="${userWorkHour.lunch_time}"></td>
-                    <td th:text="${userWorkHour.created_at}"></td>
-                    <td>
-                        <form th:action="@{/edit-work-hour/} + ${userWorkHour.id}" method="get">
-                            <button type="submit" class="btn btn-default">EDIT</button>
-                        </form>
-                        <form th:action="@{/delete-work-hour/} + ${userWorkHour.id}" method="post">
-                            <button type="submit" class="btn btn-dark delete-btn">DELETE
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div th:if="${userWorkHours==null and userWorkHours.empty}">
-                <p>You havn't added any worktime yet</p>
-            </div>
-        </li>
-
-        <li id="tab-workhours" class="cd-tabs__panel text-component">
-            <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
-            <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
-                <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Start time</th>
-                    <th>End time</th>
-                    <th>Lunch time</th>
-                    <th>Added</th>
-                    <button type="button" class="btn btn-success add-class" onclick="addWorker()"><i
-                            class="fa fa-plus"></i>ADD WORKHOUR
-                    </button>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="list-item" th:each="allWorkHour : ${allWorkHours}"
-                    th:onclick="'viewWorkHour(' + ${allWorkHour.id} +')'">
-                    <td th:text="${allWorkHour.username}"></td>
-                    <td th:text="${allWorkHour.start_time}"></td>
-                    <td th:text="${allWorkHour.end_time}"></td>
-                    <td th:text="${allWorkHour.lunch_time}"></td>
-                    <td th:text="${allWorkHour.created_at}"></td>
-                </tr>
-                </tbody>
-            </table>
-        </li>
-
-        <li id="tab-my-profile" class="cd-tabs__panel text-component">
-            <form th:action="@{/update-user-details/}" th:object="${userProfile}"
-                  enctype="application/x-www-form-urlencoded" method="POST">
-                <div class="form-group">
-                    <label>Username:</label>
-                    <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
-                           th:name="username" th:id="username" readonly/>
-                </div>
-                <div class="form-group">
-                    <label>Fullname:</label>
-                    <input type="text" class="form-control" th:value="${userProfile.fullname}" id="name"
-                           placeholder="Enter your fullname" name="fullname"/>
-                </div>
-                <div class="form-group">
-                    <label>Email:</label>
-                    <input type="text" class="form-control" th:value="${userProfile.email}" id="email"
-                           placeholder="Enter your email" name="email"/>
-                </div>
-                <div class="form-group">
-                    <label>Id Code:</label>
-                    <input type="text" class="form-control" th:value="${userProfile.idCode}" id="idcode"
-                           placeholder="Enter your id code" name="idCode"/>
-                </div>
-                <div class="form-group">
-                    <label>Phone:</label>
-                    <input type="number" class="form-control" th:value="${userProfile.phone}" id="phone"
-                           placeholder="Enter your phone number" name="phone"/>
-                </div>
-                <button type="submit" class="btn btn-success">CHANGE USER DATA</button>&nbsp;&nbsp;
-            </form>
-            <form id="delete_User_data" method="POST" th:action="@{/delete-user-profile/} + ${usernameText}">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <br/>
-                <button class="btn btn-danger ml-1" type="submit" th:text="'DELETE YOUR PROFILE'">DELETE</button>
             </form>
         </li>
 
