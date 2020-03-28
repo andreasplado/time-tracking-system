@@ -153,7 +153,7 @@ $( function() {
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table" id="tableForm">
 
-                <form th:action="@{/edit-work-hour/} + ${workHour.id}" th:object="${workHour}" method="post">
+                <form th:action="@{/edit-work-hour/} + ${workHour.id}" th:object="${workHourForm}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
                         <input type="text" class="form-control" id="username" th:attr="value = ${workHour.username}" placeholder="Enter name" name="name" readonly/>
