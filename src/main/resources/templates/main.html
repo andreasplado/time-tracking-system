@@ -24,7 +24,6 @@
     <script>document.getElementsByTagName("html")[0].className += " js";</script>
 
 
-
     <!-- NEW CONTENT -->
     <meta name="author" content="Logines">
     <meta name="description"
@@ -67,7 +66,7 @@
 
     <!-- DATETIME PICKER -->
     <link href="/main.css" rel="stylesheet" type="text/css"/>
-    <link href="/rome-date-time-picker/rome.css" rel="stylesheet" type="text/css" />
+    <link href="/rome-date-time-picker/rome.css" rel="stylesheet" type="text/css"/>
 
     <!-- Sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -94,6 +93,7 @@ function viewStudentDetails(id){
     window.location.href="student-details/" + id;
 }
 
+
 </script>
 
 <script th:inline="javascript">
@@ -116,6 +116,7 @@ $( function() {
     });
  });
 /*]]>*/
+
 </script>
 
 
@@ -157,8 +158,8 @@ $( function() {
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
 
             <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}">
-                <input type="text" th:value="${usernameText}" th:id="username" style="display: none;" class="form-control"
-                       th:name="username" th:field="*{username}" readonly/>
+                <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
+                       th:name="username" th:id="username" readonly/>
                 <!--<input type="hidden" th:value="${usernameText}" th:id="username" name="username" th:field="*{username}"/> -->
                 <div class="form-group">
                     <label>Work begin time:</label>
@@ -182,8 +183,9 @@ $( function() {
                                               name="title" th:field="*{title}"></textarea>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success add-class"><i class="fa fa-plus"></i>ADD
-                    WORKHOUR
+                <button type="submit" class="btn btn-success add-class">
+                    <i class="fa fa-plus"></i>
+                    ADD WORKHOUR
                 </button>
                 <!--<input type="hidden" id="username" name="username" th:value="${usernameText}" th:field="*{username}"/> -->
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
