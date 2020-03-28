@@ -39,22 +39,21 @@ public class WorkHourController {
     public String addWorkHour(@RequestBody @Valid @ModelAttribute WorkHour workHour,
                               BindingResult bindingResult,
                               Model model, String error, Principal principal,
-                              final RedirectAttributes redirectAttributes){
+                              final RedirectAttributes redirectAttributes) {
         workHourValidator.validate(workHour, bindingResult);
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
-            if(userProfile != null){
-                redirectAttributes.addFlashAttribute("error", bindingResult);
+            model.addAttribute("error", "Something went wrong. Please check all form fields.");
+            if (userProfile != null) {
                 model.addAttribute("userProfile", userProfile);
                 return "main";
-            }else{
+            } else {
                 return "redirect:/";
             }
-
+        } else {
+            model.addAttribute("message", "Workhour added successfully...");
+            workHourService.addWorkHour(workHour);
+            return "successful_page";
         }
-
-        model.addAttribute("message", "Workhour added successfully...");
-        workHourService.addWorkHour(workHour);
-        return "successful_page";
     }
 }
