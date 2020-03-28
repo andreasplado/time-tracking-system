@@ -76,6 +76,7 @@ public class MainController {
         WorkHour workHour = workHourService.viewWorkHour(id);
         String createdAt = workHour.getCreated_at().format(DateTimeFormatter.ISO_DATE_TIME);
         model.addAttribute("workHour", workHourService.viewWorkHour(id));
+        model.addAttribute("workHourForm", new WorkHour());
         model.addAttribute("createdAt", createdAt);
 
         return "work_hour_edit";
