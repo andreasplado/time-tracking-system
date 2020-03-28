@@ -206,7 +206,9 @@ $( function() {
                     <th>Work start time</th>
                     <th>Work end time</th>
                     <th>Title</th>
+                    <th>Lunch time</th>
                     <th>Added</th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -215,6 +217,7 @@ $( function() {
                     <td th:text="${userWorkHour.start_time}"></td>
                     <td th:text="${userWorkHour.end_time}"></td>
                     <td th:text="${userWorkHour.title}"></td>
+                    <td th:text="${userWorkHour.lunch_time}"></td>
                     <td th:text="${userWorkHour.created_at}"></td>
                     <td>
                         <form th:action="@{/edit-work-hour/} + ${userWorkHour.id}" method="get">
@@ -240,6 +243,8 @@ $( function() {
                     <th>Username</th>
                     <th>Start time</th>
                     <th>End time</th>
+                    <th>Lunch time</th>
+                    <th>Added</th>
                     <button type="button" class="btn btn-success add-class" onclick="addWorker()"><i
                             class="fa fa-plus"></i>ADD WORKHOUR
                     </button>
@@ -252,6 +257,8 @@ $( function() {
                     <td th:text="${allWorkHour.username}"></td>
                     <td th:text="${allWorkHour.start_time}"></td>
                     <td th:text="${allWorkHour.end_time}"></td>
+                    <td th:text="${allWorkHour.lunch_time}"></td>
+                    <td th:text="${allWorkHour.created_at}"></td>
                 </tr>
                 </tbody>
             </table>
