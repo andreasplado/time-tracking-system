@@ -134,6 +134,11 @@ $( function() {
     if (e.which == 27){
         window.location.href="../";
     }
+    $('#workhour-form').submit(function() {
+    if ($.trim($("#start_time").val()) === "" || $.trim($("#end_time").val()) === "" || $.trim($("#lunch_time").val()) === "" || $.trim($("#title").val()) === "") {
+        $("#work-hour-validation-error").show();
+        return false;
+    }
 });
 </script>
 
@@ -152,8 +157,8 @@ $( function() {
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table" id="tableForm">
-
-                <form th:action="@{/edit-work-hour/} + ${workHour.id}" th:object="${workHourForm}" method="post">
+                <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
+                <form th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form" th:object="${workHourForm}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
                         <input type="text" class="form-control" id="username" th:attr="value = ${workHour.username}" placeholder="Enter name" name="name" readonly/>
