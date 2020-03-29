@@ -10,14 +10,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 public class WorkHourController {
@@ -59,6 +57,34 @@ public class WorkHourController {
             workHourService.addWorkHour(workHour);
             return "successful_page";
         }
+    }
 
+    @GetMapping("/edit-work-hour/{id}")
+    public String viewEditWorkHour(Model model, @PathVariable("id") int id, Principal principal) {
+        if(principal != null){
+            model.addAttribute("usernameText", principal.getName());
+        }
+        WorkHour workHour = workHourService.viewWorkHour(id);
+        String createdAt = workHour.getCreated_at().format(DateTimeFormatter.ISO_DATE_TIME);
+        model.addAttribute("workHour", workHourService.viewWorkHour(id));
+        model.addAttribute("workHourForm", new WorkHour());
+        model.addAttribute("createdAt", createdAt);
+
+        return "work_hour_edit";
+    }
+
+    @PostMapping("/edit-work-hour/{id}")
+    public String postWorkHour(@PathVariable("id") long id,
+                       @Valid WorkHour workHour,
+                       BindingResult bindingResult,
+                       Model model) {
+        workHourValidator.validate(workHour, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "main";
+        } else {
+            workHourService.updateWorkHour(workHour);
+            model.addAttribute("message", "Workhour edited successfully...");
+            return "successful_page";
+        }
     }
 }

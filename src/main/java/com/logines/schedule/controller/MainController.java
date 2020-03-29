@@ -71,35 +71,6 @@ public class MainController {
         }
     }
 
-    @GetMapping("/edit-work-hour/{id}")
-    public String edit(Model model, @PathVariable("id") int id, Principal principal) {
-        if(principal != null){
-            model.addAttribute("usernameText", principal.getName());
-        }
-        WorkHour workHour = workHourService.viewWorkHour(id);
-        String createdAt = workHour.getCreated_at().format(DateTimeFormatter.ISO_DATE_TIME);
-        model.addAttribute("workHour", workHourService.viewWorkHour(id));
-        model.addAttribute("workHourForm", new WorkHour());
-        model.addAttribute("createdAt", createdAt);
-
-        return "work_hour_edit";
-    }
-
-    @PostMapping("/edit-work-hour/{id}")
-    public String edit(@PathVariable("id") long id,
-                       @Valid WorkHour workHour,
-                       BindingResult bindingResult,
-                       Model model) {
-        workHourValidator.validate(workHour, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return "main";
-        } else {
-            workHourService.updateWorkHour(workHour);
-            model.addAttribute("message", "Workhour edited successfully...");
-            return "successful_page";
-        }
-    }
-
     @PostMapping("time/{id}")
     public String postTime(@PathVariable("id") long id,
                            @Valid WorkHour workHour,
