@@ -198,7 +198,7 @@ $( function() {
 
                     <div class="form-group">
                         <label>Workhour added:</label>
-                        <input type="text" class="form-control" id="created_at" th:attr="value =${createdAt}" placeholder="Enter name" name="created_at" th:field="*{createdAt}" readonly/>
+                        <input type="text" class="form-control" id="created_at" th:attr="value =${workHour.created_at}" placeholder="Enter name" name="created_at" th:field="*{created_at}" readonly/>
                     </div>
                     <button type="submit" class="btn btn-success">EDIT</button>
                 </form>
