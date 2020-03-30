@@ -1,7 +1,10 @@
 package com.logines.schedule.model;
 
+import com.logines.schedule.utils.DateUtils;
+
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "work_hour", schema = "logines")
@@ -27,10 +30,10 @@ public class WorkHour {
     private String lunch_time;
 
     @Column(name = "created_at")
-    private OffsetDateTime created_at;
+    private String created_at;
 
     @Column(name = "updated_at", nullable = false)
-    private OffsetDateTime updated_at;
+    private String updated_at;
 
     public int getId() {
         return id;
@@ -42,18 +45,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = OffsetDateTime.now();
-        if (this.updated_at == null) updated_at = OffsetDateTime.now();
+        if (this.created_at == null) created_at = DateUtils.dateToString(new Date());
+        if (this.updated_at == null) updated_at = DateUtils.dateToString(new Date());
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = OffsetDateTime.now();
+        this.updated_at = OffsetDateTime.now().toString();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = OffsetDateTime.now();
+        this.updated_at = OffsetDateTime.now().toString();
     }
 
     public String getTitle() {
@@ -88,10 +91,10 @@ public class WorkHour {
         return this.end_time;
     }
 
-    public OffsetDateTime getCreated_at(){
+    public String getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(OffsetDateTime offsetDateTime){
+    public void setCreated_at(String offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
