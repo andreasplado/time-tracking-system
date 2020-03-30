@@ -47,6 +47,7 @@ public class MainController {
     //@RequestMapping(value="/",method = RequestMethod.GET)
     @GetMapping({"/", "/home"})
     public String welcome(Model model, Principal principal, String error) {
+        model.addAttribute("workHourPostForm", new WorkHour());
         if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());

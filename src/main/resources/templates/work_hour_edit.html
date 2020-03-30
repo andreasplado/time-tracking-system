@@ -166,7 +166,7 @@ $( function() {
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table" id="tableForm">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
-                <form th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form" th:object="${workHourForm}" method="post">
+                <form th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form" th:object="${workHourEditForm}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
                         <input type="text" class="form-control" th:attr="value = ${workHour.username}" th:name="username" th:id="username" placeholder="Enter name" name="name" readonly/>
