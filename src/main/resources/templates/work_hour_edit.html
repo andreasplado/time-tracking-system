@@ -169,7 +169,7 @@ $( function() {
                 <form th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form" th:object="${workHourForm}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
-                        <input type="text" class="form-control" id="username" th:attr="value = ${workHour.username}" placeholder="Enter name" name="name" th:field="*{usenrname}" readonly/>
+                        <input type="text" class="form-control" id="username" th:attr="value = ${workHour.username}" placeholder="Enter name" name="name" th:field="*{username}" readonly/>
                     </div>
                     <div class="form-group">
                         <label>Start time:</label>
