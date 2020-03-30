@@ -2936,6 +2936,7 @@ h1{
     }
 }
 .cd-tabs__navigation{
+    margin-bottom: -16px!important;
     background:hsl(54, 42%, 95%);
     background:var(--cd-color-2);
     --cd-color-shadow: hsla(54, 42%, 64.6%, 0.06);
