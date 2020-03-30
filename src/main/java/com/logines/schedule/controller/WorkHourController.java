@@ -61,13 +61,13 @@ public class WorkHourController {
 
     @GetMapping("/edit-work-hour/{id}")
     public String viewEditWorkHour(Model model, @PathVariable("id") int id, Principal principal) {
+        model.addAttribute("workHourForm", new WorkHour());
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
         }
         WorkHour workHour = workHourService.viewWorkHour(id);
         String createdAt = workHour.getCreated_at().format(DateTimeFormatter.ISO_DATE_TIME);
         model.addAttribute("workHour", workHourService.viewWorkHour(id));
-        model.addAttribute("workHourForm", new WorkHour());
         model.addAttribute("createdAt", createdAt);
 
         return "work_hour_edit";
