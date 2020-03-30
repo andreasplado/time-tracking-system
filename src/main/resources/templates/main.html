@@ -51,19 +51,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
 
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script src="https://cdn.datedropper.com/get/qsn9j0v26bkqfwe4oo4gvlxgjioau7om"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="/assets/js/main_heading.js"></script>
-    <script src="https://cdn.datedropper.com/get/qsn9j0v26bkqfwe4oo4gvlxgjioau7om"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/main.css"> -->
-
     <!-- DATETIME PICKER -->
     <link href="/main.css" rel="stylesheet" type="text/css"/>
     <link href="/rome-date-time-picker/rome.css" rel="stylesheet" type="text/css"/>
@@ -91,6 +78,34 @@ function viewWorkHour(id){
 }
 function viewStudentDetails(id){
     window.location.href="student-details/" + id;
+}
+
+function timeSince(date) {
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+        return interval + " years";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " months";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " days";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " hours";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " minutes";
+    }
+
+    return Math.floor(seconds) + " seconds";
 }
 
 
@@ -123,6 +138,7 @@ $( function() {
             return false;
         }
     });
+    $("#toptitle").text("New word");
  });
 /*]]>*/
 
