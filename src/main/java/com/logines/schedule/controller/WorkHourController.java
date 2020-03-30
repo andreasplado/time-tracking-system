@@ -80,7 +80,7 @@ public class WorkHourController {
                        Model model) {
         workHourValidator.validate(workHour, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "main";
+            return "work_hour_edit";
         } else {
             workHourService.updateWorkHour(workHour);
             model.addAttribute("message", "Workhour edited successfully...");
