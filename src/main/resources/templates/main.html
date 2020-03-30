@@ -115,11 +115,14 @@ $( function() {
         });
     });
     $('#workhour-form').submit(function() {
-    if ($.trim($("#start_time").val()) === "" || $.trim($("#end_time").val()) === "" || $.trim($("#lunch_time").val()) === "" || $.trim($("#title").val()) === "") {
-        $("#work-hour-validation-error").show();
-        return false;
-    }
-});
+        if($.trim($("#title").val()) === ""){
+            $("#title").val("No title");
+        }
+        if ($.trim($("#start_time").val()) === "" || $.trim($("#end_time").val()) === "" || $.trim($("#lunch_time").val()) === "") {
+            $("#work-hour-validation-error").show();
+            return false;
+        }
+    });
  });
 /*]]>*/
 
