@@ -169,36 +169,36 @@ $( function() {
                 <form th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form" th:object="${workHourForm}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
-                        <input type="text" class="form-control" id="username" th:attr="value = ${workHour.username}" placeholder="Enter name" name="name" th:field="*{username}" readonly/>
+                        <input type="text" class="form-control" id="username" th:attr="value = ${workHour.username}" placeholder="Enter name" name="name" th:field="*{workHour.username}" readonly/>
                     </div>
                     <div class="form-group">
                         <label>Start time:</label>
 
                         <div class="input-group date" id="work-end-time">
-                            <input type="text" th:value="${workHour.start_time}" id="start_time" name="start_time" placeholder="Work start time" class="form-control" th:field="*{start_time}"/>
+                            <input type="text" th:value="${workHour.start_time}" id="start_time" name="start_time" placeholder="Work start time" class="form-control" th:field="*{workHour.start_time}"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>End time:</label>
                         <div class="input-group date" id="work-begin-time">
-                            <input type="text" th:value="${workHour.end_time}" id="end_time" name="end_time" placeholder="Work end time" class="form-control" th:field="*{end_time}"/>
+                            <input type="text" th:value="${workHour.end_time}" id="end_time" name="end_time" placeholder="Work end time" class="form-control" th:field="*{workHour.end_time}"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Work lunch time:</label>
                         <div class="input-group date" id="work-lunch-time">
                             <input type="text" id="lunch_time" name="lunch_time" data-field="time"
-                                   class="form-control" th:attr="value = ${workHour.lunch_time}" th:field="*{lunch_time}" readonly/>
+                                   class="form-control" th:attr="value = ${workHour.lunch_time}" th:field="*{workHour.lunch_time}" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Notes:</label>
-                        <input type="text" class="form-control" id="title" th:attr="value = ${workHour.title}" placeholder="Notes" name="title" th:field="*{title}"/>
+                        <input type="text" class="form-control" id="title" th:attr="value = ${workHour.title}" placeholder="Notes" name="title" th:field="*{workHour.title}"/>
                     </div>
 
                     <div class="form-group">
                         <label>Workhour added:</label>
-                        <input type="text" class="form-control" id="created_at" th:attr="value =${workHour.created_at}" placeholder="Enter name" name="created_at" th:field="*{created_at}" readonly/>
+                        <input type="text" class="form-control" id="created_at" th:attr="value =${workHour.created_at}" placeholder="Enter name" name="created_at" th:field="*{workHour.created_at}" readonly/>
                     </div>
                     <button type="submit" class="btn btn-success">EDIT</button>
                 </form>
