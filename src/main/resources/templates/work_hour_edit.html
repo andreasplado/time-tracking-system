@@ -6,8 +6,6 @@
 
     <!-- My styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -22,8 +20,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
     <script>document.getElementsByTagName("html")[0].className += " js";</script>
-
-
     <!-- NEW CONTENT -->
     <meta name="author" content="Logines">
     <meta name="description"
@@ -198,7 +194,7 @@ $( function() {
 
                     <div class="form-group">
                         <label>Workhour added:</label>
-                        <p th:text="${workHour.created_at}" type="text" class="form-control">Created at</p>
+                        <input th:value="${workHour.created_at}" th:name="created_at" th:id="created_at" type="text" class="form-control"/>
                     </div>
                     <button type="submit" class="btn btn-success">EDIT</button>
                 </form>
