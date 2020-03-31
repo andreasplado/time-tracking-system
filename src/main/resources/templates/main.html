@@ -170,7 +170,7 @@ $( function() {
     });
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
         $("#workhour-[[${userWorkhour.id}]]-created-at").text(
-        moment( $(this).text(), 'dd-MM-yyyy HH:mm'));
+        moment( $(this).text(), 'dd-MM-yyyy HH:mm').format('dd-MM-yyyy HH:mm'));
     /*[/]*/
 
  });
