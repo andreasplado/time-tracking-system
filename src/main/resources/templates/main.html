@@ -138,8 +138,6 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
-moment().format('MM-DD-YYYY hh:mm');
-
 
 </script>
 
@@ -171,6 +169,7 @@ $( function() {
         }
     });
 
+    moment().format('MM-DD-YYYY hh:mm');
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
         $("#workhour-[[${userWorkhour.id}]]-created-at").text(moment($(this).text()));
     /*[/]*/
