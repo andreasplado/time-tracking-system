@@ -140,16 +140,7 @@ $( function() {
             return false;
         }
     });
-    $("#toptitle").text("New word");
 
-    var userWorkHours= [
-         /*[# th:each="userWorkhour : ${userWorkHours}"]*/
-            [[${userWorkhour.id}]]
-       /*[/]*/
-    ];
-    for (i = 0; i < userWorkHours.length; i++) {
-        $("#workhour-'+ userWorkHours[i] + '-created-at").text("lol");
-    }
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
         $("#workhour-[[${userWorkhour.id}]]-created-at").text("lol");
     /*[/]*/
