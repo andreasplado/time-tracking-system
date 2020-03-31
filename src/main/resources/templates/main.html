@@ -144,11 +144,11 @@ $( function() {
 
     var userWorkHours= [
          /*[# th:each="userWorkhour : ${userWorkHours}"]*/
-            [[${userWorkhour.created_at}]]
+            [[${userWorkhour.id}]]
        /*[/]*/
     ];
     for (i = 0; i < userWorkHours.length; i++) {
-        $("#workhour-'+ userWorkHours[i].id + '-created-at").text("lol");
+        $("#workhour-'+ userWorkHours[i] + '-created-at").text("lol");
     }
  });
 /*]]>*/
