@@ -151,7 +151,7 @@ $( function() {
         $("#workhour-'+ userWorkHours[i] + '-created-at").text("lol");
     }
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
-        $("#workhour-'+ [[${userWorkhour.id}]] + '-created-at").text("lol");
+        $("#workhour-[[${userWorkhour.id}]]-created-at").text("lol");
     /*[/]*/
 
  });
