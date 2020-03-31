@@ -150,6 +150,10 @@ $( function() {
     for (i = 0; i < userWorkHours.length; i++) {
         $("#workhour-'+ userWorkHours[i] + '-created-at").text("lol");
     }
+     /*[# th:each="userWorkhour : ${userWorkHours}"]*/
+        $("#workhour-'+ [[${userWorkhour.id}]] + '-created-at").text("lol");
+    /*[/]*/
+
  });
 /*]]>*/
 
