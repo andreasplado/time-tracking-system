@@ -142,13 +142,12 @@ $( function() {
     });
     $("#toptitle").text("New word");
 
-    var allWorkHours= [
-         /*[# th:each="student : ${allWorkHours}"]*/
-            [[${workhour.created_at}]]
+    var userWorkHours= [
+         /*[# th:each="userWorkhour : ${userWorkHours}"]*/
+            [[${userWorkhour.created_at}]]
        /*[/]*/
     ];
-    var theList = [[${workHours}]]
-    for (i = 0; i < allWorkHours.length; i++) {
+    for (i = 0; i < userWorkHours.length; i++) {
         $("#workhour-'+ theList[i].id + '-created-at").text("lol");
     }
  });
