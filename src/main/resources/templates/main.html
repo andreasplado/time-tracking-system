@@ -172,7 +172,7 @@ $( function() {
     });
 
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
-        $("#workhour-[[${userWorkhour.id}]]-created-at").text(timeSince(moment($(this).text())));
+        $("#workhour-[[${userWorkhour.id}]]-created-at").text(moment($(this).text()));
     /*[/]*/
 
  });
