@@ -6,6 +6,7 @@
 
     <!-- My styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/moment/moment.js"></script>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
@@ -57,6 +58,8 @@
 
     <!-- Sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="//unpkg.com/timeago.js"></script>
+
 </head>
 
 <script>
@@ -135,7 +138,7 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
-
+moment().format('MM-DD-YYYY hh:mm');
 
 
 </script>
@@ -169,7 +172,7 @@ $( function() {
     });
 
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
-        $("#workhour-[[${userWorkhour.id}]]-created-at").text(timeSince($(this).text()));
+        $("#workhour-[[${userWorkhour.id}]]-created-at").text(timeSince(moment($(this).text())));
     /*[/]*/
 
  });
