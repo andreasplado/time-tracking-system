@@ -142,9 +142,13 @@ $( function() {
     });
     $("#toptitle").text("New word");
 
-    var userWorkHours= [${userWorkHours}];
+    var userWorkHours= [
+         /*[# th:each="userWorkhour : ${userWorkHours}"]*/
+            [[${userWorkhour.id}]]
+       /*[/]*/
+    ];
     for (i = 0; i < userWorkHours.length; i++) {
-        $("#workhour-'+ userWorkHours[i].id + '-created-at").text("lol");
+        $("#workhour-'+ userWorkHours[i] + '-created-at").text("lol");
     }
  });
 /*]]>*/
