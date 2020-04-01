@@ -169,8 +169,7 @@ $( function() {
         }
     });
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
-        $("#workhour-[[${userWorkhour.id}]]-created-at").text($(this).text());
-        //moment( $(this).text(), 'dd-MM-yyyy HH:mm').format('dd-MM-yyyy HH:mm'));
+        $("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'dd-MM-yyyy HH:mm').format());
     /*[/]*/
 
  });
