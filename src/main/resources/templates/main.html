@@ -281,22 +281,20 @@ $( function() {
                     th:each="userWorkHour : ${userWorkHours}">
                     <td>
                         <div class="form-group">
-                            <label>Date:</label>
-                            <input th:value="${userWorkHour.start_time}" placeholder="Enter your fullname" class="form-control"
-                                   th:name="username" readonly/>
-                            <label>Time:</label>
-                            <input type="text" th:value="${userWorkHour.start_time}" placeholder="Enter your fullname" class="form-control"
-                                   th:name="username" readonly/>
+                            <span>Date:</span>
+                            <span type="text" th:text="${userWorkHour.start_time}" class="form-control"></span>
+                            <br />
+                            <span>Time:</span>
+                            <span type="text" th:text="${userWorkHour.start_time}" class="form-control"></span>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
-                            <label>Date:</label>
-                            <input th:value="${userWorkHour.end_time}" placeholder="Enter your fullname" class="form-control"
-                                   th:name="username" readonly/>
-                            <label>Time:</label>
-                            <input type="text" th:value="${userWorkHour.end_time}" placeholder="Enter your fullname" class="form-control"
-                                   th:name="username" readonly/>
+                            <span>Date:</span>
+                            <span type="text" th:text="${userWorkHour.end_time}" class="form-control"></span>
+                            <br />
+                            <span>Time:</span>
+                            <span type="text" th:text="${userWorkHour.end_time}" class="form-control"></span>
                         </div>
                     </td>
                     <td th:text="${userWorkHour.title}"></td>
