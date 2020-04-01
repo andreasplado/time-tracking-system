@@ -183,6 +183,7 @@ $( function() {
 <body>
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
+    <h1 id="working-hours"></h1>
     <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
           th:action="@{/logout}">
@@ -190,7 +191,6 @@ $( function() {
         <button class="btn btn-primary float-right logout-btn" type="submit">LOG OUT</button>
         <br/>
     </form>
-    <h1 id="working-hours"></h1>
 </header>
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <nav class="cd-tabs__navigation">
