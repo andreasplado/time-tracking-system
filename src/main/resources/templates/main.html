@@ -172,6 +172,7 @@ $( function() {
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
         //$("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'dd-MM-yyyy HH:mm').format());
         $("#workhour-[[${userWorkhour.id}]]-created-at").text(ago( $(this).text()));
+        $("workhour-'+ ${userWorkHour.id} + '-start-time").text()
     /*[/]*/
 
  });
@@ -278,8 +279,26 @@ $( function() {
                 <tbody>
                 <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
                     th:each="userWorkHour : ${userWorkHours}">
-                    <td th:text="${userWorkHour.start_time}"></td>
-                    <td th:text="${userWorkHour.end_time}"></td>
+                    <td>
+                        <div class="form-group">
+                            <label>Date:</label>
+                            <input th:value="${userWorkHour.start_time}" placeholder="Enter your fullname" class="form-control"
+                                   th:name="username" readonly/>
+                            <label>Time:</label>
+                            <input type="text" th:value="${userWorkHour.start_time}" placeholder="Enter your fullname" class="form-control"
+                                   th:name="username" readonly/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label>Date:</label>
+                            <input th:value="${userWorkHour.end_time}" placeholder="Enter your fullname" class="form-control"
+                                   th:name="username" readonly/>
+                            <label>Time:</label>
+                            <input type="text" th:value="${userWorkHour.end_time}" placeholder="Enter your fullname" class="form-control"
+                                   th:name="username" readonly/>
+                        </div>
+                    </td>
                     <td th:text="${userWorkHour.title}"></td>
                     <td th:text="${userWorkHour.lunch_time}"></td>
                     <td th:id="'workhour-'+ ${userWorkHour.id} + '-created-at'" th:text="${userWorkHour.created_at}"></td>
