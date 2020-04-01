@@ -108,7 +108,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/datetimepicker/**",
                         "/login_style/**"
                 ).permitAll()
-                .anyRequest().hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
