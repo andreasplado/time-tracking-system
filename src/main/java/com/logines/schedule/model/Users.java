@@ -17,6 +17,9 @@ public class Users {
     @NotBlank(message = "Password is mandatory")
     private String password;
 
+    @NotBlank(message = "Role is mandatory")
+    private String role;
+
     @Transient
     private String passwordConfirm;
 
@@ -50,5 +53,13 @@ public class Users {
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
