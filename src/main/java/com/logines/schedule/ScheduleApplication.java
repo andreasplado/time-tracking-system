@@ -1,5 +1,6 @@
 package com.logines.schedule;
 
+import com.logines.schedule.cronjob.CronJob;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,5 +14,6 @@ public class ScheduleApplication {
 
     public static void main( String[] args ){
         SpringApplication.run( ScheduleApplication.class, args );
+        CronJob.run();
     }
 }

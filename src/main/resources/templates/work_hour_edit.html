@@ -198,7 +198,7 @@ $( function() {
                     </div>
                     <button type="submit" class="btn btn-success">EDIT</button>
                 </form>
-                <form th:action="@{/delete-work-hour/} + ${workHour.id}" th:object="${workHour}" method="post">
+                <form th:if="${role == 'ADMIN'}" th:action="@{/delete-work-hour/} + ${workHour.id}" th:object="${workHour}" method="post">
                     <button type="submit" class="btn btn-dark">DELETE</button>
                 </form>
                 <br />
