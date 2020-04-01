@@ -15,7 +15,7 @@ public class CronJob {
                 .newTrigger()
                 .withIdentity("dummyTriggerName", "group1")
                 .withSchedule(
-                        CronScheduleBuilder.cronSchedule("0/5 * * * * ?"))
+                        CronScheduleBuilder.cronSchedule("0/60 * * * * ?"))
                 .build();
 
         try {

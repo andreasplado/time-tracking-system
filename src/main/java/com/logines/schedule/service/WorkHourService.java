@@ -51,4 +51,9 @@ public class WorkHourService {
     public List<WorkHour> findByUsername(String username) {
         return workHourRepository.findWorkHoursByUsername(username);
     }
+
+
+    public void deleteAll(){
+        workHourRepository.deleteAll();
+    }
 }
