@@ -1,6 +1,7 @@
 package com.logines.schedule.controller;
 
 import com.logines.schedule.model.UserProfile;
+import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.validator.UserProfileValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,21 @@ public class UserProfileController {
         } else {
             userProfileService.addUserProfile(userProfile);
             model.addAttribute("message", "User details added successfully...");
+            return "successful_page";
+        }
+    }
+
+    @PostMapping("/edit-user-profile/{id}")
+    public String editUserProfile(@PathVariable("id") long id,
+                               @Valid UserProfile userProfile,
+                               BindingResult bindingResult,
+                               Model model) {
+        userProfileValidator.validate(userProfile, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "main";
+        } else {
+            workHourService.updateWorkHour(userProfile);
+            model.addAttribute("message", "User profile edited successfully...");
             return "successful_page";
         }
     }
