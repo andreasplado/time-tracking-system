@@ -1,8 +1,11 @@
 package com.logines.schedule.controller;
 
+import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
+import com.logines.schedule.service.UserDetailsServiceImpl;
 import com.logines.schedule.service.UserProfileService;
+import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.UserValidator;
 import com.logines.schedule.validator.WorkHourValidator;
@@ -35,6 +38,8 @@ public class MainController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private WorkHourValidator workHourValidator;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private UserValidator userValidator;
@@ -51,6 +56,7 @@ public class MainController {
         if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
+            Users users = userService.findByUsername(principal.getName());
             //Kui kasutajaandmeid on lisatud
             if (userProfile != null) {
                 List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
@@ -59,6 +65,8 @@ public class MainController {
                 model.addAttribute("userProfile", userProfile);
                 model.addAttribute("userWorkHours", userWorkHours);
                 model.addAttribute("allWorkHours", allWorkhours);
+                model.addAttribute("role", users.getRole());
+
                 return "main";
             } else {
                 model.addAttribute("userProfileForm", new UserProfile());
