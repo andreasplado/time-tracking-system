@@ -58,7 +58,7 @@ public class WorkHourService {
         workHourRepository.deleteAll();
     }
 
-    @Scheduled(cron = "0 20 30 ? * MON-FRI")
+    @Scheduled(cron = "0 * * ? * MON-FRI")
     public void myScheduledMethod(){
         workHourRepository.deleteLast30DaysWorkHours();
     }
