@@ -52,7 +52,7 @@ public class UserProfileController {
         if (bindingResult.hasErrors()) {
             return "main";
         } else {
-            workHourService.updateWorkHour(userProfile);
+            userProfileService.updateUserDetails(userProfile);
             model.addAttribute("message", "User profile edited successfully...");
             return "successful_page";
         }
