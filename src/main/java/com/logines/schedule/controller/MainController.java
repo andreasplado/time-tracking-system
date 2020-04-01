@@ -3,7 +3,6 @@ package com.logines.schedule.controller;
 import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.model.UserProfile;
-import com.logines.schedule.service.UserDetailsServiceImpl;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
@@ -112,7 +110,7 @@ public class MainController {
 
     @PostMapping("delete-work-hour/{id}")
     public String deleteWorkHour(Model model, @PathVariable("id") int id) {
-        if (workHourService.deleteJob(id)) {
+        if (workHourService.deleteWorkHour(id)) {
             model.addAttribute("message", "Workhour deleted successfully...");
             return "successful_page";
         } else {

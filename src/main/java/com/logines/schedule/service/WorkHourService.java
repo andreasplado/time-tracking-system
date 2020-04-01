@@ -38,7 +38,7 @@ public class WorkHourService {
         workHourRepository.save(workHour);
     }
 
-    public boolean deleteJob(int id){
+    public boolean deleteWorkHour(int id){
         if(workHourRepository.existsById(id)){
             workHourRepository.deleteById(id);
 
@@ -58,9 +58,8 @@ public class WorkHourService {
         workHourRepository.deleteAll();
     }
 
-    @Scheduled(cron = "0 * * * * MON-FRI")
+    @Scheduled(cron = "0 20 30 ? * MON-FRI")
     public void myScheduledMethod(){
-        workHourRepository.deleteAll();
-        System.out.println("AP on hoos");
+        workHourRepository.deleteLast30DaysWorkHours();
     }
 }
