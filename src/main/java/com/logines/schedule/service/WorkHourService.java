@@ -3,6 +3,7 @@ package com.logines.schedule.service;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,5 +56,11 @@ public class WorkHourService {
 
     public void deleteAll(){
         workHourRepository.deleteAll();
+    }
+
+    @Scheduled(cron = "0 * * * * MON-FRI")
+    public void myScheduledMethod(){
+        workHourRepository.deleteAll();
+        System.out.println("AP on hoos");
     }
 }
