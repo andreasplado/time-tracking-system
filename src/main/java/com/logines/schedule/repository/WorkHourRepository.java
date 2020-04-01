@@ -15,6 +15,6 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
     @Query("SELECT s FROM WorkHour s WHERE s.username=:username")
     List<WorkHour> findWorkHoursByUsername(@Param("username") String name);
 
-    @Query(value = "DELETE FROM logines.WorkHour WHERE to_timestamp(created_at) < NOW() - INTERVAL '30 days'", nativeQuery = true)
+    @Query(value = "DELETE FROM logines.work_hour WHERE to_timestamp(created_at) < NOW() - INTERVAL '30 days'", nativeQuery = true)
     List<WorkHour> deleteLast30DaysWorkHours();
 }
