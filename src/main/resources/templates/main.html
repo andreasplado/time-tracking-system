@@ -181,7 +181,9 @@ $( function() {
         $("#work-hour-[[${userWorkhour.id}]]-end-time").text(endTime.substring(12,$(this).text().length));
         $("#work-hour-[[${userWorkhour.id}]]-start-time").text(startTime.substring(12,$(this).text().length));
 
-        var hours = Math.abs(new Date([[${userWorkhour.start_time}]]) - new Date([[${userWorkhour.end_time}]])) / 36e5;
+        var startTime = new Date([[${userWorkhour.start_time}]]);
+        var endTime = new Date([[${userWorkhour.end_time}]])
+        var hours = Math.abs(startTime) - endTime) / 36e5;
         console.log(hours);
     /*[/]*/
 
