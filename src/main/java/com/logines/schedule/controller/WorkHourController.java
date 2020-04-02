@@ -71,7 +71,7 @@ public class WorkHourController {
 
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
-            model.addAttribute("role", userService.findByUsername(principal.getName()));
+            model.addAttribute("role", users.getRole());
         }
         WorkHour workHour = workHourService.viewWorkHour(id);
         String createdAt = workHour.getCreated_at();
