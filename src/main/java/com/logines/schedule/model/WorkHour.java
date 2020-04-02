@@ -4,6 +4,8 @@ import com.logines.schedule.utils.DateUtils;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 import java.util.Date;
 
@@ -22,19 +24,21 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    private DateTime start_time;
+    private Timestamp start_time;
 
     @Column(name = "end_time")
-    private DateTime end_time;
+    private Timestamp end_time;
 
     @Column(name = "lunch_time")
+    @Temporal(TemporalType.TIMESTAMP)
     private String lunch_time;
 
     @Column(name = "created_at")
-    private DateTime created_at;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Timestamp created_at;
 
     @Column(name = "updated_at", nullable = false)
-    private DateTime updated_at;
+    private Timestamp updated_at;
 
     public int getId() {
         return id;
@@ -46,18 +50,21 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = DateTime.now();
-        if (this.updated_at == null) updated_at = DateTime.now();
+        Date date = new Date();
+        if (this.created_at == null) created_at = new Timestamp(date.getTime());
+        if (this.updated_at == null) updated_at = new Timestamp(date.getTime());
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = DateTime.now();
+        Date date = new Date();
+        this.updated_at = new Timestamp(date.getTime());
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = DateTime.now();
+        Date date = new Date();
+        this.updated_at = new Timestamp(date.getTime());
     }
 
     public String getTitle() {
@@ -76,26 +83,26 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(DateTime start_time) {
+    public void setStart_time(Timestamp start_time) {
         this.start_time = start_time;
     }
 
-    public DateTime getStart_time(){
+    public Timestamp getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(DateTime end_time) {
+    public void setEnd_time(Timestamp end_time) {
         this.end_time = end_time;
     }
 
-    public DateTime getEnd_time(){
+    public Timestamp getEnd_time(){
         return this.end_time;
     }
 
-    public DateTime getCreated_at(){
+    public Timestamp getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(DateTime offsetDateTime){
+    public void setCreated_at(Timestamp offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
