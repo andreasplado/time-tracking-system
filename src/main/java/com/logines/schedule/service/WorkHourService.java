@@ -2,12 +2,18 @@ package com.logines.schedule.service;
 
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
@@ -60,22 +66,33 @@ public class WorkHourService {
         return workHours;
     }
 
-    public String userWorkHoursSum(String username) {
+    public int userWorkHoursSum(String username) {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         int datetimeDifference = 0;
         for(int i=0; i<workHours.size(); i++){
-            datetimeDifference+= 2;
+
+
             String startTime = workHours.get(i).getStart_time();
             String endTime = workHours.get(i).getEnd_time();
-            datetimeDifference =<
+            DateTime startTimeDate = new DateTime(startTime);
+            DateTime endTimeDate = new DateTime(endTime);
+
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            LocalDateTime startDate = LocalDateTime.parse(startTime, formatter);
+            LocalDateTime endDate = LocalDateTime.parse(endTime, formatter);
+
+            Duration duration = Duration.between(startDate, endDate);
+            datetimeDifference+= duration.getSeconds();
+
         }
 
         //The method queryForInt(String, Object...) from the type JdbcTemplate is deprecated
         //String count = jdbcTemplate.queryForObject(sql, new Object[]{username}, String.class);
 
-        return count;
+        return datetimeDifference;
     }
 
 
