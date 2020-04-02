@@ -170,7 +170,7 @@ $( function() {
         }
     });
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
-        //$("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'dd-MM-yyyy HH:mm').format());
+        //$("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'yyyy-MM-dd HH:mm:ss').format());
         $("#workhour-[[${userWorkhour.id}]]-created-at").text(ago( $(this).text()));
         var endDate = $("#work-hour-[[${userWorkhour.id}]]-end-date").text();
         var startDate = $("#work-hour-[[${userWorkhour.id}]]-start-date").text();
