@@ -88,10 +88,12 @@ public class MainController {
     }
 
     @GetMapping("/work-hour-details/{id}")
-    public String classDetails(Model model, @PathVariable("id") int id) {
+    public String workHourDetails(Model model, @PathVariable("id") int id, Principal principal) {
         WorkHour workHour = workHourService.viewWorkHour(id);
+        model.addAttribute("usernameText", principal.getName());
         if (workHour != null) {
             model.addAttribute("workHour", workHour);
+
             return "work_hour_details";
         } else {
             return "404";

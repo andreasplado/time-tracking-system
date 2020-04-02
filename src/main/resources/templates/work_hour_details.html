@@ -66,6 +66,7 @@
 <style>
     td{ cursor: pointer; }
     td:hover { background-color: #2ECCFA; }
+
 </style>
 <script>
    $(document).keyup(function(e) {
@@ -73,8 +74,8 @@
         window.location.href="../";
     }
 });
-</script>
 
+</script>
 
 
 <header class="text-component text-center">
@@ -92,37 +93,44 @@
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table" id="tableForm">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
-                <p th:if="${role == 'USER'}">You don't have permission to modify workhour details</p>
-                <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form" th:object="${workHour}" method="post">
+                <form th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form"
+                      th:object="${workHour}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
-                        <p th:text="${workHour.start_time}" th:name="lend_time" th:id="title" type="text" class="form-control"></p>
-                        <input type="text" class="form-control" th:attr="value = ${workHour.username}" th:name="username" th:id="username" placeholder="Enter name" name="name" readonly/>
+                        <p th:text="${workHour.start_time}" th:name="lend_time" th:id="title" type="text"
+                           class="form-control"></p>
+                        <input type="text" class="form-control" th:attr="value = ${workHour.username}"
+                               th:name="username" th:id="username" placeholder="Enter name" name="name" readonly/>
                     </div>
                     <div class="form-group">
                         <span>Start time:</span>
-                        <span th:text="${workHour.start_time}" th:name="start_time" th:id="title" type="text" class="form-control"></span>
+                        <span th:text="${workHour.start_time}" th:name="start_time" th:id="title" type="text"
+                              class="form-control"></span>
                     </div>
                     <div class="form-group">
                         <label>End time:</label>
-                        <p th:text="${workHour.end_time}" th:name="end_time" th:id="title" type="text" class="form-control"></p>
+                        <p th:text="${workHour.end_time}" th:name="end_time" th:id="title" type="text"
+                           class="form-control"></p>
                     </div>
                     <div class="form-group">
                         <label>Work lunch time:</label>
-                        <p th:text="${workHour.lunch_time}" th:name="lunch_time" th:id="title" type="text" class="form-control"></p>
+                        <p th:text="${workHour.lunch_time}" th:name="lunch_time" th:id="title" type="text"
+                           class="form-control"></p>
                     </div>
                     <div class="form-group">
                         <label>Notes:</label>
-                        <p th:text="${workHour.title}" th:name="created_at" th:id="title" type="text" class="form-control"></p>
+                        <p th:text="${workHour.title}" th:name="created_at" th:id="title" type="text"
+                           class="form-control"></p>
                     </div>
 
                     <div class="form-group">
                         <label>Workhour added:</label>
-                        <p th:text="${workHour.created_at}" th:name="created_at" th:id="created_at" type="text" class="form-control"></p>
+                        <p th:text="${workHour.created_at}" th:name="created_at" th:id="created_at" type="text"
+                           class="form-control"></p>
                     </div>
                 </form>
-                <br />
-                <br />
+                <br/>
+                <br/>
                 <div class="p-t-136">
                     <a class="txt2" href="../">
                         Back to main page
@@ -134,33 +142,5 @@
 
     </ul> <!-- cd-tabs__panels -->
 </div>
-
-
-<div class="container">
-    <h2 style="display: inline;"><a style="display: inline;" href="../../"> Time-tracker system </a>/<p style="display: inline;" th:text="${workHour.username}"></p> workhour details</h2>
-
-    <div class="tab-content ">
-        <div class="tab-pane active" id="classesTab">
-            <table class="table" id="tableForm">
-                <div class="form-group">
-                    <label>Start time :</label>
-                    <p th:text="${workHour.start_time}"></p>
-                </div>
-                <div class="form-group">
-                    <label>End time:</label>
-                    <p th:text="${workHour.end_time}"></p>
-                </div>
-                <div class="form-group">
-                    <label>Workhour notes:</label>
-                    <p th:text="${workHour.title}"></p>
-                </div>
-                <br />
-                <br />
-                HINT: <i>press ESC to return to main page.</i>
-            </table>
-        </div>
-    </div>
-</div>
-
 </body>
 </html>
