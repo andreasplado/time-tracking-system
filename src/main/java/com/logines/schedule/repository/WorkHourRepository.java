@@ -28,7 +28,6 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
     group by extract(hour from event_time)
     order by hour_of_day desc*/
     @Transactional
-    @Modifying
     @Query(value = "SELECT extract(hour from start_time) as hour_of_day FROM WorkHour WHERE username=:username ")
     int sumUpWorkhours(@Param("username") String name);
 }
