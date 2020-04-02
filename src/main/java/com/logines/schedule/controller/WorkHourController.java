@@ -1,8 +1,10 @@
 package com.logines.schedule.controller;
 
 import com.logines.schedule.model.UserProfile;
+import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.UserProfileService;
+import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.WorkHourValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class WorkHourController {
 
     @Autowired
     private WorkHourValidator workHourValidator;
+
+    @Autowired
+    private UserService userService;
 
     @InitBinder("work_hour")
     public void initBinder(WebDataBinder webDataBinder) {
@@ -61,16 +66,19 @@ public class WorkHourController {
 
     @GetMapping("/edit-work-hour/{id}")
     public String viewEditWorkHour(Model model, @PathVariable("id") int id, Principal principal) {
+        Users users = userService.findByUsername(principal.getName());
         model.addAttribute("workHourEditForm", new WorkHour());
+
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
+            model.addAttribute("role", userService.findByUsername(principal.getName()));
         }
         WorkHour workHour = workHourService.viewWorkHour(id);
         String createdAt = workHour.getCreated_at();
         model.addAttribute("workHour", workHourService.viewWorkHour(id));
         model.addAttribute("createdAt", createdAt);
 
-        return "work_hour_edit";
+        return "edit_work_hour";
     }
 
     @PostMapping("/edit-work-hour/{id}")
