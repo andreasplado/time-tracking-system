@@ -66,10 +66,10 @@ public class WorkHourController {
 
     @GetMapping("/edit-work-hour/{id}")
     public String viewEditWorkHour(Model model, @PathVariable("id") int id, Principal principal) {
-        Users users = userService.findByUsername(principal.getName());
         model.addAttribute("workHourEditForm", new WorkHour());
 
         if(principal != null){
+            Users users = userService.findByUsername(principal.getName());
             model.addAttribute("usernameText", principal.getName());
             model.addAttribute("role", users.getRole());
         }

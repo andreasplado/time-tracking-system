@@ -1,6 +1,7 @@
 package com.logines.schedule.configuration;
 
 import com.logines.schedule.auth.AppAuthenticationSuccessHandler;
+import com.logines.schedule.auth.CustomAuthenticationProvider;
 import com.logines.schedule.auth.RefererRedirectionAuthenticationSuccessHandler;
 import com.logines.schedule.validator.WorkHourValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailsServiceImpl;
 
+    @Autowired
+    CustomAuthenticationProvider customAuthProvider;
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -45,6 +49,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(bCryptPasswordEncoder());
+        auth.authenticationProvider(customAuthProvider);
+        auth.inMemoryAuthentication()
+                .withUser("memuser")
+                .password(bCryptPasswordEncoder().encode("pass"))
+                .roles("USER");
     }
 
     @Override
@@ -56,41 +65,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         //http.csrf().disable();
 
-        /*http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/login", "/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .successHandler(appAuthenticationSuccessHandler())
-                .loginPage("/user-login").permitAll()
-                .and()
-                .logout().invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/user-login?error").permitAll();
-        */
-        /*http
-                .authorizeRequests()
-                .antMatchers("/resources/**", "/register").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/user-login")
-                .loginProcessingUrl("/user-login")
-                .failureUrl("/user-login?error")
-                .successForwardUrl("/")
-                .failureForwardUrl("/404")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();*/
-        //WORKING
-        /*http.authorizeRequests().antMatchers("/user-login", "/resources/**", "/css/**", "/fonts/**", "/img/**", "/register").permitAll().anyRequest().authenticated()
-                .and().formLogin().loginPage("/user-login").permitAll().and().logout().permitAll();
-
-        */
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**",
