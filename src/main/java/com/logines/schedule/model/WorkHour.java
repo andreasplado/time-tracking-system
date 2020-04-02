@@ -30,15 +30,12 @@ public class WorkHour {
     private Timestamp end_time;
 
     @Column(name = "lunch_time")
-    @Temporal(TemporalType.TIMESTAMP)
     private String lunch_time;
 
     @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp created_at;
 
     @Column(name = "updated_at", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp updated_at;
 
     public int getId() {
