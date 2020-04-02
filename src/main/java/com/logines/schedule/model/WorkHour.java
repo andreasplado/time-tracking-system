@@ -1,13 +1,9 @@
 package com.logines.schedule.model;
 
 import com.logines.schedule.utils.DateUtils;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.OffsetDateTime;
-import java.time.OffsetTime;
 import java.util.Date;
 
 @Entity
@@ -25,24 +21,19 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
-    private OffsetDateTime start_time;
+    private String start_time;
 
-    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
     @Column(name = "end_time")
-    private OffsetDateTime end_time;
+    private String end_time;
 
     @Column(name = "lunch_time")
-    @DateTimeFormat(pattern = "HH:mm:ss")
-    private OffsetTime lunch_time;
+    private String lunch_time;
 
     @Column(name = "created_at")
-    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
-    private OffsetDateTime created_at;
+    private String created_at;
 
-    @DateTimeFormat(pattern = "YYYY-MM-DD mm:ss")
     @Column(name = "updated_at", nullable = false)
-    private OffsetDateTime updated_at;
+    private String updated_at;
 
     public int getId() {
         return id;
@@ -54,18 +45,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = OffsetDateTime.now();
-        if (this.updated_at == null) updated_at = OffsetDateTime.now();
+        if (this.created_at == null) created_at = DateUtils.dateToString(new Date());
+        if (this.updated_at == null) updated_at = DateUtils.dateToString(new Date());
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = OffsetDateTime.now();
+        this.updated_at = DateUtils.dateToString(new Date());
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = OffsetDateTime.now();
+        this.updated_at = DateUtils.dateToString(new Date());
     }
 
     public String getTitle() {
@@ -84,34 +75,34 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(OffsetDateTime start_time) {
+    public void setStart_time(String start_time) {
         this.start_time = start_time;
     }
 
-    public OffsetDateTime getStart_time(){
+    public String getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(OffsetDateTime end_time) {
+    public void setEnd_time(String end_time) {
         this.end_time = end_time;
     }
 
-    public OffsetDateTime getEnd_time(){
+    public String getEnd_time(){
         return this.end_time;
     }
 
-    public OffsetDateTime getCreated_at(){
+    public String getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(OffsetDateTime localDateTime){
-        this.created_at = localDateTime;
+    public void setCreated_at(String offsetDateTime){
+        this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(OffsetTime lunch_time) {
+    public void setLunch_time(String lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public OffsetTime getLunch_time() {
+    public String getLunch_time() {
         return this.lunch_time;
     }
 }
