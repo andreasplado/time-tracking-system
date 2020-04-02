@@ -77,34 +77,34 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(String start_time) {
+    public void setStart_time(LocalDateTime start_time) {
         this.start_time = start_time;
     }
 
-    public String getStart_time(){
+    public LocalDateTime getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(String end_time) {
+    public void setEnd_time(LocalDateTime end_time) {
         this.end_time = end_time;
     }
 
-    public String getEnd_time(){
+    public LocalDateTime getEnd_time(){
         return this.end_time;
     }
 
-    public String getCreated_at(){
+    public LocalDateTime getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(String offsetDateTime){
-        this.created_at = offsetDateTime;
+    public void setCreated_at(LocalDateTime localDateTime){
+        this.created_at = localDateTime;
     }
 
-    public void setLunch_time(String lunch_time) {
+    public void setLunch_time(LocalTime lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public String getLunch_time() {
+    public LocalTime getLunch_time() {
         return this.lunch_time;
     }
 }
