@@ -65,7 +65,7 @@ public class MainController {
                 model.addAttribute("userWorkHours", userWorkHours);
                 model.addAttribute("allWorkHours", allWorkhours);
                 model.addAttribute("role", users.getRole());
-                model.addAttribute("workHoursSum","30");
+                model.addAttribute("workHoursSum",workHourService.userWorkHoursSum(principal.getName()));
 
                 return "main";
             } else {

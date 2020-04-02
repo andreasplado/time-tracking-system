@@ -60,6 +60,16 @@ public class WorkHourService {
         return workHours;
     }
 
+    public String userWorkHoursSum(String username) {
+
+        String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
+
+        //The method queryForInt(String, Object...) from the type JdbcTemplate is deprecated
+        String count = jdbcTemplate.queryForObject(sql, new Object[]{username}, String.class);
+
+        return count;
+    }
+
 
     public void deleteAll(){
         workHourRepository.deleteAll();
