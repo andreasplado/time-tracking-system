@@ -74,9 +74,7 @@ public class WorkHourController {
             model.addAttribute("role", users.getRole());
         }
         WorkHour workHour = workHourService.viewWorkHour(id);
-        String createdAt = workHour.getCreated_at();
         model.addAttribute("workHour", workHourService.viewWorkHour(id));
-        model.addAttribute("createdAt", createdAt);
 
         return "edit_work_hour";
     }
