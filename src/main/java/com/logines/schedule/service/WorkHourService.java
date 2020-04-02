@@ -62,10 +62,18 @@ public class WorkHourService {
 
     public String userWorkHoursSum(String username) {
 
-        String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
+        //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
+        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
+        int datetimeDifference = 0;
+        for(int i=0; i<workHours.size(); i++){
+            datetimeDifference+= 2;
+            String startTime = workHours.get(i).getStart_time();
+            String endTime = workHours.get(i).getEnd_time();
+            datetimeDifference =<
+        }
 
         //The method queryForInt(String, Object...) from the type JdbcTemplate is deprecated
-        String count = jdbcTemplate.queryForObject(sql, new Object[]{username}, String.class);
+        //String count = jdbcTemplate.queryForObject(sql, new Object[]{username}, String.class);
 
         return count;
     }
