@@ -1,6 +1,7 @@
 package com.logines.schedule.model;
 
 import com.logines.schedule.utils.DateUtils;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
@@ -21,19 +22,19 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    private String start_time;
+    private DateTime start_time;
 
     @Column(name = "end_time")
-    private String end_time;
+    private DateTime end_time;
 
     @Column(name = "lunch_time")
     private String lunch_time;
 
     @Column(name = "created_at")
-    private String created_at;
+    private DateTime created_at;
 
     @Column(name = "updated_at", nullable = false)
-    private String updated_at;
+    private DateTime updated_at;
 
     public int getId() {
         return id;
@@ -45,18 +46,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = DateUtils.dateToString(new Date());
-        if (this.updated_at == null) updated_at = DateUtils.dateToString(new Date());
+        if (this.created_at == null) created_at = DateTime.now();
+        if (this.updated_at == null) updated_at = DateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = OffsetDateTime.now().toString();
+        this.updated_at = DateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = OffsetDateTime.now().toString();
+        this.updated_at = DateTime.now();
     }
 
     public String getTitle() {
@@ -75,26 +76,26 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(String start_time) {
+    public void setStart_time(DateTime start_time) {
         this.start_time = start_time;
     }
 
-    public String getStart_time(){
+    public DateTime getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(String end_time) {
+    public void setEnd_time(DateTime end_time) {
         this.end_time = end_time;
     }
 
-    public String getEnd_time(){
+    public DateTime getEnd_time(){
         return this.end_time;
     }
 
-    public String getCreated_at(){
+    public DateTime getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(String offsetDateTime){
+    public void setCreated_at(DateTime offsetDateTime){
         this.created_at = offsetDateTime;
     }
 

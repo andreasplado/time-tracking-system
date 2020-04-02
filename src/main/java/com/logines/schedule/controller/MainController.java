@@ -56,7 +56,6 @@ public class MainController {
             model.addAttribute("usernameText", principal.getName());
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
             Users users = userService.findByUsername(principal.getName());
-            String workHoursSum = workHourService.userWorkHoursSum(principal.getName());
             //Kui kasutajaandmeid on lisatud
             if (userProfile != null) {
                 List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
@@ -66,7 +65,7 @@ public class MainController {
                 model.addAttribute("userWorkHours", userWorkHours);
                 model.addAttribute("allWorkHours", allWorkhours);
                 model.addAttribute("role", users.getRole());
-                model.addAttribute("workHoursSum",workHoursSum);
+                model.addAttribute("workHoursSum","30");
 
                 return "main";
             } else {
