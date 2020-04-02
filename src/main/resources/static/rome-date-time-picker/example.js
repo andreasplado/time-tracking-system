@@ -1,8 +1,8 @@
 var moment = rome.moment;
 
-rome(start_time, {inputFormat: "yyyy-MM-dd HH:mm:ss",
+rome(start_time, {inputFormat: "YYYY-MM-dd HH:mm:ss",
     dateValidator: rome.val.beforeEq(end_time)});
-rome(end_time, {inputFormat: "yyyy-MM-dd HH:mm:ss"});
+rome(end_time, {inputFormat: "YYYY-MM-dd HH:mm:ss"});
 rome(lunch_time, { date: false, inputFormat: "HH:mm:ss"});
 
 var picker = rome(ind);
