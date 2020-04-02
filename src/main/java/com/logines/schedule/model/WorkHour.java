@@ -3,6 +3,8 @@ package com.logines.schedule.model;
 import com.logines.schedule.utils.DateUtils;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.util.Date;
 
@@ -21,19 +23,19 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    private String start_time;
+    private LocalDateTime start_time;
 
     @Column(name = "end_time")
-    private String end_time;
+    private LocalDateTime end_time;
 
     @Column(name = "lunch_time")
-    private String lunch_time;
+    private LocalTime lunch_time;
 
     @Column(name = "created_at")
-    private String created_at;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at", nullable = false)
-    private String updated_at;
+    private LocalDateTime updated_at;
 
     public int getId() {
         return id;
