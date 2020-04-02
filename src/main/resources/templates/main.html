@@ -172,6 +172,7 @@ $( function() {
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
         //$("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'dd-MM-yyyy HH:mm').format());
         $("#workhour-[[${userWorkhour.id}]]-created-at").text(ago( $(this).text()));
+        $("#work-hour-[[${userWorkhour.id}]]-end-date").text($(this).text().substring(0,4));
     /*[/]*/
 
  });
