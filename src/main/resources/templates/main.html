@@ -177,9 +177,9 @@ $( function() {
         var endTime = $("#work-hour-[[${userWorkhour.id}]]-end-time").text();
         var startTime = $("#work-hour-[[${userWorkhour.id}]]-start-time").text();
         $("#work-hour-[[${userWorkhour.id}]]-end-date").text(endDate.substring(0,10));
-        $("#work-hour-[[${userWorkhour.id}]]-start-date").text(endDate.substring(0,10));
-        $("#work-hour-[[${userWorkhour.id}]]-end-time").text(endDate.substring(12,$(this).text().length));
-        $("#work-hour-[[${userWorkhour.id}]]-start-time").text(endDate.substring(12,$(this).text().length));
+        $("#work-hour-[[${userWorkhour.id}]]-start-date").text(startDate.substring(0,10));
+        $("#work-hour-[[${userWorkhour.id}]]-end-time").text(endTime.substring(12,$(this).text().length));
+        $("#work-hour-[[${userWorkhour.id}]]-start-time").text(startTime.substring(12,$(this).text().length));
     /*[/]*/
 
  });
