@@ -172,7 +172,10 @@ $( function() {
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
         //$("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'dd-MM-yyyy HH:mm').format());
         $("#workhour-[[${userWorkhour.id}]]-created-at").text(ago( $(this).text()));
-        $("workhour-'+ ${userWorkHour.id} + '-start-time").text()
+        $("work-hour-'+ ${userWorkHour.id} + '-start-time").text().substring(5);
+        $("work-hour-'+ ${userWorkHour.id} + '-start-date").text().substring(5, $("work-hour-'+ ${userWorkHour.id} + '-start-date").text());
+        $("work-hour-'+ ${userWorkHour.id} + '-end-time").text().substring(5);
+        $("work-hour-'+ ${userWorkHour.id} + '-end-date").text().substring(5, $("work-hour-'+ ${userWorkHour.id} + '-end-date").text());
     /*[/]*/
 
  });
@@ -282,19 +285,19 @@ $( function() {
                     <td>
                         <div class="form-group">
                             <span>Date:</span>
-                            <span type="text" id="work-hour-start-time" th:text="${userWorkHour.start_time}"></span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-date'}" th:text="${userWorkHour.start_time}"></span>
                             <br />
                             <span>Time:</span>
-                            <span type="text" id="work-hour-end-time" th:text="${userWorkHour.start_time}"></span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-time'}" th:text="${userWorkHour.start_time}"></span>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <span>Date:</span>
-                            <span type="text" th:text="${userWorkHour.end_time}"></span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-date'}" th:text="${userWorkHour.end_time}"></span>
                             <br />
                             <span>Time:</span>
-                            <span type="text" th:text="${userWorkHour.end_time}"></span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-time'}" th:text="${userWorkHour.end_time}"></span>
                         </div>
                     </td>
                     <td th:text="${userWorkHour.title}"></td>
