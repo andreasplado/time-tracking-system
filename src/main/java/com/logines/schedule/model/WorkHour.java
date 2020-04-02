@@ -25,19 +25,19 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    @DateTimeFormat(pattern = "YYYY-MM-DD mm:ss")
+    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
     private OffsetDateTime start_time;
 
-    @DateTimeFormat(pattern = "YYYY-MM-DD mm:ss")
+    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
     @Column(name = "end_time")
     private OffsetDateTime end_time;
 
     @Column(name = "lunch_time")
-    @DateTimeFormat(pattern = "mm:ss")
+    @DateTimeFormat(pattern = "HH:mm:ss")
     private OffsetTime lunch_time;
 
     @Column(name = "created_at")
-    @DateTimeFormat(pattern = "YYYY-MM-DD mm:ss")
+    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
     private OffsetDateTime created_at;
 
     @DateTimeFormat(pattern = "YYYY-MM-DD mm:ss")
