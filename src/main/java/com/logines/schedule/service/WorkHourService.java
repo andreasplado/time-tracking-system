@@ -80,7 +80,7 @@ public class WorkHourService {
             DateTime endTimeDate = new DateTime(endTime);
 
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss");
             LocalDateTime startDate = LocalDateTime.parse(startTime, formatter);
             LocalDateTime endDate = LocalDateTime.parse(endTime, formatter);
 
