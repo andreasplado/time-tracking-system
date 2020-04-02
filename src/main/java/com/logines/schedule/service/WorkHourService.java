@@ -61,7 +61,7 @@ public class WorkHourService {
         workHourRepository.deleteAll();
     }
 
-    public int getWorkHours(String username){
+    public String getWorkHours(String username){
         return workHourRepository.sumUpWorkhours(username);
     }
 

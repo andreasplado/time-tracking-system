@@ -55,7 +55,7 @@ public class MainController {
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
             Users users = userService.findByUsername(principal.getName());
 
-            int allWorkHour = workHourService.getWorkHours(principal.getName());
+            String allWorkHour = workHourService.getWorkHours(principal.getName());
             //Kui kasutajaandmeid on lisatud
             if (userProfile != null) {
                 List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
