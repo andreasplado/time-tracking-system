@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -58,8 +57,8 @@ public class MainController {
             //Kui kasutajaandmeid on lisatud
             if (userProfile != null) {
                 List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
-                Collections.reverse(allWorkhours);
-                List<WorkHour> userWorkHours = workHourService.findByUsername(principal.getName());
+                List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
+
                 model.addAttribute("userProfile", userProfile);
                 model.addAttribute("userWorkHours", userWorkHours);
                 model.addAttribute("allWorkHours", allWorkhours);

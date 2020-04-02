@@ -7,6 +7,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -49,8 +50,10 @@ public class WorkHourService {
 
     }
 
-    public List<WorkHour> findByUsername(String username) {
-        return workHourRepository.findWorkHoursByUsername(username);
+    public List<WorkHour> findByUsernameReversed(String username) {
+        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
+        Collections.reverse(workHours);
+        return workHours;
     }
 
 
