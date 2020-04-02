@@ -33,10 +33,12 @@ public class WorkHour {
     private String lunch_time;
 
     @Column(name = "created_at")
-    private Timestamp created_at;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created_at;
 
     @Column(name = "updated_at", nullable = false)
-    private Timestamp updated_at;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updated_at;
 
     public int getId() {
         return id;
@@ -97,7 +99,7 @@ public class WorkHour {
         return this.end_time;
     }
 
-    public Timestamp getCreated_at(){
+    public Date getCreated_at(){
         return this.created_at;
     }
     public void setCreated_at(Timestamp offsetDateTime){
