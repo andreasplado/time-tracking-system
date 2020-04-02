@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,8 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
     from temp
     group by extract(hour from event_time)
     order by hour_of_day desc*/
+    @Transactional
+    @Modifying
     @Query(value = "SELECT extract(hour from start_time) as hour_of_day FROM WorkHour WHERE username=:username ")
     int sumUpWorkhours(@Param("username") String name);
 }
