@@ -173,7 +173,7 @@ $( function() {
         //$("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'dd-MM-yyyy HH:mm').format());
         $("#workhour-[[${userWorkhour.id}]]-created-at").text(ago( $(this).text()));
         $("#work-hour-[[${userWorkHour.id}]]-start-time").text().substring(5);
-        $("#work-hour-[[${userWorkHour.id}]]-start-date").text().substring(5, $("#work-hour-[[${userWorkHour.id}]]-start-date").text());
+        $("#work-hour-[[${userWorkHour.id}]]-start-date").text().substring(5, $(this).text().length);
         $("#work-hour-[[${userWorkHour.id}]]-end-time").text().substring(5);
         $("#work-hour-[[${userWorkHour.id}]]-end-date").text().substring(5,  $(this).text().length);
     /*[/]*/
