@@ -38,6 +38,7 @@ public class WorkHour {
     private Timestamp created_at;
 
     @Column(name = "updated_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp updated_at;
 
     public int getId() {
