@@ -51,12 +51,12 @@ public class WorkHour {
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = OffsetDateTime.now().toString();
+        this.updated_at = DateUtils.dateToString(new Date());
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = OffsetDateTime.now().toString();
+        this.updated_at = DateUtils.dateToString(new Date());
     }
 
     public String getTitle() {
@@ -91,10 +91,10 @@ public class WorkHour {
         return this.end_time;
     }
 
-    public OffsetDateTime getCreated_at(){
+    public String getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(OffsetDateTime offsetDateTime){
+    public void setCreated_at(String offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
