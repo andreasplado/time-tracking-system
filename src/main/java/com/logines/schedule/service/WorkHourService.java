@@ -3,6 +3,7 @@ package com.logines.schedule.service;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,9 @@ public class WorkHourService {
 
     @Autowired
     private WorkHourRepository workHourRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     public WorkHour addWorkHour(WorkHour workHour){
         return workHourRepository.save(workHour);
@@ -56,13 +60,19 @@ public class WorkHourService {
         return workHours;
     }
 
+    public String userWorkHoursSum(String username) {
+
+        String sql = "SELECT extract(start_time from WorkHour) as hour_of_day FROM WorkHour WHERE username = ?";
+
+        //The method queryForInt(String, Object...) from the type JdbcTemplate is deprecated
+        String count = jdbcTemplate.queryForObject(sql, new Object[]{username}, String.class);
+
+        return count;
+    }
+
 
     public void deleteAll(){
         workHourRepository.deleteAll();
-    }
-
-    public String getWorkHours(String username){
-        return workHourRepository.sumUpWorkhours(username);
     }
 
     @Scheduled(cron = "40 * * ? * MON-FRI")
