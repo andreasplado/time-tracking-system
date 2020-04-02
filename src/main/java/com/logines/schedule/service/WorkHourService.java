@@ -61,6 +61,10 @@ public class WorkHourService {
         workHourRepository.deleteAll();
     }
 
+    public int getWorkHours(String username){
+        return workHourRepository.sumUpWorkhours(username);
+    }
+
     @Scheduled(cron = "40 * * ? * MON-FRI")
     public void myScheduledMethod(){
         workHourRepository.deleteLast30DaysWorkHours();
