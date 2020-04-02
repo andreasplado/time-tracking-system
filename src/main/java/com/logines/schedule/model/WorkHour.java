@@ -47,18 +47,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = DateUtils.dateToString(new Date());
-        if (this.updated_at == null) updated_at = DateUtils.dateToString(new Date());
+        if (this.created_at == null) created_at = LocalDateTime.now();
+        if (this.updated_at == null) updated_at = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = DateUtils.dateToString(new Date());
+        this.updated_at = LocalDateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = DateUtils.dateToString(new Date());
+        this.updated_at = LocalDateTime.now();
     }
 
     public String getTitle() {
