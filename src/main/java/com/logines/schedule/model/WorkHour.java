@@ -23,11 +23,11 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
+    @DateTimeFormat(pattern = "mm/dd/yyyy HH:mm")
     private LocalDateTime start_time;
 
     @Column(name = "end_time")
-    @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
+    @DateTimeFormat(pattern = "mm/dd/yyyy HH:mm")
     private LocalDateTime end_time;
 
     @Column(name = "lunch_time")
