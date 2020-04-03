@@ -30,19 +30,20 @@ public class WorkHour {
     private LocalTime start_time;
 
     @Column(name = "end_time")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Temporal(TemporalType.TIME)
     private LocalTime end_time;
 
     @Column(name = "lunch_time")
+    @Temporal(TemporalType.TIME)
     private LocalTime lunch_time;
 
     @Column(name = "created_at")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Temporal(TemporalType.DATE)
     private LocalDateTime created_at;
 
     @Column(name = "updated_at", nullable = false)
-    @Temporal(TemporalType.TIME)
-    private LocalDateTime updated_at;
+    @Temporal(TemporalType.DATE)
+    private LocalDate updated_at;
 
     public int getId() {
         return id;
