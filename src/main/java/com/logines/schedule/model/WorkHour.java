@@ -26,15 +26,12 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalTime start_time;
 
     @Column(name = "end_time")
-    @Temporal(TemporalType.TIME)
     private LocalTime end_time;
 
     @Column(name = "lunch_time")
-    @Temporal(TemporalType.TIME)
     private LocalTime lunch_time;
 
     @Column(name = "created_at")
