@@ -48,14 +48,12 @@ public class WorkHourController {
         model.addAttribute("workHourForm", new WorkHour());
         workHourValidator.validate(workHour, bindingResult);
 
-        Logger logger = LoggerFactory.getLogger(WorkHourController.class);
-
         workHourService.addWorkHour(workHour);
         model.addAttribute("message", "Workhour edited successfully...");
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", bindingResult.getAllErrors());
-            return "main";
+            return "error_page";
         } else {
             model.addAttribute("message", "Workhour added successfully...");
             workHourService.addWorkHour(workHour);
