@@ -53,18 +53,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = LocalDate.now();
-        if (this.updated_at == null) updated_at = LocalDate.now();
+        if (this.created_at == null) created_at = LocalDateTime.now();
+        if (this.updated_at == null) updated_at = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = LocalDate.now();
+        this.updated_at = LocalDateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = LocalDate.now();
+        this.updated_at = LocalDateTime.now();
     }
 
     public String getTitle() {
@@ -91,26 +91,26 @@ public class WorkHour {
         return this.start_time;
     }
 
-    public void setEnd_time(LocalTime end_time) {
+    public void setEnd_time(LocalDateTime end_time) {
         this.end_time = end_time;
     }
 
-    public LocalTime getEnd_time(){
+    public LocalDateTime getEnd_time(){
         return this.end_time;
     }
 
-    public LocalDate getCreated_at(){
+    public LocalDateTime getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(LocalDate offsetDateTime){
+    public void setCreated_at(LocalDateTime offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(LocalTime lunch_time) {
+    public void setLunch_time(LocalDateTime lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public LocalTime getLunch_time() {
+    public LocalDateTime getLunch_time() {
         return this.lunch_time;
     }
 }
