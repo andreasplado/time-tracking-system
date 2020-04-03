@@ -50,7 +50,7 @@ public class UserProfileController {
                                Model model) {
         userProfileValidator.validate(userProfile, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "main";
+            return "error_page";
         } else {
             userProfileService.updateUserDetails(userProfile);
             model.addAttribute("message", "User profile edited successfully...");

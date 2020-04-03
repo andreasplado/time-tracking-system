@@ -85,6 +85,10 @@ public class MainController {
                            @Valid WorkHour workHour,
                            BindingResult bindingResult,
                            Model model) {
+        if(bindingResult.hasErrors()){
+            model.addAttribute("error", bindingResult.getAllErrors());
+            return "error_page";
+        }
         workHourService.addWorkHour(workHour);
         model.addAttribute("message", "Workhour edited successfully...");
 
