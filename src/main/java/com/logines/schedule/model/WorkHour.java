@@ -39,7 +39,7 @@ public class WorkHour {
 
     @Column(name = "created_at")
     @Temporal(TemporalType.DATE)
-    private LocalDateTime created_at;
+    private LocalDate created_at;
 
     @Column(name = "updated_at", nullable = false)
     @Temporal(TemporalType.DATE)
@@ -55,18 +55,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = LocalDateTime.now();
-        if (this.updated_at == null) updated_at = LocalDateTime.now();
+        if (this.created_at == null) created_at = LocalDate.now();
+        if (this.updated_at == null) updated_at = LocalDate.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = LocalDateTime.now();
+        this.updated_at = LocalDate.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = LocalDateTime.now();
+        this.updated_at = LocalDate.now();
     }
 
     public String getTitle() {
@@ -85,15 +85,15 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(LocalDateTime start_time) {
+    public void setStart_time(LocalTime start_time) {
         this.start_time = start_time;
     }
 
-    public LocalDateTime getStart_time(){
+    public LocalTime getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(LocalDateTime end_time) {
+    public void setEnd_time(LocalTime end_time) {
         this.end_time = end_time;
     }
 
@@ -101,10 +101,10 @@ public class WorkHour {
         return this.end_time;
     }
 
-    public LocalDateTime getCreated_at(){
+    public LocalDate getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(LocalDateTime offsetDateTime){
+    public void setCreated_at(LocalDate offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
