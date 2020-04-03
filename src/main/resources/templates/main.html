@@ -275,9 +275,9 @@ $( function() {
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
 
-            <h4 th:if="${userWorkHours!=null and userWorkHours.empty}">My working history</h4>
-            <p th:if="${userWorkHours==null and userWorkHours.empty}">You don't have any records in your workhour history</p>
-            <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
+            <h4 th:if="${userWorkHours!=null}">My working history</h4>
+            <p th:if="${userWorkHours==null}">You don't have any records in your workhour history</p>
+            <table th:if="${userWorkHours!=null}" class="table">
                 <thead>
                 <tr>
                     <th>Work start time</th>
