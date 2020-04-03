@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.DateFormatter;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -80,8 +81,9 @@ public class WorkHourService {
             DateTime endTimeDate = new DateTime(endTime);
 
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd'T'HH:mm:ss");
             LocalDateTime startDate = LocalDateTime.parse(startTime, formatter);
+                    //LocalDateTime.parse(startTime, formatter);
             LocalDateTime endDate = LocalDateTime.parse(endTime, formatter);
 
             Duration duration = Duration.between(startDate, endDate);
