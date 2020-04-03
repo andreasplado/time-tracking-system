@@ -30,10 +30,10 @@ public class WorkHour {
     private LocalTime start_time;
 
     @Column(name = "end_time")
-    private LocalDateTime end_time;
+    private LocalTime end_time;
 
     @Column(name = "lunch_time")
-    private LocalDateTime lunch_time;
+    private LocalTime lunch_time;
 
     @Column(name = "created_at")
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
@@ -91,11 +91,11 @@ public class WorkHour {
         return this.start_time;
     }
 
-    public void setEnd_time(LocalDateTime end_time) {
+    public void setEnd_time(LocalTime end_time) {
         this.end_time = end_time;
     }
 
-    public LocalDateTime getEnd_time(){
+    public LocalTime getEnd_time(){
         return this.end_time;
     }
 
@@ -106,11 +106,11 @@ public class WorkHour {
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(LocalDateTime lunch_time) {
+    public void setLunch_time(LocalTime lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public LocalDateTime getLunch_time() {
+    public LocalTime getLunch_time() {
         return this.lunch_time;
     }
 }
