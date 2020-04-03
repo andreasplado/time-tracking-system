@@ -6,10 +6,7 @@ import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.OffsetDateTime;
+import java.time.*;
 import java.util.Date;
 
 @Entity
@@ -26,22 +23,25 @@ public class WorkHour {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "start_time")
-    private LocalDateTime start_time;
+    @Column(name = "start_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    @DateTimeFormat(pattern="yyyy-MM-ddTHH:mm")
+    private OffsetDateTime start_time;
 
-    @Column(name = "end_time")
-    private LocalDateTime end_time;
+    @Column(name = "end_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    @DateTimeFormat(pattern="yyyy-MM-ddTHH:mm")
+    private OffsetDateTime end_time;
 
-    @Column(name = "lunch_time")
-    private LocalDateTime lunch_time;
 
-    @Column(name = "created_at")
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime created_at;
+    @Column(name = "lunch_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    @DateTimeFormat(pattern="HH:mm")
+    private OffsetDateTime lunch_time;
 
-    @Column(name = "updated_at", nullable = false)
-    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
-    private LocalDateTime updated_at;
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    @DateTimeFormat(pattern="yyyy-MM-ddTHH:mm")
+    private OffsetDateTime created_at;
+
+    @Column(name = "updated_at", columnDefinition = "TIMESTAMP WITH TIME ZONE", nullable = false)
+    private OffsetDateTime updated_at;
 
     public int getId() {
         return id;
@@ -53,18 +53,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = LocalDateTime.now();
-        if (this.updated_at == null) updated_at = LocalDateTime.now();
+        if (this.created_at == null) created_at = OffsetDateTime.now();
+        if (this.updated_at == null) updated_at = OffsetDateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = LocalDateTime.now();
+        this.updated_at = OffsetDateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = LocalDateTime.now();
+        this.updated_at = OffsetDateTime.now();
     }
 
     public String getTitle() {
@@ -83,34 +83,34 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(LocalDateTime start_time) {
+    public void setStart_time(OffsetDateTime start_time) {
         this.start_time = start_time;
     }
 
-    public LocalDateTime getStart_time(){
+    public OffsetDateTime getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(LocalDateTime end_time) {
+    public void setEnd_time(OffsetDateTime end_time) {
         this.end_time = end_time;
     }
 
-    public LocalDateTime getEnd_time(){
+    public OffsetDateTime getEnd_time(){
         return this.end_time;
     }
 
-    public LocalDateTime getCreated_at(){
+    public OffsetDateTime getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(LocalDateTime offsetDateTime){
+    public void setCreated_at(OffsetDateTime offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(LocalDateTime lunch_time) {
+    public void setLunch_time(OffsetDateTime lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public LocalDateTime getLunch_time() {
+    public OffsetDateTime getLunch_time() {
         return this.lunch_time;
     }
 }

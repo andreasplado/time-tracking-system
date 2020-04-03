@@ -47,10 +47,7 @@ public class WorkHourController {
                               Model model, String error, Principal principal) {
         model.addAttribute("workHourForm", new WorkHour());
         workHourValidator.validate(workHour, bindingResult);
-
-        workHourService.addWorkHour(workHour);
         model.addAttribute("message", "Workhour edited successfully...");
-
         if (bindingResult.hasErrors()) {
             model.addAttribute("error", bindingResult.getAllErrors());
             return "error_page";
