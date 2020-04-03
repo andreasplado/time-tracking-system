@@ -24,7 +24,7 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern="yyyy-MM-ddTHH:mm")
     private OffsetDateTime start_time;
 
     @Column(name = "end_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
@@ -34,10 +34,10 @@ public class WorkHour {
 
     @Column(name = "lunch_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     @DateTimeFormat(pattern="HH:mm")
-    private OffsetDateTime lunch_time;
+    private OffsetTime lunch_time;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern="yyyy-MM-ddTHH:mm")
     private OffsetDateTime created_at;
 
     @Column(name = "updated_at", columnDefinition = "TIMESTAMP WITH TIME ZONE", nullable = false)
