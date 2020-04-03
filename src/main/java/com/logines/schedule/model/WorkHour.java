@@ -1,10 +1,13 @@
 package com.logines.schedule.model;
 
 import com.logines.schedule.utils.DateUtils;
+import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.util.Date;
 
@@ -24,21 +27,21 @@ public class WorkHour {
 
     @Column(name = "start_time")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDateTime start_time;
+    private LocalTime start_time;
 
     @Column(name = "end_time")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDateTime end_time;
+    private LocalTime end_time;
 
     @Column(name = "lunch_time")
-    private String lunch_time;
+    private LocalTime lunch_time;
 
     @Column(name = "created_at")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDateTime created_at;
 
     @Column(name = "updated_at", nullable = false)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Temporal(TemporalType.TIME)
     private LocalDateTime updated_at;
 
     public int getId() {
@@ -93,7 +96,7 @@ public class WorkHour {
         this.end_time = end_time;
     }
 
-    public LocalDateTime getEnd_time(){
+    public LocalTime getEnd_time(){
         return this.end_time;
     }
 
@@ -104,11 +107,11 @@ public class WorkHour {
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(String lunch_time) {
+    public void setLunch_time(LocalTime lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public String getLunch_time() {
+    public LocalTime getLunch_time() {
         return this.lunch_time;
     }
 }
