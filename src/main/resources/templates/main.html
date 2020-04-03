@@ -196,7 +196,7 @@ $( function() {
 <body>
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
-    <h2 th:text="${error}">Error</h2>
+    <h2 th:text="${error}"></h2>
     <h1 th:text="${workHoursSum}" id="working-hours"></h1>
     <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
@@ -255,7 +255,8 @@ $( function() {
                 <div class="form-group">
                     <label>Work lunch time:</label>
                     <div class="input-group date" id="work-lunch-time">
-                        <input type="time" class="form-control" id="lunch_time" name="end_time" th:value="*{lunch_time}" th:field="*{lunch_time}"/>
+                        <input type="text" id="lunch_time" name="lunch_time" th:attr="data-field='time'"
+                               class="form-control" th:field="*{lunch_time}" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
@@ -291,11 +292,19 @@ $( function() {
                     th:each="userWorkHour : ${userWorkHours}">
                     <td>
                         <div class="form-group">
+                            <span>Date:</span>
                             <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-date'}" th:text="${userWorkHour.start_time}"></span>
+                            <br />
+                            <span>Time:</span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-time'}" th:text="${userWorkHour.start_time}"></span>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
+                            <span>Date:</span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-date'}" th:text="${userWorkHour.end_time}"></span>
+                            <br />
+                            <span>Time:</span>
                             <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-time'}" th:text="${userWorkHour.end_time}"></span>
                         </div>
                     </td>
