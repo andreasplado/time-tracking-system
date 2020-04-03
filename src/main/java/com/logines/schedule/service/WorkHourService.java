@@ -3,17 +3,21 @@ package com.logines.schedule.service;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.DateFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 @Transactional
@@ -71,28 +75,23 @@ public class WorkHourService {
         int datetimeDifference = 0;
         for(int i=0; i<workHours.size(); i++){
 
-
-            String startTime = workHours.get(i).getStart_time();
-            String endTime = workHours.get(i).getEnd_time();
-            DateTime startTimeDate = new DateTime(startTime);
-            DateTime endTimeDate = new DateTime(endTime);
-
-            DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
-            //LocalDateTime startDate = LocalDateTime.parse(startTime, formatter);
-            OffsetDateTime startDateTimeParsed = LocalDateTime.parse(startTime, formatter).atOffset(ZoneOffset.UTC);
-                    //LocalDateTime.parse(startTime, formatter);
-            //LocalDateTime endDate = LocalDateTime.parse(endTime, formatter);
-            OffsetDateTime endDateTimeParsed = LocalDateTime.parse(startTime, formatter).atOffset(ZoneOffset.UTC);
-
-            Duration duration = Duration.between(startDateTimeParsed, endDateTimeParsed);
-            datetimeDifference+= duration.getSeconds();
-
         }
 
         //The method queryForInt(String, Object...) from the type JdbcTemplate is deprecated
         //String count = jdbcTemplate.queryForObject(sql, new Object[]{username}, String.class);
 
         return datetimeDifference;
+    }
+
+    public static String formatDurationBetween(LocalDateTime from, LocalDateTime to) {
+        Duration difference = Duration.between(from, to);
+
+        long days = difference.toDays();
+        difference = difference.minusDays(days);
+        long hours = difference.toHours();
+        long mins = difference.minusHours(hours).toMinutes();
+
+        return String.format("%dd %dh %02dm", days, hours, mins);
     }
 
 
