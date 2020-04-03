@@ -106,11 +106,11 @@ public class WorkHour {
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(OffsetDateTime lunch_time) {
+    public void setLunch_time(OffsetTime lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public OffsetDateTime getLunch_time() {
+    public OffsetTime getLunch_time() {
         return this.lunch_time;
     }
 }
