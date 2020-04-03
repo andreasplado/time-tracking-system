@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 @Controller
 public class WorkHourController {
@@ -49,7 +50,7 @@ public class WorkHourController {
 
         Logger logger = LoggerFactory.getLogger(WorkHourController.class);
         if (bindingResult.hasErrors()) {
-            logger.trace("bindingselult: " + bindingResult.getModel());
+            System.out.println("Error!" + Arrays.toString(bindingResult.getSuppressedFields()));
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
             if (userProfile != null) {
                 model.addAttribute("userProfile", userProfile);
