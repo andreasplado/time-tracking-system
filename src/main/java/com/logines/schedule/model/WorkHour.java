@@ -36,11 +36,11 @@ public class WorkHour {
     private LocalDateTime lunch_time;
 
     @Column(name = "created_at")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime created_at;
 
     @Column(name = "updated_at", nullable = false)
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm")
     private LocalDateTime updated_at;
 
     public int getId() {
