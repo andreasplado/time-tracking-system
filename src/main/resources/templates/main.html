@@ -291,19 +291,11 @@ $( function() {
                     th:each="userWorkHour : ${userWorkHours}">
                     <td>
                         <div class="form-group">
-                            <span>Date:</span>
                             <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-date'}" th:text="${userWorkHour.start_time}"></span>
-                            <br />
-                            <span>Time:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-time'}" th:text="${userWorkHour.start_time}"></span>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
-                            <span>Date:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-date'}" th:text="${userWorkHour.end_time}"></span>
-                            <br />
-                            <span>Time:</span>
                             <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-time'}" th:text="${userWorkHour.end_time}"></span>
                         </div>
                     </td>
