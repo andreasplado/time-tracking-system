@@ -1,5 +1,6 @@
 package com.logines.schedule.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.logines.schedule.utils.DateUtils;
 import org.joda.time.DateTime;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,18 +30,18 @@ public class WorkHour {
     private LocalTime start_time;
 
     @Column(name = "end_time")
-    private LocalTime end_time;
+    private LocalDateTime end_time;
 
     @Column(name = "lunch_time")
-    private LocalTime lunch_time;
+    private LocalDateTime lunch_time;
 
     @Column(name = "created_at")
-    @Temporal(TemporalType.DATE)
-    private LocalDate created_at;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at", nullable = false)
-    @Temporal(TemporalType.DATE)
-    private LocalDate updated_at;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm")
+    private LocalDateTime updated_at;
 
     public int getId() {
         return id;
