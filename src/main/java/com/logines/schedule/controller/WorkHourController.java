@@ -49,19 +49,12 @@ public class WorkHourController {
         workHourValidator.validate(workHour, bindingResult);
 
         Logger logger = LoggerFactory.getLogger(WorkHourController.class);
-        if (bindingResult.hasErrors()) {
-            System.out.println("Error!" + Arrays.toString(bindingResult.getSuppressedFields()));
-            UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
-            if (userProfile != null) {
-                model.addAttribute("userProfile", userProfile);
-                return "main";
-            } else {
-                return "redirect:/";
-            }
-        }
+
+        workHourService.addWorkHour(workHour);
+        model.addAttribute("message", "Workhour edited successfully...");
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("error", "Something went wrong. Please check all credentials.");
+            model.addAttribute("error", bindingResult.getAllErrors());
             return "main";
         } else {
             model.addAttribute("message", "Workhour added successfully...");
