@@ -7,6 +7,8 @@ import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.WorkHourValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +47,9 @@ public class WorkHourController {
         model.addAttribute("workHourForm", new WorkHour());
         workHourValidator.validate(workHour, bindingResult);
 
+        Logger logger = LoggerFactory.getLogger(WorkHourController.class);
         if (bindingResult.hasErrors()) {
+            logger.trace("bindingselult: " + bindingResult.getModel());
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
             if (userProfile != null) {
                 model.addAttribute("userProfile", userProfile);
