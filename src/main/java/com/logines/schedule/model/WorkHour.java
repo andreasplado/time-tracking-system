@@ -23,22 +23,22 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
     private LocalDateTime start_time;
 
     @Column(name = "end_time")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
     private LocalDateTime end_time;
 
     @Column(name = "lunch_time")
     private String lunch_time;
 
     @Column(name = "created_at")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
     private LocalDateTime created_at;
 
     @Column(name = "updated_at", nullable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
     private LocalDateTime updated_at;
 
     public int getId() {
