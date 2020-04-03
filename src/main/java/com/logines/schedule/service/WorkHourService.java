@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.swing.text.DateFormatter;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
@@ -80,13 +77,14 @@ public class WorkHourService {
             DateTime startTimeDate = new DateTime(startTime);
             DateTime endTimeDate = new DateTime(endTime);
 
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd'T'HH:mm:ss");
-            LocalDateTime startDate = LocalDateTime.parse(startTime, formatter);
+            DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
+            //LocalDateTime startDate = LocalDateTime.parse(startTime, formatter);
+            OffsetDateTime startDateTimeParsed = LocalDateTime.parse(startTime, formatter).atOffset(ZoneOffset.UTC);
                     //LocalDateTime.parse(startTime, formatter);
-            LocalDateTime endDate = LocalDateTime.parse(endTime, formatter);
+            //LocalDateTime endDate = LocalDateTime.parse(endTime, formatter);
+            OffsetDateTime endDateTimeParsed = LocalDateTime.parse(startTime, formatter).atOffset(ZoneOffset.UTC);
 
-            Duration duration = Duration.between(startDate, endDate);
+            Duration duration = Duration.between(startDateTimeParsed, endDateTimeParsed);
             datetimeDifference+= duration.getSeconds();
 
         }
