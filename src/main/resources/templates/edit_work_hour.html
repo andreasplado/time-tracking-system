@@ -166,7 +166,7 @@ $( function() {
                 <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form" th:object="${workHour}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
-                        <input type="time" class="form-control" th:attr="value = ${workHour.username}" th:name="username" th:id="username" placeholder="Enter name"/>
+                        <input type="text" class="form-control" style="visibility:hidden;" th:attr="value = ${workHour.username}" th:name="username" th:id="username" placeholder="Enter name" readonly/>
                     </div>
                     <div class="form-group">
                         <label>Start time:</label>
@@ -178,7 +178,7 @@ $( function() {
                     <div class="form-group">
                         <label>End time:</label>
                         <div class="input-group date" id="work-begin-time">
-                            <input type="time" th:value="${workHour.end_time}" th:name="end_time" th:id="end_time" placeholder="Work end time"/>
+                            <input type="time" th:value="${workHour.end_time}" th:name="end_time" th:id="end_time"/>
                         </div>
                     </div>
                     <div class="form-group">
