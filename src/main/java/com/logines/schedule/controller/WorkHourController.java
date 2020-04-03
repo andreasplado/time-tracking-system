@@ -42,6 +42,7 @@ public class WorkHourController {
     public String addWorkHour(@RequestBody @Valid @ModelAttribute WorkHour workHour,
                               BindingResult bindingResult,
                               Model model, String error, Principal principal) {
+        model.addAttribute("workHourForm", new WorkHour());
         workHourValidator.validate(workHour, bindingResult);
 
         if (bindingResult.hasErrors()) {
