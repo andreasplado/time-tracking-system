@@ -241,14 +241,14 @@ $( function() {
                 <div class="form-group">
                     <label>Work begin time:</label>
                     <div class="input-group date" id="work-begin-time">
-                        <input type="date" th:attr="data-field='datetime'" class="form-control" id="start_time" name="start_time" th:value="*{start_time}" th:field="*{start_time}" readonly/>
+                        <input type="datetime" th:attr="data-field='datetime'" class="form-control" id="start_time" name="start_time" th:value="*{start_time}" th:field="*{start_time}" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
                     <p th:text="${workhouraddingError}">Test</p>
                     <label>Work end time:</label>
                     <div class="input-group date" id="work-end-time">
-                        <input type="date" th:attr="data-field='datetime'" class="form-control" id="end_time" name="end_time" th:value="*{end_time}" th:field="*{end_time}" readonly/>
+                        <input type="datetime" th:attr="data-field='datetime'" class="form-control" id="end_time" name="end_time" th:value="*{end_time}" th:field="*{end_time}" readonly/>
                     </div>
                 </div>
                 <div class="form-group">
