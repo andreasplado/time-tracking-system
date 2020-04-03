@@ -1,6 +1,7 @@
 package com.logines.schedule.model;
 
 import com.logines.schedule.utils.DateUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,19 +23,23 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime start_time;
 
     @Column(name = "end_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime end_time;
 
     @Column(name = "lunch_time")
     private String lunch_time;
 
     @Column(name = "created_at")
-    private String created_at;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at", nullable = false)
-    private String updated_at;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime updated_at;
 
     public int getId() {
         return id;
@@ -46,18 +51,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = DateUtils.dateToString(new Date());
-        if (this.updated_at == null) updated_at = DateUtils.dateToString(new Date());
+        if (this.created_at == null) created_at = LocalDateTime.now();
+        if (this.updated_at == null) updated_at = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = DateUtils.dateToString(new Date());
+        this.updated_at = LocalDateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = DateUtils.dateToString(new Date());
+        this.updated_at = LocalDateTime.now();
     }
 
     public String getTitle() {
@@ -92,10 +97,10 @@ public class WorkHour {
         return this.end_time;
     }
 
-    public String getCreated_at(){
+    public LocalDateTime getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(String offsetDateTime){
+    public void setCreated_at(LocalDateTime offsetDateTime){
         this.created_at = offsetDateTime;
     }
 

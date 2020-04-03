@@ -72,15 +72,8 @@ public class WorkHourService {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
-        int datetimeDifference = 0;
-        for(int i=0; i<workHours.size(); i++){
 
-        }
-
-        //The method queryForInt(String, Object...) from the type JdbcTemplate is deprecated
-        //String count = jdbcTemplate.queryForObject(sql, new Object[]{username}, String.class);
-
-        return datetimeDifference;
+        return 0;
     }
 
     public static String formatDurationBetween(LocalDateTime from, LocalDateTime to) {
