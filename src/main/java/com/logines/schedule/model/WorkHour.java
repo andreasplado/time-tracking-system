@@ -24,24 +24,20 @@ public class WorkHour {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "start_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(name = "start_time")
     private LocalDateTime start_time;
 
-    @Column(name = "end_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(name = "end_time")
     private LocalDateTime end_time;
 
 
-    @Column(name = "lunch_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
+    @Column(name = "lunch_time")
     private LocalTime lunch_time;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @Column(name = "created_at")
     private LocalDateTime created_at;
 
-    @Column(name = "updated_at", columnDefinition = "TIMESTAMP WITH TIME ZONE", nullable = false)
+    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updated_at;
 
     public int getId() {
