@@ -290,18 +290,12 @@ $( function() {
                 <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
                     th:each="userWorkHour : ${userWorkHours}">
                     <td>
-                        <div class="form-group">
-                            <span>Date:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-date'}" th:text="${userWorkHour.start_time}"></span>
-                            <br />
-                            <span>Time:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-time'}" th:text="${userWorkHour.start_time}"></span>
-                        </div>
+                        <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-date'}" th:text="${#dates.format(userWorkHour.start_time)}"></span>
                     </td>
                     <td>
                         <div class="form-group">
                             <span>Date:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-date'}" th:text="${userWorkHour.end_time}"></span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-date'}" th:text="${#dates.format(userWorkHour.end_time, 'yyyy-MM-dd HH:mm')}"></span>
                             <br />
                             <span>Time:</span>
                             <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-time'}" th:text="${userWorkHour.end_time}"></span>
