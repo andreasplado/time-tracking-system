@@ -87,11 +87,13 @@ public class WorkHourService {
             lunchTime = LocalTime.parse(workHours.get(i).getLunch_time());
             diff+=Duration.between(startDateTime, endDateTime).getSeconds();
             System.out.println("Between start: "  + Long.toString(Duration.between(startDateTime, endDateTime).getSeconds()));
+            long nanoseconds = (long)lunchTime.getMinute() / 60 ;
+            diff -= nanoseconds;
             System.out.println("lunch: "  + lunchTime.getMinute());
         }
 
 
-        return Long.toString(diff);
+        return Long.toString(sum);
     }
 
 
