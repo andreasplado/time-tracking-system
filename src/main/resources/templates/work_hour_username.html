@@ -113,7 +113,7 @@
                 </thead>
                 <tbody>
                 <tr class="list-item" th:each="workHour : ${workHours}"
-                    th:onclick="'viewWorkHour(' + ${allWorkHour.id} +')'">
+                    th:onclick="'viewWorkHour(' + ${workHour.id} +')'">
                     <td th:text="${workHour.username}"></td>
                     <td th:text="${workHour.start_time}"></td>
                     <td th:text="${workHour.end_time}"></td>
