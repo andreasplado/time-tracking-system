@@ -3,6 +3,7 @@ package com.logines.schedule.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.logines.schedule.utils.DateUtils;
 import org.joda.time.DateTime;
+import org.joda.time.LocalTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -25,24 +26,23 @@ public class WorkHour {
 
     @Column(name = "start_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private ZonedDateTime start_time;
+    private LocalDateTime start_time;
 
     @Column(name = "end_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private ZonedDateTime end_time;
+    private LocalDateTime end_time;
 
 
     @Column(name = "lunch_time", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
-    private OffsetTime lunch_time;
+    private LocalTime lunch_time;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private ZonedDateTime created_at;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at", columnDefinition = "TIMESTAMP WITH TIME ZONE", nullable = false)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private ZonedDateTime updated_at;
+    private LocalDateTime updated_at;
 
     public int getId() {
         return id;
@@ -54,18 +54,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = ZonedDateTime.now();
-        if (this.updated_at == null) updated_at = ZonedDateTime.now();
+        if (this.created_at == null) created_at = LocalDateTime.now();
+        if (this.updated_at == null) updated_at = LocalDateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = ZonedDateTime.now();
+        this.updated_at = LocalDateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = ZonedDateTime.now();
+        this.updated_at = LocalDateTime.now();
     }
 
     public String getTitle() {
@@ -84,34 +84,34 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(ZonedDateTime start_time) {
+    public void setStart_time(LocalDateTime start_time) {
         this.start_time = start_time;
     }
 
-    public ZonedDateTime getStart_time(){
+    public LocalDateTime getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(ZonedDateTime end_time) {
+    public void setEnd_time(LocalDateTime end_time) {
         this.end_time = end_time;
     }
 
-    public ZonedDateTime getEnd_time(){
+    public LocalDateTime getEnd_time(){
         return this.end_time;
     }
 
-    public ZonedDateTime getCreated_at(){
+    public LocalDateTime getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(ZonedDateTime offsetDateTime){
+    public void setCreated_at(LocalDateTime offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(OffsetTime lunch_time) {
+    public void setLunch_time(LocalTime lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public OffsetTime getLunch_time() {
+    public LocalTime getLunch_time() {
         return this.lunch_time;
     }
 }
