@@ -101,6 +101,6 @@ public class WorkHourController {
         }
         List<WorkHour> workHourList = workHourService.findByUsernameReversed(username);
         model.addAttribute("workHours", workHourList);
-        return "work_hour_username";
+        return "search_users_work_hour";
     }
 }
