@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <title>Logines time-tracking</title>
     <!-- My styles -->
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="/moment/moment.js"></script>
@@ -280,7 +280,7 @@ $( function() {
                 <tr>
                     <th>Work start time</th>
                     <th>Work end time</th>
-                    <th>Title</th>
+                    <th>Notes</th>
                     <th>Lunch time</th>
                     <th>Added</th>
 
@@ -302,11 +302,6 @@ $( function() {
                     </td>
                     <td>
                         <div class="form-group">
-                            <span>Date:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-date'}"
-                                  th:text="${userWorkHour.end_time}"></span>
-                            <br/>
-                            <span>Time:</span>
                             <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-time'}"
                                   th:text="${userWorkHour.end_time}"></span>
                         </div>

@@ -21,6 +21,6 @@ public class WorkHourValidator implements Validator {
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "start_time", "NotEmpty.workHour.start_time");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "end_time", "NotEmpty.workHour.start_time");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.workHour.title");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "notes", "NotEmpty.workHour.notes");
     }
 }
