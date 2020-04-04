@@ -90,8 +90,6 @@ public class WorkHourService {
             diff+=Duration.between(startDateTime, endDateTime).getSeconds() - lunchTime.toSecondOfDay();
             System.out.println("Between start: "  + Duration.between(startDateTime, endDateTime).getSeconds());
 
-
-            diff -= nanoseconds;
             System.out.println("lunch: "  + lunchTime.toSecondOfDay());
         }
 
