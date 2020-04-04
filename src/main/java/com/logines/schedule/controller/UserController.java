@@ -53,7 +53,7 @@ public class UserController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "user-login";
+        return "user_login";
     }
 
     @RequestMapping(value="/register", method=RequestMethod.POST, headers = "Content-type=application/*")
