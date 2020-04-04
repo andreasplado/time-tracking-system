@@ -27,7 +27,7 @@ public class Users {
     private String email;
 
     @Column(name = "id_code")
-    private String idCode;
+    private String id_code;
 
     @Transient
     private String passwordConfirm;
@@ -87,11 +87,10 @@ public class Users {
         return this.email;
     }
 
-    public void setIdCode(String idCode) {
-        this.idCode = idCode;
+    public String getId_code() {
+        return this.id_code;
     }
-
-    public String getIdCode(){
-        return this.idCode;
+    public void setId_code(String id_code) {
+        this.id_code = id_code;
     }
 }
