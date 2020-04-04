@@ -172,19 +172,19 @@ $( function() {
                         <label>Start time:</label>
 
                         <div class="input-group date" id="work-start-time">
-                            <input type="time" th:value="${workHour.start_time}" th:name="start_time" th:id="start_time" placeholder="Work start time" class="form-control"/>
+                            <input type="text" th:value="${workHour.start_time}" th:name="start_time" th:id="start_time" placeholder="Work start time" class="form-control" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>End time:</label>
                         <div class="input-group date" id="work-begin-time">
-                            <input type="text" class="form-control" th:value="${workHour.end_time}" th:name="end_time" th:id="end_time"/>
+                            <input type="text" class="form-control" th:value="${workHour.end_time}" th:name="end_time" th:id="end_time" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Work lunch time:</label>
                         <div class="input-group date" id="work-lunch-time">
-                            <input type="time" class="form-control" th:attr="value = ${workHour.lunch_time}" th:name="lunch_time" th:id="lunch_time"/>
+                            <input type="text" class="form-control" th:attr="value = ${workHour.lunch_time}" th:name="lunch_time" th:id="lunch_time" readonly/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -194,7 +194,7 @@ $( function() {
 
                     <div class="form-group">
                         <label>Workhour added:</label>
-                        <input th:value="${workHour.created_at}" th:name="created_at" th:id="created_at" type="text" class="form-control"/>
+                        <input type="text" th:value="${workHour.created_at}" th:name="created_at" th:id="created_at" class="form-control" readonly/>
                     </div>
                     <button type="submit" class="btn btn-success">EDIT</button>
                 </form>
