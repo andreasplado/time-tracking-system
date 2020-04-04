@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -70,7 +71,7 @@ public class WorkHourService {
         return workHours;
     }
 
-    public int userWorkHoursSum(String username) {
+    public long userWorkHoursSum(String username) {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
@@ -83,7 +84,9 @@ public class WorkHourService {
             secondDate = LocalDateTime.parse(workHours.get(i).getEnd_time());
             diff+=Duration.between(firstDate, secondDate).getSeconds();
         }
-        return diff;
+        long hours = TimeUnit.MILLISECONDS
+                .toHours(diff);
+        return hours;
     }
 
     public static String formatDurationBetween(LocalDateTime from, LocalDateTime to) {
