@@ -193,7 +193,7 @@ $( function() {
 <body>
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
-    <h1 th:text="${workHoursSum}" id="working-hours"></h1>
+    <h1 th:text="${workHourSum + ' hours of work this month'}" id="working-hours"></h1>
     <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
           th:action="@{/logout}">
