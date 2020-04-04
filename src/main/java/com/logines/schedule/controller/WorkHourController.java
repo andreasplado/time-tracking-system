@@ -21,6 +21,7 @@ import javax.validation.Valid;
 import java.security.Principal;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class WorkHourController {
@@ -88,6 +89,22 @@ public class WorkHourController {
         } else {
             workHourService.updateWorkHour(workHour);
             model.addAttribute("message", "Workhour edited successfully...");
+            return "successful_page";
+        }
+    }
+
+
+    @PostMapping("/search-users-work-hour/{username}")
+    public String searchWorkHourByUsername(@PathVariable("username") String username,
+                               BindingResult bindingResult,
+                               Model model) {
+
+        model.addAttribute("searchUsersForm", new WorkHour());
+        if (bindingResult.hasErrors()) {
+            return "error_page";
+        } else {
+            List<WorkHour> workHourList = workHourService.findByUsernameReversed(username);
+            model.addAttribute("message", workHourList);
             return "successful_page";
         }
     }

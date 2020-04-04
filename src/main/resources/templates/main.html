@@ -320,6 +320,12 @@ $( function() {
                     <th>End time</th>
                     <th>Lunch time</th>
                     <th>Added</th>
+                    <form th:action="@{/search-users-work-hour}" th:object="${searchUsersForm}" method="POST">
+                        Username: <input type="text" th:field="*{username}" name="username" id="username"><br>
+                        <button type="submit" class="btn btn-success add-class"><i
+                                class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+                        </button>
+                    </form>
                     <button type="button" class="btn btn-success add-class" onclick="addWorker()"><i
                             class="fa fa-plus"></i>ADD WORKHOUR
                     </button>
