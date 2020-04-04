@@ -140,6 +140,7 @@ function timeSince(date) {
 }
 
 
+
 </script>
 
 <script th:inline="javascript">
@@ -190,6 +191,7 @@ $( function() {
  });
 /*]]>*/
 
+
 </script>
 
 
@@ -234,7 +236,8 @@ $( function() {
 
             <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
-                <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control" style="display:none;"
+                <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
+                       style="display:none;"
                        th:name="username" th:id="username" readonly/>
                 <p th:text="${error}">Test</p>
                 <!--<input type="hidden" th:value="${usernameText}" th:id="username" name="username" th:field="*{username}"/> -->
@@ -263,8 +266,8 @@ $( function() {
                 <div class="form-group">
                     <label>Notes:</label>
                     <div class="input-group date" id="description">
-                                    <textarea class="form-control" rows="5" id="title" placeholder="Enter description"
-                                              name="title" th:field="*{title}"></textarea>
+                        <textarea class="form-control" rows="5" id="notes" placeholder="Enter description"
+                                              name="notes" th:field="*{notes}"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success add-class">
@@ -294,29 +297,36 @@ $( function() {
                     <td>
                         <div class="form-group">
                             <span>Date:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-date'}" th:text="${userWorkHour.start_time}"></span>
-                            <br />
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-date'}"
+                                  th:text="${userWorkHour.start_time}"></span>
+                            <br/>
                             <span>Time:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-time'}" th:text="${userWorkHour.start_time}"></span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-time'}"
+                                  th:text="${userWorkHour.start_time}"></span>
                         </div>
                     </td>
                     <td>
                         <div class="form-group">
                             <span>Date:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-date'}" th:text="${userWorkHour.end_time}"></span>
-                            <br />
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-date'}"
+                                  th:text="${userWorkHour.end_time}"></span>
+                            <br/>
                             <span>Time:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-time'}" th:text="${userWorkHour.end_time}"></span>
+                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-time'}"
+                                  th:text="${userWorkHour.end_time}"></span>
                         </div>
                     </td>
                     <td th:text="${userWorkHour.title}"></td>
                     <td th:text="${userWorkHour.lunch_time}"></td>
-                    <td th:id="'workhour-'+ ${userWorkHour.id} + '-created-at'" th:text="${userWorkHour.created_at}"></td>
+                    <td th:id="'workhour-'+ ${userWorkHour.id} + '-created-at'"
+                        th:text="${userWorkHour.created_at}"></td>
                     <td>
-                        <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}" method="get">
+                        <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
+                              method="get">
                             <button type="submit" class="btn btn-default">EDIT</button>
                         </form>
-                        <form th:if="${role == 'ADMIN'}" th:action="@{/delete-work-hour/} + ${userWorkHour.id}" method="post">
+                        <form th:if="${role == 'ADMIN'}" th:action="@{/delete-work-hour/} + ${userWorkHour.id}"
+                              method="post">
                             <button type="submit" class="btn btn-dark delete-btn">DELETE
                             </button>
                         </form>
