@@ -34,7 +34,7 @@ public class WorkHour {
 
 
     @Column(name = "lunch_time")
-    private Instant lunch_time;
+    private String lunch_time;
 
     @Column(name = "created_at")
     private Instant created_at;
@@ -105,11 +105,11 @@ public class WorkHour {
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(Instant lunch_time) {
+    public void setLunch_time(String lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public Instant getLunch_time() {
+    public String getLunch_time() {
         return this.lunch_time;
     }
 }
