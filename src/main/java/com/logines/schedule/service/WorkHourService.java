@@ -75,7 +75,7 @@ public class WorkHourService {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
-        int diff = 0;
+        long diff = 0;
         LocalDateTime firstDate;
         LocalDateTime secondDate;
         for(int i= 0; i<workHours.size(); i++){
