@@ -93,7 +93,7 @@ public class WorkHourService {
         }
 
 
-        return Long.toString(sum);
+        return Long.toString(diff);
     }
 
 
