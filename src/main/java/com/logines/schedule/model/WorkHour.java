@@ -27,20 +27,20 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    private Timestamp start_time;
+    private Instant start_time;
 
     @Column(name = "end_time")
-    private Timestamp end_time;
+    private Instant end_time;
 
 
     @Column(name = "lunch_time")
-    private Time lunch_time;
+    private Instant lunch_time;
 
     @Column(name = "created_at")
-    private Timestamp created_at;
+    private Instant created_at;
 
     @Column(name = "updated_at", nullable = false)
-    private Timestamp updated_at;
+    private Instant updated_at;
 
     public int getId() {
         return id;
@@ -52,18 +52,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = new Timestamp(System.currentTimeMillis());
-        if (this.updated_at == null) updated_at = new Timestamp(System.currentTimeMillis());
+        if (this.created_at == null) created_at = Instant.now();
+        if (this.updated_at == null) updated_at = Instant.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = new Timestamp(System.currentTimeMillis());
+        this.updated_at = Instant.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = new Timestamp(System.currentTimeMillis());
+        this.updated_at = Instant.now();
     }
 
     public String getTitle() {
@@ -82,34 +82,34 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(Timestamp start_time) {
+    public void setStart_time(Instant start_time) {
         this.start_time = start_time;
     }
 
-    public Timestamp getStart_time(){
+    public Instant getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(Timestamp end_time) {
+    public void setEnd_time(Instant end_time) {
         this.end_time = end_time;
     }
 
-    public Timestamp getEnd_time(){
+    public Instant getEnd_time(){
         return this.end_time;
     }
 
-    public Timestamp getCreated_at(){
+    public Instant getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(Timestamp offsetDateTime){
+    public void setCreated_at(Instant offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(Time lunch_time) {
+    public void setLunch_time(Instant lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public Time getLunch_time() {
+    public Instant getLunch_time() {
         return this.lunch_time;
     }
 }
