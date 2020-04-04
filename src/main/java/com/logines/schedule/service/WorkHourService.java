@@ -2,6 +2,7 @@ package com.logines.schedule.service;
 
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
+import org.apache.tomcat.jni.Local;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.format.DateTimeFormat;
@@ -78,13 +79,16 @@ public class WorkHourService {
         long diff = 0;
         LocalDateTime startDateTime;
         LocalDateTime endDateTime;
+        LocalTime lunchTime;
         for(int i= 0; i<workHours.size(); i++){
 
             startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time());
             endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time());
-            diff+=Duration.between(startDateTime, endDateTime).getSeconds();
+            lunchTime = LocalTime.parse(workHours.get(i).getLunch_time());
+            diff+=Duration.between(startDateTime, endDateTime).getSeconds() - lunchTime.getHour();
 
         }
+
         System.out.println("diff: "  + diff);
         return Long.toString(diff / 60 / 60);
     }
