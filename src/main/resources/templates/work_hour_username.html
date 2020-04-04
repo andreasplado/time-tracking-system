@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- My styles -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/moment/moment.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet"
+          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
+    <script>document.getElementsByTagName("html")[0].className += " js";</script>
+
+
+    <!-- NEW CONTENT -->
+    <meta name="author" content="Logines">
+    <meta name="description"
+          content="Logines time-tracking system for workers."/>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/jquery-1.11.1.min.js"
+            integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
+
+    <!-- DATETIME PICKER -->
+    <link href="/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/rome-date-time-picker/rome.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="/tiny_ago/tinyAgo.js"></script>
+
+</head>
+<body>
+<style>
+    td{ cursor: pointer; }
+    td:hover { background-color: #2ECCFA; }
+
+</style>
+<script>
+   $(document).keyup(function(e) {
+    if (e.which == 27){
+        window.location.href="../";
+    }
+});
+
+</script>
+
+
+<header class="text-component text-center">
+    <h1>Logines-time-tracking system</h1>
+    <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
+    <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
+          th:action="@{/logout}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <button class="btn btn-primary float-right logout-btn" type="submit">LOG OUT</button>
+        <br/>
+    </form>
+</header>
+<div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
+    <ul class="cd-tabs__panels">
+        <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
+            <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
+            <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Start time</th>
+                    <th>End time</th>
+                    <th>Lunch time</th>
+                    <th>Added</th>
+                    <form th:action="@{/search-users-work-hour}" th:object="${searchUsersForm}" method="POST">
+                        Username: <input type="text" name="username" id="search-by-username"><br>
+                        <button onclick="searchByUsername()" class="btn btn-success add-class"><i
+                                class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+                        </button>
+                    </form>
+                    <button type="button" class="btn btn-success add-class" onclick="addWorker()"><i
+                            class="fa fa-plus"></i>ADD WORKHOUR
+                    </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="list-item" th:each="workHour : ${workHours}"
+                    th:onclick="'viewWorkHour(' + ${allWorkHour.id} +')'">
+                    <td th:text="${workHour.username}"></td>
+                    <td th:text="${workHour.start_time}"></td>
+                    <td th:text="${workHour.end_time}"></td>
+                    <td th:text="${workHour.lunch_time}"></td>
+                    <td th:text="${workHour.created_at}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+
+    </ul> <!-- cd-tabs__panels -->
+</div>
+</body>
+</html>

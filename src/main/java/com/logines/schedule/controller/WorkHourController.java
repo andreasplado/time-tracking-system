@@ -94,18 +94,13 @@ public class WorkHourController {
     }
 
 
-    @PostMapping("/search-users-work-hour/{username}")
-    public String searchWorkHourByUsername(@PathVariable("username") String username,
-                               BindingResult bindingResult,
-                               Model model) {
-
-        model.addAttribute("searchUsersForm", new WorkHour());
-        if (bindingResult.hasErrors()) {
-            return "error_page";
-        } else {
-            List<WorkHour> workHourList = workHourService.findByUsernameReversed(username);
-            model.addAttribute("message", workHourList);
-            return "successful_page";
+    @GetMapping("/search-users-work-hour/{username}")
+    public String searchWorkHourByUsername(@PathVariable("username") String username, Model model, Principal principal) {
+        if(principal != null){
+            model.addAttribute("usernameText", principal.getName());
         }
+        List<WorkHour> workHourList = workHourService.findByUsernameReversed(username);
+        model.addAttribute("workHours", workHourList);
+        return "successful_page";
     }
 }
