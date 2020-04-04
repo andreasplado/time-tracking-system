@@ -1,6 +1,6 @@
 var moment = rome.moment;
 
-rome(start_time, {inputFormat: "MM/dd/yyyy HH:mm:SS.ss ZZ",
+rome(start_time, {inputFormat: "MM/dd/yyyy HH:mm:SS.ss ZZ"});
     //dateValidator: rome.val.beforeEq(end_time)});
 rome(end_time, {inputFormat: "MM/dd/yyyy HH:mm:SS.ss ZZ"});
 rome(lunch_time, { date: false});
