@@ -269,21 +269,21 @@ $( function() {
 
             <h4 th:if="${userWorkHours!=null}">My working history</h4>
             <p th:if="${userWorkHours==null}">You don't have any records in your workhour history</p>
-            <div class="table table-striped w-auto">
-                <table th:if="${userWorkHours!=null}" class="table">
+            <div class="container">
+                <table th:if="${userWorkHours!=null}" class="table table-striped w-auto">
                     <thead>
                     <tr>
-                        <th>Work start time</th>
-                        <th>Work end time</th>
-                        <th>Notes</th>
-                        <th>Lunch time</th>
-                        <th>Added</th>
-                        <th th:if="${role == 'ADMIN'}">Actions</th>
+                        <th scope="col">Work start time</th>
+                        <th scope="col">Work end time</th>
+                        <th scope="col">Notes</th>
+                        <th scope="col">Lunch time</th>
+                        <th scope="col">Added</th>
+                        <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
 
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="table-info" th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
+                    <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
                         th:each="userWorkHour : ${userWorkHours}">
                         <td th:text="${userWorkHour.start_time}"></td>
                         <td th:text="${userWorkHour.end_time}"></td>
