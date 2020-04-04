@@ -96,26 +96,23 @@
                       th:object="${workHour}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
-                        <p th:text="${workHour.start_time}" th:name="lend_time" th:id="title" type="text"></p>
-                        <input type="text" class="form-control" th:attr="value = ${workHour.username}"
-                               th:name="username" th:id="username" placeholder="Enter name" name="name" readonly/>
+                        <p th:text="${workHour.username}" th:name="lend_time" th:id="title" type="text"></p>
                     </div>
                     <div class="form-group">
                         <span>Start time:</span>
                         <span th:text="${workHour.start_time}" th:name="start_time" th:id="start_time" type="text"></span>
                     </div>
                     <div class="form-group">
-                        <label>End time:</label>
-                        <p th:text="${workHour.end_time}" th:name="end_time" th:id="end_time" type="text"></p>
+                        <span>End time:</span>
+                        <span th:text="${workHour.end_time}" th:name="end_time" th:id="end_time" type="text"></span>
                     </div>
                     <div class="form-group">
-                        <label>Work lunch time:</label>
-                        <p th:text="${workHour.lunch_time}" th:name="lunch_time" th:id="lunch_time" type="text"></p>
+                        <span>Work lunch time:</span>
+                        <span th:text="${workHour.lunch_time}" th:name="lunch_time" th:id="lunch_time" type="text"></span>
                     </div>
                     <div class="form-group">
-                        <label>Notes:</label>
-                        <p th:text="${workHour.notes}" th:name="notes" th:id="notes" type="text"></p>
-                        <p></p>
+                        <span>Notes:</span>
+                        <span th:text="${workHour.notes}" th:name="notes" th:id="notes" type="text"></span>
                     </div>
 
                     <div class="form-group">
