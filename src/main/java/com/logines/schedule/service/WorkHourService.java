@@ -85,6 +85,7 @@ public class WorkHourService {
             diff+=Duration.between(startDateTime, endDateTime).getSeconds();
 
         }
+        System.out.println("diff: "  + diff);
         return diff;
     }
 
