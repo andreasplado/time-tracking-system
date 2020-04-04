@@ -89,7 +89,7 @@ public class WorkHourService {
             System.out.println("Between start: "  + Long.toString(Duration.between(startDateTime, endDateTime).getSeconds()));
             long nanoseconds = (long)lunchTime.getMinute() / 60 ;
             diff -= nanoseconds;
-            System.out.println("lunch: "  + lunchTime.getMinute());
+            System.out.println("lunch: "  + lunchTime.getSecond());
         }
 
 
