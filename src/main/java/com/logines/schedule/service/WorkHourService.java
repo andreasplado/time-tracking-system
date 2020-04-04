@@ -76,26 +76,16 @@ public class WorkHourService {
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         long diff = 0;
-        LocalDateTime firstDate;
-        LocalDateTime secondDate;
+        LocalDateTime startDateTime;
+        LocalDateTime endDateTime;
         for(int i= 0; i<workHours.size(); i++){
 
-            firstDate = LocalDateTime.parse(workHours.get(i).getStart_time());
-            secondDate = LocalDateTime.parse(workHours.get(i).getEnd_time());
-            diff+=Duration.between(firstDate, secondDate).getSeconds();
+            startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time());
+            endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time());
+            diff+=Duration.between(startDateTime, endDateTime).getSeconds();
+
         }
         return diff;
-    }
-
-    public static String formatDurationBetween(LocalDateTime from, LocalDateTime to) {
-        Duration difference = Duration.between(from, to);
-
-        long days = difference.toDays();
-        difference = difference.minusDays(days);
-        long hours = difference.toHours();
-        long mins = difference.minusHours(hours).toMinutes();
-
-        return String.format("%dd %dh %02dm", days, hours, mins);
     }
 
 
