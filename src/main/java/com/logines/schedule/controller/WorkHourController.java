@@ -99,6 +99,7 @@ public class WorkHourController {
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
         }
+        model.addAttribute("searchString", username);
         List<WorkHour> workHourList = workHourService.findByUsernameReversed(username);
         model.addAttribute("workHours", workHourList);
         return "search_users_work_hour";
