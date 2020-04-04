@@ -85,7 +85,7 @@ public class WorkHourService {
             startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time());
             endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time());
             lunchTime = LocalTime.parse(workHours.get(i).getLunch_time());
-            diff+=Duration.between(startDateTime, endDateTime).getSeconds() - lunchTime.getHour();
+            diff+=Duration.between(startDateTime, endDateTime).getSeconds() - lunchTime.getSecond();
 
         }
 
