@@ -34,6 +34,7 @@ public class WorkHour {
 
 
     @Column(name = "lunch_time")
+    @Temporal(TemporalType.TIME)
     private Time lunch_time;
 
     @Column(name = "created_at")
@@ -98,18 +99,18 @@ public class WorkHour {
         return this.end_time;
     }
 
-    public LocalDateTime getCreated_at(){
+    public Timestamp getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(LocalDateTime offsetDateTime){
+    public void setCreated_at(Timestamp offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
-    public void setLunch_time(LocalTime lunch_time) {
+    public void setLunch_time(Time lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public LocalTime getLunch_time() {
+    public Time getLunch_time() {
         return this.lunch_time;
     }
 }
