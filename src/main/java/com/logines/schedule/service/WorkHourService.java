@@ -87,13 +87,12 @@ public class WorkHourService {
 
             lunchTime = LocalTime.parse(workHours.get(i).getLunch_time(),
                     DateTimeFormatter.ISO_TIME);
-            diff+=Duration.between(startDateTime, endDateTime).getSeconds();
+            diff+=Duration.between(startDateTime, endDateTime).getSeconds() - lunchTime.toSecondOfDay();
             System.out.println("Between start: "  + Duration.between(startDateTime, endDateTime).getSeconds());
-            long nanoseconds = lunchTime.getNano();
 
 
             diff -= nanoseconds;
-            System.out.println("lunch: "  + lunchTime.toNanoOfDay());
+            System.out.println("lunch: "  + lunchTime.toSecondOfDay());
         }
 
 
