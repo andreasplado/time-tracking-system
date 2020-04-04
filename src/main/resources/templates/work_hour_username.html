@@ -90,8 +90,8 @@
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-            <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
-            <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
+            <p th:if="${workHours==null and workHours.empty}">No records found in workhour history</p>
+            <table th:if="${workHours!=null and !workHours.empty}" class="table">
                 <thead>
                 <tr>
                     <th>Username</th>
