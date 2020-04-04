@@ -53,18 +53,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = Timestamp.now();
-        if (this.updated_at == null) updated_at = Timestamp.now();
+        if (this.created_at == null) created_at = new Timestamp(System.currentTimeMillis());
+        if (this.updated_at == null) updated_at = new Timestamp(System.currentTimeMillis());
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = Timestamp.now();
+        this.updated_at = new Timestamp(System.currentTimeMillis());
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = Timestamp.now();
+        this.updated_at = new Timestamp(System.currentTimeMillis());
     }
 
     public String getTitle() {
