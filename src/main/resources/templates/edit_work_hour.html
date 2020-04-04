@@ -178,18 +178,18 @@ $( function() {
                     <div class="form-group">
                         <label>End time:</label>
                         <div class="input-group date" id="work-begin-time">
-                            <input type="time" th:value="${workHour.end_time}" th:name="end_time" th:id="end_time"/>
+                            <input type="text" class="form-control" th:value="${workHour.end_time}" th:name="end_time" th:id="end_time"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Work lunch time:</label>
                         <div class="input-group date" id="work-lunch-time">
-                            <input type="time" th:attr="value = ${workHour.lunch_time}" th:name="lunch_time" th:id="lunch_time"/>
+                            <input type="time" class="form-control" th:attr="value = ${workHour.lunch_time}" th:name="lunch_time" th:id="lunch_time"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Notes:</label>
-                        <input type="text" th:attr="value = ${workHour.title}" th:name="title" th:id="title" placeholder="Notes" name="title" />
+                        <input type="text" th:attr="value = ${workHour.notes}" th:name="notes" th:id="notes" placeholder="Notes" />
                     </div>
 
                     <div class="form-group">
