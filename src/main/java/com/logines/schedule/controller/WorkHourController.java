@@ -1,26 +1,20 @@
 package com.logines.schedule.controller;
 
-import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.WorkHourValidator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.security.Principal;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller

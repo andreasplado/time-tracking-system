@@ -350,22 +350,22 @@ $( function() {
                 </div>
                 <div class="form-group">
                     <label>Fullname:</label>
-                    <input type="text" class="form-control" th:value="${userProfile.fullname}" id="name"
+                    <input type="text" class="form-control" th:value="${user.fullname}" id="fullname"
                            placeholder="Enter your fullname" name="fullname"/>
                 </div>
                 <div class="form-group">
                     <label>Email:</label>
-                    <input type="text" class="form-control" th:value="${userProfile.email}" id="email"
+                    <input type="text" class="form-control" th:value="${user.email}" id="email"
                            placeholder="Enter your email" name="email"/>
                 </div>
                 <div class="form-group">
                     <label>Id Code:</label>
-                    <input type="text" class="form-control" th:value="${userProfile.idCode}" id="idcode"
-                           placeholder="Enter your id code" name="idCode"/>
+                    <input type="text" class="form-control" th:value="${user.id_code}" id="id_code"
+                           placeholder="Enter your id code" name="id_code"/>
                 </div>
                 <div class="form-group">
                     <label>Phone:</label>
-                    <input type="number" class="form-control" th:value="${userProfile.phone}" id="phone"
+                    <input type="number" class="form-control" th:value="${user.phone}" id="phone"
                            placeholder="Enter your phone number" name="phone"/>
                 </div>
                 <div class="form-group">
@@ -377,8 +377,6 @@ $( function() {
             </form>
             <form id="delete_User_data" method="POST" th:action="@{/delete-user-profile/} + ${usernameText}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <br/>
-                <button class="btn btn-danger ml-1" type="submit" th:text="'DELETE YOUR PROFILE'">DELETE</button>
             </form>
         </li>
 

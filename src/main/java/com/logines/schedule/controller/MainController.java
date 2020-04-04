@@ -2,7 +2,6 @@ package com.logines.schedule.controller;
 
 import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
-import com.logines.schedule.model.UserProfile;
 import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
@@ -27,7 +26,6 @@ import java.io.IOException;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -65,14 +63,13 @@ public class MainController {
         model.addAttribute("workHourForm", new WorkHour());
         if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
-            UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
             Users users = userService.findByUsername(principal.getName());
             //Kui kasutajaandmeid on lisatud
 
             List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
             List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
             model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
-            model.addAttribute("userProfile", userProfile);
+            model.addAttribute("user", users);
             model.addAttribute("userWorkHours", userWorkHours);
             model.addAttribute("allWorkHours", allWorkhours);
             model.addAttribute("role", users.getRole());

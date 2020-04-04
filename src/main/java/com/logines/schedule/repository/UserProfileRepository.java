@@ -1,6 +1,5 @@
 package com.logines.schedule.repository;
 
-import com.logines.schedule.model.UserProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
