@@ -29,6 +29,9 @@ public class Users {
     @Column(name = "id_code")
     private String id_code;
 
+    @Column(name = "phone")
+    private String phone;
+
     @Transient
     private String passwordConfirm;
 
@@ -92,5 +95,12 @@ public class Users {
     }
     public void setId_code(String id_code) {
         this.id_code = id_code;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getPhone() {
+        return this.phone;
     }
 }
