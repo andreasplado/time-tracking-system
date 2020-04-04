@@ -95,6 +95,26 @@
                 </div>
 
                 <div class="wrap-input100 validate-input">
+                    <input type="email" class="form-control" id="fullname" placeholder="Full name"
+                           name="fullname" th:field="*{fullname}"/>
+                    <span class="focus-input100"></span>
+
+                </div>
+
+                <div class="wrap-input100 validate-input">
+                    <input type="email" class="form-control" id="email" placeholder="E-mail"
+                           name="email" th:field="*{email}"/>
+                    <span class="focus-input100"></span>
+
+                </div>
+
+                <div class="wrap-input100 validate-input">
+                    <input type="number" class="form-control" id="id_code" placeholder="ID code"
+                           name="id_code" th:field="*{id_code}"/>
+                    <span class="focus-input100"></span>
+
+                </div>
+                <div class="wrap-input100 validate-input">
                     <select th:field="*{role}">
                         <option th:value="'USER'" th:text="USER"></option>
                         <option th:value="'ADMIN'" th:text="ADMIN"></option>
