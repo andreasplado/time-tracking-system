@@ -56,7 +56,7 @@ public class MainController {
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         dateFormat.setLenient(false);
-        binder.registerCustomEditor(Instant.class, null,  new CustomDateEditor(dateFormat, true));
+        binder.registerCustomEditor(Instant.class, null, new CustomDateEditor(dateFormat, true));
     }
 
     //@RequestMapping(value="/",method = RequestMethod.GET)
@@ -68,24 +68,18 @@ public class MainController {
             UserProfile userProfile = userProfileService.findUserProfile(principal.getName());
             Users users = userService.findByUsername(principal.getName());
             //Kui kasutajaandmeid on lisatud
-            if (userProfile != null) {
-                List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
-                List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
-                model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
-                model.addAttribute("userProfile", userProfile);
-                model.addAttribute("userWorkHours", userWorkHours);
-                model.addAttribute("allWorkHours", allWorkhours);
-                model.addAttribute("role", users.getRole());
-                //model.addAttribute("workHoursSum",workHourService.userWorkHoursSum(principal.getName()));
 
-                return "main";
-            } else {
-                model.addAttribute("userProfileForm", new UserProfile());
-                if (error != null)
-                    model.addAttribute("error", "Your username and password is invalid.");
-                return "add_user_profile";
-            }
-        }else{
+            List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
+            List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
+            model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
+            model.addAttribute("userProfile", userProfile);
+            model.addAttribute("userWorkHours", userWorkHours);
+            model.addAttribute("allWorkHours", allWorkhours);
+            model.addAttribute("role", users.getRole());
+            //model.addAttribute("workHoursSum",workHourService.userWorkHoursSum(principal.getName()));
+
+            return "main";
+        } else {
             return "user-login";
         }
     }
@@ -95,7 +89,7 @@ public class MainController {
                            @Valid WorkHour workHour,
                            BindingResult bindingResult,
                            Model model) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             model.addAttribute("error", bindingResult.getAllErrors());
             return "error_page";
         }
