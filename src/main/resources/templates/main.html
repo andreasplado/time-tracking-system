@@ -58,7 +58,6 @@
 
     <!-- Sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="//unpkg.com/timeago.js"></script>
     <script src="/tiny_ago/tinyAgo.js"></script>
 
 </head>
@@ -229,8 +228,6 @@ $( function() {
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                 <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control" style="display:none;"
                        th:name="username" th:id="username" readonly/>
-                <p th:text="${error}">Test</p>
-                <!--<input type="hidden" th:value="${usernameText}" th:id="username" name="username" th:field="*{username}"/> -->
                 <div class="form-group">
                     <label>Work begin time:</label>
                     <div class="input-group date" id="work-begin-time">
