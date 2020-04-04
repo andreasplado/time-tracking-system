@@ -84,9 +84,7 @@ public class WorkHourService {
             secondDate = LocalDateTime.parse(workHours.get(i).getEnd_time());
             diff+=Duration.between(firstDate, secondDate).getSeconds();
         }
-        long hours = TimeUnit.SECONDS
-                .toHours(diff);
-        return hours;
+        return diff;
     }
 
     public static String formatDurationBetween(LocalDateTime from, LocalDateTime to) {
