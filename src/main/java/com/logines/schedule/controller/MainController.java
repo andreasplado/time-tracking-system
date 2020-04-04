@@ -2,7 +2,6 @@ package com.logines.schedule.controller;
 
 import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
-import com.logines.schedule.service.UserProfileService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.UserValidator;
@@ -31,8 +30,6 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    @Autowired
-    private UserProfileService userProfileService;
     @Autowired
     private WorkHourService workHourService;
     @Autowired
