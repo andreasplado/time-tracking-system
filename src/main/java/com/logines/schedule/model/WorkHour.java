@@ -53,18 +53,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = OffsetDateTime.now();
-        if (this.updated_at == null) updated_at = OffsetDateTime.now();
+        if (this.created_at == null) created_at = ZonedDateTime.now();
+        if (this.updated_at == null) updated_at = ZonedDateTime.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = OffsetDateTime.now();
+        this.updated_at = ZonedDateTime.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = OffsetDateTime.now();
+        this.updated_at = ZonedDateTime.now();
     }
 
     public String getTitle() {
@@ -83,26 +83,26 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(OffsetDateTime start_time) {
+    public void setStart_time(ZonedDateTime start_time) {
         this.start_time = start_time;
     }
 
-    public OffsetDateTime getStart_time(){
+    public ZonedDateTime getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(OffsetDateTime end_time) {
+    public void setEnd_time(ZonedDateTime end_time) {
         this.end_time = end_time;
     }
 
-    public OffsetDateTime getEnd_time(){
+    public ZonedDateTime getEnd_time(){
         return this.end_time;
     }
 
-    public OffsetDateTime getCreated_at(){
+    public ZonedDateTime getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(OffsetDateTime offsetDateTime){
+    public void setCreated_at(ZonedDateTime offsetDateTime){
         this.created_at = offsetDateTime;
     }
 
