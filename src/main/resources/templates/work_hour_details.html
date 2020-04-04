@@ -73,6 +73,10 @@
         window.location.href="../";
     }
 });
+function searchByUsername(){
+    var username = $("#search-by-username").val();
+    window.location.href="search-users-work-hour/"+ username;
+}
 
 </script>
 
@@ -88,6 +92,10 @@
     </form>
 </header>
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
+    Username: <input type="text" name="username" id="search-by-username"><br>
+    <button onclick="searchByUsername()" class="btn btn-success add-class"><i
+            class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+    </button>
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table" id="tableForm">
@@ -96,7 +104,7 @@
                       th:object="${workHour}" method="post">
                     <div class="form-group">
                         <label>Worker username:</label>
-                        <p th:text="${workHour.username}" th:name="lend_time" th:id="title" type="text"></p>
+                        <p th:text="${workHour.username}" th:name="username" th:id="username" type="text"></p>
                     </div>
                     <div class="form-group">
                         <span>Start time:</span>
