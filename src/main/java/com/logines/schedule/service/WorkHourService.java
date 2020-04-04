@@ -71,7 +71,7 @@ public class WorkHourService {
         return workHours;
     }
 
-    public long userWorkHoursSum(String username) {
+    public String userWorkHoursSum(String username) {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
@@ -86,7 +86,7 @@ public class WorkHourService {
 
         }
         System.out.println("diff: "  + diff);
-        return diff;
+        return Long.toString(diff);
     }
 
 
