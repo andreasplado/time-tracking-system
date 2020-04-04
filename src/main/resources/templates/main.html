@@ -172,15 +172,8 @@ $( function() {
     });
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
         //$("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'yyyy-MM-dd HH:mm:ss').format());
-        $("#workhour-[[${userWorkhour.id}]]-created-at").text(ago( $(this).text()));
-        var endDate = $("#work-hour-[[${userWorkhour.id}]]-end-date").text();
-        var startDate = $("#work-hour-[[${userWorkhour.id}]]-start-date").text();
-        var endTime = $("#work-hour-[[${userWorkhour.id}]]-end-time").text();
-        var startTime = $("#work-hour-[[${userWorkhour.id}]]-start-time").text();
-        $("#work-hour-[[${userWorkhour.id}]]-end-date").text(endDate.substring(0,10));
-        $("#work-hour-[[${userWorkhour.id}]]-start-date").text(startDate.substring(0,10));
-        $("#work-hour-[[${userWorkhour.id}]]-end-time").text(endTime.substring(12,$(this).text().length));
-        $("#work-hour-[[${userWorkhour.id}]]-start-time").text(startTime.substring(12,$(this).text().length));
+        //$("#workhour-[[${userWorkhour.id}]]-created-at").text(ago( $(this).text()));
+
     /*[/]*/
 
  });
@@ -290,27 +283,11 @@ $( function() {
                 <tbody>
                 <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
                     th:each="userWorkHour : ${userWorkHours}">
-                    <td>
-                        <div class="form-group">
-                            <span>Date:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-date'}"
-                                  th:text="${userWorkHour.start_time}"></span>
-                            <br/>
-                            <span>Time:</span>
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-start-time'}"
-                                  th:text="${userWorkHour.start_time}"></span>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <span type="text" th:id="${'work-hour-' + userWorkHour.id + '-end-time'}"
-                                  th:text="${userWorkHour.end_time}"></span>
-                        </div>
-                    </td>
+                    <td th:text="${userWorkHour.start_time}"></td>
+                    <td th:text="${userWorkHour.end_time}"></td>
                     <td th:text="${userWorkHour.notes}"></td>
                     <td th:text="${userWorkHour.lunch_time}"></td>
-                    <td th:id="'workhour-'+ ${userWorkHour.id} + '-created-at'"
-                        th:text="${userWorkHour.created_at}"></td>
+                    <td th:text="${userWorkHour.created_at}"></td>
                     <td>
                         <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
                               method="get">
