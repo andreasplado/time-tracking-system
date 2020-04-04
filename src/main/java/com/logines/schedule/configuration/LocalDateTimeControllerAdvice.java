@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 
 import java.beans.PropertyEditorSupport;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.*;
+import java.time.format.*;
 
 @ControllerAdvice
 public class LocalDateTimeControllerAdvice
@@ -21,6 +22,15 @@ public class LocalDateTimeControllerAdvice
             public void setAsText( String text ) throws IllegalArgumentException
             {
                 LocalDateTime.parse( text, DateTimeFormatter.ISO_DATE_TIME );
+            }
+        } );
+        binder.registerCustomEditor(LocalTime.class, new PropertyEditorSupport()
+        {
+            @Override
+            public void setAsText( String text ) throws IllegalArgumentException
+            {
+                DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_TIME;
+                LocalTime.parse( text, formatter);
             }
         } );
     }
