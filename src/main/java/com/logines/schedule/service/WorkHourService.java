@@ -3,8 +3,10 @@ package com.logines.schedule.service;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
 import org.joda.time.DateTime;
+import org.joda.time.Interval;
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.standard.InstantFormatter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -72,8 +74,16 @@ public class WorkHourService {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
+        int diff = 0;
+        LocalDateTime firstDate;
+        LocalDateTime secondDate;
+        for(int i= 0; i<workHours.size(); i++){
 
-        return 0;
+            firstDate = LocalDateTime.parse(workHours.get(i).getStart_time());
+            secondDate = LocalDateTime.parse(workHours.get(i).getEnd_time());
+            diff+=Duration.between(firstDate, secondDate).getSeconds();
+        }
+        return diff;
     }
 
     public static String formatDurationBetween(LocalDateTime from, LocalDateTime to) {
