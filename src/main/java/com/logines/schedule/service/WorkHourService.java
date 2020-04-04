@@ -86,7 +86,7 @@ public class WorkHourService {
 
         }
         System.out.println("diff: "  + diff);
-        return Long.toString(diff / 60 / 60);
+        return Long.toString(diff / 60 / 60 / 60);
     }
 
 
