@@ -20,6 +20,15 @@ public class Users {
     @NotBlank(message = "Role is mandatory")
     private String role;
 
+    @Column(name = "fullname")
+    private String fullname;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "id_code")
+    private String idCode;
+
     @Transient
     private String passwordConfirm;
 
@@ -61,5 +70,28 @@ public class Users {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+    public String getFullname(){
+        return this.fullname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail(){
+        return this.email;
+    }
+
+    public void setIdCode(String idCode) {
+        this.idCode = idCode;
+    }
+
+    public String getIdCode(){
+        return this.idCode;
     }
 }
