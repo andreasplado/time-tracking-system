@@ -34,7 +34,6 @@ public class WorkHour {
 
 
     @Column(name = "lunch_time")
-    @Temporal(TemporalType.TIME)
     private Time lunch_time;
 
     @Column(name = "created_at")
