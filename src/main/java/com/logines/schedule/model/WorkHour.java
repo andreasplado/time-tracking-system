@@ -7,6 +7,8 @@ import org.joda.time.LocalTime;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.*;
 import java.util.Date;
 
@@ -25,25 +27,20 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime start_time;
+    private Timestamp start_time;
 
     @Column(name = "end_time")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime end_time;
+    private Timestamp end_time;
 
 
     @Column(name = "lunch_time")
-    @DateTimeFormat(pattern = "HH:mm")
-    private LocalTime lunch_time;
+    private Time lunch_time;
 
     @Column(name = "created_at")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime created_at;
+    private Timestamp created_at;
 
     @Column(name = "updated_at", nullable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime updated_at;
+    private Timestamp updated_at;
 
     public int getId() {
         return id;
@@ -55,18 +52,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = LocalDateTime.now();
-        if (this.updated_at == null) updated_at = LocalDateTime.now();
+        if (this.created_at == null) created_at = Timestamp.now();
+        if (this.updated_at == null) updated_at = Timestamp.now();
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = LocalDateTime.now();
+        this.updated_at = Timestamp.now();
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = LocalDateTime.now();
+        this.updated_at = Timestamp.now();
     }
 
     public String getTitle() {
@@ -85,19 +82,19 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(LocalDateTime start_time) {
+    public void setStart_time(Timestamp start_time) {
         this.start_time = start_time;
     }
 
-    public LocalDateTime getStart_time(){
+    public Timestamp getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(LocalDateTime end_time) {
+    public void setEnd_time(Timestamp end_time) {
         this.end_time = end_time;
     }
 
-    public LocalDateTime getEnd_time(){
+    public Timestamp getEnd_time(){
         return this.end_time;
     }
 
