@@ -1,16 +1,7 @@
 package com.logines.schedule.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.logines.schedule.utils.DateUtils;
-import org.joda.time.DateTime;
-import org.joda.time.LocalTime;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.time.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "work_hour", schema = "logines")
@@ -20,8 +11,8 @@ public class WorkHour {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "notes")
+    private String notes;
 
     @Column(name = "username")
     private String username;
@@ -66,12 +57,12 @@ public class WorkHour {
         this.updated_at = Instant.now();
     }
 
-    public String getTitle() {
-        return title;
+    public String getNotes() {
+        return notes;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public String getUsername() {

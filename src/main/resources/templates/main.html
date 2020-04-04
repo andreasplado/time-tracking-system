@@ -160,9 +160,9 @@ $( function() {
             }
         });
     });
-    $('#workhour-form').submit(function() {
-        if($.trim($("#title").val()) === ""){
-            $("#title").val("No title");
+    $('#work-hour-add-form').submit(function() {
+        if($.trim($("#notes").val()) === ""){
+            $("#notes").val("No notes");
         }
         if ($.trim($("#start_time").val()) === "" || $.trim($("#end_time").val()) === "" || $.trim($("#lunch_time").val()) === "") {
             $("#work-hour-validation-error").show();
@@ -230,7 +230,7 @@ $( function() {
 
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-            <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
+            <form id="work-hour-add-form" method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                 <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control" style="display:none;"
                        th:name="username" th:id="username" readonly/>
@@ -260,9 +260,9 @@ $( function() {
                 </div>
                 <div class="form-group">
                     <label>Notes:</label>
-                    <div class="input-group date" id="description">
-                                    <textarea class="form-control" rows="5" id="title" placeholder="Enter description"
-                                              name="title" th:field="*{title}"></textarea>
+                    <div class="input-group date">
+                                    <textarea class="form-control" rows="5" id="notes" placeholder="Enter description"
+                                              name="notes" th:field="*{notes}"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success add-class">
