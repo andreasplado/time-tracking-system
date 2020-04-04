@@ -186,22 +186,6 @@ $( function() {
         var hours = Math.abs(startTime) - endTime) / 36e5;
         console.log(hours);
     /*[/]*/
-    $('#start_time').on('change', function() {
-	    var parsed = new Date(this.value);
-        var ten    = function(x) { return x < 10 ? '0'+x : x};
-        var date   = parsed.getFullYear() + '-' + (parsed.getMonth() + 1) + '-' + parsed.getDate();
-        var time   = ten( parsed.getHours() ) + ':' + ten( parsed.getMinutes() );
-        $('#start_time').val(date +T+ time);
-    });
-
-    $('#end_time').on('change', function() {
-	    var parsed = new Date(this.value);
-        var ten    = function(x) { return x < 10 ? '0'+x : x};
-        var date   = parsed.getFullYear() + '-' + (parsed.getMonth() + 1) + '-' + parsed.getDate();
-        var time   = ten( parsed.getHours() ) + ':' + ten( parsed.getMinutes() );
-        $('#end_time').val(date + 'T' + time);
-    });
-
  });
 /*]]>*/
 
