@@ -97,7 +97,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll();
 
-        http.authorizeRequests().antMatchers("/register").hasAnyRole("ADMIN", "SUPERUSER").anyRequest().permitAll();
+        http.authorizeRequests().antMatchers("/register").hasAnyRole("ADMIN", "SUPERUSER");
 
 
     }
