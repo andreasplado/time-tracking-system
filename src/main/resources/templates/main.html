@@ -187,7 +187,13 @@ $( function() {
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
     <p style="color:aqua;">Total workhours</p>
-    <h1 th:text="${userWorkHoursSum}"></h1>
+
+    <svg height="700" width="700">
+        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="6" fill="aqua">
+            <h1 th:text="${userWorkHoursSum}"></h1>
+        </circle>
+        <h1 th:text="${userWorkHoursSum}"></h1>
+    </svg>
     <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
           th:action="@{/logout}">
