@@ -115,8 +115,10 @@ public class MainController {
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
         }
+        Users myUser = userService.findByUsername(principal.getName());
         Users users = userService.findByid(id);
         model.addAttribute("user", users);
+        model.addAttribute("role", myUser.getRole());
         return "edit_user";
     }
 
