@@ -94,4 +94,15 @@ public class WorkHourController {
         model.addAttribute("workHours", workHourList);
         return "search_users_work_hour";
     }
+
+    @PostMapping("delete-work-hour/{id}")
+    public String deleteWorkHour(Model model, @PathVariable("id") int id) {
+        if (workHourService.deleteWorkHour(id)) {
+            model.addAttribute("message", "Workhour deleted successfully...");
+            return "successful_page";
+        } else {
+            model.addAttribute("message", "Workhour not found...");
+            return "successful_page";
+        }
+    }
 }

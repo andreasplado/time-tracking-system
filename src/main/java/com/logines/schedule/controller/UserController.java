@@ -83,6 +83,29 @@ public class UserController {
         return "search_user";
     }
 
+    @PostMapping("edit-user/{id}")
+    public String editUser(Model model, @PathVariable("id") int id, @Valid Users users,
+                           BindingResult bindingResult) {
+        if (userService.editUser(users)) {
+            model.addAttribute("message", "Workhour deleted successfully...");
+            return "successful_page";
+        } else {
+            model.addAttribute("message", "User not found...");
+            return "successful_page";
+        }
+    }
+
+    @PostMapping("delete-user/{id}")
+    public String deleteUser(Model model, @PathVariable("id") int id) {
+        if (userService.deleteUser(id)) {
+            model.addAttribute("message", "Workhour deleted successfully...");
+            return "successful_page";
+        } else {
+            model.addAttribute("message", "User not found...");
+            return "successful_page";
+        }
+    }
+
     @GetMapping("/404")
     public String pageNotFound(){
         return "404";

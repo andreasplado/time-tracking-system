@@ -10,4 +10,6 @@ public interface UserService {
 
     Users findByUsername(String username);
     List<Users> allUsers();
+    boolean deleteUser(int id);
+    boolean editUser(Users users);
 }
