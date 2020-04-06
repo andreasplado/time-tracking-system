@@ -180,8 +180,10 @@ $( function() {
         }
     });
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
-        $("#workhour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'yyyy-MM-dd HH:mm:ss').format());
-        $("#workhour-[[${userWorkhour.id}]]-created-at").text(ago( $(this).text()));
+        $("#user-work-hour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'yyyy-MM-dd HH:mm:ss').format());
+        //$("#user-work-hour-[[${userWorkhour.id}]]-start-time").text(ago( $(this).text()));
+        $("#user-work-hour-[[${userWorkhour.id}]]-start-time").text(moment( $(this).text(), 'yyyy-MM-dd HH:mm:ss').format());
+        $("#user-work-hour-[[${userWorkhour.id}]]-end-time").text(moment( $(this).text(), 'yyyy-MM-dd HH:mm:ss').format());
 
     /*[/]*/
 
