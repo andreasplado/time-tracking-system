@@ -217,11 +217,11 @@ $( function() {
                 </a>
             </li>
 
-            <!--<li th:if="${role == 'ADMIN'}">
+            <li th:if="${role == 'ADMIN'}">
                 <a href="#tab-users" class="cd-tabs__item">
                     <img src="/images/team.png" width="50px" height="50px">
                 </a>
-            </li> -->
+            </li>
         </ul> <!-- cd-tabs__list -->
     </nav>
 
@@ -391,7 +391,7 @@ $( function() {
             </form>
         </li>
 
-        <!--<li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
+        <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
             <table th:if="${users!=null and !users.empty}" class="table">
                 <thead>
                 <tr>
@@ -418,7 +418,7 @@ $( function() {
                 </tr>
                 </tbody>
             </table>
-        </li> -->
+        </li>
 
 
     </ul> <!-- cd-tabs__panels -->
