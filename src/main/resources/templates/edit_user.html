@@ -162,7 +162,7 @@ $( function() {
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table" id="tableForm">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
-                <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="workhour-form" th:object="${userForm}" method="post">
+                <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="workhour-form" th:object="${user}" method="post">
                     <div class="form-group">
                         <label>Username:</label>
                         <div>
