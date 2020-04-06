@@ -125,7 +125,7 @@ function searchByUsername(){
                 <form th:action="@{/edit-user/} + ${user.id}" method="get">
                     <button type="submit" class="btn btn-default">EDIT</button>
                 </form>&nbsp;&nbsp;
-                <form th:action="@{/delete-class/} + ${user.id}" method="post">
+                <form th:action="@{/delete-user/} + ${user.id}" method="post">
                     <button type="submit" class="btn btn-dark">DELETE</button>
                 </form>
                 <br />
