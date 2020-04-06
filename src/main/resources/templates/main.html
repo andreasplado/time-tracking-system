@@ -150,6 +150,7 @@ function timeSince(date) {
 
 
 
+
 </script>
 
 <script th:inline="javascript">
@@ -189,6 +190,7 @@ $( function() {
 
  });
 /*]]>*/
+
 
 
 
@@ -234,7 +236,7 @@ $( function() {
 
             <li th:if="${role == 'ADMIN'}">
                 <a href="#tab-users" class="cd-tabs__item">
-                    <img src="/images/team.png" width="50px" height="50px" style="padding: 6px;" />
+                    <img src="/images/team.png" width="50px" height="50px" style="padding: 6px;"/>
                     <p style="text-align:center; margin:auto;">USERS</p>
                 </a>
             </li>
@@ -289,7 +291,8 @@ $( function() {
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
 
-            <p th:if="${userWorkHours==null and !userWorkHours.empty}">You don't have any records in your workhour history</p>
+            <p th:if="${userWorkHours==null and !userWorkHours.empty}">You don't have any records in your workhour
+                history</p>
 
             <div th:if="${userWorkHours!=null and !userWorkHours.empty}" class="container">
                 <h4>My working history</h4>
@@ -308,11 +311,14 @@ $( function() {
                     <tbody>
                     <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
                         th:each="userWorkHour : ${userWorkHours}">
-                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-start-time'" th:text="${userWorkHour.start_time}"></td>
-                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-end-time'" th:text="${userWorkHour.end_time}"></td>
+                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-start-time'"
+                            th:text="${userWorkHour.start_time}"></td>
+                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-end-time'"
+                            th:text="${userWorkHour.end_time}"></td>
                         <td th:text="${userWorkHour.notes}"></td>
                         <td th:text="${userWorkHour.lunch_time}"></td>
-                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-created-at'" th:text="${userWorkHour.created_at}"></td>
+                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-created-at'"
+                            th:text="${userWorkHour.created_at}"></td>
                         <td>
                             <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
                                   method="get">
@@ -344,10 +350,12 @@ $( function() {
                     <th>Lunch time</th>
                     <th>Added</th>
                     <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
-                    Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
-                    <button onclick="searchWorkHourByUsername()" class="btn btn-success add-class"><i
-                            class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
-                    </button>
+                    <form onsubmit="searchWorkHourByUsername()">
+                        Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
+                        <button type="submit" class="btn btn-success add-class"><i
+                                class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+                        </button>
+                    </form>
 
 
                 </tr>
