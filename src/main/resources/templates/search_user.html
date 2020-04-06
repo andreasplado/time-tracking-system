@@ -100,7 +100,7 @@ function searchByUsername(){
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <h3>Looking for user <i th:text="${searchString}"></i></h3>
-            <p th:if="${user==null or user.empty}">No user found</p>
+            <p th:if="${user==null}">No user found</p>
             <table th:if="${user!=null}" class="table" id="tableForm">
                 <div class="form-group">
                     <label>Username:</label>
