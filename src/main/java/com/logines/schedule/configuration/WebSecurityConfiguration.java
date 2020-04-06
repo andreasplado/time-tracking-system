@@ -86,7 +86,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/images/working-hours.png",
                         "/datetimepicker/**",
                         "/login_style/**"
-                ).permitAll().antMatchers("/register").access("ADMIN")
+                ).permitAll().antMatchers("/register").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
