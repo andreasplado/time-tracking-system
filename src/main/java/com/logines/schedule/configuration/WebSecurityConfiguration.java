@@ -69,13 +69,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
-        http.authorizeRequests().antMatchers("/register").hasRole("SUPERUSER");
 
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**",
                         "/responsive-full-background-image.css", "/static/**", "/images/background-photo.jpg",
-                        "/home", "/lol",
+                        "/home", "/register", "/lol",
                         "/images/background-photo-mobile-devices.jpg",
                         "/assets/css/style.css",
                         "/assets/js/main.js",
