@@ -111,7 +111,7 @@ public class MainController {
     }
 
     @GetMapping("/get-user/{id}")
-    public String searchUserByUserId(@PathVariable("username") int id, Model model, Principal principal) {
+    public String searchUserByUserId(@PathVariable("id") int id, Model model, Principal principal) {
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
         }
