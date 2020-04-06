@@ -348,13 +348,12 @@ $( function() {
         <li id="tab-workhours" class="cd-tabs__panel text-component">
             <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
             <form method="post" id="search-by-date-range" th:object="${workHourForm}">
-                <div class="input-group date">
-                    <input type="text" id="start_time_range" name="start_time" th:attr="data-field='datetime'"
-                           class="form-control" th:field="*{start_time}" readonly/>
-                </div>
-                <div class="input-group date">
-                    <input type="text" id="end_time_range" name="start_time" th:attr="data-field='datetime'"
-                           class="form-control" th:field="*{end_time}" readonly/>
+                <div class="name">
+                    <label>Start time:</label>
+                    <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text" th:attr="data-field='datetime'" />
+
+                    <label>End time:</label>
+                    <input name="last_name" id="end_time_range" name="start_time" th:field="*{end_time}"  type="text" />
                 </div>
             </form>
 
