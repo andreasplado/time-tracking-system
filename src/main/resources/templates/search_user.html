@@ -78,7 +78,7 @@ function viewWorkHour(id){
     window.location.href="work-hour-details/" + id;
 }
 
-function searchByUsername(){
+function searchUserByUsername(){
     var username = $("#search-by-username").val();
     window.location.href= "/" + username;
 }
@@ -101,6 +101,10 @@ function searchByUsername(){
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <h3>Looking for user <i th:text="${searchString}"></i></h3>
             <p th:if="${user==null}">No user found</p>
+            Username: <input type="text" name="username" id="search-by-username"><br>
+            <button onclick="searchUserByUsername()" class="btn btn-success add-class"><i
+                    class="fa fa-plus"></i>SEARCH BY USERNAME
+            </button>
             <table th:if="${user!=null}" class="table" id="tableForm">
                 <div class="form-group">
                     <label>Username:</label>
