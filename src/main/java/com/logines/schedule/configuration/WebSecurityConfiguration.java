@@ -69,6 +69,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
+        http.authorizeRequests().antMatchers("/register").hasRole("SUPERUSER");
 
         http
                 .authorizeRequests()
@@ -96,10 +97,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
-
-        http.authorizeRequests().antMatchers("/register").hasRole("SUPERUSER");
-
-
     }
 
     @Bean
