@@ -212,26 +212,30 @@ $( function() {
     <nav class="cd-tabs__navigation">
         <ul class="cd-tabs__list">
             <li>
-                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected">
+                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 20px;">
                     <img src="images/dashboard.png" width="50px" height="50px">
+                    <p style="text-align:center;">DASHBOARD</p>
                 </a>
             </li>
 
             <li>
                 <a href="#tab-workhours" class="cd-tabs__item">
-                    <img src="/images/working-hours.png" width="50px" height="50px">
+                    <img src="/images/working-hours.png" width="50px" height="50px" style="padding: 20px;"/>
+                    <p style="text-align:center;">ALL WORKHOURS</p>
                 </a>
             </li>
 
             <li>
                 <a href="#tab-my-profile" class="cd-tabs__item">
-                    <img src="/images/user.png" width="50px" height="50px">
+                    <img src="/images/user.png" width="50px" height="50px" style="padding: 20px;"/>
+                    <p style="text-align:center;">MY PROFILE</p>
                 </a>
             </li>
 
             <li th:if="${role == 'ADMIN'}">
                 <a href="#tab-users" class="cd-tabs__item">
-                    <img src="/images/team.png" width="50px" height="50px">
+                    <img src="/images/team.png" width="50px" height="50px" style="padding: 20px;" />
+                    <p style="text-align:center;">USERS</p>
                 </a>
             </li>
         </ul> <!-- cd-tabs__list -->
