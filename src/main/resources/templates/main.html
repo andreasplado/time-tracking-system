@@ -390,7 +390,7 @@ $( function() {
             </form>
         </li>
 
-        <li id="tab-users" class="cd-tabs__panel text-component" th:if="${users.empty}">
+        <li th:if="${users.empty}" id="tab-users" class="cd-tabs__panel text-component">
             <table th:if="${users!=null and !users.empty}" class="table">
                 <thead>
                 <tr>
