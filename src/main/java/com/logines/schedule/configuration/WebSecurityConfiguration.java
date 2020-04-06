@@ -69,6 +69,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
+        http
+                .cors().and()
+                .csrf().disable().authorizeRequests()
+                .antMatchers("/register").hasRole("admin")
+                .and()
+                .formLogin();
 
         http
                 .authorizeRequests()
@@ -96,13 +102,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
-
-        http
-                .cors().and()
-                .csrf().disable().authorizeRequests()
-                .antMatchers("/register").hasRole("superuser")
-                .and()
-                .formLogin();
     }
 
     @Bean
