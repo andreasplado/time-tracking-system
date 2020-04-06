@@ -99,8 +99,8 @@ function searchByUsername(){
                 <form th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form"
                       th:object="${workHour}" method="post">
                     <div class="form-group">
-                        <label>Worker username:</label>
-                        <p th:text="${workHour.username}" th:name="username" th:id="username" type="text"></p>
+                        <span>Worker username:</span>
+                        <span th:text="${workHour.username}" th:name="username" th:id="username" type="text"></span>
                     </div>
                     <div class="form-group">
                         <span>Start time:</span>
@@ -120,9 +120,8 @@ function searchByUsername(){
                     </div>
 
                     <div class="form-group">
-                        <label>Workhour added:</label>
-                        <p th:text="${workHour.created_at}" th:name="created_at" th:id="created_at" type="text"
-                           class="form-control"></p>
+                        <span>Workhour added:</span>
+                        <span th:text="${workHour.created_at}" th:name="created_at" th:id="created_at" type="text"></span>
                     </div>
                 </form>
                 <br/>
