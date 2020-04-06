@@ -83,11 +83,11 @@ public class UserController {
         return "search_user";
     }
 
-    @PostMapping("edit-user/{id}")
+    @PostMapping("/edit-user/{id}")
     public String editUser(Model model, @PathVariable("id") int id, @Valid Users users,
                            BindingResult bindingResult) {
         if (userService.editUser(users)) {
-            model.addAttribute("message", "Workhour deleted successfully...");
+            model.addAttribute("message", "User deleted successfully...");
             return "successful_page";
         } else {
             model.addAttribute("message", "User not found...");
@@ -95,7 +95,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("delete-user/{id}")
+    @PostMapping("/delete-user/{id}")
     public String deleteUser(Model model, @PathVariable("id") int id) {
         if (userService.deleteUser(id)) {
             model.addAttribute("message", "Workhour deleted successfully...");
