@@ -68,6 +68,7 @@ public class MainController {
             List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
             if(myUser.getRole().equals("ADMIN")) {
                 List<Users> allUsers = userService.allUsersExceptiMine(principal.getName());
+                model.addAttribute("users", allUsers);
             }
 
             model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
@@ -76,7 +77,7 @@ public class MainController {
             model.addAttribute("allWorkHours", allWorkhours);
             model.addAttribute("role", myUser.getRole());
             //model.addAttribute("workHoursSum",workHourService.userWorkHoursSum(principal.getName()));
-            model.addAttribute("users", allUsers);
+
 
             return "main";
         } else {
