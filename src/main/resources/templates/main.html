@@ -414,7 +414,7 @@ $( function() {
         </li>
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
-            <p th:if="${users== null}">No users found</p>
+            <p th:if="${users== null and users.empty}">No other users found</p>
             <table th:if="${users!=null and !users.empty}" class="table">
                 <thead>
                 <tr>
