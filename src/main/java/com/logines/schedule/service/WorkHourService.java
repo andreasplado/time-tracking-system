@@ -82,8 +82,10 @@ public class WorkHourService {
         LocalTime lunchTime;
         for(int i= 0; i<workHours.size(); i++){
 
-            startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time());
-            endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US);
+
+            startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time(), formatter);
+            endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time(), formatter);
 
             lunchTime = LocalTime.parse(workHours.get(i).getLunch_time(),
                     DateTimeFormatter.ISO_TIME);
@@ -93,7 +95,7 @@ public class WorkHourService {
             System.out.println("lunch: "  + lunchTime.toSecondOfDay());
         }
 
-        double diffFinal= (double) diff / 60.0 / 60.0;
+        double diffFinal= (double) diff / 60.0;
 
         return Double.toString(diffFinal);
     }
@@ -103,7 +105,7 @@ public class WorkHourService {
         workHourRepository.deleteAll();
     }
 
-    @Scheduled(cron = "59 * * ? * MON-FRI")
+    @Scheduled(cron = "40 * * ? * MON-FRI")
     public void myScheduledMethod(){
         workHourRepository.deleteLast30DaysWorkHours();
     }
