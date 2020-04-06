@@ -67,6 +67,8 @@
     td:hover { background-color: #2ECCFA; }
 
 
+
+
 </style>
 <script>
    $(document).keyup(function(e) {
@@ -82,6 +84,8 @@ function searchUserByUsername(){
     var username = $("#search-by-username").val();
     window.location.href= "/search-user/" + username;
 }
+
+
 
 </script>
 
@@ -99,44 +103,65 @@ function searchUserByUsername(){
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-            <p th:if="${user==null}">No user found</p>
             Username: <input type="text" name="username" th:val="${searchString}" id="search-by-username"><br>
             <button onclick="searchUserByUsername()" class="btn btn-success add-class"><i
                     class="fa fa-plus"></i>SEARCH BY USERNAME
             </button>
 
             <h3>Looking for user <i th:text="${searchString}"></i></h3>
-            <table th:if="${user!=null}" class="table" id="tableForm">
+            <p th:if="${role == 'USER'}">You don't have persmission to edit user</p>
+            <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="workhour-form"
+                  th:object="${workHour}" method="post">
                 <div class="form-group">
                     <label>Username:</label>
-                    <p th:text="${user.username}"></p>
-                </div>
-                <div class="form-group">
-                    <label>Fullname:</label>
-                    <p th:text="${user.fullname}"></p>
+                    <div>
+                        <input type="text" th:value="${user.username}" th:name="username" th:id="username"
+                               placeholder="Username" class="form-control" readonly/>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Email:</label>
-                    <p th:text="${user.email}"></p>
+                    <div>
+                        <input type="text" th:value="${user.email}" th:name="username" th:id="username"
+                               placeholder="User email" class="form-control"/>
+                    </div>
                 </div>
+                <div class="form-group">
+                    <label>Fullname:</label>
+                    <div>
+                        <input type="text" th:value="${user.fullname}" th:name="fullname" th:id="fullname"
+                               placeholder="Fullname" class="form-control"/>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label>ID Code:</label>
-                    <p th:text="${user.id_code}"></p>
+                    <input type="text" th:value="${user.id_code}" th:name="id_code" th:id="id_code" class="form-control"
+                           readonly/>
                 </div>
+
                 <div class="form-group">
                     <label>Phone:</label>
-                    <p th:text="${user.phone}"></p>
+                    <input type="text" th:value="${user.phone}" th:name="phone" th:id="phone" class="form-control"
+                           readonly/>
                 </div>
-                <form th:action="@{/edit-user/} + ${user.id}" method="get">
-                    <button type="submit" class="btn btn-default">EDIT</button>
-                </form>&nbsp;&nbsp;
-                <form th:action="@{/delete-user/} + ${user.id}" method="post">
-                    <button type="submit" class="btn btn-dark">DELETE</button>
-                </form>
-                <br />
-                <br />
-                HINT: <i>press ESC to return to main page.</i>
-            </table>
+                <div class="form-group">
+                    <label>Role:</label>
+                    <select th:field="*{role}" th:value="${user.role}">
+                        <option th:value="'USER'" th:text="USER"></option>
+                        <option th:value="'ADMIN'" th:text="ADMIN"></option>
+                    </select>
+                    <span class="focus-input100"></span>
+
+                </div>
+                <button type="submit" class="btn btn-success">EDIT</button>
+            </form>
+            <form th:if="${role == 'ADMIN'}" th:action="@{/delete-user/} + ${user.id}" method="post">
+                <button type="submit" class="btn btn-dark">DELETE</button>
+            </form>
+            <br/>
+            <br/>
+            HINT: <i>press ESC to return to main page.</i>
         </li>
 
     </ul> <!-- cd-tabs__panels -->
