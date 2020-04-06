@@ -73,7 +73,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/resources/**",
                         "/responsive-full-background-image.css", "/static/**", "/images/background-photo.jpg",
-                        "/home", "/register", "/lol",
+                        "/home", "/lol",
                         "/images/background-photo-mobile-devices.jpg",
                         "/assets/css/style.css",
                         "/assets/js/main.js",
@@ -85,7 +85,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/images/working-hours.png",
                         "/datetimepicker/**",
                         "/login_style/**"
-                ).permitAll()
+                ).access("hasRole('USER')")
+                .antMatchers("/register").access("hasRole('ADMIN')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
