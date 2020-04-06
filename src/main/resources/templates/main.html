@@ -347,6 +347,25 @@ $( function() {
 
         <li id="tab-workhours" class="cd-tabs__panel text-component">
             <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
+            <form method="post" id="search-by-date-range">
+                <div class="input-group date">
+                    <input type="text" id="start-time-range" name="start_time" th:attr="data-field='datetime'"
+                           class="form-control" th:field="*{start_time}" readonly/>
+                </div>
+                <div class="input-group date">
+                    <input type="text" id="end-time-range" name="start_time" th:attr="data-field='datetime'"
+                           class="form-control" th:field="*{end_time}" readonly/>
+                </div>
+            </form>
+
+
+            <form method="post" id="search-by-username">
+                Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
+                <button type="submit" class="btn btn-success add-class"><i
+                        class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+                </button>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
             <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table logines-table">
                 <thead>
                 <tr>
@@ -356,28 +375,6 @@ $( function() {
                     <th>Lunch time</th>
                     <th>Added</th>
                     <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
-
-                    <form method="post" id="search-by-date-range">
-                        <div class="input-group date">
-                            <input type="text" id="start-time-range" name="start_time" th:attr="data-field='datetime'"
-                                   class="form-control" th:field="*{start_time}" readonly/>
-                        </div>
-                        <div class="input-group date">
-                            <input type="text" id="end-time-range" name="start_time" th:attr="data-field='datetime'"
-                                   class="form-control" th:field="*{end_time}" readonly/>
-                        </div>
-                    </form>
-
-
-                    <form method="post" id="search-by-username">
-                        Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
-                        <button type="submit" class="btn btn-success add-class"><i
-                                class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
-                        </button>
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    </form>
-
-
                 </tr>
                 </thead>
                 <tbody>
