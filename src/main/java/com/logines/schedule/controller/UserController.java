@@ -1,6 +1,7 @@
 package com.logines.schedule.controller;
 
 import com.logines.schedule.model.Users;
+import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.SecurityService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.validator.UserValidator;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -67,6 +70,17 @@ public class UserController {
             securityService.autoLogin(registerForm.getUsername(), registerForm.getPasswordConfirm());
             return "redirect:/";
         }
+    }
+
+    @GetMapping("/search-user/{username}")
+    public String searchWorkHourByUsername(@PathVariable("username") String username, Model model, Principal principal) {
+        if(principal != null){
+            model.addAttribute("usernameText", principal.getName());
+        }
+        model.addAttribute("searchString", username);
+        Users users = userService.findByUsername(username);
+        model.addAttribute("user", users);
+        return "search_user";
     }
 
     @GetMapping("/404")

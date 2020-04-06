@@ -73,10 +73,16 @@ function addClass(){
 function deleteClass(id){
     window.location.href="delete-class/"+ id;
 }
-function searchByUsername(){
-    var username = $("#search-by-username").val();
+function searchWorkHourByUsername(){
+    var username = $("#search-work-hour-by-username").val();
     window.location.href="search-users-work-hour/"+ username;
 }
+
+function searchUserByUsername(){
+    var username = $("#user-search-by-username").val();
+    window.location.href="search-user/"+ username;
+}
+
 function viewWorkHour(id){
     window.location.href="work-hour-details/" + id;
 }
@@ -326,8 +332,8 @@ $( function() {
                     <th>End time</th>
                     <th>Lunch time</th>
                     <th>Added</th>
-                        Username: <input type="text" name="username" id="search-by-username"><br>
-                        <button onclick="searchByUsername()" class="btn btn-success add-class"><i
+                        Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
+                        <button onclick="searchWorkHourByUsername()" class="btn btn-success add-class"><i
                                 class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
                         </button>
                     </th>
@@ -393,15 +399,16 @@ $( function() {
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
             <p th:if="${users== null}">No users found</p>
-            <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
+            <table th:if="${users!=null and !users.empty}" class="table">
                 <thead>
                 <tr>
                     <th>Username</th>
                     <th>Fullname</th>
                     <th>Email</th>
+                    <th>ID Code</th>
                     <th>Phone</th>
-                    Username: <input type="text" name="username" id="all-users-search-by-username"><br>
-                    <button onclick="searchByUsername()" class="btn btn-success add-class"><i
+                    Username: <input type="text" name="username" id="user-search-by-username"><br>
+                    <button onclick="searchUserByUsername()" class="btn btn-success add-class"><i
                             class="fa fa-plus"></i>SEARCH BY USERNAME
                     </button>
                     </th>
@@ -413,6 +420,7 @@ $( function() {
                     <td th:text="${user.username}"></td>
                     <td th:text="${user.fullname}"></td>
                     <td th:text="${user.email}"></td>
+                    <td th:text="${user.phone}"></td>
                     <td th:text="${user.phone}"></td>
                 </tr>
                 </tbody>
