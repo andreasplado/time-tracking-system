@@ -76,9 +76,14 @@ function deleteClass(id){
 }
 function searchWorkHourByUsername(){
     var username = $("#search-work-hour-by-username").val();
-    //window.location.href="search-users-work-hour/"+ username;
+    window.location.href="search-users-work-hour/"+ username;
     document.getElementById('search-by-username').action = window.location.href="search-users-work-hour/"+ username;
 }
+
+document.getElementById("search-by-username").addEventListener("submit",function(){
+    var username = $("#search-work-hour-by-username").val();
+    window.location.href="search-users-work-hour/"+ username;
+},false);
 
 function searchUserByUsername(){
     var username = $("#user-search-by-username").val();
