@@ -95,7 +95,7 @@ public class WorkHourService {
             System.out.println("lunch: "  + lunchTime.toSecondOfDay());
         }
 
-        double diffFinal= (double) diff / 60.0;
+        double diffFinal= (double) diff / 60.0 / 60.0;
 
         return Double.toString(diffFinal);
     }
