@@ -392,30 +392,28 @@ $( function() {
         </li>
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
-            <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
+            <p th:if="${users== null}">No users found</p>
             <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table">
                 <thead>
                 <tr>
                     <th>Username</th>
-                    <th>Start time</th>
-                    <th>End time</th>
-                    <th>Lunch time</th>
-                    <th>Added</th>
-                    Username: <input type="text" name="username" id="search-by-username"><br>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    Username: <input type="text" name="username" id="all-users-search-by-username"><br>
                     <button onclick="searchByUsername()" class="btn btn-success add-class"><i
-                            class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+                            class="fa fa-plus"></i>SEARCH BY USERNAME
                     </button>
                     </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="list-item" th:each="allWorkHour : ${allWorkHours}"
-                    th:onclick="'viewWorkHour(' + ${allWorkHour.id} +')'">
-                    <td th:text="${allWorkHour.username}"></td>
-                    <td th:text="${allWorkHour.start_time}"></td>
-                    <td th:text="${allWorkHour.end_time}"></td>
-                    <td th:text="${allWorkHour.lunch_time}"></td>
-                    <td th:text="${allWorkHour.created_at}"></td>
+                <tr class="list-item" th:each="user : ${users}"
+                    th:onclick="'viewUser(' + ${user.id} +')'">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.fullname}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.phone}"></td>
                 </tr>
                 </tbody>
             </table>
