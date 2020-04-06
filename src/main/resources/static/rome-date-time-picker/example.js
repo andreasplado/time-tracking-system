@@ -6,6 +6,8 @@ inputFormat: "YYYY-MM-DD HH:mm:ss"});
 rome(end_time, {dateValidator: rome.val.afterEq(start_time),
 inputFormat: "YYYY-MM-DD HH:mm:ss"});
 rome(lunch_time, {inputFormat: "HH:mm:ss", date: false});
+rome(start-time-range, {inputFormat: "HH:mm:ss", date: false} );
+rome(end-time-range, {inputFormat: "HH:mm:ss", date: false} );
 
 var picker = rome(ind);
 
