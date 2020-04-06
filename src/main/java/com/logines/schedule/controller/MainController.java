@@ -117,7 +117,7 @@ public class MainController {
         }
         Users users = userService.findByid(id);
         model.addAttribute("user", users);
-        return "search_user";
+        return "edit_user";
     }
 
     @GetMapping(value = "/images/{image}", produces = {MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})

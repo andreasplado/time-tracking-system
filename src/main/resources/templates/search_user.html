@@ -109,7 +109,6 @@ function searchUserByUsername(){
             </button>
 
             <h3>Looking for user <i th:text="${searchString}"></i></h3>
-            <p th:if="${role == 'USER'}">You don't have persmission to edit user</p>
             <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="workhour-form"
                   th:object="${workHour}" method="post">
                 <div class="form-group">
