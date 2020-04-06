@@ -110,6 +110,16 @@ public class MainController {
         }
     }
 
+    @GetMapping("/get-user/{id}")
+    public String searchUserByUserId(@PathVariable("id") int id, Model model, Principal principal) {
+        if(principal != null){
+            model.addAttribute("usernameText", principal.getName());
+        }
+        Users users = userService.findByid(id);
+        model.addAttribute("user", users);
+        return "search_user";
+    }
+
     @GetMapping(value = "/images/{image}", produces = {MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     public @ResponseBody
     byte[] getImage(@PathVariable String image) throws IOException {
