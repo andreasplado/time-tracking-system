@@ -10,5 +10,4 @@ public interface UserService {
 
     Users findByUsername(String username);
     List<Users> allUsers();
-    List<Users> findByUsername();
 }
