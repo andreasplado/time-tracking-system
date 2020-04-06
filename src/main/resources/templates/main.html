@@ -350,10 +350,10 @@ $( function() {
             <form method="post" id="search-by-date-range" th:object="${workHourForm}">
                 <div class="name">
                     <label>Start time:</label>
-                    <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text" th:attr="data-field='datetime'" />
+                    <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text" th:attr="data-field='datetime'" readonly />
 
                     <label>End time:</label>
-                    <input id="end_time_range" name="start_time" th:field="*{end_time}"  type="text" th:attr="data-field='datetime'" />
+                    <input id="end_time_range" name="start_time" th:field="*{end_time}"  type="text" th:attr="data-field='datetime'" readonly />
                 </div>
             </form>
 
