@@ -181,7 +181,7 @@ only screen and (max-width: 760px),
 	}
 
 	/* Hide table headers (but not display: none;, for accessibility) */
-	table.logines-table table.logines-table thead tr {
+	table.logines-table thead tr {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
