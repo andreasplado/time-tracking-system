@@ -76,7 +76,8 @@ function deleteClass(id){
 }
 function searchWorkHourByUsername(){
     var username = $("#search-work-hour-by-username").val();
-    window.location.href="search-users-work-hour/"+ username;
+    //window.location.href="search-users-work-hour/"+ username;
+    document.getElementById('search-by-username').action = window.location.href="search-users-work-hour/"+ username;
 }
 
 function searchUserByUsername(){
@@ -350,7 +351,7 @@ $( function() {
                     <th>Lunch time</th>
                     <th>Added</th>
                     <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
-                    <form onsubmit="searchWorkHourByUsername();" method="post">
+                    <form onsubmit="return searchWorkHourByUsername();" method="post" id="search-by-username">
                         Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
                         <button type="submit" class="btn btn-success add-class"><i
                                 class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
