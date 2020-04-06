@@ -83,10 +83,24 @@ public class UserController {
         return "search_user";
     }
 
+    @GetMapping("/get-user/{id}")
+    public String searchUserByUserId(@PathVariable("id") int id, Model model, Principal principal) {
+        if(principal != null){
+            model.addAttribute("usernameText", principal.getName());
+        }
+        Users users = userService.findByid(id);
+        model.addAttribute("user", users);
+        return "search_user";
+    }
+
     @PostMapping("/edit-user/{id}")
     public String editUser(Model model, @PathVariable("id") int id, @Valid Users users,
                            BindingResult bindingResult) {
         if (userService.editUser(users)) {
+            if(bindingResult.hasErrors()){
+                model.addAttribute("error", bindingResult.getAllErrors());
+                return "error_page";
+            }
             model.addAttribute("message", "User deleted successfully...");
             return "successful_page";
         } else {
