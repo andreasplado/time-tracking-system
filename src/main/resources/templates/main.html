@@ -354,14 +354,15 @@ $( function() {
 
                     <label>End time:</label>
                     <input id="end_time_range" name="start_time" th:field="*{end_time}"  type="text" th:attr="data-field='datetime'" readonly />
+                    <button type="submit" class="btn btn-primary">SEARCH WORKHOUR BY DATE RANGE
+                    </button>
                 </div>
             </form>
 
 
             <form method="post" id="search-by-username" th:object="${workHourForm}">
                 Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
-                <button type="submit" class="btn btn-success add-class"><i
-                        class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+                <button type="submit" class="btn btn-primary">SEARCH WORKHOUR BY USERNAME
                 </button>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
