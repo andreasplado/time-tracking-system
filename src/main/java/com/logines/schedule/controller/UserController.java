@@ -103,6 +103,7 @@ public class UserController {
     public String deleteUser(Model model, @PathVariable("id") int id) {
         if (userService.deleteUser(id)) {
             model.addAttribute("message", "Workhour deleted successfully...");
+            model.addAttribute("gotoMain", true);
             return "successful_page";
         } else {
             model.addAttribute("message", "User not found...");
