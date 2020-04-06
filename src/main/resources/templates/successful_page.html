@@ -10,23 +10,10 @@
 </head>
 <body>
 
-<script th:inline="javascript">
-/*<![CDATA[*/
+<script>
+setTimeout(function(){ window.location.href="/"; }, );
 
-    var goToMain = /*[[${goToMain}]]*/ 'default';
-    console.log(message);
-
-    setTimeout(function(){
-        if(goToMain){
-            window.location.href="/";
-        }else{
-            window.history.back();
-        }
-     }, 1000);
-
-/*]]>*/
 </script>
-
 
 <div class="container">
     <h2>Time tracking system</h2>
