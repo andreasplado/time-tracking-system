@@ -146,20 +146,20 @@ input[type=submit] {
 /*
 Generic Styling, for Desktops/Laptops
 */
-table {
+table.logines-table {
   width: 100%;
   border-collapse: collapse;
 }
 /* Zebra striping */
-tr:nth-of-type(odd) {
+table.logines-table tr:nth-of-type(odd) {
   background: #eee;
 }
-th {
+table.logines-table th {
   background: #333;
   color: white;
   font-weight: bold;
 }
-td, th {
+table.logines-table td, th {
   padding: 6px;
   border: 1px solid #ccc;
   text-align: left;
@@ -176,20 +176,20 @@ only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr {
+	table.logines-table , table.logines-table thead, table.logines-table tbody, table.logines-table th, table.logines-table td, table.logines-table tr {
 		display: block;
 	}
 
 	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr {
+	table.logines-table table.logines-table thead tr {
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
 	}
 
-	tr { border: 1px solid #ccc; }
+	table.logines-table tr { border: 1px solid #ccc; }
 
-	td {
+	table.logines-table td {
 		/* Behave  like a "row" */
 		border: none;
 		border-bottom: 1px solid #eee;
@@ -197,7 +197,7 @@ only screen and (max-width: 760px),
 		padding-left: 50%;
 	}
 
-	td:before {
+	table.logines-table td:before {
 		/* Now like a table header */
 		position: absolute;
 		/* Top/left values mimic padding */
