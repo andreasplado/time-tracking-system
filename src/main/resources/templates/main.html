@@ -222,28 +222,28 @@ $( function() {
             <li>
                 <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 6px;">
                     <img src="images/dashboard.png" width="50px" height="50px">
-                    <p style="text-align:center; margin:auto;">DASHBOARD</p>
+                    <p style="text-align:center; margin:auto;" class="tab-text">DASHBOARD</p>
                 </a>
             </li>
 
             <li>
                 <a href="#tab-workhours" class="cd-tabs__item" style="padding: 6px;">
                     <img src="/images/working-hours.png" width="50px" height="50px"/>
-                    <p style="text-align:center; margin:auto;">ALL WORKHOURS</p>
+                    <p style="text-align:center; margin:auto;" class="tab-text">ALL WORKHOURS</p>
                 </a>
             </li>
 
             <li>
                 <a href="#tab-my-profile" class="cd-tabs__item">
                     <img src="/images/user.png" width="50px" height="50px" style="padding: 6px;"/>
-                    <p style="text-align:center; margin:auto;">MY PROFILE</p>
+                    <p style="text-align:center; margin:auto;" class="tab-text">MY PROFILE</p>
                 </a>
             </li>
 
             <li th:if="${role == 'ADMIN'}">
                 <a href="#tab-users" class="cd-tabs__item">
                     <img src="/images/team.png" width="50px" height="50px" style="padding: 6px;"/>
-                    <p style="text-align:center; margin:auto;">USERS</p>
+                    <p style="text-align:center; margin:auto;" class="tab-text">USERS</p>
                 </a>
             </li>
         </ul> <!-- cd-tabs__list -->
