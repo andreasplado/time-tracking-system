@@ -414,7 +414,7 @@ $( function() {
         </li>
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
-            <p th:if="${users== null and users.empty}">No other users found</p>
+            <p th:if="${users.empty}">No other users found</p>
             <table th:if="${users!=null and !users.empty}" class="table">
                 <thead>
                 <tr>
@@ -423,6 +423,7 @@ $( function() {
                     <th>Email</th>
                     <th>ID Code</th>
                     <th>Phone</th>
+                    <th>Role</th>
                     Username: <input type="text" name="username" id="user-search-by-username"><br>
                     <button onclick="searchUserByUsername()" class="btn btn-success add-class"><i
                             class="fa fa-plus"></i>SEARCH BY USERNAME
@@ -438,6 +439,7 @@ $( function() {
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.phone}"></td>
                     <td th:text="${user.phone}"></td>
+                    <td th:text="${user.role}"></td>
                 </tr>
                 </tbody>
             </table>
