@@ -349,22 +349,17 @@ $( function() {
             <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
             <form method="post" id="search-by-date-range" th:object="${workHourForm}">
                 <div class="name">
+                    <label>Usenrame:</label>
+                    <input type="text" name="username" id="search-work-hour-by-username" style="width: 50%!important;"><br>
                     <label>Start time:</label>
                     <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text" th:attr="data-field='datetime'" style="width: 25%!important;" readonly />
 
                     <label>End time:</label>
                     <input id="end_time_range" name="start_time" th:field="*{end_time}"  type="text" th:attr="data-field='datetime'" style="width: 25%!important;" readonly />
-                    <button type="submit" class="btn btn-primary">SEARCH WORKHOUR BY DATE RANGE
-                    </button>
+                    <button type="submit" class="btn btn-primary">SEARCH</button>
+
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </div>
-            </form>
-
-
-            <form method="post" id="search-by-username" th:object="${workHourForm}">
-                Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
-                <button type="submit" class="btn btn-primary">SEARCH WORKHOUR BY USERNAME
-                </button>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
             <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table logines-table">
                 <thead>
