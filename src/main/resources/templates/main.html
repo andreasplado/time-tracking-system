@@ -147,6 +147,7 @@ function timeSince(date) {
 
 
 
+
 </script>
 
 <script th:inline="javascript">
@@ -184,6 +185,7 @@ $( function() {
 
  });
 /*]]>*/
+
 
 
 </script>
@@ -268,7 +270,7 @@ $( function() {
                     <label>Notes:</label>
                     <div class="input-group date" id="description">
                         <textarea class="form-control" rows="5" id="notes" placeholder="Enter description"
-                                              name="notes" th:field="*{notes}"></textarea>
+                                  name="notes" th:field="*{notes}"></textarea>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success add-class">
@@ -333,11 +335,10 @@ $( function() {
                     <th>Lunch time</th>
                     <th>Added</th>
                     <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
-                        Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
-                        <button onclick="searchWorkHourByUsername()" class="btn btn-success add-class"><i
-                                class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
-                        </button>
-                    </th>
+                    Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
+                    <button onclick="searchWorkHourByUsername()" class="btn btn-success add-class"><i
+                            class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+                    </button>
 
 
                 </tr>
@@ -404,8 +405,8 @@ $( function() {
             <form id="delete_User_data" method="POST" th:action="@{/delete-user-profile/} + ${usernameText}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
-            <br />
-            <br />
+            <br/>
+            <br/>
             <form th:if="${role == 'ADMIN'}" id="register_new_user" method="POST" th:action="@{/register}">
                 <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
             </form>
