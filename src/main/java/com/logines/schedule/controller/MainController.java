@@ -60,17 +60,21 @@ public class MainController {
         model.addAttribute("workHourForm", new WorkHour());
         if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
-            Users users = userService.findByUsername(principal.getName());
+            Users myUser = userService.findByUsername(principal.getName());
+
             //Kui kasutajaandmeid on lisatud
 
             List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
             List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
+            List<Users> allUsers = userService.allUsers();
+
             model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
-            model.addAttribute("user", users);
+            model.addAttribute("myUser", myUser);
             model.addAttribute("userWorkHours", userWorkHours);
             model.addAttribute("allWorkHours", allWorkhours);
-            model.addAttribute("role", users.getRole());
+            model.addAttribute("role", myUser.getRole());
             //model.addAttribute("workHoursSum",workHourService.userWorkHoursSum(principal.getName()));
+            model.addAttribute("users", allUsers);
 
             return "main";
         } else {

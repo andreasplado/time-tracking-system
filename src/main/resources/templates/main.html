@@ -216,6 +216,11 @@ $( function() {
                     <img src="/images/user.png" width="50px" height="50px">
                 </a>
             </li>
+            <li th:if="${users!=null and !users.empty}">
+                <a href="#tab-my-profile" class="cd-tabs__item">
+                    <img src="/images/user.png" width="50px" height="50px">
+                </a>
+            </li>
         </ul> <!-- cd-tabs__list -->
     </nav>
 
@@ -350,22 +355,22 @@ $( function() {
                 </div>
                 <div class="form-group">
                     <label>Fullname:</label>
-                    <input type="text" class="form-control" th:value="${user.fullname}" id="fullname"
+                    <input type="text" class="form-control" th:value="${myUser.fullname}" id="fullname"
                            placeholder="Enter your fullname" name="fullname"/>
                 </div>
                 <div class="form-group">
                     <label>Email:</label>
-                    <input type="text" class="form-control" th:value="${user.email}" id="email"
+                    <input type="text" class="form-control" th:value="${myUser.email}" id="email"
                            placeholder="Enter your email" name="email"/>
                 </div>
                 <div class="form-group">
                     <label>Id Code:</label>
-                    <input type="text" class="form-control" th:value="${user.id_code}" id="id_code"
+                    <input type="text" class="form-control" th:value="${myUser.id_code}" id="id_code"
                            placeholder="Enter your id code" name="id_code"/>
                 </div>
                 <div class="form-group">
                     <label>Phone:</label>
-                    <input type="number" class="form-control" th:value="${user.phone}" id="phone"
+                    <input type="number" class="form-control" th:value="${myUser.phone}" id="phone"
                            placeholder="Enter your phone number" name="phone"/>
                 </div>
                 <div class="form-group">
@@ -384,6 +389,36 @@ $( function() {
                 <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
             </form>
         </li>
+
+        <li id="tab-users" class="cd-tabs__panel text-component" th:if="${users.empty}">
+            <table th:if="${users!=null and !users.empty}" class="table">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Fullname</th>
+                    <th>Email</th>
+                    <th>Id code</th>
+                    <th>Phone</th>
+                    Username: <input type="text" name="username" id="search-by-username2"><br>
+                    <button onclick="searchByUsername()" class="btn btn-success add-class"><i
+                            class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
+                    </button>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="list-item" th:each="user : ${users}"
+                    th:onclick="'viewUser(' + ${user.id} +')'">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${allWorkHour.fullname}"></td>
+                    <td th:text="${allWorkHour.email}"></td>
+                    <td th:text="${allWorkHour.id_code}"></td>
+                    <td th:text="${allWorkHour.phone}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+
 
     </ul> <!-- cd-tabs__panels -->
 </div> <!-- cd-tabs -->
