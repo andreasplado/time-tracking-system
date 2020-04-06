@@ -69,11 +69,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .requiresSecure(); */
 
         //http.csrf().disable();
+
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**",
                         "/responsive-full-background-image.css", "/static/**", "/images/background-photo.jpg",
-                        "/home", "/lol",
+                        "/home", "/register", "/lol",
                         "/images/background-photo-mobile-devices.jpg",
                         "/assets/css/style.css",
                         "/assets/js/main.js",
@@ -85,8 +86,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/images/working-hours.png",
                         "/datetimepicker/**",
                         "/login_style/**"
-                ).access("hasRole('USER')")
-                .antMatchers("/register").access("hasRole('ADMIN')")
+                ).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
