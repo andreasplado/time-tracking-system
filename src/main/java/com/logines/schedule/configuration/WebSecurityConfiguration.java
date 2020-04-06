@@ -96,6 +96,14 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+
+        http
+                .cors().and()
+                .csrf().disable().authorizeRequests()
+                .antMatchers("/register").hasRole("superuser")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin();
     }
 
     @Bean
