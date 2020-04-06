@@ -94,7 +94,7 @@ function searchByUsername(){
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-            <table class="table" id="tableForm">
+            <table class="table logines-table" id="tableForm">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                 <form th:action="@{/edit-work-hour/} + ${workHour.id}" id="workhour-form"
                       th:object="${workHour}" method="post">

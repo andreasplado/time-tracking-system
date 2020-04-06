@@ -101,7 +101,7 @@ function searchByUsername(){
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <h3>Looking for worker <i th:text="${searchString}"></i> workhours</h3>
             <p th:if="${workHours==null or workHours.empty}">No records found in workhour history</p>
-            <table th:if="${workHours!=null and !workHours.empty}" class="table">
+            <table th:if="${workHours!=null and !workHours.empty}" class="table logines-table">
                 <thead>
                 <tr>
                     <th>Username</th>
