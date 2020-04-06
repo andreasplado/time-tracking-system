@@ -12,7 +12,7 @@ public interface UserService {
 
     Users findByUsername(String username);
     Users findByid(int id);
-    List<Users> allUsers();
+    List<Users> allUsersExceptiMine(String username);
     boolean deleteUser(int id);
     boolean editUser(Users users);
 

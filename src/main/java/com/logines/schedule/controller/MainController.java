@@ -66,7 +66,7 @@ public class MainController {
 
             List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
             List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
-            List<Users> allUsers = userService.allUsers();
+            List<Users> allUsers = userService.allUsersExceptiMine(principal.getName());
 
             model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
             model.addAttribute("myUser", myUser);
