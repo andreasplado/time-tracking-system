@@ -383,6 +383,10 @@ $( function() {
             <form id="delete_User_data" method="POST" th:action="@{/delete-user-profile/} + ${usernameText}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
+
+            <form th:if="${role == 'ADMIN'}" id="register_new_user" method="POST" th:action="@{/register}">
+                <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
+            </form>
         </li>
 
     </ul> <!-- cd-tabs__panels -->
