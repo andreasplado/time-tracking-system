@@ -356,11 +356,12 @@ $( function() {
                     <th>Lunch time</th>
                     <th>Added</th>
                     <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
-                    <form onsubmit="return searchWorkHourByUsername();" method="post" id="search-by-username">
+                    <form method="post" id="search-by-username">
                         Username: <input type="text" name="username" id="search-work-hour-by-username"><br>
                         <button type="submit" class="btn btn-success add-class"><i
                                 class="fa fa-plus"></i>SEARCH WORKHOUR BY USERNAME
                         </button>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
 
 
