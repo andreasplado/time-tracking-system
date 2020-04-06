@@ -101,7 +101,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .cors().and()
                 .csrf().disable().authorizeRequests()
                 .antMatchers("/register").hasRole("superuser")
-                .anyRequest().authenticated()
                 .and()
                 .formLogin();
     }
