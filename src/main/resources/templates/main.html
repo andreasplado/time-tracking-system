@@ -349,7 +349,7 @@ $( function() {
             <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
                 <div class="bd-example">
 
-                    <form method="post" id="search-by-date-range-and-username" th:object="${workHourForm}">
+                    <form method="get" id="search-by-date-range-and-username" th:object="${workHourForm}">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Start time</label>
                             <div class="col-sm-10">
