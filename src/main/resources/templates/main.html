@@ -347,11 +347,9 @@ $( function() {
 
         <li id="tab-workhours" class="cd-tabs__panel text-component">
             <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
-            <form method="post" id="search-by-date-range" th:object="${workHourForm}">
-
-
                 <div class="bd-example">
-                    <form>
+
+                    <form method="post" id="search-by-date-range-and-username" th:object="${workHourForm}">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Start time</label>
                             <div class="col-sm-10">
@@ -377,7 +375,6 @@ $( function() {
                         </div>
                     </form>
                 </div>
-            </form>
             <hr />
             <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table logines-table">
                 <thead>
