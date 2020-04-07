@@ -23,9 +23,9 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
 
     //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    List<WorkHour> findByEndTimeAndUsername(@Param("end_time") String end_time, String username);
+    //List<WorkHour> findByEndTimeAndUsername(@Param("end_time") String end_time, String username);
 
-    List<WorkHour> findByStartTimeAndUsername(@Param("start_time") String start_time, String username);
+    //List<WorkHour> findByStartTimeAndUsername(@Param("start_time") String start_time, String username);
 
     @Query("SELECT s FROM WorkHour s WHERE s.start_time >= TO_TIMESTAMP(:start_time, 'YYYY-MM-DD HH:mm') AND s.start_time > TO_TIMESTAMP(:start_time, 'YYYY-MM-DD HH:mm') ")
     List<WorkHour> findByStartTime(@Param("start_time") String startTime);
