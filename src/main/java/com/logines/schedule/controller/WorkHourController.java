@@ -134,6 +134,7 @@ public class WorkHourController {
         }
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
             model.addAttribute("lol",  "Looking for all records with start time " + startTime);
+            System.out.println("findByStartTime");
             model.addAttribute("workHours", workHourService.findByStartTime(startTime));
         }
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
@@ -141,6 +142,7 @@ public class WorkHourController {
             model.addAttribute("workHours", workHourService.findByEndTime(username));
 
         }
+        System.out.println("Logging");
 
 
 

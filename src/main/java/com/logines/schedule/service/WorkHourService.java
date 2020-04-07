@@ -120,7 +120,6 @@ public class WorkHourService {
     }
 
     public List<WorkHour> findByStartTime(String startTime) {
-        System.out.println("findByStartTime");
         return workHourRepository.findByStartTime(startTime);
 
     }
