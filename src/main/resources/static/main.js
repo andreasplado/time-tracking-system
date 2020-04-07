@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.tab-text').fitText();
 });
 
 
+window.fitText( document.getElementsByClassName("tab-text") );
