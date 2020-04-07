@@ -27,10 +27,11 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
 
     //List<WorkHour> <findByStartTimeAndUsername>(@Param("start_time") String start_time, String username);
 
-    @Query("SELECT s FROM WorkHour s WHERE s.start_time >= TO_TIMESTAMP(:start_time, 'YYYY-MM-DD HH:mm') AND s.start_time > TO_TIMESTAMP(:start_time, 'YYYY-MM-DD HH:mm') ")
+    @Query("SELECT s FROM WorkHour s WHERE TO_TIMESTAMP(s.start_time,  'YYYY-MM-DD HH24:mi') BETWEEN :start_time::timestamp\n" +
+            "AND now()::timestamp")
     List<WorkHour> findByStartTime(@Param("start_time") String startTime);
 
-    @Query("SELECT s FROM WorkHour s WHERE s.end_time >= TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mm') AND s.end_time < TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mm') ")
+    @Query("SELECT s FROM WorkHour s WHERE s.end_time >= TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mi') AND s.end_time < TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mi') ")
     List<WorkHour> findByEndTime(@Param("end_time") String endTime);
 
     //@Query(value = "DELETE FROM logines.work_hour WHERE to_date(cast(created_at as TEXT),'dd-MM-yyyy HH24:mi') < NOW() - INTERVAL '30 days'", nativeQuery = true)
