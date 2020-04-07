@@ -111,11 +111,11 @@ public class WorkHourService {
     }
 
     public void findByEndTimeAndUsername(String endTime, String username) {
-        workHourRepository.findByEndTimeAndUsername(endTime, username);
+        //workHourRepository.findByEndTimeAndUsername(endTime, username);
     }
 
     public void findByStartTimeAndUsername(String startTime, String username) {
-        workHourRepository.findByStartTimeAndUsername(startTime, username);
+        //workHourRepository.findByStartTimeAndUsername(startTime, username);
     }
 
     public void findByStartTime(String startTime) {
