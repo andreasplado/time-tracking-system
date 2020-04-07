@@ -3130,3 +3130,10 @@ body {
     font-size: 100%!import;     /* flexible baseline */
     line-height: 1.4!import;
 }
+
+
+media (min-width: 64rem){
+    .cd-tabs__item {
+        background-color: aqua!important;
+    }
+}
