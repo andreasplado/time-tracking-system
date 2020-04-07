@@ -32,7 +32,7 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
     @Query("SELECT s FROM WorkHour s WHERE s.username=:username")
     List<WorkHour> findByStartTime(@Param("start_time") String startTime);
 
-    @Query("SELECT s FROM WorkHour s WHERE s.end_time >= TO_TIMESTAMP(:end_time, ‘DD-MM-YYYY HH24:MI:SS') AND s.end_time < TO_TIMESTAMP(:end_time, ‘DD-MM-YYYY HH24:MI:SS') ")
+    @Query("SELECT s FROM WorkHour s WHERE s.end_time >= TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mm') AND s.end_time < TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mm') ")
     List<WorkHour> findByEndTime(@Param("end_time") String endTime);
 
     //@Query(value = "DELETE FROM logines.work_hour WHERE to_date(cast(created_at as TEXT),'dd-MM-yyyy HH24:mi') < NOW() - INTERVAL '30 days'", nativeQuery = true)
