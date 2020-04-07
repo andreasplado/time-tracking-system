@@ -211,3 +211,12 @@ only screen and (max-width: 760px),
 a:hover{
     text-decoration: none;
 }
+
+
+
+.cd-tabs__panels {
+    background-color: #00BD88;
+    border-bottom-left-radius: 20px;
+    padding: 30px;
+    opacity: 0.9;
+}
