@@ -127,6 +127,9 @@ function searchByUsername(){
             <hr />
             <h3>Looking for worker <i th:text="${lol}"></i> workhours</h3>
 
+            <a href="../">
+                Back to main page
+            </a>
             <p th:if="${workHours==null or workHours.empty}">No records found in workhour history</p>
             <table th:if="${workHours!=null and !workHours.empty}" class="table logines-table">
                 <thead>
