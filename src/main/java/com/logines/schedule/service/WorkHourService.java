@@ -82,7 +82,7 @@ public class WorkHourService {
         LocalTime lunchTime;
         for(int i= 0; i<workHours.size(); i++){
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
 
             startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time(), formatter);
             endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time(), formatter);
