@@ -123,7 +123,6 @@ public class WorkHourController {
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
         }
         if(StringUtils.isEmpty(startTime) && !StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
-            workhours = workHourService.findByEndTimeAndUsername(endTime, username);
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
         }
 
