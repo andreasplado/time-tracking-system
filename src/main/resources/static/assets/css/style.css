@@ -2984,7 +2984,7 @@ h1{
         display:inline-flex;
         -ms-flex-direction:row;
         flex-direction:row;
-        background-color:#00BD88;
+        background-color: transparent;
         --cd-color-shadow: hsla(54, 42%, 64.6%, 0.06);
         --cd-color-shadow: hsla(var(--cd-color-2-h), var(--cd-color-2-s), calc(var(--cd-color-2-l)*0.68), 0.06);
         box-shadow:inset 0 -2px 3px hsla(54, 42%, 64.6%, 0.06);
@@ -2997,6 +2997,11 @@ h1{
         }
     }
 }
+
+.cd-tabs__navigation {
+    background-color: transparent!important;
+}
+
 .cd-tabs__item{
     position:relative;
     display:-ms-flexbox;
