@@ -114,15 +114,16 @@ public class WorkHourService {
         //workHourRepository.findByEndTimeAndUsername(endTime, username);
     }
 
-    public void findByStartTimeAndUsername(String startTime, String username) {
+    public List<WorkHour> findByStartTimeAndUsername(String startTime, String username) {
         //workHourRepository.findByStartTimeAndUsername(startTime, username);
+        return null;
     }
 
-    public void findByStartTime(String startTime) {
-        workHourRepository.findByStartTime(startTime);
+    public List<WorkHour> findByStartTime(String startTime) {
+        return workHourRepository.findByStartTime(startTime);
     }
 
-    public void findByEndTime(String endTime) {
-        workHourRepository.findByEndTime(endTime);
+    public List<WorkHour> findByEndTime(String endTime) {
+        return workHourRepository.findByEndTime(endTime);
     }
 }

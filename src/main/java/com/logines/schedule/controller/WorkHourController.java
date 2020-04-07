@@ -117,22 +117,28 @@ public class WorkHourController {
         model.addAttribute("lol",  startTime);
         model.addAttribute("usernameText", principal.getName());
 
+
+
         if(StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
-            workHourService.findByUsernameReversed(username);
+            model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
         }
         if(StringUtils.isEmpty(startTime) && !StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
-            workHourService.findByEndTimeAndUsername(endTime, username);
+            workhours = workHourService.findByEndTimeAndUsername(endTime, username);
+            model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
         }
 
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
-            workHourService.findByStartTimeAndUsername(startTime, username);
+            model.addAttribute("workHours", workHourService.findByStartTimeAndUsername(startTime, username));
         }
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
-            workHourService.findByStartTime(startTime);
+            ;
+            model.addAttribute("workHours", workHourService.findByStartTime(startTime));
         }
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
-            workHourService.findByEndTime(endTime);
+            model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
+
         }
+
 
 
         return "search_users_work_hour_query";
