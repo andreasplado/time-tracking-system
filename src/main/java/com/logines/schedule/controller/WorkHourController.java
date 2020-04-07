@@ -105,4 +105,13 @@ public class WorkHourController {
             return "successful_page";
         }
     }
+
+
+
+    @RequestMapping(value = "/searchquery/", method = RequestMethod.GET)
+    public String getItem(@RequestParam("data") String[] itemid, Model model){
+        model.addAttribute("lol",  itemid);
+        return "search_users_work_hour_query";
+    }
+
 }
