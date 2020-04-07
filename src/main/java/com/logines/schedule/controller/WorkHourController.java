@@ -114,28 +114,31 @@ public class WorkHourController {
                           @RequestParam(required=false,name="start_time") String endTime,
                           @RequestParam(required = false, name = "username") String username,
                           Model model, Principal principal){
-        model.addAttribute("lol",  startTime);
         model.addAttribute("usernameText", principal.getName());
         model.addAttribute("workHourForm", new WorkHour());
 
 
 
         if(StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
+            model.addAttribute("searchParam",  "Looking for " + username);
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
         }
         if(StringUtils.isEmpty(startTime) && !StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
+            model.addAttribute("searchParam",  "Looking for " + username + " with end time " + endTime);
         }
 
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
+            model.addAttribute("searchParam",  "Looking for " + username + " with start time " + endTime);
             model.addAttribute("workHours", workHourService.findByStartTimeAndUsername(startTime, username));
         }
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
-            ;
+            model.addAttribute("searchParam",  "Looking for all records with start time " + startTime);
             model.addAttribute("workHours", workHourService.findByStartTime(startTime));
         }
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
-            model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
+            model.addAttribute("searchParam",  "Looking for all records with end time " + startTime);
+            model.addAttribute("workHours", workHourService.findByEndTime(username));
 
         }
 
