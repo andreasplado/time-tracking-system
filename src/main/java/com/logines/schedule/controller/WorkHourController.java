@@ -116,6 +116,7 @@ public class WorkHourController {
                           Model model, Principal principal){
         model.addAttribute("usernameText", principal.getName());
         model.addAttribute("workHourForm", new WorkHour());
+        model.addAttribute("lol", "ty t tr h rht rhnb tr  trnjnthr t ij tijr th");
 
 
 
