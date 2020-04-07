@@ -4,7 +4,11 @@ $(document).ready(function(){
         alert("lol");
         event.preventDefault();
     });*/
-
+    $("#workhour-form").submit(function(event){
+        if($.trim($("#notes").val()) === ""){
+            $("#notes").val("No description");
+        }
+    });
 
 
 });
