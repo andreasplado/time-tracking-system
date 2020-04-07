@@ -23,13 +23,11 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
 
     //TODO:!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    @Query("SELECT s FROM WorkHour s WHERE s.username=:username")
     List<WorkHour> findByEndTimeAndUsername(@Param("end_time") String end_time, String username);
 
-    @Query("SELECT s FROM WorkHour s WHERE s.username=:username")
     List<WorkHour> findByStartTimeAndUsername(@Param("start_time") String start_time, String username);
 
-    @Query("SELECT s FROM WorkHour s WHERE s.username=:username")
+    @Query("SELECT s FROM WorkHour s WHERE s.start_time >= TO_TIMESTAMP(:start_time, 'YYYY-MM-DD HH:mm') AND s.start_time > TO_TIMESTAMP(:start_time, 'YYYY-MM-DD HH:mm') ")
     List<WorkHour> findByStartTime(@Param("start_time") String startTime);
 
     @Query("SELECT s FROM WorkHour s WHERE s.end_time >= TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mm') AND s.end_time < TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mm') ")
