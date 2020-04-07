@@ -116,29 +116,28 @@ public class WorkHourController {
                           Model model, Principal principal){
         model.addAttribute("usernameText", principal.getName());
         model.addAttribute("workHourForm", new WorkHour());
-        model.addAttribute("lol", "ty t tr h rht rhnb tr  trnjnthr t ij tijr th");
 
 
 
         if(StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
-            model.addAttribute("searchParam",  "Looking for " + username);
+            model.addAttribute("lol",  "Looking for " + username);
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
         }
         if(StringUtils.isEmpty(startTime) && !StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
-            model.addAttribute("searchParam",  "Looking for " + username + " with end time " + endTime);
+            model.addAttribute("lol",  "Looking for " + username + " with end time " + endTime);
         }
 
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
-            model.addAttribute("searchParam",  "Looking for " + username + " with start time " + endTime);
+            model.addAttribute("lol",  "Looking for " + username + " with start time " + endTime);
             model.addAttribute("workHours", workHourService.findByStartTimeAndUsername(startTime, username));
         }
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
-            model.addAttribute("searchParam",  "Looking for all records with start time " + startTime);
+            model.addAttribute("lol",  "Looking for all records with start time " + startTime);
             model.addAttribute("workHours", workHourService.findByStartTime(startTime));
         }
         if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
-            model.addAttribute("searchParam",  "Looking for all records with end time " + startTime);
+            model.addAttribute("lol",  "Looking for all records with end time " + startTime);
             model.addAttribute("workHours", workHourService.findByEndTime(username));
 
         }
