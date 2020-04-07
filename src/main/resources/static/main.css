@@ -208,9 +208,6 @@ only screen and (max-width: 760px),
 	}
 	.cd-tabs__panels {
         background-color: white;
-        border-bottom-left-radius: 0px!important;
-        border-top-left-radius: 20px;
-        border-bottom-right-radius: 20px;
         padding: 30px;
         opacity: 0.9;
     }
@@ -226,9 +223,6 @@ a:hover{
 
 .cd-tabs__panels {
     background-color: #00BD88;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-left-radius: 0px!important;
     padding: 30px;
     opacity: 0.9;
 }
