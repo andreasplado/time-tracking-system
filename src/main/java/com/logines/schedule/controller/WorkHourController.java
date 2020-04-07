@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.StringUtils;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -112,8 +113,28 @@ public class WorkHourController {
     public String getItem(@RequestParam(required=false,name="start_time") String startTime,
                           @RequestParam(required=false,name="start_time") String endTime,
                           @RequestParam(required = false, name = "username") String username,
-                          Model model){
+                          Model model, Principal principal){
         model.addAttribute("lol",  startTime);
+        model.addAttribute("usernameText", principal.getName());
+
+        if(StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
+            workHourService.findByUsernameReversed(username);
+        }
+        if(StringUtils.isEmpty(startTime) && !StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
+            workHourService.findByEndTimeAndUsername(endTime, username);
+        }
+
+        if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
+            workHourService.findByStartTimeAndUsername(startTime, username);
+        }
+        if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
+            workHourService.findByStartTime(startTime);
+        }
+        if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
+            workHourService.findByEndTime(endTime);
+        }
+
+
         return "search_users_work_hour_query";
     }
 

@@ -10,7 +10,6 @@ $(document).ready(function(){
         }
     });
 
-
 });
 
 window.fitText( document.getElementById("tab-text1") );

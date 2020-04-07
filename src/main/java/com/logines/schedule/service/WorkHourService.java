@@ -109,4 +109,20 @@ public class WorkHourService {
     public void myScheduledMethod(){
         workHourRepository.deleteLast30DaysWorkHours();
     }
+
+    public void findByEndTimeAndUsername(String endTime, String username) {
+        workHourRepository.findByEndTimeAndUsername(endTime, username);
+    }
+
+    public void findByStartTimeAndUsername(String startTime, String username) {
+        workHourRepository.findByStartTimeAndUsername(startTime, username);
+    }
+
+    public void findByStartTime(String startTime) {
+        workHourRepository.findByStartTime(startTime);
+    }
+
+    public void findByEndTime(String endTime) {
+        workHourRepository.findByEndTime(endTime);
+    }
 }
