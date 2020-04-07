@@ -109,8 +109,11 @@ public class WorkHourController {
 
 
     @RequestMapping(value = "/searchquery", method = RequestMethod.GET)
-    public String getItem(@RequestParam("data") String[] itemid, Model model){
-        model.addAttribute("lol",  itemid);
+    public String getItem(@RequestParam(required=false,name="start_time") String startTime,
+                          @RequestParam(required=false,name="start_time") String endTime,
+                          @RequestParam(required = false, name = "username") String username,
+                          Model model){
+        model.addAttribute("lol",  startTime);
         return "search_users_work_hour_query";
     }
 
