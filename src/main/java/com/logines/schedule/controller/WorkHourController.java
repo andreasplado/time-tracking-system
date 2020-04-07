@@ -4,6 +4,7 @@ import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
+import com.logines.schedule.utils.CustomStringUtils;
 import com.logines.schedule.validator.WorkHourValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -119,30 +120,29 @@ public class WorkHourController {
 
 
 
-        if(StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
+        if(CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)){
             model.addAttribute("lol",  "Looking for " + username);
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
         }
-        if(StringUtils.isEmpty(startTime) && !StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
+        if(CustomStringUtils.isNullOrEmpty(startTime) && !CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)){
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
             model.addAttribute("lol",  "Looking for " + username + " with end time " + endTime);
         }
 
-        if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && !StringUtils.isEmpty(username)){
+        if(!CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)){
             model.addAttribute("lol",  "Looking for " + username + " with start time " + endTime);
             model.addAttribute("workHours", workHourService.findByStartTimeAndUsername(startTime, username));
         }
-        if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
+        if(!CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)) {
             model.addAttribute("lol",  "Looking for all records with start time " + startTime);
             System.out.println("findByStartTime");
             model.addAttribute("workHours", workHourService.findByStartTime(startTime));
         }
-        if(!StringUtils.isEmpty(startTime) && StringUtils.isEmpty(endTime) && StringUtils.isEmpty(username)) {
+        if(!CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)) {
             model.addAttribute("lol",  "Looking for all records with end time " + startTime);
             model.addAttribute("workHours", workHourService.findByEndTime(username));
 
         }
-        System.out.println("Logging");
 
 
 
