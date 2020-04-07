@@ -99,9 +99,35 @@ function searchByUsername(){
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
+            <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}" th:object="${workHourForm}">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Start time</label>
+                    <div class="col-sm-10">
+                        <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text" th:attr="data-field='datetime'" style="width: 50%!important;" readonly />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label pt-n1">End time</label>
+                    <div class="col-sm-10">
+                        <input id="end_time_range" name="start_time" th:field="*{end_time}"  type="text" th:attr="data-field='datetime'" style="width: 50%!important;" readonly />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label pt-n1">Username</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="username" id="search-work-hour-by-username" style="width: 50%!important;">
+                    </div>
+                </div>
+                <div class="form-group row float-right">
+                    <button type="submit" class="btn btn-primary">SEARCH</button>
+
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </div>
+            </form>
+            <hr />
             <h3>Looking for worker <i th:text="${lol}"></i> workhours</h3>
 
-            <!--<p th:if="${workHours==null or workHours.empty}">No records found in workhour history</p>
+            <p th:if="${workHours==null or workHours.empty}">No records found in workhour history</p>
             <table th:if="${workHours!=null and !workHours.empty}" class="table logines-table">
                 <thead>
                 <tr>
@@ -136,7 +162,7 @@ function searchByUsername(){
             </div>
         </li> -->
 
-    </ul> <!-- cd-tabs__panels -->
+    </ul>
 </div>
 </body>
 </html>
