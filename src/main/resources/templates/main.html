@@ -161,6 +161,7 @@ function timeSince(date) {
 
 
 
+
 </script>
 
 <script th:inline="javascript">
@@ -200,6 +201,7 @@ $( function() {
 
  });
 /*]]>*/
+
 
 
 
@@ -347,35 +349,39 @@ $( function() {
 
         <li id="tab-workhours" class="cd-tabs__panel text-component">
             <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
-                <div class="bd-example">
+            <div class="bd-example">
 
-                    <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}" th:object="${workHourForm}">
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Start time</label>
-                            <div class="col-sm-10">
-                                <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text" th:attr="data-field='datetime'" style="width: 50%!important;" readonly />
-                            </div>
+                <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
+                      th:object="${workHourForm}">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Start time</label>
+                        <div class="col-sm-10">
+                            <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text"
+                                   th:attr="data-field='datetime'" style="width: 50%!important;" readonly/>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label pt-n1">End time</label>
-                            <div class="col-sm-10">
-                                <input id="end_time_range" name="start_time" th:field="*{end_time}"  type="text" th:attr="data-field='datetime'" style="width: 50%!important;" readonly />
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label pt-n1">End time</label>
+                        <div class="col-sm-10">
+                            <input id="end_time_range" name="start_time" th:field="*{end_time}" type="text"
+                                   th:attr="data-field='datetime'" style="width: 50%!important;" readonly/>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label pt-n1">Username</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="username" id="search-work-hour-by-username" style="width: 50%!important;">
-                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label pt-n1">Username</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="username" id="search-work-hour-by-username"
+                                   style="width: 50%!important;">
                         </div>
-                        <div class="form-group row float-right">
-                            <button type="submit" class="btn btn-primary">SEARCH</button>
+                    </div>
+                    <div class="form-group row float-right">
+                        <button type="submit" class="btn btn-primary">SEARCH</button>
 
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        </div>
-                    </form>
-                </div>
-            <hr />
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </div>
+                </form>
+            </div>
+            <hr/>
             <table th:if="${userWorkHours!=null and !userWorkHours.empty}" class="table logines-table">
                 <thead>
                 <tr>
@@ -412,40 +418,35 @@ $( function() {
         </li>
 
         <li id="tab-my-profile" class="cd-tabs__panel text-component">
-            <form th:action="@{/edit-user-profile/}" th:object="${userProfile}"
-                  enctype="application/x-www-form-urlencoded" method="POST">
-                <div class="form-group">
-                    <label>Username:</label>
-                    <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
-                           th:name="username" th:id="username" readonly/>
-                </div>
-                <div class="form-group">
-                    <label>Fullname:</label>
-                    <input type="text" class="form-control" th:value="${myUser.fullname}" id="fullname"
-                           placeholder="Enter your fullname" name="fullname"/>
-                </div>
-                <div class="form-group">
-                    <label>Email:</label>
-                    <input type="text" class="form-control" th:value="${myUser.email}" id="email"
-                           placeholder="Enter your email" name="email"/>
-                </div>
-                <div class="form-group">
-                    <label>Id Code:</label>
-                    <input type="text" class="form-control" th:value="${myUser.id_code}" id="id_code"
-                           placeholder="Enter your id code" name="id_code"/>
-                </div>
-                <div class="form-group">
-                    <label>Phone:</label>
-                    <input type="number" class="form-control" th:value="${myUser.phone}" id="phone"
-                           placeholder="Enter your phone number" name="phone"/>
-                </div>
-                <div class="form-group">
-                    <label>Role:</label>
-                    <input type="text" th:value="${role}" placeholder="Enter your fullname" class="form-control"
-                           th:name="role" th:id="role" readonly/>
-                </div>
-                <button type="submit" class="btn btn-success">CHANGE USER DATA</button>&nbsp;&nbsp;
-            </form>
+            <div class="form-group">
+                <label>Username:</label>
+                <p th:text="${usernameText}"></p>
+            </div>
+            <div class="form-group">
+                <label>Fullname:</label>
+                <input type="text" class="form-control" th:value="${myUser.fullname}" id="fullname"
+                       placeholder="Enter your fullname" name="fullname"/>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" class="form-control" th:value="${myUser.email}" id="email"
+                       placeholder="Enter your email" name="email"/>
+                <p th:text="${myUser.email}"></p>
+            </div>
+            <div class="form-group">
+                <label>Id Code:</label>
+                <p th:text="${myUser.id_code}"></p>
+            </div>
+            <div class="form-group">
+                <label>Phone:</label>
+                <input type="number" class="form-control" th:value="${myUser.phone}" id="phone"
+                       placeholder="Enter your phone number" name="phone"/>
+                <p th:text="${myUser.phone}"></p>
+            </div>
+            <div class="form-group">
+                <label>Role:</label>
+                <p th:text="${myUser.role}"></p>
+            </div>
             <form id="delete_User_data" method="POST" th:action="@{/delete-user-profile/} + ${usernameText}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
