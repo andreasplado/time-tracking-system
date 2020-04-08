@@ -84,10 +84,10 @@ public class WorkHourService {
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
 
-            startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time(), formatter);
-            endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time(), formatter);
+            startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time().toString(), formatter);
+            endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time().toString(), formatter);
 
-            lunchTime = LocalTime.parse(workHours.get(i).getLunch_time(),
+            lunchTime = LocalTime.parse(workHours.get(i).getLunch_time().toString(),
                     DateTimeFormatter.ISO_TIME);
             diff+=Duration.between(startDateTime, endDateTime).getSeconds() - lunchTime.toSecondOfDay();
             System.out.println("Between start: "  + Duration.between(startDateTime, endDateTime).getSeconds());
