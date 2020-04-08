@@ -27,7 +27,7 @@ public class WorkHour {
 
 
     @Column(name = "lunch_time")
-    private Timestamp lunch_time;
+    private Time lunch_time;
 
     @Column(name = "created_at")
     private Timestamp created_at;
