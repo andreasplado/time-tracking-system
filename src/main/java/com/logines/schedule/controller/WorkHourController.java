@@ -140,7 +140,7 @@ public class WorkHourController {
         }
         if(!CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)) {
             model.addAttribute("lol",  "Looking for all records with end time " + startTime);
-            model.addAttribute("workHours", workHourService.findByEndTime(username));
+            model.addAttribute("workHours", workHourService.findByEndTime());
 
         }
 
