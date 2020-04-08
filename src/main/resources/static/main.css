@@ -212,6 +212,11 @@ only screen and (max-width: 760px),
         opacity: 0.9;
     }
 }
+#tab-dashboard {
+    padding: 6px;
+    padding-left: 32px;
+    padding-right: 45px;
+}
 
 a:hover{
     text-decoration: none;
