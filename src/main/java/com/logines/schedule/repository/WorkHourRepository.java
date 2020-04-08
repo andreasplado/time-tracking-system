@@ -28,7 +28,7 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
     //List<WorkHour> <findByStartTimeAndUsername>(@Param("start_time") String start_time, String username);
 
 
-    @Query(value = "SELECT s.* FROM logines.work_hour s WHERE s.start_time between ? and now()", nativeQuery = true)
+    @Query(value = "SELECT s.* FROM logines.work_hour s WHERE s.start_time between ? and timestamp now()", nativeQuery = true)
     List<WorkHour> findByStartTime(String startTime);
 
     //@Query(value ="SELECT s FROM logines.\"work_hour\" s WHERE s.end_time >= :end_time AND s.end_time < :end_time", nativeQuery = true)
