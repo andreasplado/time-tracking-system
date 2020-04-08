@@ -98,11 +98,11 @@ public class WorkHour {
         this.created_at = timestamp;
     }
 
-    public void setLunch_time(Timestamp lunch_time) {
+    public void setLunch_time(Time lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public Timestamp getLunch_time() {
+    public Time getLunch_time() {
         return this.lunch_time;
     }
 }
