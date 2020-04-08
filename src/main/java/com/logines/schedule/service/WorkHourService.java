@@ -125,7 +125,7 @@ public class WorkHourService {
 
     }
 
-    public List<WorkHour> findByEndTime(String endTime) {
-        return workHourRepository.findByEndTime(endTime);
+    public List<WorkHour> findByEndTime() {
+        return workHourRepository.findByEndTime();
     }
 }
