@@ -13,6 +13,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
@@ -77,20 +78,20 @@ public class WorkHourService {
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         long diff = 0;
-        LocalDateTime startDateTime;
-        LocalDateTime endDateTime;
+        Timestamp startDateTime;
+        Timestamp endDateTime;
         LocalTime lunchTime;
         for(int i= 0; i<workHours.size(); i++){
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm.ss", Locale.US);
 
-            startDateTime = LocalDateTime.parse(workHours.get(i).getStart_time().toString(), formatter);
-            endDateTime = LocalDateTime.parse(workHours.get(i).getEnd_time().toString(), formatter);
+            startDateTime = Timestamp.valueOf(workHours.get(i).getStart_time().toString());
+            endDateTime = Timestamp.valueOf(workHours.get(i).getStart_time().toString());
 
             lunchTime = LocalTime.parse(workHours.get(i).getLunch_time().toString(),
                     DateTimeFormatter.ISO_TIME);
-            diff+=Duration.between(startDateTime, endDateTime).getSeconds() - lunchTime.toSecondOfDay();
-            System.out.println("Between start: "  + Duration.between(startDateTime, endDateTime).getSeconds());
+            diff+=Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()).getSeconds() - lunchTime.toSecondOfDay();
+            System.out.println("Between start: "  + Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()).getSeconds());
 
             System.out.println("lunch: "  + lunchTime.toSecondOfDay());
         }
