@@ -1,6 +1,8 @@
 package com.logines.schedule.model;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.*;
 
 @Entity
@@ -18,20 +20,20 @@ public class WorkHour {
     private String username;
 
     @Column(name = "start_time")
-    private String start_time;
+    private Timestamp start_time;
 
     @Column(name = "end_time")
-    private String end_time;
+    private Timestamp end_time;
 
 
     @Column(name = "lunch_time")
-    private String lunch_time;
+    private Timestamp lunch_time;
 
     @Column(name = "created_at")
-    private Instant created_at;
+    private Timestamp created_at;
 
     @Column(name = "updated_at", nullable = false)
-    private Instant updated_at;
+    private Timestamp updated_at;
 
     public int getId() {
         return id;
@@ -43,18 +45,18 @@ public class WorkHour {
 
     @PrePersist
     protected void prePersist() {
-        if (this.created_at == null) created_at = Instant.now();
-        if (this.updated_at == null) updated_at = Instant.now();
+        if (this.created_at == null) created_at = new Timestamp(System.currentTimeMillis());
+        if (this.updated_at == null) updated_at = new Timestamp(System.currentTimeMillis());
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updated_at = Instant.now();
+        this.updated_at =  new Timestamp(System.currentTimeMillis());
     }
 
     @PreRemove
     protected void preRemove() {
-        this.updated_at = Instant.now();
+        this.updated_at = new Timestamp(System.currentTimeMillis());
     }
 
     public String getNotes() {
@@ -73,34 +75,34 @@ public class WorkHour {
         this.username = username;
     }
 
-    public void setStart_time(String start_time) {
+    public void setStart_time(Timestamp start_time) {
         this.start_time = start_time;
     }
 
-    public String getStart_time(){
+    public Timestamp getStart_time(){
         return this.start_time;
     }
 
-    public void setEnd_time(String end_time) {
+    public void setEnd_time(Timestamp end_time) {
         this.end_time = end_time;
     }
 
-    public String getEnd_time(){
+    public Timestamp getEnd_time(){
         return this.end_time;
     }
 
-    public Instant getCreated_at(){
+    public Timestamp getCreated_at(){
         return this.created_at;
     }
-    public void setCreated_at(Instant offsetDateTime){
-        this.created_at = offsetDateTime;
+    public void setCreated_at(Timestamp timestamp){
+        this.created_at = timestamp;
     }
 
-    public void setLunch_time(String lunch_time) {
+    public void setLunch_time(Timestamp lunch_time) {
         this.lunch_time = lunch_time;
     }
 
-    public String getLunch_time() {
+    public Timestamp getLunch_time() {
         return this.lunch_time;
     }
 }

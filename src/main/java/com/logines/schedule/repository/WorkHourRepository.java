@@ -29,8 +29,8 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
 
     //@Query(value = "SELECT s FROM logines.work_hour s WHERE TO_TIMESTAMP(s.start_time,  'YYYY-MM-DD HH24:mi')\\:\\:timestamp BETWEEN :start_time\\:\\:timestamp AND now()\\:\\:timestamp", nativeQuery = true)
     //@Query(value = "SELECT s.* FROM logines.work_hour s WHERE TO_TIMESTAMP(s.start_time,  'YYYY-MM-DD HH24:mi') BETWEEN :start_time\\:\\:timestamp AND now()\\:\\:timestamp", nativeQuery = true)
-
-    @Query(value = "SELECT s.* FROM logines.work_hour s WHERE TO_TIMESTAMP(s.start_time,  'YYYY-MM-DD HH24:mi')\\:\\:timestamp BETWEEN :start_time\\:\\:timestamp AND now()\\:\\:timestamp", nativeQuery = true)
+    //@Query(value = "SELECT s.* FROM logines.work_hour s WHERE TO_TIMESTAMP(s.start_time,  'YYYY-MM-DD HH24:mi')\\:\\:timestamp BETWEEN :start_time\\:\\:timestamp AND now()\\:\\:timestamp", nativeQuery = true)
+    @Query(value = "SELECT * FROM work_hour where :start_time between '2020-04-06 23:03' and '2020-04-09 23:03'", nativeQuery = true)
     List<WorkHour> findByStartTime(@Param("start_time") String startTime);
 
     @Query(value ="SELECT s FROM WorkHour s WHERE s.end_time >= TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mi') AND s.end_time < TO_TIMESTAMP(:end_time, 'YYYY-MM-DD HH:mi')", nativeQuery = true)
