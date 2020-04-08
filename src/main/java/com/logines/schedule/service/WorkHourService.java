@@ -126,6 +126,6 @@ public class WorkHourService {
     }
 
     public List<WorkHour> findByEndTime() {
-        return workHourRepository.findByEndTime();
+        return null;
     }
 }
