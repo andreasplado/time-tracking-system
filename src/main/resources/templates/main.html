@@ -459,9 +459,6 @@ $( function() {
                 </div>
                 <br/>
                 <br/>
-                <form th:if="${role == 'ADMIN'}" id="register_new_user" method="POST" th:action="@{/register}">
-                    <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
-                </form>
             </div>
         </li>
 
@@ -480,6 +477,9 @@ $( function() {
                     <button onclick="searchUserByUsername()" class="btn btn-success add-class"><i
                             class="fa fa-plus"></i>SEARCH BY USERNAME
                     </button>
+                    <form id="register_new_user" method="POST" th:action="@{/register}">
+                        <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
+                    </form>
                     </th>
                 </tr>
                 </thead>
