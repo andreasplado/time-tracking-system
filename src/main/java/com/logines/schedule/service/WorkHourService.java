@@ -85,7 +85,7 @@ public class WorkHourService {
 
 
             // create a second time stamp
-            SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
+            SimpleDateFormat format = new SimpleDateFormat("hh:mm");
             Date d = null;
             try {
                 d = format.parse(lunchTime.toString());
