@@ -85,6 +85,28 @@ function searchByUsername(){
 
 </script>
 
+<script th:inline="javascript">
+/*<![CDATA[*/
+$( function() {
+    $('#search-by-date-range-and-username').submit(function() {
+        if($.trim($("#end_time_range").val()) === "" && $.trim($("#start_time_range").val()) != ""){
+            $("#search-query-validation-error").show();
+            return false;
+        }
+        if($.trim($("#end_time_range").val()) != "" && $.trim($("#start_time_range").val()) === ""){
+            $("#search-query-validation-error").show();
+            return false;
+        }
+    });
+ });
+/*]]>*/
+
+
+
+
+
+</script>
+
 
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
