@@ -125,6 +125,10 @@ public class WorkHourService {
 
     }
 
+    public List<WorkHour> findBetween(String startTime, String endTime){
+        return workHourRepository.findWetweenTime(startTime, endTime);
+    }
+
     public List<WorkHour> findByEndTime() {
         return null;
     }

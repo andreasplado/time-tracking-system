@@ -128,6 +128,10 @@ public class WorkHourController {
             model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
             model.addAttribute("lol",  "Looking for " + username + " with end time " + endTime);
         }
+        if(!CustomStringUtils.isNullOrEmpty(startTime) && !CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)){
+            model.addAttribute("workHours", workHourService.findBetween(startTime, endTime));
+            model.addAttribute("lol",  "Looking for " + username + " with end time " + endTime);
+        }
 
         if(!CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)){
             model.addAttribute("lol",  "Looking for " + username + " with start time " + endTime);
