@@ -66,7 +66,7 @@ public class WorkHourService {
         return workHours;
     }
 
-    public String userWorkHoursSum(String username) throws ParseException {
+    public String userWorkHoursSum(String username) {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
@@ -86,7 +86,12 @@ public class WorkHourService {
 
             // create a second time stamp
             SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
-            Date d = format.parse(lunchTime.toString());
+            Date d = null;
+            try {
+                d = format.parse(lunchTime.toString());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
             milliseconds += endDateTime.getTime() - startDateTime.getTime() - d.getTime();
 
