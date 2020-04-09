@@ -120,11 +120,11 @@ public class WorkHourController {
 
         if(!CustomStringUtils.isNullOrEmpty(startTime) && !CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)){
             model.addAttribute("workHours", workHourService.findBetween(startTime, endTime));
-            model.addAttribute("lol",  "Looking for " + username + " with end time " + endTime);
+            model.addAttribute("lol",  "Looking for workhour with start time " + startTime + " and end time " + endTime);
         }
 
         if(!CustomStringUtils.isNullOrEmpty(startTime) && !CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)) {
-            model.addAttribute("lol",  "Looking for " + username + " with start time " + startTime + " and end time" + endTime);
+            model.addAttribute("lol",  "Looking for " + username + " with start time " + startTime + " and end time " + endTime);
             model.addAttribute("workHours", workHourService.findBetweenTimeAndUsername(startTime, endTime, username));
         }
 
