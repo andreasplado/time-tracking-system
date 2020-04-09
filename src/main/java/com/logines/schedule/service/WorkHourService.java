@@ -76,28 +76,19 @@ public class WorkHourService {
         Timestamp endDateTime;
         LocalTime lunchTime;
         long milliseconds = 0;
-        /*for (int i = 0; i < workHours.size(); i++) {
+        for (int i = 0; i < workHours.size(); i++) {
 
             java.util.Date date = new java.util.Date();
 
             startDateTime = workHours.get(i).getStart_time();
-            endDateTime = workHours.get(i).getStart_time();
+            endDateTime = workHours.get(i).getEnd_time();
             lunchTime = workHours.get(i).getLunch_time().toLocalTime();
 
 
             // create a second time stamp
 
             milliseconds += endDateTime.getTime() - startDateTime.getTime();
-        }*/
-
-        startDateTime = workHours.get(0).getStart_time();
-        endDateTime = workHours.get(0).getStart_time();
-        lunchTime = workHours.get(0).getLunch_time().toLocalTime();
-
-
-        // create a second time stamp
-
-        milliseconds += startDateTime.getTime() - endDateTime.getTime();
+        }
 
         System.out.println("MILLISECONDS" + milliseconds);
 
