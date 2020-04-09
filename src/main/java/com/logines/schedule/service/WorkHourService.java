@@ -8,9 +8,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -26,33 +28,33 @@ public class WorkHourService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public WorkHour addWorkHour(WorkHour workHour){
+    public WorkHour addWorkHour(WorkHour workHour) {
         return workHourRepository.save(workHour);
     }
 
-    public WorkHour viewWorkHour(int id){
+    public WorkHour viewWorkHour(int id) {
         return workHourRepository.getOne(id);
     }
 
-    public List<WorkHour> getAllWorkHours(){
+    public List<WorkHour> getAllWorkHours() {
         return workHourRepository.findAll();
     }
 
-    public List<WorkHour> getUserWorkHours(){
+    public List<WorkHour> getUserWorkHours() {
 
         return workHourRepository.findAll();
     }
 
-    public void updateWorkHour(WorkHour workHour){
+    public void updateWorkHour(WorkHour workHour) {
         workHourRepository.save(workHour);
     }
 
-    public boolean deleteWorkHour(int id){
-        if(workHourRepository.existsById(id)){
+    public boolean deleteWorkHour(int id) {
+        if (workHourRepository.existsById(id)) {
             workHourRepository.deleteById(id);
 
             return true;
-        }else{
+        } else {
             return false;
         }
 
@@ -72,17 +74,42 @@ public class WorkHourService {
         Timestamp startDateTime;
         Timestamp endDateTime;
         LocalTime lunchTime;
-        for(int i= 0; i<workHours.size(); i++){
+        long milliseconds = 0;
+        for (int i = 0; i < workHours.size(); i++) {
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm.ss", Locale.US);
+            java.util.Date date = new java.util.Date();
 
             startDateTime = workHours.get(i).getStart_time();
             endDateTime = workHours.get(i).getStart_time();
+            lunchTime = workHours.get(i).getLunch_time().toLocalTime();
+            long lunchtimeMillis = lunchTime.toNanoOfDay();
+
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(startDateTime.getTime());
+
+            // add a bunch of seconds to the calendar
+            cal.add(Calendar.SECOND, 98765);
+
+            // create a second time stamp
+
+            milliseconds =+ endDateTime.getTime() - startDateTime.getTime() - lunchtimeMillis;
+        }
+
+        int seconds = (int) milliseconds / 1000;
+
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        seconds = (seconds % 3600) % 60;
+
+        return hours + ":" + minutes + ":" + seconds;
+
+            /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm.ss", Locale.US);
 
             lunchTime = LocalTime.ofNanoOfDay(workHours.get(i).getLunch_time().getTime());
 
             /*lunchTime = LocalTime.parse(workHours.get(i).getLunch_time().toString(),
-                    DateTimeFormatter.ISO_TIME); */
+                    DateTimeFormatter.ISO_TIME);
             diff+=Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()).getSeconds() - lunchTime.toSecondOfDay();
             System.out.println("Between start: "  + Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()));
 
@@ -91,16 +118,16 @@ public class WorkHourService {
 
         double diffFinal= (double) diff / 60.0 / 60.0;
 
-        return Double.toString(diffFinal);
+        return Double.toString(diffFinal); */
     }
 
 
-    public void deleteAll(){
+    public void deleteAll() {
         workHourRepository.deleteAll();
     }
 
     @Scheduled(cron = "40 * * ? * MON-FRI")
-    public void myScheduledMethod(){
+    public void myScheduledMethod() {
         workHourRepository.deleteLast30DaysWorkHours();
     }
 
@@ -117,11 +144,11 @@ public class WorkHourService {
 
     }
 
-    public List<WorkHour> findBetween(String startTime, String endTime){
+    public List<WorkHour> findBetween(String startTime, String endTime) {
         return workHourRepository.findBetweenTime(startTime, endTime);
     }
 
-    public List<WorkHour> findBetweenTimeAndUsername(String startTime, String endTime, String username){
+    public List<WorkHour> findBetweenTimeAndUsername(String startTime, String endTime, String username) {
         return workHourRepository.findBetweenTimeAndUsername(startTime, endTime, username);
     }
 }
