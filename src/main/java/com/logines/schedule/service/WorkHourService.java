@@ -93,7 +93,7 @@ public class WorkHourService {
 
             // create a second time stamp
 
-            milliseconds += TimeUnit.NANOSECONDS.toMillis(endDateTime.getNanos()) - TimeUnit.NANOSECONDS.toMillis(startDateTime.getNanos());
+            milliseconds += endDateTime.getTime() - startDateTime.getTime();
         }
 
         int seconds = (int) milliseconds / 1000;
