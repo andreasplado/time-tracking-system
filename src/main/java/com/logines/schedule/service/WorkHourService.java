@@ -10,12 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -67,7 +66,7 @@ public class WorkHourService {
         return workHours;
     }
 
-    public String userWorkHoursSum(String username) {
+    public String userWorkHoursSum(String username) throws ParseException {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
@@ -86,8 +85,13 @@ public class WorkHourService {
 
 
             // create a second time stamp
+            SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");
+            Date d = format.parse(lunchTime.toString());
 
-            milliseconds += endDateTime.getTime() - startDateTime.getTime();
+            milliseconds += endDateTime.getTime() - startDateTime.getTime() - d.getTime();
+
+
+
             System.out.println("Lunch time " + lunchTime.toString());
         }
 
