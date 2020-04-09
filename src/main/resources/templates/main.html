@@ -432,6 +432,7 @@ $( function() {
         </li>
 
         <li id="tab-my-profile" class="cd-tabs__panel text-component">
+            <p th:text ="${role}"></p>
             <div th:if="${role == 'ADMIN'}">
                 <form th:action="@{/edit-user-profile/}" th:object="${userProfile}"
                       enctype="application/x-www-form-urlencoded" method="POST">
