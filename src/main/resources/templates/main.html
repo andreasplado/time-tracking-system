@@ -186,7 +186,7 @@ $( function() {
     });
     $('#workhour-form').submit(function() {
         if($.trim($("#description").val()) === ""){
-            $("#description").val("No description");
+            $("#description").val("No notes");
         }
         if ($.trim($("#start_time").val()) === "" || $.trim($("#end_time").val()) === "" || $.trim($("#lunch_time").val()) === "") {
             $("#work-hour-validation-error").show();
@@ -407,7 +407,7 @@ $( function() {
                     <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody>n
                 <tr class="list-item" th:each="allWorkHour : ${allWorkHours}"
                     th:onclick="'viewWorkHour(' + ${allWorkHour.id} +')'">
                     <td th:text="${allWorkHour.username}"></td>

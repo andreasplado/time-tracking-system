@@ -6,7 +6,7 @@ $(document).ready(function(){
     });*/
     $("#workhour-form").submit(function(event){
         if($.trim($("#notes").val()) === ""){
-            $("#notes").val("No description");
+            $("#notes").val("No notes");
         }
     });
 
