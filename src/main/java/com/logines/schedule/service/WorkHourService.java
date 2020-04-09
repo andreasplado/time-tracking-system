@@ -2,27 +2,18 @@ package com.logines.schedule.service;
 
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
-import org.apache.tomcat.jni.Local;
-import org.joda.time.DateTime;
-import org.joda.time.Interval;
-import org.joda.time.format.DateTimeFormat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.datetime.standard.InstantFormatter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -116,8 +107,7 @@ public class WorkHourService {
     }
 
     public List<WorkHour> findByStartTimeAndUsername(String startTime, String username) {
-        //workHourRepository.findByStartTimeAndUsername(startTime, username);
-        return null;
+        return workHourRepository.findByStartTimeAndUsername(startTime, username);
     }
 
     public List<WorkHour> findByStartTime(String startTime) {
@@ -126,7 +116,11 @@ public class WorkHourService {
     }
 
     public List<WorkHour> findBetween(String startTime, String endTime){
-        return workHourRepository.findWetweenTime(startTime, endTime);
+        return workHourRepository.findBetweenTime(startTime, endTime);
+    }
+
+    public List<WorkHour> findBetweenTimeAndUsername(String startTime, String endTime, String username){
+        return workHourRepository.findBetweenTimeAndUsername(startTime, endTime, username);
     }
 
     public List<WorkHour> findByEndTime() {

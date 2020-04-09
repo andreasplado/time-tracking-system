@@ -32,10 +32,16 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
     List<WorkHour> findByStartTime(String startTime);
 
     @Query(value = "SELECT s.* FROM logines.work_hour s WHERE s.start_time between ? and ?", nativeQuery = true)
-    List<WorkHour> findWetweenTime(String startTime, String endTime);
+    List<WorkHour> findBetweenTime(String startTime, String endTime);
 
-    //@Query(value ="SELECT s FROM logines.\"work_hour\" s WHERE s.end_time >= :end_time AND s.end_time < :end_time", nativeQuery = true)
-    //List<WorkHour> findByEndTime();
+    @Query(value = "SELECT s.* FROM logines.work_hour s WHERE s.start_time between ? and ? and s.username= ?", nativeQuery = true)
+    List<WorkHour> findBetweenTimeAndUsername(String startTime, String endTime, String username);
+
+    @Query(value = "SELECT s.* FROM logines.work_hour s WHERE s.start_time between ? and ? and s.username= ?", nativeQuery = true)
+    List<WorkHour> findByStartTimeAndUsername(String startTime, String username);
+
+    @Query(value ="SELECT s FROM logines.\"work_hour\" s WHERE s.end_time >= ? AND s.end_time < ?", nativeQuery = true)
+    List<WorkHour> findByEndTime(String endtime);
 
     //@Query(value = "DELETE FROM logines.work_hour WHERE to_date(cast(created_at as TEXT),'dd-MM-yyyy HH24:mi') < NOW() - INTERVAL '30 days'", nativeQuery = true)
 

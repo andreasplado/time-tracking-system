@@ -118,37 +118,15 @@ public class WorkHourController {
         model.addAttribute("usernameText", principal.getName());
         model.addAttribute("workHourForm", new WorkHour());
 
-
-
-        if(CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)){
-            model.addAttribute("lol",  "Looking for " + username);
-            model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
-        }
-        if(CustomStringUtils.isNullOrEmpty(startTime) && !CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)){
-            model.addAttribute("workHours", workHourService.findByUsernameReversed(username));
-            model.addAttribute("lol",  "Looking for " + username + " with end time " + endTime);
-        }
         if(!CustomStringUtils.isNullOrEmpty(startTime) && !CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)){
             model.addAttribute("workHours", workHourService.findBetween(startTime, endTime));
             model.addAttribute("lol",  "Looking for " + username + " with end time " + endTime);
         }
 
-        if(!CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)){
-            model.addAttribute("lol",  "Looking for " + username + " with start time " + endTime);
-            model.addAttribute("workHours", workHourService.findByStartTimeAndUsername(startTime, username));
+        if(!CustomStringUtils.isNullOrEmpty(startTime) && !CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)) {
+            model.addAttribute("lol",  "Looking for " + username + " with start time " + startTime + " and end time" + endTime);
+            model.addAttribute("workHours", workHourService.findBetweenTimeAndUsername(startTime, endTime, username));
         }
-        if(!CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)) {
-            model.addAttribute("lol",  "Looking for all records with start time " + startTime);
-            System.out.println("findByStartTime");
-            model.addAttribute("workHours", workHourService.findByStartTime(startTime));
-        }
-        if(!CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)) {
-            model.addAttribute("lol",  "Looking for all records with end time " + startTime);
-            model.addAttribute("workHours", workHourService.findByEndTime());
-
-        }
-
-
 
         return "search_users_work_hour_query";
     }

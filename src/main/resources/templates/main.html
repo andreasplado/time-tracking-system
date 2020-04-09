@@ -191,6 +191,17 @@ $( function() {
             return false;
         }
     });
+
+    $('#search-by-date-range-and-username').submit(function() {
+        if($.trim($("#end_time_range").val()) === "" && $.trim($("#start_time_range").val()) != ""){
+            $("#search-query-validation-error").show();
+            return false;
+        }
+        if($.trim($("#end_time_range").val()) != "" && $.trim($("#start_time_range").val()) === ""){
+            $("#search-query-validation-error").show();
+            return false;
+        }
+    });
      /*[# th:each="userWorkhour : ${userWorkHours}"]*/
         //$("#user-work-hour-[[${userWorkhour.id}]]-created-at").text(moment( $(this).text(), 'yyyy-MM-dd HH:mm:ss').format());
         //$("#user-work-hour-[[${userWorkhour.id}]]-start-time").text(ago( $(this).text()));
@@ -350,7 +361,7 @@ $( function() {
         <li id="tab-workhours" class="cd-tabs__panel text-component">
             <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
             <div class="bd-example">
-
+                <p style="display:none; color:red;" id="search-query-validation-error">Select dates between a range</p>
                 <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
                       th:object="${workHourForm}">
                     <div class="form-group row">
