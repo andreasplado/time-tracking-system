@@ -93,7 +93,7 @@ public class WorkHourService {
                 e.printStackTrace();
             }
 
-            milliseconds += endDateTime.getTime() - startDateTime.getTime() - d.getTime();
+            milliseconds += endDateTime.getTime() - startDateTime.getTime() + d.getTime();
 
 
 
