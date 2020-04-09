@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -82,7 +83,6 @@ public class WorkHourService {
             startDateTime = workHours.get(i).getStart_time();
             endDateTime = workHours.get(i).getStart_time();
             lunchTime = workHours.get(i).getLunch_time().toLocalTime();
-            long lunchtimeMillis = lunchTime.toNanoOfDay();
 
 
             Calendar cal = Calendar.getInstance();
@@ -93,7 +93,7 @@ public class WorkHourService {
 
             // create a second time stamp
 
-            milliseconds += endDateTime.getTime() - startDateTime.getTime() - lunchtimeMillis;
+            milliseconds += TimeUnit.NANOSECONDS.toMillis(endDateTime.getNanos()) - TimeUnit.NANOSECONDS.toMillis(startDateTime.getNanos()) - TimeUnit.NANOSECONDS.toMillis(lunchTime.getNano());
         }
 
         int seconds = (int) milliseconds / 1000;
