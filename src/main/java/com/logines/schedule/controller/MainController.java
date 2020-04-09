@@ -67,7 +67,7 @@ public class MainController {
             List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
             List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
             if(myUser.getRole().equals("ADMIN")) {
-                List<Users> allUsers = userService.allUsersExceptiMine(principal.getName());
+                List<Users> allUsers = userService.findAll();
                 model.addAttribute("users", allUsers);
             }
 

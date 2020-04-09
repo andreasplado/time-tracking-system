@@ -164,6 +164,7 @@ function timeSince(date) {
 
 
 
+
 </script>
 
 <script th:inline="javascript">
@@ -214,6 +215,7 @@ $( function() {
 
  });
 /*]]>*/
+
 
 
 
@@ -432,75 +434,35 @@ $( function() {
         </li>
 
         <li id="tab-my-profile" class="cd-tabs__panel text-component">
-            <div th:if="${role == 'ADMIN'}">
-                <form th:action="@{/edit-user-profile/}" th:object="${userProfile}"
-                      enctype="application/x-www-form-urlencoded" method="POST">
-                    <div class="form-group">
-                        <label>Username:</label>
-                        <input type="text" th:value="${usernameText}" placeholder="Enter your fullname"
-                               class="form-control"
-                               th:name="username" th:id="username" readonly/>
-                    </div>
-                    <div class="form-group">
-                        <label>Fullname:</label>
-                        <input type="text" class="form-control" th:value="${myUser.fullname}" id="fullname"
-                               placeholder="Enter your fullname" name="fullname"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Email:</label>
-                        <input type="text" class="form-control" th:value="${myUser.email}" id="email"
-                               placeholder="Enter your email" name="email"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Id Code:</label>
-                        <input type="text" class="form-control" th:value="${myUser.id_code}" id="id_code"
-                               placeholder="Enter your id code" name="id_code"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone:</label>
-                        <input type="number" class="form-control" th:value="${myUser.phone}" id="phone"
-                               placeholder="Enter your phone number" name="phone"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Role:</label>
-                        <input type="text" th:value="${role}" placeholder="Enter your fullname" class="form-control"
-                               th:name="role" th:id="role" readonly/>
-                    </div>
-                    <button type="submit" class="btn btn-success">CHANGE USER DATA</button>&nbsp;&nbsp;
-                </form>
+            <div class="form-group">
+                <label>Username:</label>
+                <p th:text="${usernameText}"></p>
             </div>
-
-            <div th:if="${role == 'USER'}">
-                <div class="form-group">
-                    <label>Username:</label>
-                    <p th:text="${usernameText}"></p>
-                </div>
-                <div class="form-group">
-                    <label>Fullname:</label>
-                    <p th:text="${myUser.fullname}"></p>
-                </div>
-                <div class="form-group">
-                    <label>Email:</label>
-                    <p th:text="${myUser.email}"></p>
-                </div>
-                <div class="form-group">
-                    <label>Id Code:</label>
-                    <p th:text="${myUser.id_code}"></p>
-                </div>
-                <div class="form-group">
-                    <label>Phone:</label>
-                    <p th:text="${myUser.phone}"></p>
-                </div>
-                <div class="form-group">
-                    <label>Role:</label>
-                    <p th:text="${myUser.role}"></p>
-                </div>
-                <br/>
-                <br/>
-                <form th:if="${role == 'ADMIN'}" id="register_new_user" method="POST" th:action="@{/register}">
-                    <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
-                </form>
+            <div class="form-group">
+                <label>Fullname:</label>
+                <p th:text="${myUser.fullname}"></p>
             </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <p th:text="${myUser.email}"></p>
+            </div>
+            <div class="form-group">
+                <label>Id Code:</label>
+                <p th:text="${myUser.id_code}"></p>
+            </div>
+            <div class="form-group">
+                <label>Phone:</label>
+                <p th:text="${myUser.phone}"></p>
+            </div>
+            <div class="form-group">
+                <label>Role:</label>
+                <p th:text="${myUser.role}"></p>
+            </div>
+            <br/>
+            <br/>
+            <form th:if="${role == 'ADMIN'}" id="register_new_user" method="POST" th:action="@{/register}">
+                <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
+            </form>
         </li>
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">

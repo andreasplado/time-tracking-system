@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Users> allUsersExceptiMine(String username) {
-        return userRepository.findAllExceptMine(username);
+    public List<Users> findAll() {
+        return userRepository.findAll();
     }
 
     @Override

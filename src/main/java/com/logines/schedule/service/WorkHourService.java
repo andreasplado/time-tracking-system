@@ -122,8 +122,4 @@ public class WorkHourService {
     public List<WorkHour> findBetweenTimeAndUsername(String startTime, String endTime, String username){
         return workHourRepository.findBetweenTimeAndUsername(startTime, endTime, username);
     }
-
-    public List<WorkHour> findByEndTime() {
-        return null;
-    }
 }

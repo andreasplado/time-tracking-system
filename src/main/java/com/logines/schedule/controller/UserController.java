@@ -84,7 +84,7 @@ public class UserController {
     }
 
     @PostMapping("/edit-user/{id}")
-    public String editUser(Model model, @PathVariable("id") int id, @Valid Users users,
+    public String editUser(Model model, @Valid Users users,
                            BindingResult bindingResult) {
         if (userService.editUser(users)) {
             if(bindingResult.hasErrors()){
@@ -107,6 +107,22 @@ public class UserController {
             return "successful_page";
         } else {
             model.addAttribute("message", "User not found...");
+            return "successful_page";
+        }
+    }
+
+
+    @PostMapping("/edit-user-profile/{id}")
+    public String edutUser(@PathVariable("id") long id,
+                               @Valid Users users,
+                               BindingResult bindingResult,
+                               Model model) {
+        userValidator.validate(users, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "error_page";
+        } else {
+            userService.editUser(users);
+            model.addAttribute("message", "Workhour edited successfully...");
             return "successful_page";
         }
     }
