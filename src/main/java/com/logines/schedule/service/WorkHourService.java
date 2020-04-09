@@ -85,16 +85,12 @@ public class WorkHourService {
             lunchTime = workHours.get(i).getLunch_time().toLocalTime();
 
 
-            Calendar cal = Calendar.getInstance();
-            cal.setTimeInMillis(startDateTime.getTime());
-
-            // add a bunch of seconds to the calendar
-            cal.add(Calendar.SECOND, 98765);
-
             // create a second time stamp
 
             milliseconds += endDateTime.getTime() - startDateTime.getTime();
         }
+
+        System.out.println("MILLISECONDS" + milliseconds);
 
         int seconds = (int) milliseconds / 1000;
 
