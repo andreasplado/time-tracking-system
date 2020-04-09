@@ -97,7 +97,7 @@ public class WorkHourService {
 
         // create a second time stamp
 
-        milliseconds += endDateTime.getTime() - startDateTime.getTime();
+        milliseconds += endDateTime.getTime() + startDateTime.getTime();
 
         System.out.println("MILLISECONDS" + milliseconds);
 
