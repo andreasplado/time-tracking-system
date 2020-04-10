@@ -126,8 +126,9 @@ $( function() {
         window.location.href="../";
     }
     $('#workhour-form').submit(function() {
-    if ($.trim($("#start_time").val()) === "" || $.trim($("#end_time").val()) === "" || $.trim($("#lunch_time").val()) === "" || $.trim($("#title").val()) === "") {
-        $("#work-hour-validation-error").show();
+    if ($.trim($("#username").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#fullname").val()) === "" || $.trim($("#id_code").val()) === ""
+    || $.trim($("#phone").val()) === "") {
+        $("#user-validation-error").show();
         return false;
     }
 });
@@ -148,7 +149,7 @@ $( function() {
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table logines-table" id="tableForm">
-                <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
+                <p style="display:none; color:red;" id="user-validation-error">Please fill in all data</p>
                 <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="workhour-form" th:object="${user}" method="post">
                     <div class="form-group">
                         <label>Username:</label>
