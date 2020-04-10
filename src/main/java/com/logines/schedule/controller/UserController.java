@@ -118,6 +118,7 @@ public class UserController {
             model.addAttribute("message", "User" + usernsame +" deleteted successfully...");
             return "successful_page";
         }else{
+            System.out.println();
            return "redirect:/";
         }
     }

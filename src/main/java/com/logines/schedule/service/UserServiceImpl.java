@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean editUser(Users users) {
-        if(userRepository.existsById(users.getId())){
+        if (userRepository.existsById(users.getId())) {
             userRepository.save(users);
         }
         return false;
@@ -57,12 +57,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean deleteUser(String username) {
-        Users users = userRepository.findByUsername(username);
-        if(users != null) {
-            userRepository.deleteUser(username);
-            return true;
-        }else{
-            return false;
-        }
+        userRepository.deleteUser(username);
+        return true;
     }
 }
