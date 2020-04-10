@@ -480,6 +480,7 @@ $( function() {
             </form>
             <hr />
             </th>
+            <h3 th:if="${users!=null and !users.empty}">All users</h3>
             <table th:if="${users!=null and !users.empty}" class="table logines-table">
                 <thead>
                 <tr>
