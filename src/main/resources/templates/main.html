@@ -246,7 +246,7 @@ $( function() {
                     <img src="images/dashboard.png" width="50px" height="50px" style="padding: 6px;">
                 </a>
             </li>
-            <li>
+            <li th:if="${role == 'ADMIN'}">
                 <a href="#tab-workhours" class="cd-tabs__item">
                     <img src="/images/working-hours.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
@@ -367,7 +367,7 @@ $( function() {
             </div>
         </li>
 
-        <li id="tab-workhours" class="cd-tabs__panel text-component">
+        <li th:if="${role == 'ADMIN'}" id="tab-workhours" class="cd-tabs__panel text-component">
             <div class="bd-example">
                 <p style="display:none; color:red;" id="search-query-validation-error">Select dates between a range</p>
                 <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
