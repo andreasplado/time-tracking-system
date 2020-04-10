@@ -466,8 +466,6 @@ $( function() {
         </li>
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
-            <h3>All users</h3>
-            <h6 th:if="${users.empty}">No users found</h6>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label pt-n1">Username:</label>
                 <div class="col-sm-10">
@@ -483,6 +481,8 @@ $( function() {
                 <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
             </form>
             <hr />
+            <h3>All users</h3>
+            <h6 th:if="${users.empty}">No users found</h6>
             </th>
             <table th:if="${users!=null and !users.empty}" class="table logines-table">
                 <thead>
