@@ -104,22 +104,47 @@ public class WorkHourService {
         seconds = (seconds % 3600) % 60;
 
         return hours + ":" + minutes;
+    }
 
-            /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm.ss", Locale.US);
 
-            lunchTime = LocalTime.ofNanoOfDay(workHours.get(i).getLunch_time().getTime());
+    public String totalWorkHoursSum() {
 
-            /*lunchTime = LocalTime.parse(workHours.get(i).getLunch_time().toString(),
-                    DateTimeFormatter.ISO_TIME);
-            diff+=Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()).getSeconds() - lunchTime.toSecondOfDay();
-            System.out.println("Between start: "  + Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()));
+        //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
+        List<WorkHour> workHours = workHourRepository.findAll();
+        long diff = 0;
+        Timestamp startDateTime;
+        Timestamp endDateTime;
+        LocalTime lunchTime;
+        long milliseconds = 0;
+        for (int i = 0; i < workHours.size(); i++) {
 
-            System.out.println("lunch: "  + lunchTime.toSecondOfDay());
+            java.util.Date date = new java.util.Date();
+
+            startDateTime = workHours.get(i).getStart_time();
+            endDateTime = workHours.get(i).getEnd_time();
+            lunchTime = workHours.get(i).getLunch_time().toLocalTime();
+
+
+            // create a second time stamp
+            SimpleDateFormat format = new SimpleDateFormat("hh:mm");
+            Date d = null;
+            try {
+                d = format.parse(lunchTime.toString());
+                milliseconds += endDateTime.getTime() - startDateTime.getTime() + d.getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
         }
 
-        double diffFinal= (double) diff / 60.0 / 60.0;
+        int seconds = (int) milliseconds / 1000;
 
-        return Double.toString(diffFinal); */
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        seconds = (seconds % 3600) % 60;
+
+        return hours + ":" + minutes;
     }
 
 

@@ -228,8 +228,14 @@ $( function() {
 <body>
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
-    <p style="color:aqua;">Total workhours</p>
-    <h2 th:text="${userWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
+    <div th:if="${role == 'ADMIN'}">
+        <p style="color:aqua;">Total workhours</p>
+        <h2 th:text="${totalWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
+    </div>
+    <div th:if="${role == 'USER'}">
+        <p style="color:aqua;">My workhours</p>
+        <h2 th:text="${userWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
+    </div>
     <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
           th:action="@{/logout}">
