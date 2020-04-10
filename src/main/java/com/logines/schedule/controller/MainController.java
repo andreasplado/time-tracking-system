@@ -55,7 +55,7 @@ public class MainController {
     }
 
     //@RequestMapping(value="/",method = RequestMethod.GET)
-    @GetMapping({"/", "/home"})
+    @GetMapping({"/"})
     public String welcome(Model model, Principal principal, String error) {
         model.addAttribute("workHourForm", new WorkHour());
 
