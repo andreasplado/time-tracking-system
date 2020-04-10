@@ -216,6 +216,7 @@ $( function() {
             </table>
 
             <div th:if="${userWorkHours!=null and !userWorkHours.empty}" class="container">
+                <h5 th:text="${'User ' + user.username + ' total workhours: ' + userWorkHoursSum}"></h5>
                 <h5 th:text="${'User ' + user.username + ' working history'}"></h5>
                 <table class="table-striped logines-table">
                     <thead>
