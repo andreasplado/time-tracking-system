@@ -118,13 +118,18 @@ public class MainController {
     public String searchUserByUserId(@PathVariable("id") int id, Model model, Principal principal) {
         Users userForm = new Users();
         model.addAttribute("userForm", userForm);
+        List<WorkHour> userWorkHours = null;
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
+             userWorkHours = workHourService.findByUsernameReversed(principal.getName());
         }
         Users myUser = userService.findByUsername(principal.getName());
         Users users = userService.findByid(id);
         model.addAttribute("user", users);
         model.addAttribute("role", myUser.getRole());
+        model.addAttribute("userWorkHours", userWorkHours);
+
+
         return "edit_user";
     }
 

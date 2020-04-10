@@ -214,6 +214,52 @@ $( function() {
                     </a>
                 </div>
             </table>
+
+            <div th:if="${userWorkHours!=null and !userWorkHours.empty}" class="container">
+                <h5 th:text="${'User ' + user.username + ' working history'}"></h5>
+                <table class="table-striped logines-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Work start time</th>
+                        <th scope="col">Work end time</th>
+                        <th scope="col">Notes</th>
+                        <th scope="col">Lunch time</th>
+                        <th scope="col">Added</th>
+                        <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:onclick="'viewWorkHourDetails(' + ${userWorkHour.id} +')'"
+                        th:each="userWorkHour : ${userWorkHours}">
+                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-start-time'"
+                            th:text="${userWorkHour.start_time}"></td>
+                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-end-time'"
+                            th:text="${userWorkHour.end_time}"></td>
+                        <td th:text="${userWorkHour.notes}"></td>
+                        <td th:text="${userWorkHour.lunch_time}"></td>
+                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-created-at'"
+                            th:text="${userWorkHour.created_at}"></td>
+                        <td>
+                            <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
+                                  method="get">
+                                <button type="submit" class="btn btn-default">EDIT</button>
+                            </form>
+                            <form th:if="${role == 'ADMIN'}" th:action="@{/delete-work-hour/} + ${userWorkHour.id}"
+                                  method="post">
+                                <button type="submit" class="btn btn-dark delete-btn">DELETE
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div th:if="${userWorkHours==null}">
+                <p>User havn't added any worktime yet</p>
+            </div>
+
+
         </li>
 
     </ul> <!-- cd-tabs__panels -->
