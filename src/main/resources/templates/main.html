@@ -95,6 +95,7 @@ function searchUserByUsername(){
 }
 
 function searchUserByFullName(){
+alert('lol');
     var fullname = $("#user-search-by-fullname").val();
     window.location.href="/search-user-by-fullname/"+ fullname;
 
@@ -474,9 +475,7 @@ $( function() {
                     <input type="text" name="username" id="user-search-by-username" class="form-control">
                 </div>
             </div>
-            <button onclick="searchUserByUsername()" class="btn btn-primary add-class"><i
-                    class="fa fa-plus"></i>SEARCH
-            </button>
+            <button onclick="searchUserByUsername()" class="btn btn-primary add-class">SEARCH</button>
 
 
             <div class="form-group row">
@@ -485,9 +484,7 @@ $( function() {
                     <input type="text" name="username" id="user-search-by-fullname" class="form-control">
                 </div>
             </div>
-            <button onclick="searchUserByFullname()" class="btn btn-primary add-class"><i
-                    class="fa fa-plus"></i>SEARCH
-            </button>
+            <button onclick="searchUserByFullname()" class="btn btn-primary add-class">SEARCH</button>
             <br />
             <br />
             <hr />
