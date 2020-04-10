@@ -99,15 +99,12 @@ public class UserController {
         }
     }
 
-    @PostMapping("/delete-user/{id}")
-    public String deleteUser(Model model, @PathVariable("id") int id) {
-        if (userService.deleteUser(id)) {
-            model.addAttribute("message", "Workhour deleted successfully...");
-            model.addAttribute("gotoMain", true);
-            return "successful_page";
+    @PostMapping("/delete-user/{username}")
+    public String deleteUser(Model model, @PathVariable("username") String usernsame) {
+        if (userService.deleteUser(usernsame)) {
+            return "redirect:/logout";
         } else {
-            model.addAttribute("message", "User not found...");
-            return "successful_page";
+            return "main";
         }
     }
 
