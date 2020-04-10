@@ -248,7 +248,7 @@ $( function() {
                 </a>
             </li>
 
-            <li>
+            hour         <li>
                 <a href="#tab-workhours" class="cd-tabs__item">
                     <img src="/images/working-hours.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
@@ -263,6 +263,12 @@ $( function() {
             <li th:if="${role == 'ADMIN'}">
                 <a href="#tab-users" class="cd-tabs__item">
                     <img src="/images/team.png" width="50px" height="50px" style="padding: 6px;"/>
+                </a>
+            </li>
+
+            <li th:if="${role == 'ADMIN'}">
+                <a href="#tab-admin" class="cd-tabs__item">
+                    <img src="/images/settings.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
         </ul> <!-- cd-tabs__list -->
@@ -477,9 +483,6 @@ $( function() {
             </button>
             <br />
             <br />
-            <form id="register_new_user" method="POST" th:action="@{/register}">
-                <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
-            </form>
             <hr />
             <h3>All users</h3>
             </th>
@@ -506,6 +509,14 @@ $( function() {
                 </tr>
                 </tbody>
             </table>
+        </li>
+
+        <li th:if="${role == 'ADMIN'}" id="tab-admin" class="cd-tabs__panel text-component">
+            <h3>Admin section</h3>
+            <form id="register_new_user" method="POST" th:action="@{/register}">
+                <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
+            </form>
+            <hr />
         </li>
 
 
