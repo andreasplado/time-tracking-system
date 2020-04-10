@@ -125,9 +125,8 @@ $( function() {
     if (e.which == 27){
         window.location.href="../";
     }
-    $('#workhour-form').submit(function() {
-    if ($.trim($("#username").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#fullname").val()) === "" || $.trim($("#id_code").val()) === ""
-    || $.trim($("#phone").val()) === "") {
+    $('#user-form').submit(function() {
+    if ($.trim($("#username").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#fullname").val()) === "" || $.trim($("#id_code").val()) === "" || $.trim($("#phone").val()) === "") {
         $("#user-validation-error").show();
         return false;
     }
@@ -150,7 +149,7 @@ $( function() {
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table logines-table" id="tableForm">
                 <p style="display:none; color:red;" id="user-validation-error">Please fill in all data</p>
-                <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="workhour-form" th:object="${user}" method="post">
+                <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="user-form" th:object="${user}" method="post">
                     <div class="form-group">
                         <label>Username:</label>
                         <div>
@@ -160,7 +159,7 @@ $( function() {
                     <div class="form-group">
                         <label>Email:</label>
                         <div>
-                            <input type="text" th:value="${user.email}" th:name="username" th:id="username" placeholder="User email" class="form-control"/>
+                            <input type="text" th:value="${user.email}" th:name="username" th:id="email" placeholder="User email" class="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
