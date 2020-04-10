@@ -107,7 +107,7 @@ public class UserController {
             model.addAttribute("message", "User deleted successfully...");
             return "successful_page";
         } else {
-            model.addAttribute("message", "User not found...");
+            model.addAttribute("message", "User " + users.getUsername() + " edited successfully.");
             return "successful_page";
         }
     }
