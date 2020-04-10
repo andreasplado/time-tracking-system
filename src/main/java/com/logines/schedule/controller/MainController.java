@@ -67,19 +67,19 @@ public class MainController {
 
             List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
             List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
-            if(myUser.getRole().equals("ADMIN")) {
-                List<Users> allUsers = userService.findAll();
-                model.addAttribute("users", allUsers);
+            if(myUser != null) {
+                if (myUser.getRole().equals("ADMIN")) {
+                    List<Users> allUsers = userService.findAll();
+                    model.addAttribute("users", allUsers);
+                    model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
+                    model.addAttribute("myUser", myUser);
+                    model.addAttribute("userWorkHours", userWorkHours);
+                    model.addAttribute("allWorkHours", allWorkhours);
+                    model.addAttribute("role", myUser.getRole());
+                }
+            } else{
+                return "user-login";
             }
-
-            model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
-            model.addAttribute("myUser", myUser);
-            model.addAttribute("userWorkHours", userWorkHours);
-            model.addAttribute("allWorkHours", allWorkhours);
-            model.addAttribute("role", myUser.getRole());
-            //model.addAttribute("workHoursSum",workHourService.userWorkHoursSum(principal.getName()));
-
-
             return "main";
         } else {
             return "user-login";
