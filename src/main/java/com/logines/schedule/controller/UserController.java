@@ -121,7 +121,7 @@ public class UserController {
 
 
     @PostMapping("/edit-user-profile/{id}")
-    public String edutUser(@PathVariable("id") long id,
+    public String editUser(@PathVariable("id") long id,
                            @Valid Users users,
                            BindingResult bindingResult,
                            Model model) {
