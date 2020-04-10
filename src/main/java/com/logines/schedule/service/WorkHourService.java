@@ -103,7 +103,7 @@ public class WorkHourService {
         int minutes = (seconds % 3600) / 60;
         seconds = (seconds % 3600) % 60;
 
-        return hours + ":" + minutes + ":" + seconds;
+        return hours + ":" + minutes;
 
             /*DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm.ss", Locale.US);
 
