@@ -13,7 +13,7 @@ public interface UserService {
     Users findByUsername(String username);
     Users findByid(int id);
     boolean editUser(Users users);
-    boolean deleteUser(String username);
+    void deleteUser(String username);
 
     List<Users> findAll();
 
