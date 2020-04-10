@@ -373,7 +373,7 @@ $( function() {
             </div>
         </li>
 
-        <li th:if="${role == 'ADMIN'}" id="tab-workhours" class="cd-tabs__panel text-component">
+        <li th:if="${role == 'ADMIN'}" id="tab-workhours" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <div class="bd-example">
                 <p style="display:none; color:red;" id="search-query-validation-error">Select dates between a range</p>
                 <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
