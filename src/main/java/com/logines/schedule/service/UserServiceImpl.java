@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<Users> findByFullname(String username) {
+        return userRepository.findByFullname(username);
+    }
+
+    @Override
     public boolean editUser(Users users) {
         if(userRepository.existsById(users.getId())){
             userRepository.save(users);

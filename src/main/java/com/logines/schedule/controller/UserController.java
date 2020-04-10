@@ -83,6 +83,19 @@ public class UserController {
         return "search_user";
     }
 
+
+    @GetMapping("/search-user-by-fullname/{fullname}")
+    public String searchWorkHourByFullname(@PathVariable("fullname") String username, Model model, Principal principal) {
+        if(principal != null){
+            model.addAttribute("usernameText", principal.getName());
+        }
+        model.addAttribute("searchString", username);
+        List<Users> users = userService.findByFullname(username);
+        model.addAttribute("users", users);
+        return "search_users_by_fullname";
+    }
+
+
     @PostMapping("/edit-user/{id}")
     public String editUser(Model model, @Valid Users users,
                            BindingResult bindingResult) {

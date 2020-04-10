@@ -16,4 +16,6 @@ public interface UserService {
     boolean deleteUser(String username);
 
     List<Users> findAll();
+
+    List<Users> findByFullname(String username);
 }
