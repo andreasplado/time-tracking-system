@@ -268,8 +268,6 @@ $( function() {
 
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-
-
             <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                 <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
@@ -285,7 +283,7 @@ $( function() {
                     </div>
                 </div>
                 <div class="form-group">
-                    <p th:text="${workhouraddingError}">Test</p>
+                    <h6 th:text="${workhouraddingError}">Test</h6>
                     <label>Work end time:</label>
                     <div class="input-group date" id="work-end-time">
                         <input type="text" id="end_time" name="end_time" th:attr="data-field='datetime'"
@@ -318,7 +316,7 @@ $( function() {
                 history</p>
 
             <div th:if="${userWorkHours!=null and !userWorkHours.empty}" class="container">
-                <h4>My working history</h4>
+                <h6>My working history</h6>
                 <table class="table-striped logines-table">
                     <thead>
                     <tr>
@@ -363,7 +361,7 @@ $( function() {
         </li>
 
         <li id="tab-workhours" class="cd-tabs__panel text-component">
-            <p th:if="${userWorkHours.empty}">No records found in workhour history</p>
+            <h6 th:if="${userWorkHours.empty}">No records found in workhour history</h6>
             <div class="bd-example">
                 <p style="display:none; color:red;" id="search-query-validation-error">Select dates between a range</p>
                 <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
@@ -407,7 +405,7 @@ $( function() {
                     <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
                 </tr>
                 </thead>
-                <tbody>n
+                <tbody>
                 <tr class="list-item" th:each="allWorkHour : ${allWorkHours}"
                     th:onclick="'viewWorkHour(' + ${allWorkHour.id} +')'">
                     <td th:text="${allWorkHour.username}"></td>
@@ -463,7 +461,7 @@ $( function() {
         </li>
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
-            <p th:if="${users.empty}">No other users found</p>
+            <h6 th:if="${users.empty}">No other users found</h6>
             <table th:if="${users!=null and !users.empty}" class="table logines-table">
                 <thead>
                 <tr>
