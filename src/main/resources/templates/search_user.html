@@ -103,10 +103,18 @@ function searchUserByUsername(){
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-            Username: <input type="text" name="username" th:val="${searchString}" id="search-by-username"><br>
-            <button onclick="searchUserByUsername()" class="btn btn-success add-class"><i
-                    class="fa fa-plus"></i>SEARCH BY USERNAME
-            </button>
+            <div class="form-group row">
+                <label class="col-form-label">Username:</label>
+                <div>
+                    <input type="text" name="username" id="user-search-by-username" class="form-control">
+                </div>
+                <button onclick="searchUserByUsername()" class="btn btn-primary add-class">SEARCH</button>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label">Full name:</label>
+                <input type="text" name="username" id="user-search-by-fullname" class="form-control">
+                <button type="submit" onclick="searchUserByFullname()" class="btn btn-primary add-class">SEARCH</button>
+            </div>
 
             <h3>Looking for user <i th:text="${searchString}"></i></h3>
             <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="workhour-form"

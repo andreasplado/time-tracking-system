@@ -468,7 +468,6 @@ $( function() {
         </li>
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
-            <!-- <form onsubmit="searchUserByUsername()"> -->
                 <div class="form-group row">
                     <label class="col-form-label">Username:</label>
                     <div>
@@ -476,14 +475,11 @@ $( function() {
                     </div>
                     <button onclick="searchUserByUsername()" class="btn btn-primary add-class">SEARCH</button>
                 </div>
-
-            <!-- <form onsubmit="searchUserByFullname()"> -->
                 <div class="form-group row">
                     <label class="col-form-label">Full name:</label>
                     <input type="text" name="username" id="user-search-by-fullname" class="form-control">
                     <button type="submit" onclick="searchUserByFullname()" class="btn btn-primary add-class">SEARCH</button>
                 </div>
-            <!-- </form> -->
 
 
             <br />
