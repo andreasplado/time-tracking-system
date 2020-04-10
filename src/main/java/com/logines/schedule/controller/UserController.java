@@ -115,9 +115,10 @@ public class UserController {
     @PostMapping("/delete-user/{username}")
     public String deleteUser(Model model, @PathVariable("username") String usernsame) {
         if (userService.deleteUser(usernsame)) {
-            return "redirect:/logout";
-        } else {
-            return "main";
+            model.addAttribute("message", "User" + usernsame +" deleteted successfully...");
+            return "successful_page";
+        }else{
+           return "redirect:/";
         }
     }
 
