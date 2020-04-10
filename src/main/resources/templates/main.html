@@ -506,10 +506,6 @@ $( function() {
             <form id="register_new_user" method="POST" th:action="@{/register}">
                 <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
             </form>
-            <form onSubmit="return confirm('Are you sure you wish to delete your user?');" id="delete_user" method="POST" th:action="@{/delete-user/} + ${usernameText}">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <button class="btn btn-danger" type="submit">DELETE ACCOUNT</button>
-            </form>
         </li>
 
 
