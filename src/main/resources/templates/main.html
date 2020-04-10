@@ -270,6 +270,7 @@ $( function() {
 
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
+            <h3>Dashboard</h3>
             <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                 <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                 <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
