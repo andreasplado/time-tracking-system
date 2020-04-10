@@ -59,9 +59,9 @@ public class MainController {
     public String welcome(Model model, Principal principal, String error) {
         model.addAttribute("workHourForm", new WorkHour());
         if (principal != null) {
-            model.addAttribute("usernameText", principal.getName());
-            Users myUser = userService.findByUsername(principal.getName());
 
+            Users myUser = userService.findByUsername(principal.getName());
+            model.addAttribute("usernameText", myUser.getFullname());
             //Kui kasutajaandmeid on lisatud
 
             List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
