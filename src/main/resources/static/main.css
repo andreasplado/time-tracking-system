@@ -252,6 +252,6 @@ input[type='text'] {
 	background-size: 1px 6px, 1px 1px, 1px 6px;
 }
 input[type='text']:hover, input.holo[type='text']:focus {
-	background: bottom left linear-gradient(#0099cc, #0099cc) no-repeat, bottom center linear-gradient(#0099cc, #0099cc) repeat-x, bottom right linear-gradient(#0099cc, #0099cc) no-repeat;
+	background: white;
 	background-size: 1px 6px, 1px 1px, 1px 6px;
 }
