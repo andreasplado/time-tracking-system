@@ -162,6 +162,7 @@ function timeSince(date) {
   }
   return Math.floor(seconds) + " seconds";
 }
+
 </script>
 
 <script th:inline="javascript">
@@ -212,6 +213,7 @@ $( function() {
 
  });
 /*]]>*/
+
 
 
 
@@ -468,23 +470,21 @@ $( function() {
         </li>
 
         <li th:if="${role == 'ADMIN'}" id="tab-users" class="cd-tabs__panel text-component">
-                <div class="form-group row">
-                    <label class="col-form-label">Username:</label>
-                    <div>
-                        <input type="text" name="username" id="user-search-by-username" class="form-control">
-                    </div>
-                    <button onclick="searchUserByUsername()" class="btn btn-primary add-class">SEARCH</button>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label">Full name:</label>
-                    <input type="text" name="username" id="user-search-by-fullname" class="form-control">
-                    <button type="submit" onclick="searchUserByFullname()" class="btn btn-primary add-class">SEARCH</button>
-                </div>
-
-
-            <br />
-            <br />
-            <hr />
+            <div class="form-group row">
+                <label class="col-form-label">Username:</label>
+                <input type="text" name="username" id="user-search-by-username" class="form-control">
+                <button onclick="searchUserByUsername()" class="btn btn-primary add-class float-right">SEARCH</button>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label">Full name:</label>
+                <input type="text" name="username" id="user-search-by-fullname" class="form-control">
+                <button type="submit" onclick="searchUserByFullname()" class="btn btn-primary add-class float-right">
+                    SEARCH
+                </button>
+            </div>
+            <br/>
+            <br/>
+            <hr/>
             <h3>All users</h3>
             </th>
             <table th:if="${users!=null and !users.empty}" class="table logines-table">
