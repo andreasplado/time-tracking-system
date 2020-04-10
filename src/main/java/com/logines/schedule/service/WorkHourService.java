@@ -89,11 +89,12 @@ public class WorkHourService {
             Date d = null;
             try {
                 d = format.parse(lunchTime.toString());
+                milliseconds += endDateTime.getTime() - startDateTime.getTime() + d.getTime();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
-            milliseconds += endDateTime.getTime() - startDateTime.getTime() + d.getTime();
+
         }
 
         int seconds = (int) milliseconds / 1000;
