@@ -156,15 +156,6 @@ function timeSince(date) {
   }
   return Math.floor(seconds) + " seconds";
 }
-
-
-
-
-
-
-
-
-
 </script>
 
 <script th:inline="javascript">
@@ -515,10 +506,9 @@ $( function() {
             <form id="register_new_user" method="POST" th:action="@{/register}">
                 <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
             </form>
-            <form id="delete_user" method="POST" th:action="@{/delete-user/} + ${usernameText}">
+            <form onSubmit="return confirm('Are you sure you wish to delete your user?');" id="delete_user" method="POST" th:action="@{/delete-user/} + ${usernameText}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <br/>
-                <button class="btn btn-danger ml-1" type="submit" th:text="'DELETE YOUR PROFILE'">DELETE</button>
+                <button class="btn btn-danger" type="submit">DELETE ACCOUNT</button>
             </form>
         </li>
 
