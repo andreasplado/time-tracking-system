@@ -121,16 +121,15 @@ public class MainController {
         List<WorkHour> userWorkHours = null;
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
-             userWorkHours = workHourService.findByUsernameReversed(principal.getName());
+            Users myUser = userService.findByUsername(principal.getName());
+            Users users = userService.findByid(id);
+            userWorkHours = workHourService.findByUsernameReversed(users.getUsername());
+            model.addAttribute("user", users);
+            model.addAttribute("role", myUser.getRole());
+            model.addAttribute("userWorkHours", userWorkHours);
+            return "edit_user";
         }
-        Users myUser = userService.findByUsername(principal.getName());
-        Users users = userService.findByid(id);
-        model.addAttribute("user", users);
-        model.addAttribute("role", myUser.getRole());
-        model.addAttribute("userWorkHours", userWorkHours);
-
-
-        return "edit_user";
+        return "redirect:/login";
     }
 
     @GetMapping(value = "/images/{image}", produces = {MediaType.IMAGE_GIF_VALUE, MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
