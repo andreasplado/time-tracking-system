@@ -94,13 +94,7 @@ public class WorkHourService {
             }
 
             milliseconds += endDateTime.getTime() - startDateTime.getTime() + d.getTime();
-
-
-
-            System.out.println("Lunch time " + lunchTime.toString());
         }
-
-        System.out.println("MILLISECONDS" + milliseconds);
 
         int seconds = (int) milliseconds / 1000;
 
