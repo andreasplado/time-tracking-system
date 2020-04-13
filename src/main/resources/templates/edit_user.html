@@ -156,7 +156,7 @@ function editUserBtn() {
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
 
-            <button onclick="editUserBtn()">EDIT USER</button>
+            <button class="btn btn-primary" onclick="editUserBtn()">EDIT USER</button>
             <table class="table logines-table" id="tableForm">
                 <p style="display:none; color:red;" id="user-validation-error">Please fill in all data</p>
                 <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="user-form" th:object="${user}" method="post">
