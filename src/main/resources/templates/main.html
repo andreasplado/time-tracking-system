@@ -545,5 +545,18 @@ $( function() {
 
 /*]]>*/
 </script>
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+    var allUsersFullName = [];
+    /*[# th:each="n : ${users}"]*/
+        allUsersFullName.push("[(${n.fullname})]");
+    /*[/]*/
+
+    $( "#user-search-by-fullname" ).autocomplete({
+          source: allUsersFullName
+    });
+
+/*]]>*/
+</script>
 </body>
 </html>
