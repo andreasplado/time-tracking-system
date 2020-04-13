@@ -535,10 +535,15 @@ $( function() {
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
     var allUsers= [];
-    var theList = [[${users}]]
     /*[# th:each="user : ${users}"]*/
         allUsers.push("[(${user.username})]");
     /*[/]*/
+
+    var allUsers = [];
+    var fullData = [[${users}]]
+    for (var i = 0; i < fullData.length; i++) {
+        allUsers[i] = fullData[i].name;
+    }
 
 /*]]>*/
 </script>
