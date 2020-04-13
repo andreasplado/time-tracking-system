@@ -533,9 +533,15 @@ $( function() {
 <script src='/rome-date-time-picker/rome.js'></script>
 <script src='/rome-date-time-picker/example.js'></script>
 <script type="text/javascript" th:inline="javascript">
-        var allUsers= [
-            <th:block th:each="user: ${users}" th:inline="text">'[[${user.username}]]',</th:block>
-        ];
+/*<![CDATA[*/
+    var allUsers= [];
+    var theList = [[${users}]]
+    for (i = 0; i < theList.length; i++) {
+        allUsers.push(theList[i].username);
+    }
+
+/*]]>*/
+</script>
         $( "#user-search-by-username" ).autocomplete({
           source: allUsers
         });
