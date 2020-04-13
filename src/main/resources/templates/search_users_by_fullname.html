@@ -124,7 +124,7 @@ function searchByUsername(){
             <h5>Looking for <i th:text="${searchString}"></i></h5>
             <h5 th:if="${users==null}">No users found</h5>
             </th>
-            <table th:if="${users!=null and !users.empty}" class="table logines-table">
+            <table th:if="${users!=null}" class="table logines-table">
                 <thead>
                 <tr>
                     <th>Username</th>
