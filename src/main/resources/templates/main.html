@@ -278,7 +278,7 @@ $( function() {
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <h3>Dashboard</h3>
-            <div th:if="${role == 'ADMIN'}">
+            <div th:style="${role == 'ADMIN' ? 'display:block' : 'display:none'}">
                 <div class="form-group row">
                     <label class="col-form-label">Username:</label>
                     <input type="text" name="username" id="user-search-by-username" class="form-control">
@@ -322,7 +322,7 @@ $( function() {
                     </tbody>
                 </table>
             </div>
-            <div th:if="${role == 'USER'}">
+            <div th:style="${role == 'USER' ? 'display:block' : 'display:none'}">
                 <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                     <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                     <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
