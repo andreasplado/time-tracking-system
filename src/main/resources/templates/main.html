@@ -393,8 +393,8 @@ $( function() {
                             <td th:text="${userWorkHour.lunch_time}"></td>
                             <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-created-at'"
                                 th:text="${userWorkHour.created_at}"></td>
-                            <td>
-                                <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
+                            <td th:if="${role == 'ADMIN'}">
+                                <form th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
                                       method="get">
                                     <button type="submit" class="btn btn-default">EDIT</button>
                                 </form>
