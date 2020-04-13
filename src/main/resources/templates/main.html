@@ -533,16 +533,6 @@ $( function() {
 <script src='/rome-date-time-picker/rome.js'></script>
 <script src='/rome-date-time-picker/example.js'></script>
 <script type="text/javascript" th:inline="javascript">
-    /*<![CDATA[*/
-
-    var theList = [[${modelAttribute}]]
-    for (i = 0; i < theList.length; i++) {
-        doSomething(theList[i]);
-    }
-
-    /*]]>*/
-</script>
-<script type="text/javascript" th:inline="javascript">
         var allUsers= [
             <th:block th:each="user: ${users}" th:inline="text">'[[${user.username}]]',</th:block>
         ];
