@@ -107,24 +107,6 @@ function searchUserByFullname(){
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-
-            <form>
-                <div class="form-group">
-                    <label>Username:</label>
-                    <input type="text" name="username" id="user-search-by-username" class="form-control">
-                </div>
-                <button onclick="searchUserByUsername()" class="btn btn-primary add-class">SEARCH</button>
-            </form>
-            <form>
-                <div class="form-group">
-                    <label>Fullname: </label>
-                    <input type="text" name="username" id="user-search-by-fullname" class="form-control">
-                </div>
-                <button type="submit" onclick="searchUserByFullname()" class="btn btn-primary add-class">SEARCH</button>
-            </form>
-
-            <br/>
-            <hr/>
             <h5>Looking for <i th:text="${searchString}"></i></h5>
             <h5 th:if="${users==null}">No users found</h5>
             </th>
