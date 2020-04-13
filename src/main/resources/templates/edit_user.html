@@ -131,14 +131,6 @@ $( function() {
         return false;
     }
 });
-function editUserBtn() {
-  var x = document.getElementById("tableForm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
 </script>
 
 <body>
@@ -261,7 +253,17 @@ function editUserBtn() {
         </li>
 
     </ul> <!-- cd-tabs__panels -->
-</div> <!-- cd-tabs -->
+</div><!-- cd-tabs -->
+<script>
+function editUserBtn() {
+  var x = document.getElementById("tableForm");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 <script src="/assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
 <script src="/assets/js/main.js"></script>
 <script src='/rome-date-time-picker/rome.js'></script>
