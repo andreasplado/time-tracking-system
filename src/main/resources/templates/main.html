@@ -235,7 +235,7 @@ $( function() {
         <p style="color:aqua;">Total workhours</p>
         <h2 th:text="${totalWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
     </div>
-    <div th:if="${role == 'USER' and role == 'ADMIN'}">
+    <div th:if="${role == 'USER'}">
         <p style="color:aqua;">My workhours</p>
         <h2 th:text="${userWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
     </div>
