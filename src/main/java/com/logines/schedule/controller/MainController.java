@@ -122,7 +122,6 @@ public class MainController {
             model.addAttribute("usernameText", principal.getName());
             Users myUser = userService.findByUsername(principal.getName());
             Users users = userService.findByid(id);
-            System.out.println("USERNAME : " + users.getUsername());
             userWorkHours = workHourService.findByUsernameReversed(users.getUsername());
             model.addAttribute("user", users);
             model.addAttribute("role", myUser.getRole());
