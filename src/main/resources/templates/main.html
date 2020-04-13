@@ -539,12 +539,12 @@ $( function() {
     for (var i = 0; i < fullData.length; i++) {
         allUsers[i] = fullData[i].name;
     }
+    $( "#user-search-by-username" ).autocomplete({
+          source: allUsers
+    });
+
 
 /*]]>*/
-</script>
-        $( "#user-search-by-username" ).autocomplete({
-          source: allUsers
-        });
 </script>
 </body>
 </html>
