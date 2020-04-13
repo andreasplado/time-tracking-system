@@ -92,7 +92,7 @@ public class UserController {
         model.addAttribute("searchString", username);
         List<Users> users = userService.findByFullname(username);
         model.addAttribute("users", users);
-        return "search_users_by_fullname";
+        return "search_user";
     }
 
 
