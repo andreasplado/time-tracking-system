@@ -119,22 +119,6 @@ public class UserController {
         return "successful_page";
     }
 
-
-    @PostMapping("/edit-user-profile/{id}")
-    public String editUser(@PathVariable("id") long id,
-                           @Valid Users users,
-                           BindingResult bindingResult,
-                           Model model) {
-        userValidator.validate(users, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return "error_page";
-        } else {
-            userService.editUser(users);
-            model.addAttribute("message", "Workhour edited successfully...");
-            return "successful_page";
-        }
-    }
-
     @GetMapping("/404")
     public String pageNotFound() {
         return "404";
