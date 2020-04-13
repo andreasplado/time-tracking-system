@@ -534,11 +534,6 @@ $( function() {
 <script src='/rome-date-time-picker/example.js'></script>
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
-    var allUsers= [];
-    /*[# th:each="user : ${users}"]*/
-        allUsers.push("[(${user.username})]");
-    /*[/]*/
-
     var allUsers = [];
     var fullData = [[${users}]]
     for (var i = 0; i < fullData.length; i++) {
