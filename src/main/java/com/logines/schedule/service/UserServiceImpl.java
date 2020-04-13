@@ -49,20 +49,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean editUser(Users users) {
-        if(userRepository.existsById(users.getId())){
+        if (userRepository.existsById(users.getId())) {
             userRepository.save(users);
         }
         return false;
     }
 
     @Override
-    public boolean deleteUser(String username) {
-        Users users = userRepository.findByUsername(username);
-        if(users != null) {
-            userRepository.deleteUser(username);
-            return true;
-        }else{
-            return false;
-        }
+    public void deleteUser(String username) {
+        userRepository.deleteUser(username);
     }
 }

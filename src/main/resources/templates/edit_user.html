@@ -74,15 +74,6 @@
 </style>
 
 <script>
-function editClass(id) {
-   window.location.href="edit-class/"+ id;
-}
-function addClass(){
-    window.location.href="add-class/";
-}
-function deleteClass(id){
-    window.location.href="delete-class/"+ id;
-}
 function search(){
     var name = $("#searchbox").val();
     window.location.href="query-result-student-classes/"+ name;
@@ -90,10 +81,6 @@ function search(){
 function viewWorkHour(id){
     window.location.href="work-hour-details/" + id;
 }
-function viewStudentDetails(id){
-    window.location.href="student-details/" + id;
-}
-
 
 </script>
 
@@ -138,9 +125,9 @@ $( function() {
     if (e.which == 27){
         window.location.href="../";
     }
-    $('#workhour-form').submit(function() {
-    if ($.trim($("#start_time").val()) === "" || $.trim($("#end_time").val()) === "" || $.trim($("#lunch_time").val()) === "" || $.trim($("#title").val()) === "") {
-        $("#work-hour-validation-error").show();
+    $('#user-form').submit(function() {
+    if ($.trim($("#username").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#fullname").val()) === "" || $.trim($("#id_code").val()) === "" || $.trim($("#phone").val()) === "") {
+        $("#user-validation-error").show();
         return false;
     }
 });
@@ -161,8 +148,8 @@ $( function() {
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <table class="table logines-table" id="tableForm">
-                <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
-                <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="workhour-form" th:object="${user}" method="post">
+                <p style="display:none; color:red;" id="user-validation-error">Please fill in all data</p>
+                <form th:if="${role == 'ADMIN'}" th:action="@{/edit-user/} + ${user.id}" id="user-form" th:object="${user}" method="post">
                     <div class="form-group">
                         <label>Username:</label>
                         <div>
@@ -172,7 +159,7 @@ $( function() {
                     <div class="form-group">
                         <label>Email:</label>
                         <div>
-                            <input type="text" th:value="${user.email}" th:name="username" th:id="username" placeholder="User email" class="form-control"/>
+                            <input type="text" th:value="${user.email}" th:name="email" th:id="email" placeholder="User email" class="form-control"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -200,9 +187,10 @@ $( function() {
                         <span class="focus-input100"></span>
 
                     </div>
+                    <input type="hidden" th:value="${user.password}" name="password" th:id="password" />
                     <button type="submit" class="btn btn-success">EDIT</button>
                 </form>
-                <form th:if="${role == 'ADMIN' and user.username!= usernameText}" th:action="@{/delete-user/} + ${user.id}" th:object="${user}" method="post">
+                <form th:if="${role == 'ADMIN' and user.username!= usernameText}" th:action="@{/delete-user/} + ${user.username}" th:object="${user}" method="post">
                     <button type="submit" class="btn btn-dark">DELETE</button>
                 </form>
                 <br />
@@ -224,7 +212,6 @@ $( function() {
                     <tr>
                         <th scope="col">Work start time</th>
                         <th scope="col">Work end time</th>
-                        <th scope="col">Notes</th>
                         <th scope="col">Lunch time</th>
                         <th scope="col">Added</th>
                         <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
@@ -238,7 +225,6 @@ $( function() {
                             th:text="${userWorkHour.start_time}"></td>
                         <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-end-time'"
                             th:text="${userWorkHour.end_time}"></td>
-                        <td th:text="${userWorkHour.notes}"></td>
                         <td th:text="${userWorkHour.lunch_time}"></td>
                         <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-created-at'"
                             th:text="${userWorkHour.created_at}"></td>

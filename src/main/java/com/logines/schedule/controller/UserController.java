@@ -47,7 +47,7 @@ public class UserController {
         return "register";
     }
 
-    @RequestMapping(value="/login", method=RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         model.addAttribute("login", new Users());
         if (error != null)
@@ -59,7 +59,7 @@ public class UserController {
         return "user_login";
     }
 
-    @RequestMapping(value="/register", method=RequestMethod.POST, headers = "Content-type=application/*")
+    @RequestMapping(value = "/register", method = RequestMethod.POST, headers = "Content-type=application/*")
     public String postRegister(Model model, @RequestBody @Valid @ModelAttribute("registerForm") Users registerForm, BindingResult bindingResult) {
         userValidator.validate(registerForm, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -74,7 +74,7 @@ public class UserController {
 
     @GetMapping("/search-user/{username}")
     public String searchWorkHourByUsername(@PathVariable("username") String username, Model model, Principal principal) {
-        if(principal != null){
+        if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
         }
         model.addAttribute("searchString", username);
@@ -86,7 +86,7 @@ public class UserController {
 
     @GetMapping("/search-user-by-fullname/{fullname}")
     public String searchWorkHourByFullname(@PathVariable("fullname") String username, Model model, Principal principal) {
-        if(principal != null){
+        if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
         }
         model.addAttribute("searchString", username);
@@ -100,33 +100,31 @@ public class UserController {
     public String editUser(Model model, @Valid Users users,
                            BindingResult bindingResult) {
         if (userService.editUser(users)) {
-            if(bindingResult.hasErrors()){
+            if (bindingResult.hasErrors()) {
                 model.addAttribute("error", bindingResult.getAllErrors());
                 return "error_page";
             }
             model.addAttribute("message", "User deleted successfully...");
             return "successful_page";
         } else {
-            model.addAttribute("message", "User not found...");
+            model.addAttribute("message", "User " + users.getUsername() + " edited successfully.");
             return "successful_page";
         }
     }
 
     @PostMapping("/delete-user/{username}")
     public String deleteUser(Model model, @PathVariable("username") String usernsame) {
-        if (userService.deleteUser(usernsame)) {
-            return "redirect:/logout";
-        } else {
-            return "main";
-        }
+        userService.deleteUser(usernsame);
+        model.addAttribute("message", "User" + usernsame + " deleteted successfully...");
+        return "successful_page";
     }
 
 
     @PostMapping("/edit-user-profile/{id}")
-    public String edutUser(@PathVariable("id") long id,
-                               @Valid Users users,
-                               BindingResult bindingResult,
-                               Model model) {
+    public String editUser(@PathVariable("id") long id,
+                           @Valid Users users,
+                           BindingResult bindingResult,
+                           Model model) {
         userValidator.validate(users, bindingResult);
         if (bindingResult.hasErrors()) {
             return "error_page";
@@ -138,7 +136,7 @@ public class UserController {
     }
 
     @GetMapping("/404")
-    public String pageNotFound(){
+    public String pageNotFound() {
         return "404";
     }
 
