@@ -79,7 +79,7 @@ public class UserController {
         }
         model.addAttribute("searchString", username);
         Users users = userService.findByUsername(username);
-        model.addAttribute("user", users);
+        model.addAttribute("users", users);
         return "search_users_by_fullname";
     }
 
