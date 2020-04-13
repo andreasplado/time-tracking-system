@@ -96,7 +96,7 @@ public class WorkHourService {
 
 
         }
-        if(workHours.size()!= 0) {
+        if(workHours.size()== 0) {
             int seconds = (int) milliseconds / 1000;
 
             int hours = seconds / 3600;
@@ -132,7 +132,7 @@ public class WorkHourService {
             Date d = null;
             try {
                 d = format.parse(lunchTime.toString());
-                milliseconds += endDateTime.getTime() - startDateTime.getTime() + d.getTime();
+                milliseconds += endDateTime.getTime() - startDateTime.getTime() - d.getTime();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
