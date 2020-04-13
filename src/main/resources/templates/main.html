@@ -535,14 +535,13 @@ $( function() {
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
     var allUsers = [];
-    var fullData = [[${users}]]
-    for (var i = 0; i < fullData.length; i++) {
-        allUsers[i] = fullData[i].name;
-    }
+    /*[# th:each="n : ${users}"]*/
+        allUsers.push("[(${n.username})]");
+    /*[/]*/
+
     $( "#user-search-by-username" ).autocomplete({
           source: allUsers
     });
-
 
 /*]]>*/
 </script>
