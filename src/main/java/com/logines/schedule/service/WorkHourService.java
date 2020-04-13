@@ -137,14 +137,18 @@ public class WorkHourService {
 
 
         }
+        int hours = 0;
+        int minutes = 0;
 
-        int seconds = (int) milliseconds / 1000;
+        if(workHours.size()!= 0) {
+            int seconds = (int) milliseconds / 1000;
 
-        int hours = seconds / 3600;
-        int minutes = (seconds % 3600) / 60;
-        seconds = (seconds % 3600) % 60;
-
-        return hours + ":" + minutes;
+            hours = seconds / 3600;
+            minutes = (seconds % 3600) / 60;
+            seconds = (seconds % 3600) % 60;
+            return hours + ":" + minutes;
+        }
+        return "00:00";
     }
 
 
