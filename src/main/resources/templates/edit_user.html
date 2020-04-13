@@ -152,7 +152,8 @@ $( function() {
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
 
-            <button class="btn btn-primary" onclick="editUserBtn()">EDIT USER</button>
+            <button class="btn btn-primary float-right" onclick="editUserBtn()">EDIT USER</button>
+            <br />
             <div id="edit-user" style="display:none;">
                 <table class="table logines-table" id="tableForm">
                     <p style="display:none; color:red;" id="user-validation-error">Please fill in all data</p>
@@ -209,14 +210,17 @@ $( function() {
                     </form>
                     <br/>
                     <br/>
-                    <div class="p-t-136">
-                        <a class="txt2" href="../">
-                            Back to main page
-                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                        </a>
-                    </div>
                 </table>
             </div>
+            <br />
+            <div class="p-t-136">
+                <a class="txt2" href="../">
+                    Back to main page
+                    <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                </a>
+            </div>
+            <br />
+            <hr />
             <h5 th:if="${userWorkHours.empty}">User doesn't have any workhour</h5>
             <div th:if="${userWorkHours!=null and !userWorkHours.empty}" class="container">
                 <h5 th:text="${'User ' + user.username + ' total workhours: ' + userWorkHoursSum}"></h5>
