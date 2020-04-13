@@ -8,14 +8,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -160,7 +157,7 @@ public class WorkHourService {
 
     @Scheduled(cron = "40 * * ? * MON-FRI")
     public void myScheduledMethod() {
-        workHourRepository.deleteLast30DaysWorkHours();
+        workHourRepository.deleteLast60DaysWorkHours();
     }
 
     public void findByEndTimeAndUsername(String endTime, String username) {
