@@ -221,7 +221,7 @@ $( function() {
             </div>
             <br />
             <hr />
-            <h5 th:if="${userWorkHours.empty}" th:text="${'User ' + user.username + ' doesn\'t have any working hours'}"></h5>
+            <h5 th:if="${userWorkHours.empty}" th:text="${'User ' + user.username + ' does not have any working hours'}"></h5>
             <div th:if="${userWorkHours!=null and !userWorkHours.empty}" class="container">
                 <h5 th:text="${'User ' + user.username + ' total workhours: ' + userWorkHoursSum}"></h5>
                 <h5 th:text="${'User ' + user.username + ' working history'}"></h5>
