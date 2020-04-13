@@ -70,6 +70,7 @@ public class WorkHourService {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
+        System.out.println(Arrays.toString(workHours.toArray()));
         long diff = 0;
         Timestamp startDateTime;
         Timestamp endDateTime;
