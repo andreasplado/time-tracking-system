@@ -268,3 +268,8 @@ a:hover{
   background-color: DodgerBlue !important;
   color: #ffffff;
 }
+.ui-menu-item-wrapper{
+    padding: 15px;
+    font-family: Poppins-Regular, sans-serif;
+    font-size: 75%;
+}
