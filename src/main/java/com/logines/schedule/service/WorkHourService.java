@@ -97,7 +97,7 @@ public class WorkHourService {
 
 
         }
-        if(workHours.size()== 0) {
+        if(workHours.size()!= 0) {
             int seconds = (int) milliseconds / 1000;
 
             int hours = seconds / 3600;
