@@ -80,11 +80,15 @@ function viewWorkHour(id){
     window.location.href="../work-hour-details/" + id;
 }
 
-function searchByUsername(){
-    var username = $("#search-by-username").val();
-    window.location.href="/" + username;
+function searchUserByUsername(){
+    var username = $("#user-search-by-username").val();
+    window.location.href="/search-user/"+ username;
 }
 
+function searchUserByFullname(){
+    var fullname = $("#user-search-by-fullname").val();
+    window.location.href="/search-user-by-fullname/"+ fullname;
+}
 
 
 </script>
