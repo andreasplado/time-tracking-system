@@ -9,6 +9,33 @@ $(document).ready(function(){
             $("#notes").val("No notes");
         }
     });
+        var availableTags = [
+          "ActionScript",
+          "AppleScript",
+          "Asp",
+          "BASIC",
+          "C",
+          "C++",
+          "Clojure",
+          "COBOL",
+          "ColdFusion",
+          "Erlang",
+          "Fortran",
+          "Groovy",
+          "Haskell",
+          "Java",
+          "JavaScript",
+          "Lisp",
+          "Perl",
+          "PHP",
+          "Python",
+          "Ruby",
+          "Scala",
+          "Scheme"
+        ];
+        $( "#user-search-by-username" ).autocomplete({
+          source: availableTags
+        });
 
 });
 
