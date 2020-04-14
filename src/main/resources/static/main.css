@@ -273,3 +273,11 @@ a:hover{
     font-family: Poppins-Regular, sans-serif;
     font-size: 75%;
 }
+
+.rd-time {
+    position: absolute!important;
+    display: inline-block;
+    margin-top: -301px;
+    margin-left: -228px;
+    min-width: 80px;
+ }
