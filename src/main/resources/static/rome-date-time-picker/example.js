@@ -6,11 +6,11 @@ inputFormat: "YYYY-MM-DD HH:mm:ss"});
 rome(end_time, {dateValidator: rome.val.afterEq(start_time),
 inputFormat: "YYYY-MM-DD HH:mm:ss"});
 rome(lunch_time, {inputFormat: "HH:mm:ss", date: false});
-rome(start_time_range, {dateValidator: rome.val.beforeEq(end_time_range), inputFormat: "YYYY-MM-DD HH:mm:ss"} );
-rome(end_time_range, {dateValidator: rome.val.afterEq(start_time_range), inputFormat: "YYYY-MM-DD HH:mm:ss"} );
 rome(parent).on('data', function (value) {
   result.innerText = value;
 });
+rome(start_time_range, {dateValidator: rome.val.beforeEq(end_time_range), inputFormat: "YYYY-MM-DD HH:mm:ss"} );
+rome(end_time_range, {dateValidator: rome.val.afterEq(start_time_range), inputFormat: "YYYY-MM-DD HH:mm:ss"} );
 
 
 var picker = rome(ind);
