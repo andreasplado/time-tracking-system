@@ -3,6 +3,7 @@ package com.logines.schedule.controller;
 import com.logines.schedule.model.Company;
 import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
+import com.logines.schedule.service.CompanyService;
 import com.logines.schedule.service.UserService;
 import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.UserValidator;
@@ -33,6 +34,9 @@ public class MainController {
 
     @Autowired
     private WorkHourService workHourService;
+
+    @Autowired
+    private CompanyService companyService;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -69,6 +73,7 @@ public class MainController {
 
             List<WorkHour> allWorkhours = workHourService.getAllWorkHours();
             List<WorkHour> userWorkHours = workHourService.findByUsernameReversed(principal.getName());
+            List<Company> companyList = companyService.findAll();
             if(myUser != null) {
                 List<Users> allUsers = userService.findAll();
                 model.addAttribute("users", allUsers);
@@ -77,6 +82,7 @@ public class MainController {
                 model.addAttribute("myUser", myUser);
                 model.addAttribute("userWorkHours", userWorkHours);
                 model.addAttribute("allWorkHours", allWorkhours);
+                model.addAttribute("companyList", companyList);
                 model.addAttribute("role", myUser.getRole());
             } else{
                 return "user-login";

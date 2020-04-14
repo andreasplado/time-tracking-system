@@ -103,6 +103,10 @@ function viewWorkHour(id){
     window.location.href="work-hour-details/" + id;
 }
 
+function viewCompany(id){
+    window.location.href="edit-company/" + id;
+}
+
 function viewUser(id){
     window.location.href="/get-user/" + id;
 }
@@ -550,6 +554,33 @@ $( function() {
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
                 </form>
+                <table th:if="${companyList!=null and !companyList.empty}" class="table logines-table">
+                    <thead>
+                    <tr>
+                        <th>Company name</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="list-item" th:each="company : ${companyList}"
+                        th:onclick="'viewCompany(' + ${company.id} +')'">
+                        <td th:text="${company.company_name}"></td>
+                        <td th:text="${allWorkHour.created_at}"></td>
+                        <td>
+                            <form th:if="${role == 'ADMIN'}" th:action="@{/edit-company/} + ${company.id}"
+                                  method="get">
+                                <button type="submit" class="btn btn-default">EDIT</button>
+                            </form>
+                            <form th:if="${role == 'ADMIN'}" th:action="@{/delete-company/} + ${company.id}"
+                                  method="post">
+                                <button type="submit" class="btn btn-dark delete-btn">DELETE
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </li>
     </ul> <!-- cd-tabs__panels -->
