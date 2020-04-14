@@ -523,6 +523,17 @@ $( function() {
             <form id="register_new_user" method="POST" th:action="@{/register}">
                 <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
             </form>
+            <form th:action="@{/add-company}" th:object="${companyForm}">
+                <div class="form-group">
+                    <label>Company name:</label>
+                    <div class="input-group date" id="comapny-form">
+                        <input type="text" id="company_name" name="lunch_time" th:attr="data-field='time'"
+                               class="form-control" th:field="*{lunch_time}" autocomplete="off"/>
+                    </div>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
+            </form>
         </li>
 
 

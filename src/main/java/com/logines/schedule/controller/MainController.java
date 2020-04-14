@@ -1,5 +1,6 @@
 package com.logines.schedule.controller;
 
+import com.logines.schedule.model.Company;
 import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.UserService;
@@ -58,6 +59,7 @@ public class MainController {
     @GetMapping({"/"})
     public String welcome(Model model, Principal principal, String error) {
         model.addAttribute("workHourForm", new WorkHour());
+        model.addAttribute("companyForm", new Company());
 
         if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
