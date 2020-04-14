@@ -3,10 +3,14 @@ package com.logines.schedule.service;
 import com.logines.schedule.model.Company;
 import com.logines.schedule.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@Transactional
 public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
