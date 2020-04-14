@@ -28,7 +28,7 @@
     <meta name="author" content="Logines">
     <meta name="description"
           content="Logines time-tracking system for workers."/>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -60,6 +60,10 @@
     <!--BOOSTSTRAP DATETIME PICKER -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!--<script src="https://cdn.datedropper.com/get/qsn9j0v26bkqfwe4oo4gvlxgjioau7om"></script> -->
+    <script src="/datedropper/datedropper.pro.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
     <!--FIT TEXT -->
     <script src="/fittext/fittext.js"></script>
@@ -349,7 +353,8 @@ $( function() {
                 </table>
             </div>
             <div th:style="${role == 'USER' ? 'display:block' : 'display:none'}">
-
+                <input class="datedropper-init" type="text">
+                <input type="text" data-datedropper>
                 <input type="text" id="datePicker" name="start_time"
                        class="form-control" autocomplete="off" onfocus="blur();"/>
                 <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
