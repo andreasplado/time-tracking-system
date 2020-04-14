@@ -67,7 +67,7 @@ public class UserController {
             return "register";
         } else {
             userService.save(registerForm);
-            securityService.autoLogin(registerForm.getUsername(), registerForm.getPasswordConfirm());
+            //securityService.autoLogin(registerForm.getUsername(), registerForm.getPasswordConfirm());
             return "redirect:/";
         }
     }
