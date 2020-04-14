@@ -135,7 +135,7 @@
 
                 <div class="wrap-input100 validate-input">
                     <select th:field="*{company_name}">
-                        <option th:each="i : ${companyList}" th:value="${i.Company_name}" th:text="${i.Company_name}"></option>
+                        <option th:each="company : ${companyList}" th:value="${company.company_name}" th:text="${company.company_name}"></option>
                     </select>
                     <span class="focus-input100"></span>
 
