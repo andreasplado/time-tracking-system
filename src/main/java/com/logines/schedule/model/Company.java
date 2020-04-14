@@ -10,7 +10,7 @@ public class Company {
     private int id;
 
     @Column(name = "company_name")
-    private String companyName;
+    private String company_name;
 
     @Column(name = "username")
     private String username;
@@ -24,12 +24,12 @@ public class Company {
         this.id = id;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getCompany_name() {
+        return company_name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
     }
 
     public void setUsername(String username) {
