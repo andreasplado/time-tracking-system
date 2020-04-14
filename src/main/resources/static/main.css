@@ -328,3 +328,7 @@ a:hover{
  .c-btn--flat, .c-btn--flat:hover, .c-btn--flat:active {
    box-shadow: none;
  }
+
+.cd-tabs__navigation{
+    background: hsl(199, 83%, 58%);
+ }
