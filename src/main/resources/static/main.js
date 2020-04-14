@@ -9,10 +9,7 @@ $(document).ready(function(){
             $("#notes").val("No notes");
         }
     });
-    $("#example1").datetimepicker({
-        allowMultidate: true,
-          multidateSeparator: ','
-     });
+    $('#datepicker').datetimepicker();
 
 });
 

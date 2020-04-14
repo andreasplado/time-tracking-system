@@ -51,9 +51,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
 
-    <!-- BOOSTRAP DATETIME PICKER -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- MATERIALIZE DATETIME PICKER -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 
     <!-- DATETIME PICKER -->
     <link href="/main.css" rel="stylesheet" type="text/css"/>
@@ -353,6 +357,8 @@ $( function() {
             </div>
             <div th:style="${role == 'USER' ? 'display:block' : 'display:none'}">
 
+                <input type="text" id="datePicker" name="start_time" th:attr="data-field='datetime'"
+                       class="form-control" th:field="*{start_time}" autocomplete="off" onfocus="blur();"/>
                 <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                     <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                     <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
