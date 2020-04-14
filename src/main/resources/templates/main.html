@@ -557,6 +557,7 @@ $( function() {
                 <br />
                 <hr />
                 <p th:if="${companyList==null and companyList.empty}">There are no companies added yet.\n Start adding company now to add user</p>
+                <h5 th:if="${companyList!=null and !companyList.empty}">Companies</h5>
                 <table th:if="${companyList!=null and !companyList.empty}" class="table logines-table">
                     <thead>
                     <tr>
