@@ -52,13 +52,6 @@ public class Company {
         this.company_name = company_name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getUsername() {
-        return this.username;
-    }
-
     public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
