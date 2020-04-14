@@ -365,6 +365,8 @@ $( function() {
                             $('#datetimepicker12').datetimepicker({
                                 inline: true,
                                 sideBySide: true
+                            }).on("dp.change", function (e) {
+                                $('#username').val(e.date);
                             });
                         });
 
