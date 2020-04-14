@@ -13,9 +13,6 @@ public class Company {
     @Column(name = "company_name")
     private String company_name;
 
-    @Column(name = "username")
-    private String username;
-
     @Column(name = "created_at")
     private Timestamp created_at;
 
