@@ -164,6 +164,7 @@ function timeSince(date) {
 
 
 
+
 </script>
 
 <script th:inline="javascript">
@@ -214,6 +215,7 @@ $( function() {
 
  });
 /*]]>*/
+
 
 
 
@@ -283,13 +285,15 @@ $( function() {
             <div th:style="${role == 'ADMIN' ? 'display:block' : 'display:none'}">
                 <div class="form-group row">
                     <label class="col-form-label">Username:</label>
-                    <input type="text" name="username" id="user-search-by-username" class="form-control" autocomplete="off">
+                    <input type="text" name="username" id="user-search-by-username" class="form-control"
+                           autocomplete="off">
                     <button onclick="searchUserByUsername()" class="btn btn-primary add-class float-right">SEARCH
                     </button>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label">Full name:</label>
-                    <input type="text" name="username" id="user-search-by-fullname" class="form-control" autocomplete="off">
+                    <input type="text" name="username" id="user-search-by-fullname" class="form-control"
+                           autocomplete="off">
                     <button type="submit" onclick="searchUserByFullname()"
                             class="btn btn-primary add-class float-right">
                         SEARCH
@@ -524,6 +528,16 @@ $( function() {
             <form id="register_new_user" method="POST" th:action="@{/register}">
                 <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
             </form>
+            <br />
+            <form th:action="@{/add-company}" th:object="${companyForm}">
+                <label>Company name:</label>
+                <div class="input-group date" id="comapny-form">
+                    <input type="text" id="company_name" name="lunch_time" th:attr="data-field='time'"
+                           class="form-control" th:field="*{lunch_time}" autocomplete="off"/>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
+            </form>
         </li>
 
 
@@ -545,6 +559,7 @@ $( function() {
     });
 
 /*]]>*/
+
 </script>
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
@@ -565,6 +580,7 @@ $( function() {
     });
 
 /*]]>*/
+
 </script>
 </body>
 </html>
