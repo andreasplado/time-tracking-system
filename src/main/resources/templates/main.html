@@ -291,16 +291,6 @@ $( function() {
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <h3>Dashboard</h3>
-
-            <form th:action="@{/add-company}" th:object="${companyForm}" method="post">
-                <label>Company name:</label>
-                <input type="text" id="company_name" name="company_name"
-                       class="form-control" th:field="*{company_name}" autocomplete="off"/>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
-            </form>
-
-
             <div th:style="${role == 'ADMIN' ? 'display:block' : 'display:none'}">
                 <div class="form-group row">
                     <label class="col-form-label">Username:</label>
@@ -552,6 +542,14 @@ $( function() {
         </li>
         <li th:if="${role == 'ADMIN'}" id="tab-company" class="cd-tabs__panel text-component">
             <div>
+                <form th:action="@{/add-company}" th:object="${companyForm}" method="post">
+                    <label>Company name:</label>
+                    <input type="text" id="company_name" name="company_name"
+                           class="form-control" th:field="*{company_name}" autocomplete="off"/>
+                    <input type="hidden" value="${usernameText}" th:field="*{username}"/>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
+                </form>
             </div>
         </li>
     </ul> <!-- cd-tabs__panels -->
