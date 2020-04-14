@@ -550,12 +550,10 @@ $( function() {
                     <label>Company name:</label>
                     <input type="text" id="company_name" name="company_name"
                            class="form-control" th:field="*{company_name}" autocomplete="off"/>
-                    <input type="hidden" id="username" name="username"
-                           class="form-control" th:field="*{username}"/>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
                 </form>
-                <!--<table th:if="${companyList!=null and !companyList.empty}" class="table logines-table">
+                <table th:if="${companyList!=null and !companyList.empty}" class="table logines-table">
                     <thead>
                     <tr>
                         <th>Company name</th>
@@ -583,7 +581,7 @@ $( function() {
                         </td>
                     </tr>
                     </tbody>
-                </table>-->
+                </table>
             </div>
         </li>
     </ul> <!-- cd-tabs__panels -->
