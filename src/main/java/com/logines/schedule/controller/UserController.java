@@ -45,6 +45,7 @@ public class UserController {
     public String getRegister(Model model, String error) {
         model.addAttribute("registerForm", new Users());
         model.addAttribute("companyList", companyService.findAll());
+        System.out.println();
 
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
