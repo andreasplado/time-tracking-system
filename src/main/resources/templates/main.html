@@ -345,8 +345,13 @@ $( function() {
                 </table>
             </div>
             <div th:style="${role == 'USER' ? 'display:block' : 'display:none'}">
-                <div id='parent'></div>
-                <div id='result'>(choose)</div>
+                <input type="text" id="alternate" size="30" />
+                <div id="datepicker"></div>
+                <script>
+                   $("#datepicker").datepicker({
+                      altField: "#alternate"
+                   });
+                </script>
 
                 <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                     <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
