@@ -345,12 +345,12 @@ $( function() {
                 </table>
             </div>
             <div th:style="${role == 'USER' ? 'display:block' : 'display:none'}">
-                <input type="text" id="alternate" size="30" />
-                <div id="datepicker"></div>
+                <div id='parent'></div>
+                <div id='result'>(choose)</div>
                 <script>
-                   $("#datepicker").datetimepicker({
-                      altField: "#alternate"
-                   });
+                    rome(parent).on('data', function (value) {
+                      result.innerText = value;
+                    });
                 </script>
 
                 <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
