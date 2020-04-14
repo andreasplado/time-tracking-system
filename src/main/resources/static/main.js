@@ -9,7 +9,6 @@ $(document).ready(function(){
             $("#notes").val("No notes");
         }
     });
-    $('#datePicker').datetimepicker();
 
 });
 
