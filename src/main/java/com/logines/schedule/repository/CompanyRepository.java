@@ -13,6 +13,6 @@ import java.util.List;
 
 @Repository
 public interface CompanyRepository extends JpaRepository<Company, Integer> {
-    @Query("SELECT s FROM Company s WHERE s.company_name=:companyName")
+    @Query(value = "SELECT s FROM logines.company s WHERE s.company_name=:companyName", nativeQuery = true)
     List<Company> findByCompanyName(@Param("companyName") String companyName);
 }
