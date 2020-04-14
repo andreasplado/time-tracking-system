@@ -167,6 +167,7 @@ function timeSince(date) {
 
 
 
+
 </script>
 
 <script th:inline="javascript">
@@ -217,6 +218,7 @@ $( function() {
 
  });
 /*]]>*/
+
 
 
 
@@ -544,10 +546,8 @@ $( function() {
             <div>
                 <form th:action="@{/add-company}" th:object="${companyForm}" method="post">
                     <label>Company name:</label>
-                    <div class="input-group date" id="comapny-form">
-                        <input type="text" id="company_name" name="company_name"
-                               class="form-control" th:field="*{company_name}" autocomplete="off"/>
-                    </div>
+                    <input type="text" id="company_name" name="company_name"
+                           class="form-control" th:field="*{company_name}" autocomplete="off"/>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
                 </form>
@@ -574,6 +574,7 @@ $( function() {
 
 
 
+
 </script>
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
@@ -594,6 +595,7 @@ $( function() {
     });
 
 /*]]>*/
+
 
 
 
