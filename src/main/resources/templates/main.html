@@ -568,8 +568,8 @@ $( function() {
                     <tr class="list-item" th:each="company : ${companyList}"
                         th:onclick="'viewCompany(' + ${company.id} +')'">
                         <td th:text="${company.company_name}"></td>
-                        <td th:text="${allWorkHour.created_at}"></td>
-                        <td th:text="${allWorkHour.updated_at}"></td>
+                        <td th:text="${company.created_at}"></td>
+                        <td th:text="${company.updated_at}"></td>
                         <td>
                             <form th:if="${role == 'ADMIN'}" th:action="@{/edit-company/} + ${company.id}"
                                   method="get">
