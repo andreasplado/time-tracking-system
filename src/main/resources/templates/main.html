@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/assets/css/style.css">
 
 
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -28,7 +28,7 @@
     <meta name="author" content="Logines">
     <meta name="description"
           content="Logines time-tracking system for workers."/>
-    <!--<script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -47,23 +47,15 @@
             integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE="
             crossorigin="anonymous"></script>
     <link rel="stylesheet"
-          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <!-- DATETIME PICKER -->
     <link href="/main.css" rel="stylesheet" type="text/css"/>
     <link href="/rome-date-time-picker/rome.css" rel="stylesheet" type="text/css"/>
-
-
-    <!--BOOSTSTRAP DATETIME PICKER -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-
-    <!--<script src="https://cdn.datedropper.com/get/qsn9j0v26bkqfwe4oo4gvlxgjioau7om"></script> -->
-    <script src="/datedropper/datedropper.pro.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
     <!--FIT TEXT -->
     <script src="/fittext/fittext.js"></script>
@@ -109,10 +101,6 @@ function searchUserByFullname(){
 
 function viewWorkHour(id){
     window.location.href="work-hour-details/" + id;
-}
-
-function viewCompany(id){
-    window.location.href="edit-company/" + id;
 }
 
 function viewUser(id){
@@ -173,11 +161,6 @@ function timeSince(date) {
   }
   return Math.floor(seconds) + " seconds";
 }
-
-
-
-
-
 
 
 
@@ -242,11 +225,6 @@ $( function() {
 
 
 
-
-
-
-
-
 </script>
 
 
@@ -294,30 +272,24 @@ $( function() {
                     <img src="/images/settings.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
-            <li th:if="${role == 'ADMIN'}">
-                <a href="#tab-company" class="cd-tabs__item">
-                    <img src="/images/company.png" width="50px" height="50px" style="padding: 6px;"/>
-                </a>
-            </li>
         </ul> <!-- cd-tabs__list -->
     </nav>
 
-    <!-- TAB DASHBOARD-->
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
             <h3>Dashboard</h3>
+
+
             <div th:style="${role == 'ADMIN' ? 'display:block' : 'display:none'}">
                 <div class="form-group row">
                     <label class="col-form-label">Username:</label>
-                    <input type="text" name="username" id="user-search-by-username" class="form-control"
-                           autocomplete="off">
+                    <input type="text" name="username" id="user-search-by-username" class="form-control" autocomplete="off">
                     <button onclick="searchUserByUsername()" class="btn btn-primary add-class float-right">SEARCH
                     </button>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label">Full name:</label>
-                    <input type="text" name="username" id="user-search-by-fullname" class="form-control"
-                           autocomplete="off">
+                    <input type="text" name="username" id="user-search-by-fullname" class="form-control" autocomplete="off">
                     <button type="submit" onclick="searchUserByFullname()"
                             class="btn btn-primary add-class float-right">
                         SEARCH
@@ -353,10 +325,6 @@ $( function() {
                 </table>
             </div>
             <div th:style="${role == 'USER' ? 'display:block' : 'display:none'}">
-                <input class="datedropper-init" type="text">
-                <input type="text" data-datedropper>
-                <input type="text" id="datePicker" name="start_time"
-                       class="form-control" autocomplete="off" onfocus="blur();"/>
                 <form method="post" th:action="@{/add-work-hour}" th:object="${workHourForm}" id="workhour-form">
                     <p style="display:none; color:red;" id="work-hour-validation-error">Please fill in all data</p>
                     <input type="text" th:value="${usernameText}" placeholder="Enter your fullname" class="form-control"
@@ -449,8 +417,6 @@ $( function() {
             </div>
         </li>
 
-
-        <!-- TAB WORKHOURS -->
         <li th:if="${role == 'ADMIN'}" id="tab-workhours" class="cd-tabs__panel text-component">
             <div class="bd-example">
                 <p style="display:none; color:red;" id="search-query-validation-error">Select dates between a range</p>
@@ -522,8 +488,6 @@ $( function() {
             </table>
         </li>
 
-
-        <!-- TAB MY PROFILE -->
         <li id="tab-my-profile" class="cd-tabs__panel text-component">
             <div>
                 <h3>My user</h3>
@@ -555,55 +519,25 @@ $( function() {
             </div>
         </li>
 
-        <!-- TAB ADMIN ACTIONS -->
         <li th:if="${role == 'ADMIN'}" id="tab-admin" class="cd-tabs__panel text-component">
-            <div>
-                <h3>Admin actions</h3>
-                <form id="register_new_user" method="POST" th:action="@{/register}">
-                    <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
-                </form>
-            </div>
-        </li>
-        <li th:if="${role == 'ADMIN'}" id="tab-company" class="cd-tabs__panel text-component">
-            <div>
-                <form th:action="@{/add-company}" th:object="${companyForm}" method="post">
+            <h3>Admin actions</h3>
+            <form id="register_new_user" method="POST" th:action="@{/register}">
+                <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
+            </form>
+            <form th:action="@{/add-company}" th:object="${companyForm}">
+                <div class="form-group">
                     <label>Company name:</label>
-                    <input type="text" id="company_name" name="company_name"
-                           class="form-control" th:field="*{company_name}" autocomplete="off"/>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
-                </form>
-                <table th:if="${companyList!=null and !companyList.empty}" class="table logines-table">
-                    <thead>
-                    <tr>
-                        <th>Company name</th>
-                        <th>Created</th>
-                        <th>Updated</th>
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr class="list-item" th:each="company : ${companyList}"
-                        th:onclick="'viewCompany(' + ${company.id} +')'">
-                        <td th:text="${company.company_name}"></td>
-                        <td th:text="${company.created_at}"></td>
-                        <td th:text="${company.updated_at}"></td>
-                        <td>
-                            <form th:if="${role == 'ADMIN'}" th:action="@{/edit-company/} + ${company.id}"
-                                  method="get">
-                                <button type="submit" class="btn btn-default">EDIT</button>
-                            </form>
-                            <form th:if="${role == 'ADMIN'}" th:action="@{/delete-company/} + ${company.id}"
-                                  method="post">
-                                <button type="submit" class="btn btn-dark delete-btn">DELETE
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                    <div class="input-group date" id="comapny-form">
+                        <input type="text" id="company_name" name="lunch_time" th:attr="data-field='time'"
+                               class="form-control" th:field="*{lunch_time}" autocomplete="off"/>
+                    </div>
+                </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
+            </form>
         </li>
+
+
     </ul> <!-- cd-tabs__panels -->
 </div> <!-- cd-tabs -->
 <script src="/assets/js/util.js"></script>
@@ -622,11 +556,6 @@ $( function() {
     });
 
 /*]]>*/
-
-
-
-
-
 </script>
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
@@ -647,11 +576,6 @@ $( function() {
     });
 
 /*]]>*/
-
-
-
-
-
 </script>
 </body>
 </html>
