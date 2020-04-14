@@ -555,7 +555,7 @@ $( function() {
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
                 </form>
-                <h5 th:if="${companyList==null}">No companies found</h5>
+                <h5 th:if="${companyList==null and companyList.empty}">No companies found</h5>
                 <table th:if="${companyList!=null and !companyList.empty}" class="table logines-table">
                     <thead>
                     <tr>
