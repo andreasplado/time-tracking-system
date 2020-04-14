@@ -29,6 +29,9 @@ public class Users {
     @Column(name = "id_code")
     private String id_code;
 
+    @Column(name = "company_name")
+    private String company_name;
+
     @Column(name = "phone")
     private String phone;
 
@@ -102,5 +105,13 @@ public class Users {
     }
     public String getPhone() {
         return this.phone;
+    }
+
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
+    }
+
+    public String getCompany_name(){
+        return this.company_name;
     }
 }

@@ -133,6 +133,14 @@
 
                 </div>
 
+                <div class="wrap-input100 validate-input">
+                    <select th:field="*{company_name}">
+                        <option th:each="i : ${companyList}" th:value="${i.company_name}" th:text="${i.company_name}"></option>
+                    </select>
+                    <span class="focus-input100"></span>
+
+                </div>
+
                 <div class="container-login100-form-btn">
                     <button class="btn btn-primary float-right login100-form-btn m-t-30" >
                         Register user
