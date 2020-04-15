@@ -335,7 +335,7 @@ a:hover{
  .rd-time{
     display: inline-block;
     margin-top: -302px!important;
-    margin-left: -39px;
+    margin-left: -146px;
  }
 
 .rd-day-selected, .rd-time-selected, .rd-time-option:hover {
@@ -347,6 +347,6 @@ a:hover{
 .rd-day-selected, .rd-time-selected, .rd-time-option:hover {
     background-color: #fff;
 }
-..rd-container-attachment{
+.rd-container-attachment{
     opacity: 0.9;
 }
