@@ -1,5 +1,6 @@
 package com.logines.schedule.controller;
 
+import com.logines.schedule.model.Company;
 import com.logines.schedule.model.Users;
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.CompanyService;
@@ -44,9 +45,8 @@ public class UserController {
     @GetMapping("/register")
     public String getRegister(Model model, String error) {
         model.addAttribute("registerForm", new Users());
-        model.addAttribute("companyList", companyService.findAll());
-        System.out.println();
-
+        List<Company> companyList = companyService.findAll();
+        model.addAttribute("companyList", companyList);
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
