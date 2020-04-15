@@ -244,7 +244,7 @@ $( function() {
                         <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-end-time'"
                             th:text="${userWorkHour.end_time}"></td>
                         <td th:text="${userWorkHour.lunch_time}"></td>
-                        <td style="overflow-wrap: break-word;" th:text="${userWorkHour.notes}"></td>
+                        <td style="overflow-wrap: break-word;" th:text="${userWorkHour.notes}">
                             <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
                                   method="get">
                                 <button type="submit" class="btn btn-default">EDIT</button>
@@ -254,6 +254,7 @@ $( function() {
                                 <button type="submit" class="btn btn-dark delete-btn">DELETE
                                 </button>
                             </form>
+                        </td>
                         </td>
                     </tr>
                     </tbody>
