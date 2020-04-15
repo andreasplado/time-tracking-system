@@ -346,3 +346,6 @@ a:hover{
 .rd-day-selected, .rd-time-selected, .rd-time-option:hover {
     background-color: #fff;
 }
+..rd-container-attachment{
+    opacity: 0.9;
+}
