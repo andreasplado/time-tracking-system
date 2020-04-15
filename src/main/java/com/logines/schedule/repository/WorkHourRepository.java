@@ -37,6 +37,9 @@ public interface WorkHourRepository extends JpaRepository<WorkHour, Integer> {
     @Query(value = "SELECT s.* FROM logines.work_hour s WHERE s.start_time between ? and ? and s.username= ?", nativeQuery = true)
     List<WorkHour> findBetweenTimeAndUsername(String startTime, String endTime, String username);
 
+    @Query(value = "SELECT s.* FROM logines.work_hour s WHERE s.username= ?", nativeQuery = true)
+    List<WorkHour> findByUsername(String username);
+
     @Query(value = "SELECT s.* FROM logines.work_hour s WHERE s.start_time between ? and ? and s.username= ?", nativeQuery = true)
     List<WorkHour> findByStartTimeAndUsername(String startTime, String username);
 

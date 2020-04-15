@@ -128,6 +128,11 @@ public class WorkHourController {
             model.addAttribute("workHours", workHourService.findBetweenTimeAndUsername(startTime, endTime, username));
         }
 
+        if(CustomStringUtils.isNullOrEmpty(startTime) && CustomStringUtils.isNullOrEmpty(endTime) && !CustomStringUtils.isNullOrEmpty(username)){
+            model.addAttribute("lol", "Looking for " + username);
+            model.addAttribute("workHours", workHourService.findByUsername(username));
+        }
+
         return "search_users_work_hour_query";
     }
 
