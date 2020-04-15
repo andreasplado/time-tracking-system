@@ -53,6 +53,46 @@
     <link rel="stylesheet" type="text/css" href="/login_style/css/util.css">
     <link rel="stylesheet" type="text/css" href="/login_style/css/main.css">
     <!--===============================================================================================-->
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        $( function() {
+            $('#validate-form').submit(function() {
+                if($.trim($("#end_time_range").val()) === "" && $.trim($("#start_time_range").val()) != ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#username").val()) != ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#password").val()) != ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#passwordConfirm").val()) != ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#fullname").val()) != ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#email").val()) != ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#id_code").val()) != ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#phone").val()) != ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+            });
+         });
+        /*]]>*/
+    </script>
 </head>
 
 <body>
@@ -62,7 +102,7 @@
             <div class="login100-pic js-tilt" data-tilt>
                 <img src="/login_style/images/img-01.png">
             </div>
-
+            <p style="display:none; color:red;" id="validation-error">All fields are required.</p>
             <form class="login100-form validate-form" th:action="@{/register}" th:object="${registerForm}" method="POST">
                 <p class="login100-form-title" style="font-size: 30px;">
                     Register a new worker
