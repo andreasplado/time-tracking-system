@@ -332,3 +332,8 @@ a:hover{
 .cd-tabs__navigation{
     background: hsl(199, 83%, 58%);
  }
+
+ .rd-time{
+    position: relative;
+    margin-top: -301px;
+ }
