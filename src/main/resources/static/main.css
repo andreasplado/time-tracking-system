@@ -337,3 +337,9 @@ a:hover{
     position: relative;
     margin-top: -301px;
  }
+
+.rd-day-selected, .rd-time-selected, .rd-time-option:hover {
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+}
