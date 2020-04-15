@@ -277,8 +277,7 @@ a:hover{
 .rd-time {
     position: absolute!important;
     display: inline-block;
-    margin-top: -301px;
-    margin-left: -228px;
+    margin-top: -300px;
     min-width: 80px;
  }
 
@@ -335,7 +334,6 @@ a:hover{
 
  .rd-time{
     position: relative;
-    margin-top: -300px;
     margin-top: -300px!important;
  }
 
