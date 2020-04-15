@@ -333,12 +333,16 @@ a:hover{
  }
 
  .rd-time{
-    position: relative;
-    margin-top: -300px!important;
+    display: inline-block;
+    margin-top: -302px!important;
  }
 
 .rd-day-selected, .rd-time-selected, .rd-time-option:hover {
     cursor: pointer;
     background-color: #333;
     color: #fff;
+}
+
+.rd-day-selected, .rd-time-selected, .rd-time-option:hover {
+    background-color: #fff;
 }
