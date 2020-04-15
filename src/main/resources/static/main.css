@@ -335,7 +335,8 @@ a:hover{
 
  .rd-time{
     position: relative;
-    margin-top: -301px;
+    margin-top: -300px;
+    margin-top: -300px!important;
  }
 
 .rd-day-selected, .rd-time-selected, .rd-time-option:hover {
