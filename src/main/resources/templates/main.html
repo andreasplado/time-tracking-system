@@ -736,17 +736,21 @@ $( function() {
     var start_time = document.querySelector('#start_time');
     var end_time = document.querySelector('#end_time');
 
+     end_time_range.addEventListener('click', function() {
+      start_time_range_picker.open();
+    }, true);
+
     end_time_range.addEventListener('click', function() {
       end_time_range_picker.open();
-    }, false);
+    }, true);
 
    start_time.addEventListener('click', function() {
       start_time_picker.open();
-    }, false);
+    }, true);
 
     end_time.addEventListener('click', function() {
       end_time_picker.open();
-    }, false);
+    }, true);
 
 
 
