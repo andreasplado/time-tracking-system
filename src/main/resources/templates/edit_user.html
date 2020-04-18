@@ -231,7 +231,8 @@ $( function() {
                         <th scope="col">Work start time</th>
                         <th scope="col">Work end time</th>
                         <th scope="col">Lunch time</th>
-                        <th scope="col">Added</th>
+                        <th scope="col">Notes</th>
+                        <th scope="col">Total</th>
                         <th scope="col" th:if="${role == 'ADMIN'}">Actions</th>
 
                     </tr>
@@ -245,6 +246,8 @@ $( function() {
                             th:text="${userWorkHour.end_time}"></td>
                         <td th:text="${userWorkHour.lunch_time}"></td>
                         <td style="overflow-wrap: break-word;" th:text="${userWorkHour.notes}"></td>
+                        <td th:text=""></td>
+
                         <td scope="col" th:if="${role == 'ADMIN'}">
                             <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
                                   method="get">
@@ -283,6 +286,24 @@ function editUserBtn() {
 }
 
 </script>
+
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+
+    var theList = [[${userWorkHours}]]
+        for (i = 0; i < theList.length; i++) {
+        var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss");
+        var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss");
+        var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
+        var TotalTime = ((EndTime.subtract(StartTime)).subtract(Lunch)).format("HH:mm:ss");
+        console.log(TotalTime);
+    }
+
+    /*]]>*/
+</script>
+
+
+
 <script src="/assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
 <script src="/assets/js/main.js"></script>
 <script src='/rome-date-time-picker/rome.js'></script>
