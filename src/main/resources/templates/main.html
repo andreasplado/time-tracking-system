@@ -380,7 +380,7 @@ $( function() {
                         <label>Work begin time:</label>
                         <div class="input-group date" id="work-begin-time">
                             <div id="start_time_inline"></div>
-                            <input type="text" id="start_time" name="start_time" th:attr="data-field='datetime'"
+                            <input type="text" id="start_time" name="start_time"
                                    class="form-control" th:field="*{start_time}" autocomplete="off" onfocus="blur();"/>
                         </div>
                     </div>
@@ -388,7 +388,7 @@ $( function() {
                         <h6 th:text="${workhouraddingError}">Test</h6>
                         <label>Work end time:</label>
                         <div class="input-group date" id="work-end-time">
-                            <input type="text" id="end_time" name="end_time" th:attr="data-field='datetime'"
+                            <input type="text" id="end_time" name="end_time"
                                    class="form-control" th:field="*{end_time}" autocomplete="off" onfocus="blur();"/>
                         </div>
                     </div>
@@ -680,31 +680,31 @@ $( function() {
 
     var start_time_range_picker = new MaterialDatetimePicker({
         el: document.querySelector('#start_time_range'),
-        format: 'DD/MM/YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm:ss',
         default: moment()
         });
 
     var end_time_range_picker = new MaterialDatetimePicker({
         el: document.querySelector('#end_time_range'),
-        format: 'DD/MM/YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm:ss',
         default: moment()
         });
 
     var start_time_picker = new MaterialDatetimePicker({
         el: document.querySelector('#start_time'),
-        format: 'DD/MM/YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm:ss',
         default: moment()
         });
 
     var end_time_picker = new MaterialDatetimePicker({
         el: document.querySelector('#end_time'),
-        format: 'DD/MM/YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm:ss',
         default: moment()
         });
 
 
     var start_time_picker = new MaterialDatetimePicker({
-        format: 'DD/MM/YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm:ss',
         default: moment()
     })
       .on('submit', function(d) {
@@ -712,7 +712,7 @@ $( function() {
     });
 
     var end_time_picker = new MaterialDatetimePicker({
-        format: 'DD/MM/YYYY HH:mm',
+        format: 'YYYY-MM-DD HH:mm:ss',
         default: moment()
     });
 
