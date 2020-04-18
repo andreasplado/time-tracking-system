@@ -350,3 +350,7 @@ a:hover{
 .rd-container-attachment{
     opacity: 0.9;
 }
+
+.c-datepicker__clock{
+    padding: 363px 0 20px 0!important;
+}
