@@ -301,11 +301,10 @@ function editUserBtn() {
         var hours = duration.asMilliseconds();
 
         var LunchNew = moment(theList[i].lunch_time, "HH:mm:ss").valueOf();
-        var LunchTime = LunchNew.asMilliseconds();
 
 
 
-        $("#user-work-hour-" + theList[i].id +"-sum").append("Millisekundid lunchtime: " + LunchTime);
+        $("#user-work-hour-" + theList[i].id +"-sum").append("Millisekundid lunchtime: " + LunchNew);
     }
 
     /*]]>*/
