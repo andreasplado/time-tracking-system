@@ -246,7 +246,6 @@ $( function() {
                             th:text="${userWorkHour.end_time}"></td>
                         <td th:text="${userWorkHour.lunch_time}"></td>
                         <td style="overflow-wrap: break-word;" th:text="${userWorkHour.notes}"></td>
-                        <td th:text=""></td>
 
                         <td scope="col" th:if="${role == 'ADMIN'}">
                             <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
