@@ -204,7 +204,7 @@ $( function() {
                         <input type="hidden" th:value="${user.password}" name="password" th:id="password"/>
                         <button type="submit" class="btn btn-success">EDIT</button>
                     </form>
-                    <form th:if="${role == 'ADMIN' and user.username!= usernameText}" onsubmit="return confirm('Do you really want to delete the user?');
+                    <form th:if="${role == 'ADMIN' and user.username!= usernameText}" onsubmit="return confirm('Do you really want to delete the user?');"
                           th:action="@{/delete-user/} + ${user.username}" th:object="${user}" method="post">
                         <button type="submit" class="btn btn-dark">DELETE</button>
                     </form>
