@@ -354,3 +354,7 @@ a:hover{
 .c-datepicker__toggle {
     top: 150px;
 }
+
+.c-datepicker__header-date {
+    height: 186px!important;
+}
