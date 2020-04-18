@@ -299,10 +299,11 @@ function editUserBtn() {
 
         var duration = moment.duration(EndTime.diff(StartTime));
         var hours = duration.asMilliseconds();
+        var LunchTime = Lunch.asMilliseconds();
 
 
 
-        $("#user-work-hour-" + theList[i].id +"-sum").append("Millisekundid: " + hours);
+        $("#user-work-hour-" + theList[i].id +"-sum").append("Millisekundid lunchtime: " + LunchTime);
     }
 
     /*]]>*/
