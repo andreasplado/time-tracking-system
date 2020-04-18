@@ -565,101 +565,12 @@ $( function() {
 
         <li th:if="${role == 'ADMIN' and !companyList.empty}" id="tab-admin" class="cd-tabs__panel text-component">
             <p style="display:none; color:red;" id="user-registration-validation-error">All fields are required.</p>
-            <form class="login100-form user-registration-validate-form" th:action="@{/register}" th:object="${registerForm}"
-                  method="POST">
-                <h5>
-                    Register a new worker
-                </h5>
-                <br/>
-                <p th:text="${error}">Test</p>
-                <br/>
-
-                <label><span class="fa fa-envelope" aria-hidden="true"
-                             style="color: azure;font-size: 40px;padding-top: 15px;"/></label>
-                <div class="wrap-input100 validate-input">
-                    <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"
-                           th:field="*{username}"/>
-                    <span class="focus-input100"></span>
-                </div>
-
-                <label><span class="fa fa-lock" aria-hidden="true"
-                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input">
-                    <input type="password" class="form-control" id="password" placeholder="Enter password"
-                           name="password"
-                           th:field="*{password}"/>
-                    <span class="focus-input100"></span>
-
-                </div>
-                <label><span class="fa fa-key" aria-hidden="true"
-                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input">
-                    <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password"
-                           name="passwordConfirm" th:field="*{passwordConfirm}"/>
-                    <span class="focus-input100"></span>
-
-                </div>
-                <label><span class="fa fa-user-md" aria-hidden="true"
-                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input">
-                    <input type="text" class="form-control" id="fullname" placeholder="Full name"
-                           name="fullname" th:field="*{fullname}"/>
-                    <span class="focus-input100"></span>
-
-                </div>
-                <label><span class="fa fa-envelope" aria-hidden="true"
-                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input">
-                    <input type="email" class="form-control" id="email" placeholder="E-mail"
-                           name="email" th:field="*{email}"/>
-                    <span class="focus-input100"></span>
-
-                </div>
-                <label><span class="fa fa-id-card" aria-hidden="true"
-                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input">
-                    <input type="number" class="form-control" id="id_code" placeholder="ID code"
-                           name="id_code" th:field="*{id_code}"/>
-                    <span class="focus-input100"></span>
-
-                </div>
-
-                <label><span class="fa fa-phone" aria-hidden="true"
-                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input">
-                    <input type="number" class="form-control" id="phone" placeholder="phone"
-                           name="phone" th:field="*{phone}"/>
-                    <span class="focus-input100"></span>
-
-                </div>
-
-                <label><span class="fa fa-lock" aria-hidden="true"
-                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input">
-                    <select th:field="*{role}">
-                        <option th:value="'USER'" th:text="USER"></option>
-                        <option th:value="'ADMIN'" th:text="ADMIN"></option>
-                    </select>
-                    <span class="focus-input100"></span>
-
-                </div>
-
-                <div class="wrap-input100 validate-input">
-                    <select th:field="*{company_name}">
-                        <option th:each="company : ${companyList}" th:value="${company.company_name}"
-                                th:text="${company.company_name}"></option>
-                    </select>
-                    <span class="focus-input100"></span>
-
-                </div>
-
-                <div class="container-login100-form-btn">
-                    <button class="btn btn-primary float-right login100-form-btn m-t-30">
-                        Register user
-                    </button>
-                </div>
-                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-            </form>
+            <div>
+                <h3>Admin actions</h3>
+                <form id="register_new_user" method="get" th:action="@{/register}">
+                    <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
+                </form>
+            </div>
         </li>
 
 

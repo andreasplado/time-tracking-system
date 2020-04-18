@@ -47,7 +47,6 @@ public class UserController {
         model.addAttribute("registerForm", new Users());
         List<Company> companyList = companyService.findAll();
         model.addAttribute("companyList", companyList);
-        System.out.println(companyList);
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
 
