@@ -231,7 +231,7 @@ $( function() {
 <script th:inline="javascript">
         /*<![CDATA[*/
         $( function() {
-            $('#validate-form').submit(function() {
+            $('#user-registration-validate-form').submit(function() {
                 if($.trim($("#username").val()) == ""){
                     $("#user-registration-validation-error").show();
                     return false;
@@ -570,7 +570,7 @@ $( function() {
 
         <li th:if="${role == 'ADMIN' and !companyList.empty}" id="tab-admin" class="cd-tabs__panel text-component">
             <p style="display:none; color:red;" id="user-registration-validation-error">All fields are required.</p>
-            <form class="login100-form validate-form" th:action="@{/register}" th:object="${registerForm}"
+            <form class="login100-form user-registration-validate-form" th:action="@{/register}" th:object="${registerForm}"
                   method="POST">
                 <h5>
                     Register a new worker
