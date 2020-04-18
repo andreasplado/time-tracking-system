@@ -43,13 +43,12 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String getRegister(Model model, Principal principal) {
+    public String getRegister(Model model, String error) {
         model.addAttribute("registerForm", new Users());
-        if(principal != null){
-            List<Company> companyList = companyService.findAll();
-            model.addAttribute("companyList", companyList);
-        }
-
+        List<Company> companyList = companyService.findAll();
+        model.addAttribute("companyList", companyList);
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
 
         return "register";
     }
