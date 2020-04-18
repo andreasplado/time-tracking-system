@@ -563,7 +563,7 @@ $( function() {
             </div>
         </li>
 
-        <li th:if="${role == 'ADMIN' and !companyList.empty}" id="tab-admin" class="cd-tabs__panel text-component">
+        <li th:if="${role == 'ADMIN'}" id="tab-admin" class="cd-tabs__panel text-component">
             <p style="display:none; color:red;" id="user-registration-validation-error">All fields are required.</p>
             <div>
                 <p th:if="${companyList == null}">There are no companies added yet.\n Start adding company now to add
