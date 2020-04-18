@@ -65,8 +65,6 @@ public class MainController {
         model.addAttribute("workHourForm", new WorkHour());
         model.addAttribute("companyForm", new Company());
         model.addAttribute("registerForm", new Users());
-        List<Company> companyList = companyService.findAll();
-        model.addAttribute("companyList", companyList);
 
         if (principal != null) {
             model.addAttribute("usernameText", principal.getName());
