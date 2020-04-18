@@ -290,8 +290,8 @@ function editUserBtn() {
 <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
 
-    var theList = [[${userWorkHours}]]
-        for (i = 0; i < theList.length; i++) {
+    var theList = [[${userWorkHours}]];
+    for (i = 0; i < theList.length; i++) {
         var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss");
         var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss");
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
