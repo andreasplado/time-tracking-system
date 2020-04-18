@@ -65,7 +65,7 @@
 
     <!-- DATETIME PICKER -->
     <link href="/main.css" rel="stylesheet" type="text/css"/>
-    <!--<link href="/rome-date-time-picker/rome.css" rel="stylesheet" type="text/css"/> -->
+    <link href="/rome-date-time-picker/rome.css" rel="stylesheet" type="text/css"/>
 
     <!--FIT TEXT -->
     <script src="/fittext/fittext.js"></script>
@@ -628,8 +628,8 @@ $( function() {
 </div> <!-- cd-tabs -->
 <script src="/assets/js/util.js"></script>
 <script src="/assets/js/main.js"></script>
-<!-- <script src='/rome-date-time-picker/rome.js'></script> -->
-<!-- <script src='/rome-date-time-picker/example.js'></script> -->
+<script src='/rome-date-time-picker/rome.js'></script>
+<script src='/rome-date-time-picker/example.js'></script>
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
     var allUsers = [];
@@ -703,27 +703,17 @@ $( function() {
         format: 'YYYY-MM-DD HH:mm:ss',
         default: moment()
     });
-    var lunch_time_picker = new MaterialDatetimePicker({
-        el: document.querySelector('#lunch_time'),
-        format: 'HH:mm:ss',
-        default: moment()
-    });
 
     var end_time_range = document.querySelector('#end_time_range');
     var start_time_range = document.querySelector('#start_time_range');
     var lunch_time = document.querySelector('#lunch_time');
     var start_time = document.querySelector('#start_time');
     var end_time = document.querySelector('#end_time');
-    var lunch_time = document.querySelector('#lunch_time');
 
 
    start_time.addEventListener('click', function() {
       start_time_picker.open();
       console.log("start time selected");
-    }, false);
-
-    lunch_time.addEventListener('click', function() {
-      lunch_time_picker.open();
     }, false);
 
     end_time.addEventListener('click', function() {
