@@ -296,7 +296,7 @@ function editUserBtn() {
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
         var TotalTime = ((EndTime.subtract(StartTime)).subtract(Lunch)).format("HH:mm:ss");
         console.log("Total time " + i + " row" + TotalTime);
-        $( "'#user-work-hour-"+ ${theList[i].id} + "-sum'" ).append(TotalTime);
+        $( "#user-work-hour-"+ ${theList[i].id} + "-sum" ).append(TotalTime);
     }
 
     /*]]>*/
