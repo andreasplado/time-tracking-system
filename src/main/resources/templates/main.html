@@ -703,11 +703,18 @@ $( function() {
         format: 'YYYY-MM-DD HH:mm:ss',
         default: moment()
     });
+    var lunch_time_picker = new MaterialDatetimePicker({
+        el: document.querySelector('#lunch_time'),
+        format: 'HH:mm:ss',
+        default: moment()
+    });
 
     var end_time_range = document.querySelector('#end_time_range');
     var start_time_range = document.querySelector('#start_time_range');
+    var lunch_time = document.querySelector('#lunch_time');
     var start_time = document.querySelector('#start_time');
     var end_time = document.querySelector('#end_time');
+    var lunch_time = document.querySelector('#lunch_time');
 
 
    start_time.addEventListener('click', function() {
@@ -715,10 +722,15 @@ $( function() {
       console.log("start time selected");
     }, false);
 
+    lunch_time.addEventListener('click', function() {
+      lunch_time_picker.open();
+    }, false);
+
     end_time.addEventListener('click', function() {
       end_time_picker.open();
       console.log("end time selected");
     }, false);
+
 
     end_time_range.addEventListener('click', function() {
       end_time_range_picker.open();
