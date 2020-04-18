@@ -755,7 +755,7 @@ $( function() {
         default: moment()
     })
       .on('submit', function(d) {
-        end_time_time_range.value = d;
+        end_time_range.value = d;
     });
 
     var start_time_picker = new MaterialDatetimePicker({
@@ -763,7 +763,7 @@ $( function() {
         default: moment()
     })
       .on('submit', function(d) {
-        end_time_time_range.value = d;
+        start_time.value = d;
     });
 
     var end_time_picker = new MaterialDatetimePicker({
@@ -771,7 +771,7 @@ $( function() {
         default: moment()
     })
       .on('submit', function(d) {
-        end_time_time_range.value = d;
+        end_time.value = d;
     });
 
     var start_time_range = document.querySelector('#start_time_range');
