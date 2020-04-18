@@ -566,7 +566,7 @@ $( function() {
         <li th:if="${role == 'ADMIN' and !companyList.empty}" id="tab-admin" class="cd-tabs__panel text-component">
             <p style="display:none; color:red;" id="user-registration-validation-error">All fields are required.</p>
             <div>
-                <p th:if="${companyList == null and companyList.empty}">There are no companies added yet.\n Start adding company now to add
+                <p th:if="${companyList == null}">There are no companies added yet.\n Start adding company now to add
                     user</p>
                 <h3>Admin actions</h3>
                 <form th:if="${companyList != null and !companyList.empty}" id="register_new_user" method="get" th:action="@{/register}">
