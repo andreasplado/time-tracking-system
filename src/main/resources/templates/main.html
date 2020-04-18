@@ -536,7 +536,7 @@ $( function() {
             </div>
         </li>
 
-        <li th:if="${role == 'ADMIN'}" id="tab-admin" class="cd-tabs__panel text-component">
+        <li th:if="${role == 'ADMIN' and !companyList.empty}" id="tab-admin" class="cd-tabs__panel text-component">
             <p style="display:none; color:red;" id="validation-error">All fields are required.</p>
             <form class="login100-form validate-form" th:action="@{/register}" th:object="${registerForm}" method="POST">
                 <h5>
@@ -639,7 +639,7 @@ $( function() {
                 <br />
                 <br />
                 <hr />
-                <p th:if="${companyList==null and companyList.empty}">There are no companies added yet.\n Start adding company now to add user</p>
+                <p th:if="${companyList.empty}">There are no companies added yet.\n Start adding company now to add user</p>
                 <h5 th:if="${companyList!=null and !companyList.empty}">Companies</h5>
                 <table th:if="${companyList!=null and !companyList.empty}" class="table logines-table">
                     <thead>
