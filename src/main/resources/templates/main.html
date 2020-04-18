@@ -750,11 +750,29 @@ $( function() {
         output.innerText = d;
       });
 
-    var el = document.querySelector('.c-datepicker-btn');
+    var start_time_range = document.querySelector('#start_time_range');
+    var end_time_range = document.querySelector('#end_time_range');
 
-    el.addEventListener('click', function() {
+    var start_time = document.querySelector('#start_time');
+    var end_time = document.querySelector('#end_time');
+
+    start_time_range.addEventListener('click', function() {
       picker.open();
     }, false);
+
+    end_time_range.addEventListener('click', function() {
+      picker.open();
+    }, false);
+
+   start_time.addEventListener('click', function() {
+      picker.open();
+    }, false);
+
+    end_time.addEventListener('click', function() {
+      picker.open();
+    }, false);
+
+
 
 </script>
 
