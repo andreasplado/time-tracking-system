@@ -743,7 +743,8 @@ $( function() {
 <script>
 
     var picker = new MaterialDatetimePicker({
-        format: 'dd/MM/YY'
+        format: 'dd/MM/YY',
+        default: moment()
     })
       .on('submit', function(d) {
         output.innerText = d;
