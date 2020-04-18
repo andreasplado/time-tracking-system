@@ -539,11 +539,11 @@ $( function() {
         <li th:if="${role == 'ADMIN'}" id="tab-admin" class="cd-tabs__panel text-component">
             <p style="display:none; color:red;" id="validation-error">All fields are required.</p>
             <form class="login100-form validate-form" th:action="@{/register}" th:object="${registerForm}" method="POST">
-                <p class="login100-form-title" style="font-size: 30px;">
+                <h5>
                     Register a new worker
-                </p>
+                </h5>
                 <br />
-                <p class="login100-form-error" style="color: azure;" th:text="${error}">Test</p>
+                <p th:text="${error}">Test</p>
                 <br />
 
                 <label><span class="fa fa-envelope" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"/></label>
