@@ -246,7 +246,7 @@ $( function() {
                             th:text="${userWorkHour.end_time}"></td>
                         <td th:text="${userWorkHour.lunch_time}"></td>
                         <td style="overflow-wrap: break-word;" th:text="${userWorkHour.notes}"></td>
-
+                        <td th:id="'user-work-hour-'+ ${userWorkHour.id} + '-sum'"></td>
                         <td scope="col" th:if="${role == 'ADMIN'}">
                             <form th:if="${role == 'ADMIN'}" th:action="@{/edit-work-hour/} + ${userWorkHour.id}"
                                   method="get">
@@ -296,6 +296,7 @@ function editUserBtn() {
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
         var TotalTime = ((EndTime.subtract(StartTime)).subtract(Lunch)).format("HH:mm:ss");
         console.log("Total time " + i + " row" + TotalTime);
+        $( "'#user-work-hour-"+ ${theList[i].id} + "-sum'" ).append(TotalTime);
     }
 
     /*]]>*/
