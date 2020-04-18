@@ -682,53 +682,35 @@ $( function() {
         el: document.querySelector('#start_time_range'),
         format: 'DD/MM/YYYY HH:mm',
         default: moment()
-        })
-      .on('submit', function(d) {
-        start_time_range.value = d;
-    });
+        });
 
     var end_time_range_picker = new MaterialDatetimePicker({
         el: document.querySelector('#end_time_range'),
         format: 'DD/MM/YYYY HH:mm',
         default: moment()
-        })
-      .on('submit', function(d) {
-        end_time_range.value = d;
-    });
+        });
 
     var start_time_picker = new MaterialDatetimePicker({
         el: document.querySelector('#start_time'),
         format: 'DD/MM/YYYY HH:mm',
         default: moment()
-        })
-      .on('submit', function(d) {
-        start_time.value = d;
-    });
+        });
 
     var end_time_picker = new MaterialDatetimePicker({
         el: document.querySelector('#end_time'),
         format: 'DD/MM/YYYY HH:mm',
         default: moment()
-        })
-      .on('submit', function(d) {
-        end_time.value = d;
     });
 
 
     var start_time_picker = new MaterialDatetimePicker({
         format: 'DD/MM/YYYY HH:mm',
         default: moment()
-    })
-      .on('submit', function(d) {
-        start_time.value = d;
     });
 
     var end_time_picker = new MaterialDatetimePicker({
         format: 'DD/MM/YYYY HH:mm',
         default: moment()
-    })
-      .on('submit', function(d) {
-        end_time.value = d;
     });
 
     var end_time_range = document.querySelector('#end_time_range');
@@ -738,19 +720,19 @@ $( function() {
 
      end_time_range.addEventListener('click', function() {
       end_time_range_picker.open();
-    }, true);
+    }, false);
 
     end_time_range.addEventListener('click', function() {
       start_time_range_picker.open();
-    }, true);
+    }, false);
 
    start_time.addEventListener('click', function() {
       start_time_picker.open();
-    }, true);
+    }, false);
 
     end_time.addEventListener('click', function() {
       end_time_picker.open();
-    }, true);
+    }, false);
 
 
 
