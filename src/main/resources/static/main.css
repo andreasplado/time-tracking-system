@@ -277,7 +277,6 @@ a:hover{
 .rd-time {
     position: absolute!important;
     display: inline-block;
-    margin-top: -300px;
     min-width: 80px;
  }
 
@@ -334,8 +333,6 @@ a:hover{
 
  .rd-time{
     display: inline-block;
-    margin-top: -302px!important;
-    margin-left: -146px;
  }
 
 .rd-day-selected, .rd-time-selected, .rd-time-option:hover {
