@@ -298,18 +298,6 @@ function editUserBtn() {
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
         var TotalTime = ((EndTime.subtract(StartTime)).subtract(Lunch)).format("HH");
         console.log("Total time " + i + " row" + TotalTime);
-
-        var duration = moment.duration(EndTime.diff(StartTime));
-        var hours = duration.asMilliseconds();
-
-        var LunchNew = moment(theList[i].lunch_time, "h:mm").valueOf();
-
-        var milliSeconds =  hours - LunchNew;
-
-        var finalResult = moment.duration(milliSeconds).format("h:mm");
-
-
-
         $("#user-work-hour-" + theList[i].id +"-sum").append(TotalTime);
     }
 
