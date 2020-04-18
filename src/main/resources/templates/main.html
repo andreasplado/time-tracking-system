@@ -742,13 +742,37 @@ $( function() {
 
 <script>
 
-    var picker = new MaterialDatetimePicker({
+    var start_time_range_picker = new MaterialDatetimePicker({
         format: 'dd/MM/YY',
         default: moment()
     })
       .on('submit', function(d) {
-        output.innerText = d;
-      });
+        start_time_range.value = d;
+    });
+
+    var end_time_range_picker = new MaterialDatetimePicker({
+        format: 'dd/MM/YY',
+        default: moment()
+    })
+      .on('submit', function(d) {
+        end_time_time_range.value = d;
+    });
+
+    var start_time_picker = new MaterialDatetimePicker({
+        format: 'dd/MM/YY',
+        default: moment()
+    })
+      .on('submit', function(d) {
+        end_time_time_range.value = d;
+    });
+
+    var end_time_picker = new MaterialDatetimePicker({
+        format: 'dd/MM/YY',
+        default: moment()
+    })
+      .on('submit', function(d) {
+        end_time_time_range.value = d;
+    });
 
     var start_time_range = document.querySelector('#start_time_range');
     var end_time_range = document.querySelector('#end_time_range');
@@ -757,19 +781,19 @@ $( function() {
     var end_time = document.querySelector('#end_time');
 
     start_time_range.addEventListener('click', function() {
-      picker.open();
+      start_time_range_picker.open();
     }, false);
 
     end_time_range.addEventListener('click', function() {
-      picker.open();
+      end_time_range_picker.open();
     }, false);
 
    start_time.addEventListener('click', function() {
-      picker.open();
+      start_time_picker.open();
     }, false);
 
     end_time.addEventListener('click', function() {
-      picker.open();
+      end_time_picker.open();
     }, false);
 
 
