@@ -569,7 +569,7 @@ $( function() {
                 <p th:if="${companyList == null}">There are no companies added yet.\n Start adding company now to add
                     user</p>
                 <h3>Admin actions</h3>
-                <form th:if="${companyList != null and !companyList.empty}" id="register_new_user" method="get" th:action="@{/register}">
+                <form th:if="${companyList != null}" id="register_new_user" method="get" th:action="@{/register}">
                     <button class="btn btn-primary" type="submit">REGISTER NEW USER</button>
                 </form>
             </div>
