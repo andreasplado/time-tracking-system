@@ -737,20 +737,20 @@ $( function() {
     var end_time = document.querySelector('#end_time');
 
      end_time_range.addEventListener('click', function() {
-      start_time_range_picker.open();
-    });
+      end_time_range_picker.open();
+    }, true);
 
     end_time_range.addEventListener('click', function() {
-      end_time_range_picker.open();
-    });
+      start_time_range_picker.open();
+    }, true);
 
    start_time.addEventListener('click', function() {
       start_time_picker.open();
-    });
+    }, true);
 
     end_time.addEventListener('click', function() {
       end_time_picker.open();
-    });
+    }, true);
 
 
 
