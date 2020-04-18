@@ -170,6 +170,7 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
+
 </script>
 
 <script th:inline="javascript">
@@ -221,6 +222,7 @@ $( function() {
  });
 /*]]>*/
 
+
 </script>
 
 <script th:inline="javascript">
@@ -263,6 +265,7 @@ $( function() {
             });
          });
         /*]]>*/
+
 
 </script>
 
@@ -380,18 +383,16 @@ $( function() {
                         <label>Work begin time:</label>
                         <div class="input-group date" id="work-begin-time">
                             <div id="start_time_inline"></div>
-                                <input id="start_time" name="start_time" th:field="*{start_time}" type="text"
-                                       th:attr="data-field='datetime'" class="form-control" autocomplete="off"/>
+                            <input id="start_time" name="start_time" th:field="*{start_time}" type="text"
+                                   th:attr="data-field='datetime'" class="form-control" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <h6 th:text="${workhouraddingError}">Test</h6>
                         <label>Work end time:</label>
                         <div class="input-group date" id="work-end-time">
-                            <div class="col-sm-10">
-                                <input id="end_time" name="end_time" th:field="*{end_time}" type="text"
-                                       th:attr="data-field='datetime'" class="form-control" autocomplete="off"/>
-                            </div>
+                            <input id="end_time" name="end_time" th:field="*{end_time}" type="text"
+                                   th:attr="data-field='datetime'" class="form-control" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -647,6 +648,7 @@ $( function() {
 
 
 
+
 </script>
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
@@ -667,6 +669,7 @@ $( function() {
     });
 
 /*]]>*/
+
 
 
 
@@ -729,6 +732,7 @@ $( function() {
    start_time_range.addEventListener('click', function() {
       start_time_range_picker.open();
     }, false);
+
 
 
 
