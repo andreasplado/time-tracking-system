@@ -175,12 +175,6 @@ function timeSince(date) {
   return Math.floor(seconds) + " seconds";
 }
 
-
-
-
-
-
-
 </script>
 
 <script th:inline="javascript">
@@ -232,19 +226,48 @@ $( function() {
  });
 /*]]>*/
 
+</script>
 
+<script th:inline="javascript">
+        /*<![CDATA[*/
+        $( function() {
+            $('#validate-form').submit(function() {
+                if($.trim($("#username").val()) == ""){
+                    $("#user-registration-validation-error").show();
+                    return false;
+                }
+                if($.trim($("#password").val()) == ""){
+                    $("#user-registration-validation-error").show();
+                    return false;
+                }
+                if($.trim($("#passwordConfirm").val()) == ""){
+                    $("#user-registration-validation-error").show();
+                    return false;
+                }
 
+                if($.trim($("#passwordConfirm").val()) !=  $.trim($("#passwordConfirm").val())) {
+                    $("#user-registration-validation-error").show();
+                }
 
-
-
-
-
-
-
-
-
-
-
+                if($.trim($("#fullname").val()) == ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#email").val()) == ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#id_code").val()) == ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+                if($.trim($("#phone").val()) == ""){
+                    $("#validation-error").show();
+                    return false;
+                }
+            });
+         });
+        /*]]>*/
 
 </script>
 
@@ -546,23 +569,26 @@ $( function() {
         </li>
 
         <li th:if="${role == 'ADMIN' and !companyList.empty}" id="tab-admin" class="cd-tabs__panel text-component">
-            <p style="display:none; color:red;" id="validation-error">All fields are required.</p>
-            <form class="login100-form validate-form" th:action="@{/register}" th:object="${registerForm}" method="POST">
+            <p style="display:none; color:red;" id="user-registration-validation-error">All fields are required.</p>
+            <form class="login100-form validate-form" th:action="@{/register}" th:object="${registerForm}"
+                  method="POST">
                 <h5>
                     Register a new worker
                 </h5>
-                <br />
+                <br/>
                 <p th:text="${error}">Test</p>
-                <br />
+                <br/>
 
-                <label><span class="fa fa-envelope" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"/></label>
+                <label><span class="fa fa-envelope" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"/></label>
                 <div class="wrap-input100 validate-input">
                     <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"
                            th:field="*{username}"/>
                     <span class="focus-input100"></span>
                 </div>
 
-                <label><span class="fa fa-lock" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <label><span class="fa fa-lock" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
                 <div class="wrap-input100 validate-input">
                     <input type="password" class="form-control" id="password" placeholder="Enter password"
                            name="password"
@@ -570,28 +596,32 @@ $( function() {
                     <span class="focus-input100"></span>
 
                 </div>
-                <label><span class="fa fa-key" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <label><span class="fa fa-key" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
                 <div class="wrap-input100 validate-input">
                     <input type="password" class="form-control" id="passwordConfirm" placeholder="Confirm password"
                            name="passwordConfirm" th:field="*{passwordConfirm}"/>
                     <span class="focus-input100"></span>
 
                 </div>
-                <label><span class="fa fa-user-md" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <label><span class="fa fa-user-md" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
                 <div class="wrap-input100 validate-input">
                     <input type="text" class="form-control" id="fullname" placeholder="Full name"
                            name="fullname" th:field="*{fullname}"/>
                     <span class="focus-input100"></span>
 
                 </div>
-                <label><span class="fa fa-envelope" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <label><span class="fa fa-envelope" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
                 <div class="wrap-input100 validate-input">
                     <input type="email" class="form-control" id="email" placeholder="E-mail"
                            name="email" th:field="*{email}"/>
                     <span class="focus-input100"></span>
 
                 </div>
-                <label><span class="fa fa-id-card" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <label><span class="fa fa-id-card" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
                 <div class="wrap-input100 validate-input">
                     <input type="number" class="form-control" id="id_code" placeholder="ID code"
                            name="id_code" th:field="*{id_code}"/>
@@ -599,7 +629,8 @@ $( function() {
 
                 </div>
 
-                <label><span class="fa fa-phone" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <label><span class="fa fa-phone" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
                 <div class="wrap-input100 validate-input">
                     <input type="number" class="form-control" id="phone" placeholder="phone"
                            name="phone" th:field="*{phone}"/>
@@ -607,7 +638,8 @@ $( function() {
 
                 </div>
 
-                <label><span class="fa fa-lock" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <label><span class="fa fa-lock" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
                 <div class="wrap-input100 validate-input">
                     <select th:field="*{role}">
                         <option th:value="'USER'" th:text="USER"></option>
@@ -619,21 +651,21 @@ $( function() {
 
                 <div class="wrap-input100 validate-input">
                     <select th:field="*{company_name}">
-                        <option th:each="company : ${companyList}" th:value="${company.company_name}" th:text="${company.company_name}"></option>
+                        <option th:each="company : ${companyList}" th:value="${company.company_name}"
+                                th:text="${company.company_name}"></option>
                     </select>
                     <span class="focus-input100"></span>
 
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <button class="btn btn-primary float-right login100-form-btn m-t-30" >
+                    <button class="btn btn-primary float-right login100-form-btn m-t-30">
                         Register user
                     </button>
                 </div>
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             </form>
         </li>
-
 
 
         <li th:if="${role == 'ADMIN'}" id="tab-company" class="cd-tabs__panel text-component">
@@ -645,10 +677,11 @@ $( function() {
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button class="btn btn-primary" type="submit">REGISTER NEW COMPANY</button>
                 </form>
-                <br />
-                <br />
-                <hr />
-                <p th:if="${companyList.empty}">There are no companies added yet.\n Start adding company now to add user</p>
+                <br/>
+                <br/>
+                <hr/>
+                <p th:if="${companyList.empty}">There are no companies added yet.\n Start adding company now to add
+                    user</p>
                 <h5 th:if="${companyList!=null and !companyList.empty}">Companies</h5>
                 <table th:if="${companyList!=null and !companyList.empty}" class="table logines-table">
                     <thead>
@@ -703,6 +736,7 @@ $( function() {
 
 
 
+
 </script>
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
@@ -723,6 +757,7 @@ $( function() {
     });
 
 /*]]>*/
+
 
 
 
@@ -788,6 +823,7 @@ $( function() {
     end_time.addEventListener('click', function() {
       end_time_picker.open();
     }, false);
+
 
 
 
