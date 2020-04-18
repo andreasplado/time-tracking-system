@@ -298,10 +298,11 @@ function editUserBtn() {
         console.log("Total time " + i + " row" + TotalTime);
 
         var duration = moment.duration(EndTime.diff(StartTime));
-        var duration = duration.asHours();
+        var hours = duration.asMilliseconds();
 
 
-        $("#user-work-hour-" + theList[i].id +"-sum").append(duration);
+
+        $("#user-work-hour-" + theList[i].id +"-sum").append("Millisekundid" + hours);
     }
 
     /*]]>*/
