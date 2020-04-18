@@ -742,12 +742,15 @@ $( function() {
 
 <script>
 
-    var picker = new MaterialDatetimePicker({})
+    var picker = new MaterialDatetimePicker({
+        format: 'dd/MM/YY'
+    })
       .on('submit', function(d) {
         output.innerText = d;
       });
 
     var el = document.querySelector('.c-datepicker-btn');
+
     el.addEventListener('click', function() {
       picker.open();
     }, false);
