@@ -354,3 +354,6 @@ a:hover{
 .c-datepicker__clock{
     padding: 363px 0 20px 0!important;
 }
+.c-datepicker__toggle {
+    top: 150px;
+}
