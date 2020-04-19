@@ -118,21 +118,12 @@ public class WorkHourService {
         LocalTime lunchTime;
         long minutes = 0;
         LocalTime plusMinutes;
-        for (int i = 0; i < workHours.size(); i++) {
-
-            lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
+        for (WorkHour workHour : workHours) {
+            lunchTime = workHour.getLunch_time().toLocalTime(); //00:30:00
             plusMinutes = lunchTime.plusMinutes(lunchTime.getMinute());
-            // create a second time stamp
-            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             minutes += plusMinutes.getMinute();
         }
         if(workHours.size()!= 0) {
-            long seconds = minutes;
-
-            long hours = minutes / 3600;
-            //long minutes = (seconds % 3600) / 60;
-            seconds = (seconds % 3600) % 60;
-
             return Long.toString(minutes);
         }
         return "00:00";
