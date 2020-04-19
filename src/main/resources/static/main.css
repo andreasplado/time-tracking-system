@@ -358,3 +358,7 @@ a:hover{
 .c-datepicker__header-date {
     height: 186px!important;
 }
+
+.back-btn{
+    width: 10%;
+}
