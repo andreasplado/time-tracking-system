@@ -162,36 +162,18 @@ public class WorkHourService {
 
     public String totalWorkHoursSum() {
         List<WorkHour> workHours = workHourRepository.findAll();
-        long diff = 0;
         Timestamp startDateTime;
         Timestamp endDateTime;
-        LocalTime lunchTime;
-        long milliseconds = 0;
+        Duration totalDuration = Duration.ZERO;
         for (int i = 0; i < workHours.size(); i++) {
-
-            java.util.Date date = new java.util.Date();
-
-            startDateTime = workHours.get(i).getStart_time();
-            endDateTime = workHours.get(i).getEnd_time();
-            lunchTime = workHours.get(i).getLunch_time().toLocalTime();
-
-
-            // create a second time stamp
-            SimpleDateFormat format = new SimpleDateFormat("hh:mm");
-            Date d = null;
-            try {
-                d = format.parse(lunchTime.toString());
-                milliseconds += endDateTime.getTime() - startDateTime.getTime() - d.getTime();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-
+            startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
+            endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
+            Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
+            totalDuration = totalDuration.plusMinutes(duration.toMinutes());
         }
 
-
-        if (workHours.size() != 0) {
-            int seconds = (int) milliseconds / 1000;
+        if(workHours.size()!= 0) {
+            int seconds = (int) totalDuration.getSeconds();
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
 
