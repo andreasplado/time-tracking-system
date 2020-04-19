@@ -117,6 +117,9 @@ public class WorkHourService {
         }
         return 0L;
     }
+    public long totalWorkHour(String username){
+        return userWorkHoursSum(username) - userLunchHoursSum(username);
+    }
 
     public static long getDateDiff(Timestamp oldTs, Timestamp newTs, TimeUnit timeUnit) {
         long diffInMS = newTs.getTime() - oldTs.getTime();
