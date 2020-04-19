@@ -85,7 +85,11 @@ function viewWorkHour(id){
 
 function searchByUsername(){
     var username = $("#search-by-username").val();
-    window.location.href="/" + username;
+    if(username == null){
+        window.location.href="/" + username;
+    }else{
+        alert("You didnt enter username");
+    }
 }
 
 </script>
