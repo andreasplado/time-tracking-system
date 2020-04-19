@@ -160,8 +160,7 @@ $( function() {
             <a th:if="${workHours!=null and !workHours.empty}" href="../">
                 Back to main page
             </a>
-            <h6 th:if="${workHours==null or workHours.empty}">No records found in workhour history
-                <br />
+            <h6 th:if="${workHours==null or workHours.empty}">
                 <img src="/images/no_data_found.png" />
             </h6>
             <table th:if="${workHours!=null and !workHours.empty}" class="table logines-table">
