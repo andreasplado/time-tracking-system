@@ -88,9 +88,9 @@ public class WorkHourService {
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             Date d = null;
             try {
-                long difference = getDateDiff(startDateTime, endDateTime, TimeUnit.MILLISECONDS);
+                long difference = getDateDiff(startDateTime, endDateTime, TimeUnit.SECONDS);
                 d = format.parse(lunchTime.toString());
-                milliseconds += difference - lunchTime.toNanoOfDay();
+                milliseconds += difference + lunchTime.getSecond();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -98,7 +98,7 @@ public class WorkHourService {
         if(workHours.size()!= 0) {
             int seconds = (int) milliseconds / 1000;
 
-            int hours = seconds / 3600;
+            int hours = (int)milliseconds / 3600;
             int minutes = (seconds % 3600) / 60;
             seconds = (seconds % 3600) % 60;
 
