@@ -129,11 +129,11 @@ $( function() {
         window.location.href="../";
     }
     $('#user-form').submit(function() {
-    if ($.trim($("#username").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#fullname").val()) === "" || $.trim($("#id_code").val()) === "" || $.trim($("#phone").val()) === "") {
-        $("#user-validation-error").show();
-        return false;
-    }
-});
+        if ($.trim($("#username").val()) === "" || $.trim($("#email").val()) === "" || $.trim($("#fullname").val()) === "" || $.trim($("#id_code").val()) === "" || $.trim($("#phone").val()) === "") {
+            $("#user-validation-error").show();
+            return false;
+        }
+    });
 
 </script>
 

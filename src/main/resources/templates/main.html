@@ -95,7 +95,11 @@ function searchWorkHourByUsername(){
 
 function searchUserByUsername(){
     var username = $("#user-search-by-username").val();
-    window.location.href="/search-user/"+ username;
+    if(username==""){
+        $("#user-search-validation-error").show();
+    }else{
+        window.location.href="/search-user/"+ username;
+    }
 }
 
 function searchUserByFullname(){
@@ -330,6 +334,7 @@ $( function() {
             <h3>Dashboard</h3>
             <div th:style="${role == 'ADMIN' ? 'display:block' : 'display:none'}">
                 <div class="form-group row">
+                    <p style="display:none; color:red;" id="user-search-validation-error">Username is required</p>
                     <label class="col-form-label">Username:</label>
                     <input type="text" name="username" id="user-search-by-username" class="form-control"
                            autocomplete="off">
