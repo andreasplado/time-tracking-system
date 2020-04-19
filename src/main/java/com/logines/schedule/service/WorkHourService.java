@@ -92,8 +92,6 @@ public class WorkHourService {
             try {
                 long difference = getDateDiff(startDateTime, endDateTime, TimeUnit.SECONDS);
 
-                Duration dur = Duration.between(startDateTime, endDateTime);
-
                 d = format.parse(lunchTime.toString());
                 milliseconds += difference + lunchTime.getSecond();
             } catch (ParseException e) {
