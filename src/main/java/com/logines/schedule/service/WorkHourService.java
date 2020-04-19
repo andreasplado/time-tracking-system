@@ -127,9 +127,9 @@ public class WorkHourService {
             nanoSeconds += lunchTime.getNano();
         }
         if(workHours.size()!= 0) {
-            int seconds = (int) nanoSeconds* 1000000 / 1000;
+            int seconds = (int) nanoSeconds* 100000 / 1000;
 
-            int hours = (int)nanoSeconds * 1000000 / 3600;
+            int hours = (int)nanoSeconds * 100000 / 3600;
             int minutes = (seconds % 3600) / 60;
             seconds = (seconds % 3600) % 60;
 
