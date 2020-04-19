@@ -387,7 +387,7 @@ $( function() {
                         <div class="input-group date" id="work-begin-time">
                             <div id="start_time_inline"></div>
                             <input id="start_time" name="start_time" th:field="*{start_time}" type="text"
-                                   th:attr="data-field='datetime'" class="form-control" autocomplete="off"/>
+                                   th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -395,7 +395,7 @@ $( function() {
                         <label>Work end time:</label>
                         <div class="input-group date" id="work-end-time">
                             <input id="end_time" name="end_time" th:field="*{end_time}" type="text"
-                                   th:attr="data-field='datetime'" class="form-control" autocomplete="off"/>
+                                   th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -475,12 +475,12 @@ $( function() {
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Start time:</label>
                         <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text"
-                               th:attr="data-field='datetime'" class="form-control" autocomplete="off"/>
+                               th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label pt-n1">End time:</label>
                         <input id="end_time_range" name="end_time" th:field="*{end_time}" type="text"
-                               th:attr="data-field='datetime'" class="form-control" autocomplete="off"/>
+                               th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label pt-n1">Username:</label>
