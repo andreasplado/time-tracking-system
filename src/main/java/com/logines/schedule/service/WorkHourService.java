@@ -118,18 +118,18 @@ public class WorkHourService {
         System.out.println(Arrays.toString(workHours.toArray()));
         long diff = 0;
         LocalTime lunchTime;
-        long milliseconds = 0;
+        long nanoSeconds = 0;
         for (int i = 0; i < workHours.size(); i++) {
             lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
 
             // create a second time stamp
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-            milliseconds += lunchTime.toNanoOfDay();
+            nanoSeconds += lunchTime.getNano();
         }
         if(workHours.size()!= 0) {
-            int seconds = (int) milliseconds / 1000;
+            int seconds = (int) nanoSeconds* 1000000 / 1000;
 
-            int hours = (int)milliseconds / 3600;
+            int hours = (int)nanoSeconds * 1000000 / 3600;
             int minutes = (seconds % 3600) / 60;
             seconds = (seconds % 3600) % 60;
 
