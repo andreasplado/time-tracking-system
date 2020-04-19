@@ -134,7 +134,7 @@ public class WorkHourService {
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
 
-            TimeUtils.secondToFullTime(totalDuration.getSeconds());
+            return TimeUtils.secondToFullTime(totalDuration.getSeconds());
         }
         return "00:00";
     }
