@@ -136,7 +136,7 @@ public class MainController {
             model.addAttribute("role", myUser.getRole());
             model.addAttribute("userWorkHours", userWorkHours);
             model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(users.getUsername()));
-            model.addAttribute("lunchHoursSum", workHourService.userLunchHoursSum(users.getUsername()));
+            model.addAttribute("lunchHoursSum", workHourService.userLunchHoursSum2(users.getUsername()));
             return "edit_user";
         }
         return "redirect:/login";

@@ -133,6 +133,22 @@ public class WorkHourService {
         return 0L;
     }
 
+
+    public long userLunchHoursSum2(String username) {
+        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
+        Duration totalDuration = Duration.ZERO;
+        for (WorkHour workHour : workHours) {
+            // save your time in the appropriate format beforehand
+            // do not use local time to store duration.
+            Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime()); //00:30:00
+            totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
+        }
+        if(workHours.size()!= 0) {
+            return totalDuration.toMinutes();
+        }
+        return 0L;
+    }
+
     public static long getDateDiff(Timestamp oldTs, Timestamp newTs, TimeUnit timeUnit) {
         long diffInMS = newTs.getTime() - oldTs.getTime();
         return timeUnit.convert(diffInMS, TimeUnit.MILLISECONDS);
