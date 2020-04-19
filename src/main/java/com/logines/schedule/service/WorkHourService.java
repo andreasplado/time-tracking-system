@@ -2,6 +2,7 @@ package com.logines.schedule.service;
 
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
+import org.joda.time.Seconds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -13,6 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -86,13 +88,12 @@ public class WorkHourService {
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             Date d = null;
             try {
+                long difference = getDateDiff(startDateTime, endDateTime, TimeUnit.MILLISECONDS);
                 d = format.parse(lunchTime.toString());
-                milliseconds += endDateTime.getTime() - startDateTime.getTime();
+                milliseconds += difference - lunchTime.toNanoOfDay();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
-
         }
         if(workHours.size()!= 0) {
             int seconds = (int) milliseconds / 1000;
@@ -104,6 +105,11 @@ public class WorkHourService {
             return hours + ":" + minutes;
         }
         return "00:00";
+    }
+
+    public static long getDateDiff(Timestamp oldTs, Timestamp newTs, TimeUnit timeUnit) {
+        long diffInMS = newTs.getTime() - oldTs.getTime();
+        return timeUnit.convert(diffInMS, TimeUnit.MILLISECONDS);
     }
 
 
