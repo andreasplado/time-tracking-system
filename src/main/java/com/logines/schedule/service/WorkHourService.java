@@ -124,13 +124,13 @@ public class WorkHourService {
 
             // create a second time stamp
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-            nanoSeconds += lunchTime.getNano();
+            nanoSeconds += lunchTime.getSecond();
         }
         if(workHours.size()!= 0) {
-            int seconds = (int) nanoSeconds* 100000 / 1000;
+            long seconds = nanoSeconds;
 
-            int hours = (int)nanoSeconds * 100000 / 3600;
-            int minutes = (seconds % 3600) / 60;
+            long hours = nanoSeconds / 3600;
+            long minutes = (seconds % 3600) / 60;
             seconds = (seconds % 3600) % 60;
 
             return hours + ":" + minutes;
