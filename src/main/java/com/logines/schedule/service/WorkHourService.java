@@ -96,10 +96,10 @@ public class WorkHourService {
             }
         }
         if(workHours.size()!= 0) {
-            double seconds = milliseconds / 1000;
+            int seconds = (int) milliseconds / 1000;
 
-            double hours = milliseconds / 3600;
-            double minutes = (seconds % 3600) / 60;
+            int hours = (int)milliseconds / 3600;
+            int minutes = (seconds % 3600) / 60;
             seconds = (seconds % 3600) % 60;
 
             return hours + ":" + minutes;
