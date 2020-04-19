@@ -165,11 +165,13 @@ public class WorkHourService {
         Timestamp startDateTime;
         Timestamp endDateTime;
         Duration totalDuration = Duration.ZERO;
-        for (int i = 0; i < workHours.size(); i++) {
-            startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
-            endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
+        for (WorkHour workHour : workHours) {
+            startDateTime = workHour.getStart_time(); //2020-04-19 10:00:00.0
+            endDateTime = workHour.getEnd_time(); //2020-04-19 18:00:00.0
             Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
+            Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime());
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
+            totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
         }
 
         if(workHours.size()!= 0) {
