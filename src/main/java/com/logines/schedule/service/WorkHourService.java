@@ -125,7 +125,7 @@ public class WorkHourService {
 
 
             Duration duration = Duration.between(LocalTime.MIDNIGHT, localTime1);
-            totalDuration = totalDuration.plusMinutes(localTime.getMinute());
+            totalDuration = duration.plusMinutes(localTime1.getMinute());
         }
         if(workHours.size()!= 0) {
             return totalDuration.toMinutes();
