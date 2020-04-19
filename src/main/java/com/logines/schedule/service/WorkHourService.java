@@ -160,8 +160,27 @@ public class WorkHourService {
     }
 
 
-    public String totalWorkHoursSum(String username) {
-        return totalWorkHour(username);
+    public String totalWorkHoursSum() {
+        List<WorkHour> workHours = workHourRepository.findAll();
+        Timestamp startDateTime;
+        Timestamp endDateTime;
+        Duration totalDuration = Duration.ZERO;
+        for (int i = 0; i < workHours.size(); i++) {
+            startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
+            endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
+            Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
+            totalDuration = totalDuration.plusMinutes(duration.toMinutes());
+        }
+
+        if(workHours.size()!= 0) {
+            int seconds = (int) totalDuration.getSeconds();
+            int hours = seconds / 3600;
+            int minutes = (seconds % 3600) / 60;
+
+            seconds = (seconds % 3600) % 60;
+            return hours + ":" + minutes;
+        }
+        return "00:00";
     }
 
 
