@@ -98,7 +98,7 @@ public class WorkHourService {
             int minutes = (seconds % 3600) / 60;
 
             //return hours + ":" + minutes;
-            return Long.toString(totalDuration.getSeconds() /60);
+            return Long.toString(minutes);
         }
         return "00:00";
     }
