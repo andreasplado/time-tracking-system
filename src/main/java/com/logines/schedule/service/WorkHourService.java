@@ -66,11 +66,8 @@ public class WorkHourService {
         return workHours;
     }
 
-    public long userWorkHoursSum(String username) {
-
-        //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
+    public long userWorkHoursSumHelper(String username) {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
-        System.out.println(Arrays.toString(workHours.toArray()));
         long diff = 0;
         Timestamp startDateTime;
         Timestamp endDateTime;
@@ -84,11 +81,6 @@ public class WorkHourService {
             endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
             Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
-
-            //lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
-
-
-            // create a second time stamp
         }
 
         if(workHours.size()!= 0) {
@@ -103,7 +95,7 @@ public class WorkHourService {
     }
 
 
-    public long userLunchHoursSum(String username) {
+    public long userLunchHoursSumHelper(String username) {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         Duration totalDuration = Duration.ZERO;
         for (WorkHour workHour : workHours) {
@@ -118,8 +110,59 @@ public class WorkHourService {
         return 0L;
     }
     public long totalWorkHour(String username){
-        return userWorkHoursSum(username) - userLunchHoursSum(username);
+        return userWorkHoursSumHelper(username) - userLunchHoursSumHelper(username);
     }
+
+
+    public String userWorkHoursSum(String username) {
+        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
+        long diff = 0;
+        Timestamp startDateTime;
+        Timestamp endDateTime;
+        Duration totalDuration = Duration.ZERO;
+        long milliseconds = 0;
+        for (int i = 0; i < workHours.size(); i++) {
+
+            java.util.Date date = new java.util.Date();
+
+            startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
+            endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
+            Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
+            totalDuration = totalDuration.plusMinutes(duration.toMinutes());
+        }
+
+        if(workHours.size()!= 0) {
+            int seconds = (int) totalDuration.getSeconds();
+
+            int hours = seconds / 3600;
+            int minutes = (seconds % 3600) / 60;
+
+            return hours + ":" + minutes;
+        }
+        return "00:00";
+    }
+
+
+    public String userLunchHoursSum(String username) {
+        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
+        Duration totalDuration = Duration.ZERO;
+        for (WorkHour workHour : workHours) {
+            // save your time in the appropriate format beforehand
+            // do not use local time to store duration.
+            Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime()); //00:30:00
+            totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
+        }
+        if(workHours.size()!= 0) {
+            int seconds = (int) totalDuration.getSeconds();
+            int hours = seconds / 3600;
+            int minutes = (seconds % 3600) / 60;
+            return hours + ":" + minutes;
+        }
+        return "00:00";
+    }
+
+
+
 
     public static long getDateDiff(Timestamp oldTs, Timestamp newTs, TimeUnit timeUnit) {
         long diffInMS = newTs.getTime() - oldTs.getTime();
