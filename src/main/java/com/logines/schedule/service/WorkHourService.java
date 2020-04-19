@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -116,8 +117,14 @@ public class WorkHourService {
             // save your time in the appropriate format beforehand
             // do not use local time to store duration.
             //Duration lunchTime = (Duration )workHour.getLunch_time(); //00:30:00
-            LocalTime localTime = workHour.getLunch_time().toLocalTime();
-            Duration duration = Duration.between(LocalTime.MIDNIGHT, localTime);
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+            String localTime = workHour.getLunch_time().toLocalTime().format(dtf);
+            LocalTime localTime1 = LocalTime.parse(localTime);
+
+
+
+
+            Duration duration = Duration.between(LocalTime.MIDNIGHT, localTime1);
             totalDuration = totalDuration.plusMinutes(localTime.getMinute());
         }
         if(workHours.size()!= 0) {
