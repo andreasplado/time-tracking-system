@@ -169,9 +169,7 @@ public class WorkHourService {
             startDateTime = workHour.getStart_time(); //2020-04-19 10:00:00.0
             endDateTime = workHour.getEnd_time(); //2020-04-19 18:00:00.0
             Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
-            Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime());
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
-            totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
         }
 
         if(workHours.size()!= 0) {
