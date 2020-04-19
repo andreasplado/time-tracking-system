@@ -130,11 +130,11 @@ public class WorkHourService {
 
         if(workHours.size()!= 0) {
             int seconds = (int) totalDuration.getSeconds();
-
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
 
-            return TimeUtils.secondToFullTime(totalDuration.getSeconds());
+            seconds = (seconds % 3600) % 60;
+            return hours + ":" + minutes;
         }
         return "00:00";
     }
@@ -161,8 +161,6 @@ public class WorkHourService {
 
 
     public String totalWorkHoursSum() {
-
-        //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findAll();
         long diff = 0;
         Timestamp startDateTime;
