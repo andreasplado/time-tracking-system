@@ -118,15 +118,10 @@ public class WorkHourService {
 
     public String userWorkHoursSum(String username) {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
-        long diff = 0;
         Timestamp startDateTime;
         Timestamp endDateTime;
         Duration totalDuration = Duration.ZERO;
-        long milliseconds = 0;
         for (int i = 0; i < workHours.size(); i++) {
-
-            java.util.Date date = new java.util.Date();
-
             startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
             endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
             Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
@@ -162,14 +157,6 @@ public class WorkHourService {
             return TimeUtils.secondToFullTime(totalDuration.getSeconds());
         }
         return "00:00";
-    }
-
-
-
-
-    public static long getDateDiff(Timestamp oldTs, Timestamp newTs, TimeUnit timeUnit) {
-        long diffInMS = newTs.getTime() - oldTs.getTime();
-        return timeUnit.convert(diffInMS, TimeUnit.MILLISECONDS);
     }
 
 
