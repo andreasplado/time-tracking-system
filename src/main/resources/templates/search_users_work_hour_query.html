@@ -162,7 +162,7 @@ $( function() {
             <h5 th:text="${lol}"></h5>
 
             <a th:if="${workHours!=null and !workHours.empty}" href="../">
-                Back to main page
+                <img src="/images/return.png">
             </a>
             <h6 th:if="${workHours==null or workHours.empty}">
                 <img src="/images/no_data_found.png" />
@@ -190,7 +190,7 @@ $( function() {
             </table>
             <div class="p-t-136">
                 <a href="../">
-                    Back to main page
+                    <img src="/images/return.png">
                 </a>
             </div>
         </li>
