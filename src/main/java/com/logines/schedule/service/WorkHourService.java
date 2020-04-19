@@ -69,25 +69,25 @@ public class WorkHourService {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         System.out.println(Arrays.toString(workHours.toArray()));
         long diff = 0;
-        Timestamp startDateTime;
-        Timestamp endDateTime;
-        LocalTime lunchTime;
+        long startDateTime;
+        long endDateTime;
+        long lunchTime;
         long milliseconds = 0;
         for (int i = 0; i < workHours.size(); i++) {
 
             java.util.Date date = new java.util.Date();
 
-            startDateTime = workHours.get(i).getStart_time();
-            endDateTime = workHours.get(i).getEnd_time();
-            lunchTime = workHours.get(i).getLunch_time().toLocalTime();
+            startDateTime = workHours.get(i).getStart_time().getTime();
+            endDateTime = workHours.get(i).getEnd_time().getTime();
+            lunchTime = workHours.get(i).getLunch_time().getTime();
 
 
             // create a second time stamp
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             Date d = null;
             try {
-                d = format.parse(lunchTime.toString());
-                milliseconds += endDateTime.getTime() - startDateTime.getTime() - d.getTime() - 3600000;
+                d = format.parse(Long.toString(lunchTime));
+                milliseconds += (endDateTime - startDateTime) + d.getTime();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
