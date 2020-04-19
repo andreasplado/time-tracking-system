@@ -79,11 +79,9 @@ public class WorkHourService {
         long milliseconds = 0;
         for (int i = 0; i < workHours.size(); i++) {
 
-            java.util.Date date = new java.util.Date();
-
             startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
             endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
-            Duration duration = Duration.between(workHours.get(i).getStart_time().toLocalDateTime(), workHours.get(i).getEnd_time().toLocalDateTime()); //00:30:00
+            Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
             totalDuration = duration.plusMinutes(duration.toMinutes());
 
             //lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
