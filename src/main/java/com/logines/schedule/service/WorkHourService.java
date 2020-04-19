@@ -66,7 +66,7 @@ public class WorkHourService {
         return workHours;
     }
 
-    public String userWorkHoursSum(String username) {
+    public long userWorkHoursSum(String username) {
 
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
@@ -97,9 +97,9 @@ public class WorkHourService {
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
 
-            return hours + ":" + minutes;
+            return totalDuration.toMinutes();
         }
-        return "00:00";
+        return 0;
     }
 
 
