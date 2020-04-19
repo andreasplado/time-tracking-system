@@ -75,6 +75,7 @@ public class WorkHourService {
         Timestamp startDateTime;
         Timestamp endDateTime;
         LocalTime lunchTime;
+        Duration totalDuration = Duration.ZERO;
         long milliseconds = 0;
         for (int i = 0; i < workHours.size(); i++) {
 
@@ -82,27 +83,21 @@ public class WorkHourService {
 
             startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
             endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
-            lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
+            Duration duration = Duration.between(workHours.get(i).getStart_time().toLocalDateTime(), workHours.get(i).getEnd_time().toLocalDateTime()); //00:30:00
+            totalDuration = duration.plusMinutes(duration.toMinutes());
+
+            //lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
 
 
             // create a second time stamp
-            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-            Date d = null;
-            try {
-                long difference = getDateDiff(startDateTime, endDateTime, TimeUnit.SECONDS);
-
-                d = format.parse(lunchTime.toString());
-                milliseconds += difference + lunchTime.getSecond();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
         }
-        if(workHours.size()!= 0) {
-            int seconds = (int) milliseconds / 1000;
 
-            int hours = (int)milliseconds / 3600;
+        if(workHours.size()!= 0) {
+            int seconds = (int) totalDuration.getSeconds();
+
+            int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
-            //seconds = (seconds % 3600) % 60;
+
             return hours + ":" + minutes;
         }
         return "00:00";
