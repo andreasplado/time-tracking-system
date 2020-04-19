@@ -122,6 +122,7 @@ public class WorkHourService {
         for (int i = 0; i < workHours.size(); i++) {
             lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
 
+            lunchTime.plusHours(lunchTime.getHour()).plusMinutes(lunchTime.getMinute());
             // create a second time stamp
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
             nanoSeconds += lunchTime.getSecond();
