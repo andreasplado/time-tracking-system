@@ -102,8 +102,7 @@ public class WorkHourService {
 
             int hours = (int)milliseconds / 3600;
             int minutes = (seconds % 3600) / 60;
-            seconds = (seconds % 3600) % 60;
-
+            //seconds = (seconds % 3600) % 60;
             return hours + ":" + minutes;
         }
         return "00:00";
