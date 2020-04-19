@@ -117,14 +117,13 @@ public class WorkHourService {
         long diff = 0;
         LocalTime lunchTime;
         long minutes = 0;
-        LocalTime plusMinutes;
+        LocalTime plusMinutes = null;
         for (WorkHour workHour : workHours) {
             lunchTime = workHour.getLunch_time().toLocalTime(); //00:30:00
             plusMinutes = lunchTime.plusMinutes(lunchTime.getMinute());
-            minutes += plusMinutes.getMinute();
         }
         if(workHours.size()!= 0) {
-            return Long.toString(minutes);
+            return Long.toString(plusMinutes.getMinute());
         }
         return "00:00";
     }
