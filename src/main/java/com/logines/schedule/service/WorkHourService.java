@@ -83,8 +83,6 @@ public class WorkHourService {
             endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
             lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
 
-            System.out.println(lunchTime.toString());
-
 
             // create a second time stamp
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
@@ -118,23 +116,24 @@ public class WorkHourService {
         System.out.println(Arrays.toString(workHours.toArray()));
         long diff = 0;
         LocalTime lunchTime;
-        long nanoSeconds = 0;
+        long minutes = 0;
+        LocalTime plusMinutes;
         for (int i = 0; i < workHours.size(); i++) {
-            lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
 
-            lunchTime.plusHours(lunchTime.getHour()).plusMinutes(lunchTime.getMinute());
+            lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
+            plusMinutes = lunchTime.plusMinutes(lunchTime.getMinute());
             // create a second time stamp
             SimpleDateFormat format = new SimpleDateFormat("HH:mm");
-            nanoSeconds += lunchTime.getSecond();
+            minutes += plusMinutes.getMinute();
         }
         if(workHours.size()!= 0) {
-            long seconds = nanoSeconds;
+            long seconds = minutes;
 
-            long hours = nanoSeconds / 3600;
-            long minutes = (seconds % 3600) / 60;
+            long hours = minutes / 3600;
+            //long minutes = (seconds % 3600) / 60;
             seconds = (seconds % 3600) % 60;
 
-            return hours + ":" + minutes;
+            return Long.toString(minutes);
         }
         return "00:00";
     }
