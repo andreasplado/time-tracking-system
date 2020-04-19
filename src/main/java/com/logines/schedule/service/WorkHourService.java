@@ -110,6 +110,34 @@ public class WorkHourService {
         return "00:00";
     }
 
+
+    public String userLunchHoursSum(String username) {
+
+        //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
+        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
+        System.out.println(Arrays.toString(workHours.toArray()));
+        long diff = 0;
+        LocalTime lunchTime;
+        long milliseconds = 0;
+        for (int i = 0; i < workHours.size(); i++) {
+            lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
+
+            // create a second time stamp
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            milliseconds += lunchTime.toNanoOfDay();
+        }
+        if(workHours.size()!= 0) {
+            int seconds = (int) milliseconds / 1000;
+
+            int hours = (int)milliseconds / 3600;
+            int minutes = (seconds % 3600) / 60;
+            seconds = (seconds % 3600) % 60;
+
+            return hours + ":" + minutes;
+        }
+        return "00:00";
+    }
+
     public static long getDateDiff(Timestamp oldTs, Timestamp newTs, TimeUnit timeUnit) {
         long diffInMS = newTs.getTime() - oldTs.getTime();
         return timeUnit.convert(diffInMS, TimeUnit.MILLISECONDS);

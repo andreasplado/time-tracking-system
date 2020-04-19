@@ -225,8 +225,12 @@ $( function() {
             <hr />
             <h5 th:if="${userWorkHours.empty}" th:text="${'User ' + user.username + ' does not have any working hours'}"></h5>
             <div th:if="${userWorkHours!=null and !userWorkHours.empty}" class="container">
-                <h5 th:text="${'User ' + user.username + ' total workhours: ' + userWorkHoursSum}"></h5>
-                <h5 th:text="${'User ' + user.username + ' working history'}"></h5>
+                <h5 th:text="${'User ' + user.username}"></h5>
+                <p th:text="${'Total workhours: ' + userWorkHoursSum}"></p>
+                <p th:text="${'User ' + user.username + ' total lunchhours: ' + lunchHoursSum}"></p>
+                <br />
+                <br />
+                <p th:text="${'User ' + user.username + ' working history'}"></p>
                 <table class="table-striped logines-table">
                     <thead>
                     <tr>
