@@ -2,6 +2,7 @@ package com.logines.schedule.service;
 
 import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.repository.WorkHourRepository;
+import com.logines.schedule.utils.TimeUtils;
 import org.joda.time.Seconds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -109,9 +110,9 @@ public class WorkHourService {
         }
         return 0L;
     }
-    public long totalWorkHour(String username){
+    public String totalWorkHour(String username){
         long timeDiff =  userWorkHoursSumHelper(username) - userLunchHoursSumHelper(username);
-        return timeDiff;
+        return TimeUtils.secondToFullTime(timeDiff);
     }
 
 
@@ -138,7 +139,7 @@ public class WorkHourService {
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
 
-            return hours + ":" + minutes;
+            TimeUtils.secondToFullTime(totalDuration.getSeconds());
         }
         return "00:00";
     }
@@ -157,7 +158,8 @@ public class WorkHourService {
             int seconds = (int) totalDuration.getSeconds();
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
-            return hours + ":" + minutes;
+            //return hours + ":" + minutes;
+            return TimeUtils.secondToFullTime(totalDuration.getSeconds());
         }
         return "00:00";
     }
