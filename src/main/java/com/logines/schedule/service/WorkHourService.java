@@ -71,30 +71,28 @@ public class WorkHourService {
         //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         System.out.println(Arrays.toString(workHours.toArray()));
-        long diff = 0;
         Timestamp startDateTime;
         Timestamp endDateTime;
-        LocalTime lunchTime;
-        Duration totalDuration = Duration.ZERO;
         long milliseconds = 0;
         for (int i = 0; i < workHours.size(); i++) {
 
+            java.util.Date date = new java.util.Date();
+
             startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
             endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
-            Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
-            totalDuration = duration.plusMinutes(duration.toMinutes());
-
-            //lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
-
 
             // create a second time stamp
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+            Date d = null;
+            long difference = getDateDiff(startDateTime, endDateTime, TimeUnit.MILLISECONDS);
+            milliseconds += difference;
         }
+        if (workHours.size() != 0) {
+            int seconds = (int) milliseconds / 1000;
 
-        if(workHours.size()!= 0) {
-            int seconds = (int) totalDuration.getSeconds();
-
-            int hours = seconds / 3600;
+            int hours = (int) milliseconds / 3600;
             int minutes = (seconds % 3600) / 60;
+            seconds = (seconds % 3600) % 60;
 
             return hours + ":" + minutes;
         }
@@ -108,34 +106,10 @@ public class WorkHourService {
         for (WorkHour workHour : workHours) {
             // save your time in the appropriate format beforehand
             // do not use local time to store duration.
-            //Duration lunchTime = (Duration )workHour.getLunch_time(); //00:30:00
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-            String localTime = workHour.getLunch_time().toLocalTime().format(dtf);
-            LocalTime localTime1 = LocalTime.parse(localTime);
-
-
-
-
-            Duration duration = Duration.between(LocalTime.MIDNIGHT, localTime1);
-            totalDuration = duration.plusMinutes(localTime1.getMinute());
-        }
-        if(workHours.size()!= 0) {
-            return totalDuration.toMinutes();
-        }
-        return 0L;
-    }
-
-
-    public long userLunchHoursSum2(String username) {
-        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
-        Duration totalDuration = Duration.ZERO;
-        for (WorkHour workHour : workHours) {
-            // save your time in the appropriate format beforehand
-            // do not use local time to store duration.
             Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime()); //00:30:00
             totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
         }
-        if(workHours.size()!= 0) {
+        if (workHours.size() != 0) {
             return totalDuration.toMinutes();
         }
         return 0L;
@@ -179,7 +153,7 @@ public class WorkHourService {
         }
 
 
-        if(workHours.size()!= 0) {
+        if (workHours.size() != 0) {
             int seconds = (int) milliseconds / 1000;
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
