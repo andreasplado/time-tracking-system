@@ -79,9 +79,11 @@ public class WorkHourService {
 
             java.util.Date date = new java.util.Date();
 
-            startDateTime = workHours.get(i).getStart_time();
-            endDateTime = workHours.get(i).getEnd_time();
-            lunchTime = workHours.get(i).getLunch_time().toLocalTime();
+            startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
+            endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
+            lunchTime = workHours.get(i).getLunch_time().toLocalTime(); //00:30:00
+
+            System.out.println(lunchTime.toString());
 
 
             // create a second time stamp
@@ -89,6 +91,9 @@ public class WorkHourService {
             Date d = null;
             try {
                 long difference = getDateDiff(startDateTime, endDateTime, TimeUnit.SECONDS);
+
+                Duration dur = Duration.between(startDateTime, endDateTime);
+
                 d = format.parse(lunchTime.toString());
                 milliseconds += difference + lunchTime.getSecond();
             } catch (ParseException e) {
