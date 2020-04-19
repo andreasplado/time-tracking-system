@@ -109,14 +109,9 @@ public class WorkHourService {
         }
         return 0L;
     }
-    public String totalWorkHour(String username){
+    public long totalWorkHour(String username){
         long timeDiff =  userWorkHoursSumHelper(username) - userLunchHoursSumHelper(username);
-        int seconds = (int) timeDiff;
-
-        int hours = seconds / 3600;
-        int minutes = (seconds % 3600) / 60;
-
-        return hours + ":" + minutes;
+        return timeDiff;
     }
 
 
