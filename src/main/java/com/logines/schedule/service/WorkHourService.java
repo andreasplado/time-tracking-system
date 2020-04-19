@@ -109,23 +109,21 @@ public class WorkHourService {
     }
 
 
-    public String userLunchHoursSum(String username) {
-
-        //String sql = "SELECT extract(start_time from logines.work_hour) as hour_of_day FROM logines.work_hour WHERE username = ?";
+    public long userLunchHoursSum(String username) {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
-        System.out.println(Arrays.toString(workHours.toArray()));
-        long diff = 0;
-        LocalTime lunchTime;
-        long minutes = 0;
-        LocalTime plusMinutes = null;
+        Duration totalDuration = Duration.ZERO;
         for (WorkHour workHour : workHours) {
-            lunchTime = workHour.getLunch_time().toLocalTime(); //00:30:00
-            plusMinutes = lunchTime.plusMinutes(lunchTime.getMinute());
+            // save your time in the appropriate format beforehand
+            // do not use local time to store duration.
+            //Duration lunchTime = (Duration )workHour.getLunch_time(); //00:30:00
+            LocalTime localTime = workHour.getLunch_time().toLocalTime();
+            Duration duration = Duration.between(LocalTime.MIDNIGHT, localTime);
+            totalDuration = totalDuration.plusMinutes(localTime.getMinute());
         }
         if(workHours.size()!= 0) {
-            return Long.toString(plusMinutes.getMinute());
+            return totalDuration.toMinutes();
         }
-        return "00:00";
+        return 0L;
     }
 
     public static long getDateDiff(Timestamp oldTs, Timestamp newTs, TimeUnit timeUnit) {
