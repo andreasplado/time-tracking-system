@@ -300,13 +300,14 @@ function editUserBtn() {
 
     var theList = [[${userWorkHours}]];
     for (i = 0; i < theList.length; i++) {
-        var StartTime = moment(theList[i].start_time).format( "YYYY-MM-DD HH:mm:ss.S"); //2020-04-01 08:00:00.0
-        var EndTime = moment(theList[i].end_time).format("YYYY-MM-DD HH:mm:ss.S"); //2020-04-01 18:00:00.0
-        var Lunch = moment(theList[i].lunch_time).format("HH:mm:ss");//00:30:00
+        var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss.S"); //2020-04-01 08:00:00.0
+        var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss.S"); //2020-04-01 18:00:00.0
+        var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");//00:30:00
+        var lunchTimeMs= moment(Lunch).format("HH:mm:ss");
 
         console.log(lunchTimeMs);
 
-        var ms = moment(EndTime).format("YYYY-MM-DD HH:mm:ss.S").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss.S"));
+        var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss.S").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss.S"));
         ms = moment().subtract(lunchTimeMs/1000, 'seconds');
         var d = moment.duration(ms).subtract(lunchTimeMs);
 
