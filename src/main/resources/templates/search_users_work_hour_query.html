@@ -165,7 +165,7 @@ $( function() {
                 <img class="back-btn" src="/images/return.png">
             </a>
             <h6 th:if="${workHours==null or workHours.empty}">
-                <img src="/images/no_data_found.png" />
+                <img src="/images/no_data_found.png" class="no-data-found" />
             </h6>
             <table th:if="${workHours!=null and !workHours.empty}" class="table logines-table">
                 <thead>
