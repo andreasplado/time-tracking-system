@@ -1,9 +1,9 @@
 package com.logines.schedule.service;
 
 import com.logines.schedule.model.WorkHour;
+import com.logines.schedule.model.WorkHoursTotalField;
 import com.logines.schedule.repository.WorkHourRepository;
 import com.logines.schedule.utils.TimeUtils;
-import org.joda.time.Seconds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -11,12 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -115,15 +111,40 @@ public class WorkHourService {
         return TimeUtils.secondToFullTime(timeDiff);
     }
 
+    public List<WorkHoursTotalField> workHoursSumWithoutLunch(String username){
+        List<WorkHour> workHourList = workHourRepository.findWorkHoursByUsername(username);
+        List<WorkHoursTotalField> WHSWL= new ArrayList<>();
+        Timestamp startDateTime;
+        Timestamp endDateTime;
+        Duration totalDuration = Duration.ZERO;
+        for (WorkHour workHour : workHourList) {
+            startDateTime = workHour.getStart_time(); //2020-04-19 10:00:00.0
+            endDateTime = workHour.getEnd_time(); //2020-04-19 18:00:00.0
+            Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
+            totalDuration = totalDuration.plusMinutes(duration.toMinutes());
+
+            WorkHoursTotalField workHoursTotalField = new WorkHoursTotalField();
+            int seconds = (int) totalDuration.getSeconds();
+            int hours = seconds / 3600;
+            int minutes = (seconds % 3600) / 60;
+
+            seconds = (seconds % 3600) % 60;
+            workHoursTotalField.setWorkHoursField(hours + ":" + minutes);
+            workHoursTotalField.setId(workHour.getId());
+            WHSWL.add(workHoursTotalField);
+        }
+        return WHSWL;
+    }
+
 
     public String userWorkHoursSum(String username) {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         Timestamp startDateTime;
         Timestamp endDateTime;
         Duration totalDuration = Duration.ZERO;
-        for (int i = 0; i < workHours.size(); i++) {
-            startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
-            endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
+        for (WorkHour workHour : workHours) {
+            startDateTime = workHour.getStart_time(); //2020-04-19 10:00:00.0
+            endDateTime = workHour.getEnd_time(); //2020-04-19 18:00:00.0
             Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
         }
@@ -144,8 +165,6 @@ public class WorkHourService {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         Duration totalDuration = Duration.ZERO;
         for (WorkHour workHour : workHours) {
-            // save your time in the appropriate format beforehand
-            // do not use local time to store duration.
             Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime()); //00:30:00
             totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
         }
