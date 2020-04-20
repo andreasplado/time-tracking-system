@@ -306,7 +306,7 @@ function editUserBtn() {
         var lunchTimeMs= moment(Lunch).format("x");
 
         var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss"));
-        ms.subtract(lunchTimeMs);
+        ms.subtract(Lunch);
         var d = moment.duration(ms).subtract(lunchTimeMs);
 
 
