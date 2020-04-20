@@ -228,7 +228,7 @@ $( function() {
                 <br />
                 <strong th:text="${'Workhours with lunch: ' + userWorkHoursSum}"></strong>
                 <br />
-                <strong th:text="${'Total lunchhours: ' + lunchHoursSum}"></strong>
+                <strong th:text="${'Total lunch time: ' + lunchHoursSum}"></strong>
                 <br />
                 <strong th:text="${'Total workhours : ' + totalWorkHoursSum}"></strong>
                 <br />
@@ -309,7 +309,7 @@ function editUserBtn() {
 
         var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss"));
         var d = moment.duration(ms);
-        var s = Math.floor(d.asHours()) + moment.utc(ms).format("HH:mm:ss");
+        var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
 
         console.log("Total time " + i + " row" + s);
 
