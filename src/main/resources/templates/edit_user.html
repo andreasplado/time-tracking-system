@@ -299,14 +299,13 @@ function editUserBtn() {
     /*<![CDATA[*/
 
     var theList = [[${userWorkHours}]];
-    alert("Test");
     for (i = 0; i < theList.length; i++) {
         var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss");
         var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss");
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
         //var TotalTime = EndTime.add(StartTime).format("HH:mm:ss");
         var finalSum = moment.utc(moment(StartTime,"YYYY-MM-DD HH:mm:ss").diff(moment(EndTime,"YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss");
-        console.log("Total time " + i + " row" + TotalTime);
+        console.log("Total time " + i + " row" + finalSum);
 
 
         $("#user-work-hour-" + theList[i].id +"-sum").append(finalSum);
