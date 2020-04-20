@@ -1,6 +1,6 @@
 package com.logines.schedule.model;
 
-public class WorkHoursTotalField {
+public class WorkHoursTotal {
 
     private int id;
     private String workHoursField;

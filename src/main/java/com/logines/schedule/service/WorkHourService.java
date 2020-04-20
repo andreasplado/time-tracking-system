@@ -1,7 +1,7 @@
 package com.logines.schedule.service;
 
 import com.logines.schedule.model.WorkHour;
-import com.logines.schedule.model.WorkHoursTotalField;
+import com.logines.schedule.model.WorkHoursTotal;
 import com.logines.schedule.repository.WorkHourRepository;
 import com.logines.schedule.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,27 +111,26 @@ public class WorkHourService {
         return TimeUtils.secondToFullTime(timeDiff);
     }
 
-    public List<WorkHoursTotalField> workHoursSumWithoutLunch(String username){
+    public List<WorkHoursTotal> workHoursSumWithoutLunch(String username){
         List<WorkHour> workHourList = workHourRepository.findWorkHoursByUsername(username);
-        List<WorkHoursTotalField> WHSWL= new ArrayList<>();
+        List<WorkHoursTotal> WHSWL= new ArrayList<>();
         Timestamp startDateTime;
         Timestamp endDateTime;
         Duration totalDuration = Duration.ZERO;
-        for (WorkHour workHour : workHourList) {
+        for (WorkHour workHour : workHours) {
             startDateTime = workHour.getStart_time(); //2020-04-19 10:00:00.0
             endDateTime = workHour.getEnd_time(); //2020-04-19 18:00:00.0
             Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
-
-            WorkHoursTotalField workHoursTotalField = new WorkHoursTotalField();
+            WorkHoursTotal workHoursTotal = new WorkHoursTotal();
             int seconds = (int) totalDuration.getSeconds();
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
 
             seconds = (seconds % 3600) % 60;
-            workHoursTotalField.setWorkHoursField(hours + ":" + minutes);
-            workHoursTotalField.setId(workHour.getId());
-            WHSWL.add(workHoursTotalField);
+            workHoursTotal.setWorkHoursField(hours + ":" + minutes);
+            workHoursTotal.setId(workHour.getId());
+            WHSWL.add(workHoursTotal);
         }
         return WHSWL;
     }
