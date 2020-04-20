@@ -304,7 +304,7 @@ function editUserBtn() {
         var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss");
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
         //var TotalTime = EndTime.add(StartTime).format("HH:mm:ss");
-        Var finalSum = moment.utc(moment(StartTime,"YYYY-MM-DD HH:mm:ss").diff(moment(EndTime,"DD/MM/YYYY HH:mm:ss"))).format("HH:mm:ss");
+        var finalSum = moment.utc(moment(StartTime,"YYYY-MM-DD HH:mm:ss").diff(moment(EndTime,"DD/MM/YYYY HH:mm:ss"))).format("HH:mm:ss");
         console.log("Total time " + i + " row" + TotalTime);
 
 
