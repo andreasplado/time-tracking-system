@@ -299,6 +299,7 @@ function editUserBtn() {
     /*<![CDATA[*/
 
     var theList = [[${userWorkHours}]];
+    alert("Test");
     for (i = 0; i < theList.length; i++) {
         var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss");
         var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss");
@@ -318,8 +319,6 @@ function editUserBtn() {
 
 <script src="/assets/js/util.js"></script> <!-- util functions included in the CodyHouse framework -->
 <script src="/assets/js/main.js"></script>
-<script src='/rome-date-time-picker/rome.js'></script>
-<script src='/rome-date-time-picker/example.js'></script>
 
 </body>
 </html>
