@@ -112,27 +112,30 @@ public class WorkHourService {
     }
 
     public List<WorkHoursTotal> workHoursSumWithoutLunch(String username){
-        List<WorkHour> workHourList = workHourRepository.findWorkHoursByUsername(username);
-        List<WorkHoursTotal> WHSWL= new ArrayList<>();
+        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         Timestamp startDateTime;
         Timestamp endDateTime;
+
+        List<WorkHoursTotal> workHoursTotals = new ArrayList<>();
         Duration totalDuration = Duration.ZERO;
-        for (WorkHour workHour : workHourList) {
+        for (WorkHour workHour : workHours) {
+            WorkHoursTotal workHoursTotal = new WorkHoursTotal();
             startDateTime = workHour.getStart_time(); //2020-04-19 10:00:00.0
             endDateTime = workHour.getEnd_time(); //2020-04-19 18:00:00.0
             Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
-            WorkHoursTotal workHoursTotal = new WorkHoursTotal();
+
             int seconds = (int) totalDuration.getSeconds();
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
 
-            seconds = (seconds % 3600) % 60;
             workHoursTotal.setWorkHoursField(hours + ":" + minutes);
             workHoursTotal.setId(workHour.getId());
-            WHSWL.add(workHoursTotal);
+
+            workHoursTotals.add(workHoursTotal);
         }
-        return WHSWL;
+
+        return workHoursTotals;
     }
 
 
