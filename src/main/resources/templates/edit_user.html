@@ -306,11 +306,11 @@ function editUserBtn() {
         var lunchTimeMs= moment(Lunch).format("x");
 
         var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss"));
-        var d = moment.duration(ms).subtract(Lunch);
+        var d = moment.duration(ms);
 
 
 
-        var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+        var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss") -moment.utc(lunchTimeMs).format(":mm:ss");
 
         console.log("Total time " + i + " row" + s);
 
