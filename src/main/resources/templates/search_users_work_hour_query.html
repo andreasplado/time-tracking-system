@@ -163,15 +163,13 @@ $( function() {
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </div>
             </form>
-
-
+            <br />
+            <br />
             <hr/>
-            <h3 th:text="${searchParam}"></h3>
-            <h5 th:text="${lol}"></h5>
-
             <a th:if="${workHours!=null and !workHours.empty}" href="../">
                 <img class="back-btn" src="/images/return.png">
             </a>
+            <h5 th:text="${lol}"></h5>
             <h6 th:if="${workHours==null or workHours.empty}">
                 <img src="/images/no_data_found.png" class="no-data-found"/>
             </h6>
