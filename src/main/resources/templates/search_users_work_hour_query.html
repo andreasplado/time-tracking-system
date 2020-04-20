@@ -72,6 +72,9 @@
     td:hover { background-color: #2ECCFA; }
 
 
+
+
+
 </style>
 <script>
    $(document).keyup(function(e) {
@@ -91,6 +94,9 @@ function searchByUsername(){
         alert("You didnt enter username");
     }
 }
+
+
+
 
 </script>
 
@@ -114,6 +120,9 @@ $( function() {
 
 
 
+
+
+
 </script>
 
 
@@ -132,82 +141,31 @@ $( function() {
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
 
 
-
-            <div class="bd-example">
-                <p style="display:none; color:red;" id="search-query-validation-error">Select dates between a range</p>
-                <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
-                      th:object="${workHourForm}">
-                    <div class="form-group row">
-                        <label class="col-form-label">Start time:</label>
-                        <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text"
-                               th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label pt-n1">End time:</label>
-                        <input id="end_time_range" name="end_time" th:field="*{end_time}" type="text"
-                               th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-form-label pt-n1">Username:</label>
-                        <input type="text" name="username" id="search-work-hour-by-username" class="form-control">
-                    </div>
-                    <div class="form-group row float-right">
-                        <button type="submit" class="btn btn-primary">SEARCH</button>
-
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    </div>
-                </form>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!--<form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}" th:object="${workHourForm}">
+            <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
+                  th:object="${workHourForm}">
                 <div class="form-group row">
                     <label class="col-form-label">Start time</label>
-                    <div class="col-sm-10">
-                        <input id="start_time" name="start_time" th:field="*{start_time}" type="text"
-                               th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
-                    </div>
+                    <input id="start_time" name="start_time" th:field="*{start_time}" type="text"
+                           th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label pt-n1">End time</label>
-                    <div class="col-sm-10">
-                        <input id="end_time" name="end_time" th:field="*{end_time}" type="text"
-                               th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
-                    </div>
+                    <input id="end_time" name="end_time" th:field="*{end_time}" type="text"
+                           th:attr="data-field='datetime'" class="form-control" autocomplete="off"
+                           onfocus="blur();"/>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label pt-n1">Username</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="username" id="search-work-hour-by-username" class="form-control">
-                    </div>
+                    <input type="text" name="username" id="search-work-hour-by-username" class="form-control">
                 </div>
                 <div class="form-group row float-right">
                     <button type="submit" class="btn btn-primary">SEARCH</button>
-
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </div>
-            </form> -->
-            <hr />
+            </form>
+
+
+            <hr/>
             <h3 th:text="${searchParam}"></h3>
             <h5 th:text="${lol}"></h5>
 
@@ -215,7 +173,7 @@ $( function() {
                 <img class="back-btn" src="/images/return.png">
             </a>
             <h6 th:if="${workHours==null or workHours.empty}">
-                <img src="/images/no_data_found.png" class="no-data-found" />
+                <img src="/images/no_data_found.png" class="no-data-found"/>
             </h6>
             <table th:if="${workHours!=null and !workHours.empty}" class="table logines-table">
                 <thead>
