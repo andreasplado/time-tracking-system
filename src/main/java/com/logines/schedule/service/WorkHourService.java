@@ -77,7 +77,7 @@ public class WorkHourService {
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
         }
 
-        if(workHours.size()!= 0) {
+        if (workHours.size() != 0) {
             int seconds = (int) totalDuration.getSeconds();
 
             int hours = seconds / 3600;
@@ -98,33 +98,57 @@ public class WorkHourService {
             Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime()); //00:30:00
             totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
         }
-        if(workHours.size()!= 0) {
+        if (workHours.size() != 0) {
             return totalDuration.toMinutes();
         }
         return 0L;
     }
-    public String totalWorkHour(String username){
-        long timeDiff =  userWorkHoursSumHelper(username) - userLunchHoursSumHelper(username);
+
+
+    public long userWorkHoursSumHelper2(WorkHour workHour) {
+
+        long diff = 0;
+        Timestamp startDateTime;
+        Timestamp endDateTime;
+        Duration totalDuration = Duration.ZERO;
+        long milliseconds = 0;
+        startDateTime = workHour.getStart_time(); //2020-04-19 10:00:00.0
+        endDateTime = workHour.getEnd_time(); //2020-04-19 18:00:00.0
+        Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
+        totalDuration = totalDuration.plusMinutes(duration.toMinutes());
+        int seconds = (int) totalDuration.getSeconds();
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        return totalDuration.toMinutes();
+    }
+
+
+    public long userLunchHoursSumHelper2(WorkHour workHour) {
+        Duration totalDuration = Duration.ZERO;
+        Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime()); //00:30:00
+        totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
+        return totalDuration.toMinutes();
+    }
+
+
+    public String totalWorkHour(String username) {
+        long timeDiff = userWorkHoursSumHelper(username) - userLunchHoursSumHelper(username);
         return TimeUtils.secondToFullTime(timeDiff);
     }
 
 
-    public String totalWorkHourRow(String username){
-        long timeDiff =  userWorkHoursSumHelper(username) - userLunchHoursSumHelper(username);
-        return TimeUtils.secondToFullTime(timeDiff);
-    }
+    public List<WorkHourTotal> totalWorkHourRow(String username) {
+        List<WorkHourTotal> workHourTotals = new ArrayList<>();
+        List<WorkHour> workHourList = workHourRepository.findByUsername(username);
 
-    public List<WorkHourTotal> workHoursTotals(String username){
-        List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
-        List<WorkHourTotal> workHoursTotal = new ArrayList<>();
-        for (WorkHour workHour: workHours) {
+        for(WorkHour workHour: workHourList){
             WorkHourTotal workHourTotal = new WorkHourTotal();
             workHourTotal.setId(workHour.getId());
-            workHourTotal.setWorkHoursField(totalWorkHourRow(username));
-            workHoursTotal.add(workHourTotal);
+            long timeDiff = userWorkHoursSumHelper2(workHour) - userLunchHoursSumHelper2(workHour);
+            workHourTotal.setWorkHoursField(TimeUtils.secondToFullTime(timeDiff));
+            workHourTotals.add(workHourTotal);
         }
-
-        return workHoursTotal;
+        return workHourTotals;
     }
 
 
@@ -140,7 +164,7 @@ public class WorkHourService {
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
         }
 
-        if(workHours.size()!= 0) {
+        if (workHours.size() != 0) {
             int seconds = (int) totalDuration.getSeconds();
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
@@ -152,14 +176,14 @@ public class WorkHourService {
     }
 
 
-    public String userLunchHoursSum(String username) {
+    public String userTotalLunchHoursSum(String username) {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         Duration totalDuration = Duration.ZERO;
         for (WorkHour workHour : workHours) {
             Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime()); //00:30:00
             totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
         }
-        if(workHours.size()!= 0) {
+        if (workHours.size() != 0) {
             int seconds = (int) totalDuration.getSeconds();
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
@@ -182,7 +206,7 @@ public class WorkHourService {
             totalDuration = totalDuration.plusMinutes(duration.toMinutes());
         }
 
-        if(workHours.size()!= 0) {
+        if (workHours.size() != 0) {
             int seconds = (int) totalDuration.getSeconds();
             int hours = seconds / 3600;
             int minutes = (seconds % 3600) / 60;
