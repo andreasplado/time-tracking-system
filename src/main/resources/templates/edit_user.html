@@ -307,9 +307,9 @@ function editUserBtn() {
         //ar finalSum = moment.utc(moment(StartTime,"YYYY-MM-DD HH:mm:ss").diff(moment(EndTime,"YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss");
 
 
-        var ms = moment(endTime,"YYYY-MM-DD HH:mm:ss").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss"));
+        var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss"));
         var d = moment.duration(ms);
-        var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+        var s = Math.floor(d.asHours()) + moment.utc(ms).format("HH:mm:ss");
 
         console.log("Total time " + i + " row" + s);
 
