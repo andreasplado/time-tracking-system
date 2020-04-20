@@ -138,7 +138,7 @@ public class MainController {
             model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(users.getUsername()));
             model.addAttribute("lunchHoursSum", workHourService.userLunchHoursSum(users.getUsername()));
             model.addAttribute("totalWorkHoursSum", workHourService.totalWorkHour(users.getUsername()));
-            model.addAttribute("workHoursSumWithoutLunch", workHourService.workHoursSumWithoutLunch(users.getUsername()));
+            model.addAttribute("workHoursSumWithoutLunch", workHourService.workHoursTotals(users.getUsername()));
             return "edit_user";
         }
         return "redirect:/login";
