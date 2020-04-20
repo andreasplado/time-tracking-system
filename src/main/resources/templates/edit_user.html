@@ -328,6 +328,7 @@ function editUserBtn() {
         var Lunch = date2timestamp(theList[i].lunch_time);//00:30:00
 
         var ms = moment(EndTime).diff(StartTime);
+        console.log("millisekundid: " + ms);
         ms = moment().subtract(Lunch);
         var d = moment.duration(ms);
 
