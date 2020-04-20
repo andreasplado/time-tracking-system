@@ -298,19 +298,38 @@ function editUserBtn() {
 <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
 
+    const date2timestamp= function(str){
+	_tmp = str.split(" ");
+        if(_tmp){
+            date_arr = ( _tmp[1] ? _tmp[0].split("-") : null );
+            time_arr = ( _tmp[1] ? _tmp[1].split(":") : _tmp[0].split(":") );
+            if(!date_arr) {
+                const today = new Date();
+                _date = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate(), time_arr[0], time_arr[1], time_arr[2]);
+            }
+            else {
+                _date = Date.UTC(date_arr[0], date_arr[1]-1, date_arr[2], time_arr[0], time_arr[1], time_arr[2]);
+            }
+            date_obj = new Date(_date);
+            return date_obj.getTime()/1000;
+        }
+        return false;
+    }
+
     var theList = [[${userWorkHours}]];
     for (i = 0; i < theList.length; i++) {
-        var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss.S"); //2020-04-01 08:00:00.0
+        /*var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss.S"); //2020-04-01 08:00:00.0
         var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss.S"); //2020-04-01 18:00:00.0
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");//00:30:00
-        var lunchTimeMs= moment(Lunch).format("HH:mm:ss");
+        var lunchTimeMs= moment(Lunch).format("HH:mm:ss"); */
 
-        console.log(lunchTimeMs);
+        var StartTime = date2timestamp(theList[i].start_time);
+        var EndTime = date2timestamp(theList[i].end_time);//2020-04-01 18:00:00.0
+        var Lunch = date2timestamp(theList[i].lunch_time);//00:30:00
 
-        var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss.S").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss.S"));
-        ms = moment().subtract((30*60), 'seconds');
+        var ms = moment(EndTime).diff(StartTime);
+        ms = moment().subtract(Lunch);
         var d = moment.duration(ms).subtract(lunchTimeMs);
-
 
 
         var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
