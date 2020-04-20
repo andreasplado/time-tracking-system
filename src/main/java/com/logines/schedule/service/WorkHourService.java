@@ -117,7 +117,7 @@ public class WorkHourService {
         Timestamp startDateTime;
         Timestamp endDateTime;
         Duration totalDuration = Duration.ZERO;
-        for (WorkHour workHour : workHours) {
+        for (WorkHour workHour : workHourList) {
             startDateTime = workHour.getStart_time(); //2020-04-19 10:00:00.0
             endDateTime = workHour.getEnd_time(); //2020-04-19 18:00:00.0
             Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
