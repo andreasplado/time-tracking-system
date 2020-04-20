@@ -298,12 +298,16 @@ function editUserBtn() {
 <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/
 
+    function toTimestamp(strDate){
+     var datum = Date.parse(strDate);
+     return datum/1000;
+    }
+
     var theList = [[${userWorkHours}]];
     for (i = 0; i < theList.length; i++) {
-        var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss"); //2020-04-01 08:00:00.0
-        var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss"); //2020-04-01 18:00:00.0
-        var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");//00:30:00
-        var lunchTimeMs= moment(Lunch).format("x");
+        var StartTime = toTimestamp(theList[i].start_time); //2020-04-01 08:00:00.0
+        var EndTime = toTimestamp(theList[i].end_time); //2020-04-01 18:00:00.0
+        var Lunch = toTimestamp(theList[i].lunch_time);//00:30:00
 
         var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss"));
         var d = moment.duration(ms).subtract(Lunch);
