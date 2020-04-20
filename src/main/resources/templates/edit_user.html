@@ -303,13 +303,11 @@ function editUserBtn() {
         var StartTime = moment(theList[i].start_time, "YYYY-MM-DD HH:mm:ss");
         var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss");
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
-        //var TotalTime = EndTime.add(StartTime).format("HH:mm:ss");
-        //ar finalSum = moment.utc(moment(StartTime,"YYYY-MM-DD HH:mm:ss").diff(moment(EndTime,"YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss");
-
         var lunchTimeMs= moment(Lunch,"HH:mm:ss");
+
         var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss"));
-        ms = ms - lunchTimeMs;
         var d = moment.duration(ms);
+        ms = moment().subtract(lunchTimeMs);
 
 
         var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
