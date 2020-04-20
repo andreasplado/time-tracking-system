@@ -308,7 +308,7 @@ function editUserBtn() {
         console.log(lunchTimeMs);
 
         var ms = moment(EndTime,"YYYY-MM-DD HH:mm:ss.S").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss.S"));
-        ms = moment().subtract(lunchTimeMs, 'milliseconds');
+        ms = moment().subtract((30*60), 'seconds');
         var d = moment.duration(ms).subtract(lunchTimeMs);
 
 
