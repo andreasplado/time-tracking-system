@@ -304,11 +304,17 @@ function editUserBtn() {
         var EndTime = moment(theList[i].end_time, "YYYY-MM-DD HH:mm:ss");
         var Lunch = moment(theList[i].lunch_time, "HH:mm:ss");
         //var TotalTime = EndTime.add(StartTime).format("HH:mm:ss");
-        var finalSum = moment.utc(moment(StartTime,"YYYY-MM-DD HH:mm:ss").diff(moment(EndTime,"YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss");
-        console.log("Total time " + i + " row" + finalSum);
+        //ar finalSum = moment.utc(moment(StartTime,"YYYY-MM-DD HH:mm:ss").diff(moment(EndTime,"YYYY-MM-DD HH:mm:ss"))).format("HH:mm:ss");
 
 
-        $("#user-work-hour-" + theList[i].id +"-sum").append(finalSum);
+        var ms = moment(endTime,"YYYY-MM-DD HH:mm:ss").diff(moment(StartTime,"YYYY-MM-DD HH:mm:ss"));
+        var d = moment.duration(ms);
+        var s = Math.floor(d.asHours()) + moment.utc(ms).format(":mm:ss");
+
+        console.log("Total time " + i + " row" + s);
+
+
+        $("#user-work-hour-" + theList[i].id +"-sum").append(s);
     }
 
     /*]]>*/
