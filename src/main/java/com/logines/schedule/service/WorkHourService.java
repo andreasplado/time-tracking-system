@@ -179,7 +179,7 @@ public class WorkHourService {
     }
 
 
-    public List<WorkHourTotal> userWorkHoursSumWithoutLunch(String username) {
+    public List<WorkHourTotal> totalWorkHourRow(String username) {
         List<WorkHourTotal> workHourTotals = new ArrayList<>();
         List<WorkHour> workHourList = workHourRepository.findByUsername(username);
 
@@ -194,7 +194,7 @@ public class WorkHourService {
     }
 
 
-    public String totalWorkHoursSum(String username) {
+    public String userWorkHoursSum(String username) {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         Timestamp startDateTime;
         Timestamp endDateTime;

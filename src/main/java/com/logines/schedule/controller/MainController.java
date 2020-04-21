@@ -77,7 +77,7 @@ public class MainController {
             List<Company> companyList = companyService.findAll();
             if(myUser != null) {
                 model.addAttribute("users", userService.findAll());
-                model.addAttribute("totalWorkHoursSum", workHourService.totalWorkHoursSum(principal.getName()));
+                model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
                 model.addAttribute("totalWorkHoursSum", workHourService.totalWorkHoursSum());
                 model.addAttribute("myUser", myUser);
                 model.addAttribute("userWorkHours", userWorkHours);
@@ -134,10 +134,10 @@ public class MainController {
             model.addAttribute("user", users);
             model.addAttribute("role", myUser.getRole());
             model.addAttribute("userWorkHours", userWorkHours);
-            model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSumWithoutLunch(users.getUsername()));
+            model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(users.getUsername()));
             model.addAttribute("lunchHoursSum", workHourService.userTotalLunchHoursSum(users.getUsername()));
-            model.addAttribute("totalWorkHoursSum", workHourService.totalWorkHoursSum(users.getUsername()));
-            model.addAttribute("workHoursSumWithoutLunch", workHourService.userWorkHoursSumWithoutLunch(users.getUsername()));
+            model.addAttribute("totalWorkHoursSum", workHourService.totalUserWorkHour(users.getUsername()));
+            model.addAttribute("workHoursSumWithoutLunch", workHourService.totalWorkHourRow(users.getUsername()));
             return "edit_user";
         }
         return "redirect:/login";
