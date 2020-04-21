@@ -193,6 +193,27 @@
 </div>
 <div th:replace="fragments/footer :: footer">...</div>
 
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+    var allUsersFullName = [];
+    var allUsersUserName = [];
+    /*[# th:each="n : ${users}"]*/
+        allUsersFullName.push("[(${n.fullname})]");
+    /*[/]*/
+    /*[# th:each="n : ${users}"]*/
+        allUsersUserName.push("[(${n.username})]");
+    /*[/]*/
+
+    $( "#user-search-by-fullname" ).autocomplete({
+          source: allUsersFullName
+    });
+    $( "#search-work-hour-by-username" ).autocomplete({
+          source: allUsersUserName
+    });
+
+/*]]>*/
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -209,13 +230,7 @@
 <script src="/login_style/vendor/bootstrap/js/popper.js"></script>
 <!--===============================================================================================-->
 <script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
 <script src="js/main.js"></script>
+
 </body>
 </html>
