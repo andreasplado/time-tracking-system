@@ -214,7 +214,9 @@ public class WorkHourService {
             seconds = (seconds % 3600) % 60;
             return hours + ":" + minutes;
         }
-        return "00:00";
+
+        return TimeUtils.secondToFullTime(totalDuration.toMillis());
+        //return "00:00";
     }
 
 
@@ -232,7 +234,8 @@ public class WorkHourService {
             //return hours + ":" + minutes;
             return TimeUtils.secondToFullTime(totalDuration.getSeconds());
         }
-        return "00:00";
+        return TimeUtils.secondToFullTime(totalDuration.toMillis());
+        //return "00:00";
     }
 
 
