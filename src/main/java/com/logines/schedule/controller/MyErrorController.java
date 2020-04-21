@@ -23,14 +23,14 @@ public class MyErrorController implements ErrorController {
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 model.addAttribute("error_title", "Oops! Page not found.");
                 model.addAttribute("error_content", "Sorry this page was not found");
-                model.addAttribute("error_nr", "<span>5</span><span>0</span><span>0</span>");
+                model.addAttribute("error_nr", status);
 
                 return "server_error";
             }
             else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 model.addAttribute("error_title", "Oops! Page error.");
                 model.addAttribute("error_content", "We are sorry, but the page have some technical issues");
-                model.addAttribute("error_nr", "<span>4</span><span>0</span><span>4</span>");
+                model.addAttribute("error_nr", status);
                 return "server_error";
             }
             model.addAttribute("error", status);
