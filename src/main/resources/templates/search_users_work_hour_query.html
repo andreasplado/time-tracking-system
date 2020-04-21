@@ -209,6 +209,23 @@ $( function() {
 <script src="/material-datetime-picker/material-datetime-picker.js" charset="utf-8"></script>
 <script src="/material-datetime-picker/material_search_user_workhour.js" charset="utf-8"></script>
 
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+    var allUsersFullName = [];
+    var allUsersUserName = [];
+    /*[# th:each="n : ${users}"]*/
+        allUsersFullName.push("[(${n.fullname})]");
+    /*[/]*/
+    /*[# th:each="n : ${users}"]*/
+        allUsersUserName.push("[(${n.username})]");
+    /*[/]*/
+
+    $( "#search-work-hour-by-username" ).autocomplete({
+          source: allUsersFullName
+    });
+
+/*]]>*/
+</script>
 
 </body>
 </html>

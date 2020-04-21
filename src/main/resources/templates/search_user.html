@@ -176,5 +176,27 @@ function searchUserByUsername(){
 
     </ul> <!-- cd-tabs__panels -->
 </div>
+
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+    var allUsersFullName = [];
+    var allUsersUserName = [];
+    /*[# th:each="n : ${users}"]*/
+        allUsersFullName.push("[(${n.fullname})]");
+    /*[/]*/
+    /*[# th:each="n : ${users}"]*/
+        allUsersUserName.push("[(${n.username})]");
+    /*[/]*/
+
+    $( "#user-search-by-fullname" ).autocomplete({
+          source: allUsersFullName
+    });
+    $( "#search-work-hour-by-username" ).autocomplete({
+          source: allUsersUserName
+    });
+
+/*]]>*/
+</script>
+
 </body>
 </html>
