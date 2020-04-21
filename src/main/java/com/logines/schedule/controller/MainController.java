@@ -94,6 +94,29 @@ public class MainController {
         }
     }
 
+    @GetMapping("/get-user/{id}")
+    public String searchUserByUserId(@PathVariable("id") int id, Model model, Principal principal) {
+        Users userForm = new Users();
+        model.addAttribute("userForm", userForm);
+        List<WorkHour> userWorkHours = null;
+        if(principal != null){
+            model.addAttribute("usernameText", principal.getName());
+            Users myUser = userService.findByUsername(principal.getName());
+            Users users = userService.findByid(id);
+            userWorkHours = workHourService.findByUsernameReversed(users.getUsername());
+            model.addAttribute("user", users);
+            model.addAttribute("role", myUser.getRole());
+            model.addAttribute("userWorkHours", userWorkHours);
+            model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(users.getUsername()));
+            model.addAttribute("lunchHoursSum", workHourService.userTotalLunchHoursSum(users.getUsername()));
+            model.addAttribute("totalWorkHoursSum", workHourService.totalUserWorkHour(users.getUsername()));
+            model.addAttribute("workHoursSumWithoutLunch", workHourService.totalWorkHourRow(users.getUsername()));
+            return "edit_user";
+        }
+        return "redirect:/login";
+    }
+
+
     @PostMapping("time/{id}")
     public String postTime(@PathVariable("id") long id,
                            @Valid WorkHour workHour,

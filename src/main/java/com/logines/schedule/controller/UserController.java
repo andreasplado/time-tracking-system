@@ -27,9 +27,6 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private WorkHourService workHourService;
-
-    @Autowired
     private SecurityService securityService;
 
     @Autowired
@@ -104,29 +101,6 @@ public class UserController {
         model.addAttribute("users", users);
         return "search_users_by_fullname";
     }
-
-    @GetMapping("/get-user/{id}")
-    public String searchUserByUserId(@PathVariable("id") int id, Model model, Principal principal) {
-        Users userForm = new Users();
-        model.addAttribute("userForm", userForm);
-        List<WorkHour> userWorkHours = null;
-        if(principal != null){
-            model.addAttribute("usernameText", principal.getName());
-            Users myUser = userService.findByUsername(principal.getName());
-            Users users = userService.findByid(id);
-            userWorkHours = workHourService.findByUsernameReversed(users.getUsername());
-            model.addAttribute("user", users);
-            model.addAttribute("role", myUser.getRole());
-            model.addAttribute("userWorkHours", userWorkHours);
-            model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(users.getUsername()));
-            model.addAttribute("lunchHoursSum", workHourService.userTotalLunchHoursSum(users.getUsername()));
-            model.addAttribute("totalWorkHoursSum", workHourService.totalUserWorkHour(users.getUsername()));
-            model.addAttribute("workHoursSumWithoutLunch", workHourService.totalWorkHourRow(users.getUsername()));
-            return "edit_user";
-        }
-        return "redirect:/login";
-    }
-
     @PostMapping("/edit-user/{id}")
     public String editUser(Model model, @Valid Users users,
                            BindingResult bindingResult) {
