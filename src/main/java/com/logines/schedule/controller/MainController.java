@@ -134,7 +134,7 @@ public class MainController {
             model.addAttribute("user", users);
             model.addAttribute("role", myUser.getRole());
             model.addAttribute("userWorkHours", userWorkHours);
-            model.addAttribute("totalWorkHoursSum", workHourService.userWorkHoursSumWithoutLunch(users.getUsername()));
+            model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSumWithoutLunch(users.getUsername()));
             model.addAttribute("lunchHoursSum", workHourService.userTotalLunchHoursSum(users.getUsername()));
             model.addAttribute("totalWorkHoursSum", workHourService.totalWorkHoursSum(users.getUsername()));
             model.addAttribute("workHoursSumWithoutLunch", workHourService.userWorkHoursSumWithoutLunch(users.getUsername()));
