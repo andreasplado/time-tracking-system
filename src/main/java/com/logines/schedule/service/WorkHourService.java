@@ -105,7 +105,7 @@ public class WorkHourService {
     }
 
 
-    public long allUserWorkHoursSumHelper(String username) {
+    public long allUserWorkHoursSumHelper() {
         List<WorkHour> workHours = workHourRepository.findAll();
         long diff = 0;
         Timestamp startDateTime;
@@ -131,7 +131,7 @@ public class WorkHourService {
     }
 
 
-    public long allUserLunchHoursSumHelper(String username) {
+    public long allUserLunchHoursSumHelper() {
         List<WorkHour> workHours = workHourRepository.findAll();
         Duration totalDuration = Duration.ZERO;
         for (WorkHour workHour : workHours) {
@@ -237,7 +237,7 @@ public class WorkHourService {
 
 
     public String totalWorkHoursSum() {
-        long timeDiff = allUserWorkHoursSumHelper(username) - allUserLunchHoursSumHelper(username);
+        long timeDiff = allUserWorkHoursSumHelper() - allUserLunchHoursSumHelper();
         return TimeUtils.secondToFullTime(timeDiff);
     }
 
