@@ -105,6 +105,48 @@ public class WorkHourService {
     }
 
 
+    public long allUserWorkHoursSumHelper(String username) {
+        List<WorkHour> workHours = workHourRepository.findAll();
+        long diff = 0;
+        Timestamp startDateTime;
+        Timestamp endDateTime;
+        Duration totalDuration = Duration.ZERO;
+        long milliseconds = 0;
+        for (int i = 0; i < workHours.size(); i++) {
+            startDateTime = workHours.get(i).getStart_time(); //2020-04-19 10:00:00.0
+            endDateTime = workHours.get(i).getEnd_time(); //2020-04-19 18:00:00.0
+            Duration duration = Duration.between(startDateTime.toLocalDateTime(), endDateTime.toLocalDateTime()); //00:30:00
+            totalDuration = totalDuration.plusMinutes(duration.toMinutes());
+        }
+
+        if (workHours.size() != 0) {
+            int seconds = (int) totalDuration.getSeconds();
+
+            int hours = seconds / 3600;
+            int minutes = (seconds % 3600) / 60;
+
+            return totalDuration.toMinutes();
+        }
+        return 0;
+    }
+
+
+    public long allUserLunchHoursSumHelper(String username) {
+        List<WorkHour> workHours = workHourRepository.findAll();
+        Duration totalDuration = Duration.ZERO;
+        for (WorkHour workHour : workHours) {
+            // save your time in the appropriate format beforehand
+            // do not use local time to store duration.
+            Duration lunchTime = Duration.between(LocalTime.MIDNIGHT, workHour.getLunch_time().toLocalTime()); //00:30:00
+            totalDuration = totalDuration.plusMinutes(lunchTime.toMinutes());
+        }
+        if (workHours.size() != 0) {
+            return totalDuration.toMinutes();
+        }
+        return 0L;
+    }
+
+
     public long userWorkHoursSumHelper2(WorkHour workHour) {
 
         long diff = 0;
@@ -195,6 +237,11 @@ public class WorkHourService {
 
 
     public String totalWorkHoursSum() {
+        long timeDiff = allUserWorkHoursSumHelper(username) - allUserLunchHoursSumHelper(username);
+        return TimeUtils.secondToFullTime(timeDiff);
+    }
+
+    /*public String totalWorkHoursSum() {
         List<WorkHour> workHours = workHourRepository.findAll();
         Timestamp startDateTime;
         Timestamp endDateTime;
@@ -215,7 +262,7 @@ public class WorkHourService {
             return hours + ":" + minutes;
         }
         return "00:00";
-    }
+    }*/
 
 
     public void deleteAll() {
