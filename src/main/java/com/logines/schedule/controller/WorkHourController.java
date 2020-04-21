@@ -117,6 +117,7 @@ public class WorkHourController {
                           Model model, Principal principal){
         model.addAttribute("usernameText", principal.getName());
         model.addAttribute("workHourForm", new WorkHour());
+        model.addAttribute("users", userService.findAll());
 
         if(!CustomStringUtils.isNullOrEmpty(startTime) && !CustomStringUtils.isNullOrEmpty(endTime) && CustomStringUtils.isNullOrEmpty(username)){
             model.addAttribute("workHours", workHourService.findBetween(startTime, endTime));
