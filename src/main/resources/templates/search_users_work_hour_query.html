@@ -75,6 +75,7 @@
 
 
 
+
 </style>
 <script>
    $(document).keyup(function(e) {
@@ -94,6 +95,7 @@ function searchByUsername(){
         alert("You didnt enter username");
     }
 }
+
 
 
 
@@ -123,6 +125,7 @@ $( function() {
 
 
 
+
 </script>
 
 
@@ -139,65 +142,67 @@ $( function() {
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <ul class="cd-tabs__panels">
         <li id="tab-dashboard" class="cd-tabs__panel cd-tabs__panel--selected text-component">
-
-
-            <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
-                  th:object="${workHourForm}">
-                <div class="form-group row">
-                    <label class="col-form-label">Start time</label>
-                    <input id="start_time" name="start_time" th:field="*{start_time}" type="text"
-                           th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label pt-n1">End time</label>
-                    <input id="end_time" name="end_time" th:field="*{end_time}" type="text"
-                           th:attr="data-field='datetime'" class="form-control" autocomplete="off"
-                           onfocus="blur();"/>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label pt-n1">Username</label>
-                    <input type="text" name="username" id="search-work-hour-by-username" class="form-control">
-                </div>
-                <div class="form-group row float-right">
-                    <button type="submit" class="btn btn-primary">SEARCH</button>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                </div>
-            </form>
-            <br />
-            <br />
-            <hr/>
-            <simple th:text="${lol}"></simple>
-            <a th:if="${workHours!=null and !workHours.empty}" href="../">
-                <img class="back-btn" src="/images/return.png">
-            </a>
-            <div th:if="${workHours==null or workHours.empty}">
-                <img src="/images/no_data_found.png" class="no-data-found"/>
-            </div>
-            <table th:if="${workHours!=null and !workHours.empty}" class="table logines-table">
-                <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Start time</th>
-                    <th>End time</th>
-                    <th>Lunch time</th>
-                    <th>Added</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="list-item" th:each="workHour : ${workHours}"
-                    th:onclick="'viewWorkHour(' + ${workHour.id} +')'">
-                    <td th:text="${workHour.username}"></td>
-                    <td th:text="${workHour.start_time}"></td>
-                    <td th:text="${workHour.end_time}"></td>
-                    <td th:text="${workHour.lunch_time}"></td>
-                    <td th:text="${workHour.created_at}"></td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="p-t-136">
-                <a href="../">
+            <div class="bd-example">
+                <p style="display:none; color:red;" id="search-query-validation-error">Select dates between a range</p>
+                <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
+                      th:object="${workHourForm}">
+                    <div class="form-group row">
+                        <label class="col-form-label">Start time</label>
+                        <input id="start_time" name="start_time" th:field="*{start_time}" type="text"
+                               th:attr="data-field='datetime'" class="form-control" autocomplete="off"
+                               onfocus="blur();"/>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label pt-n1">End time</label>
+                        <input id="end_time" name="end_time" th:field="*{end_time}" type="text"
+                               th:attr="data-field='datetime'" class="form-control" autocomplete="off"
+                               onfocus="blur();"/>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label pt-n1">Username</label>
+                        <input type="text" name="username" id="search-work-hour-by-username" class="form-control">
+                    </div>
+                    <div class="form-group row float-right">
+                        <button type="submit" class="btn btn-primary">SEARCH</button>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </div>
+                </form>
+                <br/>
+                <br/>
+                <hr/>
+                <simple th:text="${lol}"></simple>
+                <a th:if="${workHours!=null and !workHours.empty}" href="../">
                     <img class="back-btn" src="/images/return.png">
                 </a>
+                <div th:if="${workHours==null or workHours.empty}">
+                    <img src="/images/no_data_found.png" class="no-data-found"/>
+                </div>
+                <table th:if="${workHours!=null and !workHours.empty}" class="table logines-table">
+                    <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Start time</th>
+                        <th>End time</th>
+                        <th>Lunch time</th>
+                        <th>Added</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="list-item" th:each="workHour : ${workHours}"
+                        th:onclick="'viewWorkHour(' + ${workHour.id} +')'">
+                        <td th:text="${workHour.username}"></td>
+                        <td th:text="${workHour.start_time}"></td>
+                        <td th:text="${workHour.end_time}"></td>
+                        <td th:text="${workHour.lunch_time}"></td>
+                        <td th:text="${workHour.created_at}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="p-t-136">
+                    <a href="../">
+                        <img class="back-btn" src="/images/return.png">
+                    </a>
+                </div>
             </div>
         </li>
     </ul>
@@ -225,6 +230,7 @@ $( function() {
     });
 
 /*]]>*/
+
 </script>
 
 </body>
