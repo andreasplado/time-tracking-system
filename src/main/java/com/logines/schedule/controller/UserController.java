@@ -6,6 +6,7 @@ import com.logines.schedule.model.WorkHour;
 import com.logines.schedule.service.CompanyService;
 import com.logines.schedule.service.SecurityService;
 import com.logines.schedule.service.UserService;
+import com.logines.schedule.service.WorkHourService;
 import com.logines.schedule.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +25,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private WorkHourService workHourService;
 
     @Autowired
     private SecurityService securityService;
@@ -101,6 +105,27 @@ public class UserController {
         return "search_users_by_fullname";
     }
 
+    @GetMapping("/get-user/{id}")
+    public String searchUserByUserId(@PathVariable("id") int id, Model model, Principal principal) {
+        Users userForm = new Users();
+        model.addAttribute("userForm", userForm);
+        List<WorkHour> userWorkHours = null;
+        if(principal != null){
+            model.addAttribute("usernameText", principal.getName());
+            Users myUser = userService.findByUsername(principal.getName());
+            Users users = userService.findByid(id);
+            userWorkHours = workHourService.findByUsernameReversed(users.getUsername());
+            model.addAttribute("user", users);
+            model.addAttribute("role", myUser.getRole());
+            model.addAttribute("userWorkHours", userWorkHours);
+            model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(users.getUsername()));
+            model.addAttribute("lunchHoursSum", workHourService.userTotalLunchHoursSum(users.getUsername()));
+            model.addAttribute("totalWorkHoursSum", workHourService.totalUserWorkHour(users.getUsername()));
+            model.addAttribute("workHoursSumWithoutLunch", workHourService.totalWorkHourRow(users.getUsername()));
+            return "edit_user";
+        }
+        return "redirect:/login";
+    }
 
     @PostMapping("/edit-user/{id}")
     public String editUser(Model model, @Valid Users users,
