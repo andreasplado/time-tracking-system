@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 
 <head>
@@ -32,11 +32,12 @@
 <div id="notfound">
     <div class="notfound">
         <div class="notfound-404">
-            <h3>Oops! Page error.</h3>
-            <h1><span>5</span><span>0</span><span>0</span></h1>
+            <h3 th:text="${error_title}"></h3>
+            <h1 th:text="${error_nr}"></h1>
         </div>
-        <h2>we are sorry, but the page have some technical issues</h2>
+        <h2 th:text="${error_content}"></h2>
         <h5>You can report this error to info@logines.ee or right to developer @ andreasplado@gmail.com</h5>
+        <p th:text="${error}"></p>
     </div>
 </div>
 
