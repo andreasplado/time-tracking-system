@@ -218,6 +218,8 @@ public class WorkHourService {
     }
 
 
+
+
     public String userTotalLunchHoursSum(String username) {
         List<WorkHour> workHours = workHourRepository.findWorkHoursByUsername(username);
         Duration totalDuration = Duration.ZERO;

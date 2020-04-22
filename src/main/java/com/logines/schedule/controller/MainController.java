@@ -78,6 +78,7 @@ public class MainController {
             if(myUser != null) {
                 model.addAttribute("users", userService.findAll());
                 model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
+                model.addAttribute("userWorkHoursSumWithoutLunchtime", workHourService.totalUserWorkHour(principal.getName()));
                 model.addAttribute("lunchHoursSum", workHourService.userTotalLunchHoursSum(principal.getName()));
                 model.addAttribute("totalWorkHoursSum", workHourService.totalWorkHoursSum());
                 model.addAttribute("myUser", myUser);
