@@ -238,7 +238,7 @@ public class WorkHourService {
 
     public String totalWorkHoursSum() {
         long timeDiff = allUserWorkHoursSumHelper() - allUserLunchHoursSumHelper();
-        return TimeUtils.secondToFullTime(timeDiff);
+        return TimeUtils.minutesToFullTime(timeDiff);
     }
 
     /*public String totalWorkHoursSum() {
