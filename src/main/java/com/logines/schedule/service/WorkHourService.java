@@ -187,7 +187,7 @@ public class WorkHourService {
             WorkHourTotal workHourTotal = new WorkHourTotal();
             workHourTotal.setId(workHour.getId());
             long timeDiff = userWorkHoursSumHelper2(workHour) - userLunchHoursSumHelper2(workHour);
-            workHourTotal.setWorkHoursField(TimeUtils.secondToFullTime(timeDiff));
+            workHourTotal.setWorkHoursField(TimeUtils.minutesToFullTime(timeDiff));
             workHourTotals.add(workHourTotal);
         }
         return workHourTotals;
