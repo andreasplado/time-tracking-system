@@ -11,6 +11,10 @@ public class TimeUtils {
         return timeUnitToFullTime(second, TimeUnit.SECONDS);
     }
 
+    public static String minutesToFullTime(long minutes) {
+        return timeUnitToFullTime(minutes, TimeUnit.MINUTES);
+    }
+
     public static String timeUnitToFullTime(long time, TimeUnit timeUnit) {
         long day = timeUnit.toDays(time);
         long hour = timeUnit.toHours(time) % 24;

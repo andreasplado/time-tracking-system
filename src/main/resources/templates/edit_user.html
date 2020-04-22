@@ -230,9 +230,9 @@ $( function() {
                 <br />
                 <strong th:text="${'Workhours with lunch: ' + userWorkHoursSum}"></strong>
                 <br />
-                <strong th:text="${'Total lunch time: ' + lunchHoursSum}"></strong>
+                <strong th:text="${'Total lunch time: ' + userLunchHoursSum}"></strong>
                 <br />
-                <strong th:text="${'Total workhours : ' + totalWorkHoursSum}"></strong>
+                <strong th:text="${'Total workhours : ' + userTotalWorkHoursSum}"></strong>
                 <br />
                 <br />
                 <h5 th:text="${'Working history'}"></h5>
@@ -318,7 +318,7 @@ function editUserBtn() {
         return false;
     }
 
-    var theList = [[${workHoursSumWithoutLunch}]];
+    var theList = [[${userWorkHoursSumWithoutLunch}]];
     for (i = 0; i < theList.length; i++) {
         var s = theList[i].workHoursField;
         $("#user-work-hour-" + theList[i].id +"-sum").append(s);

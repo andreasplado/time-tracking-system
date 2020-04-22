@@ -212,7 +212,7 @@ public class WorkHourService {
             int minutes = (seconds % 3600) / 60;
 
             seconds = (seconds % 3600) % 60;
-            return hours + ":" + minutes;
+            return TimeUtils.secondToFullTime(totalDuration.getSeconds());
         }
         return "00:00";
     }
