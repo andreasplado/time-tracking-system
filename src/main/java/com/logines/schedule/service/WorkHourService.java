@@ -175,7 +175,7 @@ public class WorkHourService {
 
     public String totalUserWorkHour(String username) {
         long timeDiff = userWorkHoursSumHelper(username) - userLunchHoursSumHelper(username);
-        return TimeUtils.secondToFullTime(timeDiff);
+        return TimeUtils.minutesToFullTime(timeDiff);
     }
 
 
