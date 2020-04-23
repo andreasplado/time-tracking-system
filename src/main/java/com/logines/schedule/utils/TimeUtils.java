@@ -20,9 +20,9 @@ public class TimeUtils {
         long hour = timeUnit.toHours(time) % 24;
         long minute = timeUnit.toMinutes(time) % 60;
         long second = timeUnit.toSeconds(time) % 60;
-        if (day > 0) {
+        /*if (day > 0) {
             return String.format("%d day %02d:%02d:%02d", day, hour, minute, second);
-        } else if (hour > 0) {
+        } else*/ if (hour > 0) {
             return String.format("%d:%02d:%02d", hour, minute, second);
         } else if (minute > 0) {
             return String.format("%d:%02d", minute, second);
