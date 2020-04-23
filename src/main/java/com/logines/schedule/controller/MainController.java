@@ -78,6 +78,7 @@ public class MainController {
             if(myUser != null) {
                 model.addAttribute("users", userService.findAll());
                 model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(principal.getName()));
+                model.addAttribute("userWorkHoursSumWithoutLunchtime", workHourService.totalUserWorkHour(principal.getName()));
                 model.addAttribute("lunchHoursSum", workHourService.userTotalLunchHoursSum(principal.getName()));
                 model.addAttribute("totalWorkHoursSum", workHourService.totalWorkHoursSum());
                 model.addAttribute("myUser", myUser);
@@ -99,6 +100,7 @@ public class MainController {
         Users userForm = new Users();
         model.addAttribute("userForm", userForm);
         List<WorkHour> userWorkHours = null;
+        List<Company> companyList = companyService.findAll();
         if(principal != null){
             model.addAttribute("usernameText", principal.getName());
             Users myUser = userService.findByUsername(principal.getName());
@@ -107,6 +109,7 @@ public class MainController {
             model.addAttribute("user", users);
             model.addAttribute("role", myUser.getRole());
             model.addAttribute("userWorkHours", userWorkHours);
+            model.addAttribute("companyList", companyList);
             model.addAttribute("userWorkHoursSum", workHourService.userWorkHoursSum(users.getUsername()));
             model.addAttribute("userLunchHoursSum", workHourService.userTotalLunchHoursSum(users.getUsername()));
             model.addAttribute("userTotalWorkHoursSum", workHourService.totalUserWorkHour(users.getUsername()));
