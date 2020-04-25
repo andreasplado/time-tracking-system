@@ -35,8 +35,7 @@ $(document).ready(function(){
             defaultTab();
         }else{
             var activatedTabName = document.getElementById(getTab());
-            activatedTabName.class = "";
-            activatedTabName.classList.add("cd-tabs__item--selected");
+            activatedTabName.class = "cd-tabs__item cd-tabs__item--selected";
         }
     }
 
