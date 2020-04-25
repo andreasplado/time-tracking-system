@@ -28,22 +28,19 @@ $(document).ready(function(){
       window.localStorage.setItem("tab", "tab-3");
       window.localStorage.setItem("content", "tab-my-profile");
       $( "#cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
-      $( "#cd-tabs__panel" ).removeClass("cd-tabs__panel");
-      $('#cd-tabs__panel').hide();
+      $( ".cd-tabs__panel" ).removeClass("cd-tabs__panel");
     });
     $("#tab-4").click(function() {
       window.localStorage.setItem("tab", "tab-4");
       window.localStorage.setItem("content", "tab-admin");
       $( "#cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
-      $( "#cd-tabs__panel" ).removeClass("cd-tabs__panel");
-      $('#cd-tabs__panel').hide();
+      $( ".cd-tabs__panel" ).removeClass("cd-tabs__panel");
     });
     $("#tab-5").click(function() {
       window.localStorage.setItem("tab", "tab-5");
       window.localStorage.setItem("content", "tab-company");
       $( "#cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
-      $( "#cd-tabs__panel" ).removeClass("cd-tabs__panel");
-      $('#cd-tabs__panel').hide();
+      $( ".cd-tabs__panel" ).removeClass("cd-tabs__panel");
     });
 
 
