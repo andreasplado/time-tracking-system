@@ -12,8 +12,9 @@ $(document).ready(function(){
     $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
         localStorage.setItem('activeTab', $(e.target).attr('href'));
     });
-    console.log("Töötab");
     var activeTab = localStorage.getItem('activeTab');
+
+    console.log(activeTab);
     if(activeTab){
         $('#myTab a[href="' + activeTab + '"]').tab('show');
         console.log("Active tab" + activeTab);
