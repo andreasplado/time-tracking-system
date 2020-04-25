@@ -11,7 +11,6 @@ $(document).ready(function(){
     });
 
     function activateTab() {
-        $( "[href]" ).removeClass( "cd-tabs__item--selected" );
         $( "[href='" + window.location.hash + "']" ).addClass( "cd-tabs__item--selected" );
 
     }
