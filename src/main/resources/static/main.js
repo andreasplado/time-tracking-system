@@ -10,7 +10,7 @@ $(document).ready(function(){
         }
     });
 
-    console.log($('a[data-toggle="tab"]'););
+    console.log($('a[data-toggle="tab"]'));
     $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
         localStorage.setItem('activeTab', $(e.target).attr('href'));
     });
