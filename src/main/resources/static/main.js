@@ -10,18 +10,15 @@ $(document).ready(function(){
         }
     });
 
-
-    function activateTab() {
-        //$( "[href]" ).removeClass( "cd-tabs__item--selected" );
-        $( "[href='" + window.location.hash + "']" ).addClass( "cd-tabs__item--selected" );
-
+    var tab = [];
+    for(int i = 1; i<6; i++){
+        tab[i] = document.getElementById("tab-" + i);
+        $("#tab-" + i).click(function() {
+          alert( "Handler for .click() called." );
+        });
     }
 
-    $( window ).on( 'hashchange', function( e ) {
-        activateTab();
-    } );
 
-    activateTab();
 
 
 });
