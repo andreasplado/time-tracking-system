@@ -19,9 +19,8 @@ $(document).ready(function(){
       // Store
       window.localStorage.setItem("tab", "tab-2");
       window.localStorage.setItem("content", "tab-workhours");
-      $( "#cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
-      $( "#cd-tabs__panel" ).removeClass("cd-tabs__panel");
-      $('#cd-tabs__panel').hide();
+      $( ".cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
+      $( ".cd-tabs__panel" ).removeClass("cd-tabs__panel");
     });
     $("#tab-3").click(function() {
       // Store
