@@ -16,7 +16,7 @@ $(document).ready(function(){
        //go to anchor, simulates the link click
        $(document).scrollTop( $(sessionStorage.getItem('lastsessionid')).offset().top );
     }
-    $('a[href=#tab-dashboard*]').on('click', function(){
+    $('a[href=#tab-dashboard]').on('click', function(){
        sessionStorage.setItem('lastsessionid', this.href);
     });
     $('a[href=#tab-workhours]').on('click', function(){
