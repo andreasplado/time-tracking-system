@@ -11,7 +11,7 @@ $(document).ready(function(){
     });
 
     var tab = [];
-    for(var i = 1; i<6; i++;){
+    for(var i = 1; i<6; i++){
         tab[i] = document.getElementById("tab-" + i);
         $("#tab-" + i).click(function() {
           alert( "Handler for .click() called." );
