@@ -20,7 +20,12 @@ $(document).ready(function(){
           // Store
           localStorage.setItem("tab", "tab-" + i);
         });
+        tab[i].onclick = function(){
+            localStorage.setItem("tab", "tab-" + i);
+            console.log("tab-" + i);
+        };
     }
+
 
     function defaultTab(){
         var defaultTabName = document.getElementById("tab-1");
