@@ -15,11 +15,11 @@ $(document).ready(function(){
     for(var i = 1; i<6; i++){
         tab[i] = document.getElementById("tab-" + i);
 
-        $("#tab-" + i).click(function() {
+        /*$("#tab-" + i).click(function() {
           alert("#tab-" + i);
           // Store
           localStorage.setItem("tab", "tab-" + i);
-        });
+        });*/
         tab[i].onclick = function(){
             localStorage.setItem("tab", "tab-" + i);
             console.log("tab-" + i);
