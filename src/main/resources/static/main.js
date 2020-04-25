@@ -5,6 +5,11 @@ $(document).ready(function(){
             $("#notes").val("No notes");
         }
     });
+    $("#company-form").submit(function(event){
+        if($.trim($("#company_name").val()) === ""){
+            $("#company-registration-validation-error").show();
+        }
+    });
     /*
     $("#tab-1").click(function() {
       window.localStorage.setItem("tab", "tab-1");
