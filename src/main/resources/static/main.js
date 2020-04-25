@@ -30,6 +30,7 @@ $(document).ready(function(){
     function getTab(){
         var item = localStorage.getItem("tab");
         console.log(item);
+        return item;
     }
 
     function activeTab(){
