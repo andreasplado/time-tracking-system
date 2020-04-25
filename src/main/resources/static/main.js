@@ -46,7 +46,6 @@ $(document).ready(function(){
 
     function defaultTab(){
         var defaultTabName = document.getElementById("tab-1");
-        defaultTabName.className = "cd-tabs__item cd-tabs__item--selected";
     }
 
     function getTab(){
@@ -61,7 +60,7 @@ $(document).ready(function(){
             defaultTab();
         }else{
             var activatedTabName = document.getElementById("" + getTab());
-            activatedTabName.class = "cd-tabs__item cd-tabs__item--selected";
+            $( "#" + getTab() ).addClass( "cd-tabs__item--selected" );
         }
     }
 
