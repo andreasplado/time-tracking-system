@@ -40,7 +40,7 @@ $(document).ready(function(){
 
     function activeTab(){
         console.log(getTab());
-        if(getTab() == null|| getTab() == "undefined"){
+        if(getTab()){
             defaultTab();
         }else{
             var activatedTabName = document.getElementById(getTab());
