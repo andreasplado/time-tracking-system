@@ -60,6 +60,7 @@ $(document).ready(function(){
             defaultTab();
         }else{
             //var activatedTabName = document.getElementById("" + getTab());
+            $( "#cd-tabs__list > li > a" ).removeClass("cd-tabs__item--selected");
             $( "#" + getTab() ).addClass( "cd-tabs__item--selected" );
         }
     }
