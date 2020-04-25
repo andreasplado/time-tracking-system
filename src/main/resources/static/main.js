@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $("#workhour-form").submit(function(event){
+    /*$("#workhour-form").submit(function(event){
         if($.trim($("#notes").val()) === ""){
             $("#notes").val("No notes");
         }
@@ -69,7 +69,7 @@ $(document).ready(function(){
         }
     }
 
-    activeTab();
+    activeTab();*/
 
 
 
