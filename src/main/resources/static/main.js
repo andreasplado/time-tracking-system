@@ -1,11 +1,11 @@
 $(document).ready(function(){
 
-    /*$("#workhour-form").submit(function(event){
+    $("#workhour-form").submit(function(event){
         if($.trim($("#notes").val()) === ""){
             $("#notes").val("No notes");
         }
     });
-
+    /*
     $("#tab-1").click(function() {
       window.localStorage.setItem("tab", "tab-1");
       window.localStorage.setItem("content", "tab-dashboard");
@@ -69,7 +69,8 @@ $(document).ready(function(){
         }
     }
 
-    activeTab();*/
+    activeTab();
+    */
 
 
 
