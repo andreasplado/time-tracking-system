@@ -37,12 +37,14 @@ $(document).ready(function(){
     }
 
     function getTab(){
+        window.localStorage.removeItem("tab");
         var item = window.localStorage.getItem("tab");
         console.log(item);
         return item;
     }
 
     function getContent(){
+        window.localStorage.removeItem("content");
         var item = window.localStorage.getItem("content");
         console.log(item);
         return item;
