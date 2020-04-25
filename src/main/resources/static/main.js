@@ -10,26 +10,12 @@ $(document).ready(function(){
         }
     });
 
-
-    //TABS
-    if (sessionStorage.getItem('lastsessionid') != null){
-       //go to anchor, simulates the link click
-       $(document).scrollTop( $(sessionStorage.getItem('lastsessionid')).offset().top );
+    $( '.cd-tabs__item' ).on( 'click', function(){
+        window.location.hash = $(this).attr( 'id' );
+    });
+    // Check if we need to activate a tab based on the has
+    if ( window.location.hash && $( window.location.hash ).length ) {
+        $( window.location.hash ).addClass( "cd-tabs__item--selected" );
     }
-    $('a[href=#tab-dashboard]').on('click', function(){
-       sessionStorage.setItem('lastsessionid', this.href);
-    });
-    $('a[href=#tab-workhours]').on('click', function(){
-       sessionStorage.setItem('lastsessionid', this.href);
-    });
-    $('a[href=#tab-my-profile]').on('click', function(){
-      sessionStorage.setItem('lastsessionid', this.href);
-    });
-    $('a[href=#tab-admin]').on('click', function(){
-        sessionStorage.setItem('lastsessionid', this.href);
-    });
-    $('a[href=#tab-company]').on('click', function(){
-      sessionStorage.setItem('lastsessionid', this.href);
-    });
 
 });
