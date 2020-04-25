@@ -39,6 +39,7 @@ $(document).ready(function(){
     }
 
     function activeTab(){
+        console.log(getTab());
         if(getTab() == null|| getTab() == "undefined"){
             defaultTab();
         }else{
