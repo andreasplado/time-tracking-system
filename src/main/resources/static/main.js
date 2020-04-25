@@ -10,22 +10,17 @@ $(document).ready(function(){
         }
     });
 
-    if(window.location.hash !=undefined){
+    function activateTab() {
+        $( "[href]" ).removeClass( "cd-tabs__item--selected" );
+        $( "[href='" + window.location.hash + "']" ).addClass( "cd-tabs__item--selected" );
 
     }
 
-
-        function activateTab() {
-            $( "[href]" ).removeClass( "cd-tabs__item--selected" );
-            $( "[href='" + window.location.hash + "']" ).addClass( "cd-tabs__item--selected" );
-
-        }
-
-        $( window ).on( 'hashchange', function( e ) {
-            activateTab();
-        } );
-
+    $( window ).on( 'hashchange', function( e ) {
         activateTab();
+    } );
+
+    activateTab();
 
 
 });
