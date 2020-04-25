@@ -19,7 +19,7 @@ $(document).ready(function(){
         oldIndex = dataStore.getItem(index);
     } catch(e) {}
 
-    $( "#tabs" ).tabs({
+    $( ".cd-tabs__navigation" ).tabs({
         active: oldIndex,
         activate: function(event, ui) {
             //  Get future value
