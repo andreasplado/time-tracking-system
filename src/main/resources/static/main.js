@@ -9,6 +9,8 @@ $(document).ready(function(){
             $("#notes").val("No notes");
         }
     });
+
+    console.log($('a[data-toggle="tab"]'););
     $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
         localStorage.setItem('activeTab', $(e.target).attr('href'));
     });
