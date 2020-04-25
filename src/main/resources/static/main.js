@@ -12,5 +12,12 @@ $(document).ready(function(){
 
 
     //TABS
+   if (sessionStorage.getItem('lastsessionid') != null){
+       //go to anchor, simulates the link click
+       $(document).scrollTop( $(sessionStorage.getItem('lastsessionid')).offset().top );
+   }
+   $('a[href=#tab*]').on('click', function(){
+       sessionStorage.setItem('lastsessionid', this.href);
+   });
 
 });
