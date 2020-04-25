@@ -11,9 +11,8 @@ $(document).ready(function(){
     $("#tab-1").click(function() {
       window.localStorage.setItem("tab", "tab-1");
       window.localStorage.setItem("content", "tab-dashboard");
-      $( "#cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
-      $( "#cd-tabs__panel" ).removeClass("cd-tabs__panel");
-      $('#cd-tabs__panel').hide();
+      $( ".cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
+      $( ".cd-tabs__panel" ).removeClass("cd-tabs__panel");
     });
     $("#tab-2").click(function() {
       // Store
