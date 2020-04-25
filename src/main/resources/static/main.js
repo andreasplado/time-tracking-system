@@ -28,8 +28,8 @@ $(document).ready(function(){
     $('a[href=#tab-admin]').on('click', function(){
         sessionStorage.setItem('lastsessionid', this.href);
     });
-  $('a[href=#tab-company]').on('click', function(){
+    $('a[href=#tab-company]').on('click', function(){
       sessionStorage.setItem('lastsessionid', this.href);
-  });
+    });
 
 });
