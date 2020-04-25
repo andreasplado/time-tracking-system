@@ -12,19 +12,38 @@ $(document).ready(function(){
 
     window.localStorage;
     var tab = [];
-    for(var i = 1; i<6; i++){
+    /*for(var i = 1; i<6; i++){
         tab[i] = document.getElementById("tab-" + i);
 
-        /*$("#tab-" + i).click(function() {
+        $("#tab-" + i).click(function() {
           alert("#tab-" + i);
           // Store
           localStorage.setItem("tab", "tab-" + i);
-        });*/
+        });
         tab[i].onclick = function(){
             localStorage.setItem("tab", "tab-" + i);
             console.log("tab-" + i);
         };
-    }
+    }*/
+
+
+    $("#tab-1").click(function() {
+      localStorage.setItem("tab", "tab-1");
+    });
+    $("#tab-2").click(function() {
+      // Store
+      localStorage.setItem("tab", "tab-2");
+    });
+    $("#tab-3").click(function() {
+      // Store
+      localStorage.setItem("tab", "tab-3");
+    });
+    $("#tab-4").click(function() {
+      localStorage.setItem("tab", "tab-4");
+    });
+    $("#tab-5").click(function() {
+      localStorage.setItem("tab", "tab-5");
+    });
 
 
     function defaultTab(){
