@@ -14,6 +14,7 @@ $(document).ready(function(){
     });
     var activeTab = localStorage.getItem('activeTab');
     if(activeTab){
+        alrt("Aktiivne tab");
         $('#myTab a[href="' + activeTab + '"]').tab('show');
     }
 
