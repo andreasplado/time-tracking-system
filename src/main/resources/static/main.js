@@ -5,10 +5,8 @@ $(document).ready(function(){
             $("#notes").val("No notes");
         }
     });
-    var tab = [];
 
-
-    /*$("#tab-1").click(function() {
+    $("#tab-1").click(function() {
       window.localStorage.setItem("tab", "tab-1");
       window.localStorage.setItem("content", "tab-dashboard");
       $( ".cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
@@ -72,7 +70,6 @@ $(document).ready(function(){
     }
 
     activeTab();
-*/
 
 
 
