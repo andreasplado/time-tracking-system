@@ -11,15 +11,12 @@ $(document).ready(function(){
     });
 
     console.log($('a[data-toggle="tab"]'));
-    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
-        localStorage.setItem('activeTab', $(e.target).attr('href'));
-    });
-    var activeTab = localStorage.getItem('activeTab');
-
-    console.log(activeTab);
-    if(activeTab){
-        $('#myTab a[href="' + activeTab + '"]').tab('show');
-        console.log("Active tab" + activeTab);
-    }
+	$( '.cd-tabs__item' ).on( 'click', function(){
+		window.location.hash = $(this).attr( 'id' );
+	});
+	// Check if we need to activate a tab based on the has
+	if ( window.location.hash && $( window.location.hash ).length ) {
+		$( window.location.hash ).click();
+	}
 
 });
