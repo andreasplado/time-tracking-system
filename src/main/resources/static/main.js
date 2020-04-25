@@ -56,10 +56,10 @@ $(document).ready(function(){
 
     function activeTab(){
         console.log(getTab());
-        if(!getTab()){
+        if(false){
             defaultTab();
         }else{
-            var activatedTabName = document.getElementById("" + getTab());
+            //var activatedTabName = document.getElementById("" + getTab());
             $( "#" + getTab() ).addClass( "cd-tabs__item--selected" );
         }
     }
