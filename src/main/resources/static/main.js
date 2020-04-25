@@ -9,8 +9,6 @@ $(document).ready(function(){
             $("#notes").val("No notes");
         }
     });
-
-    window.localStorage;
     var tab = [];
     /*for(var i = 1; i<6; i++){
         tab[i] = document.getElementById("tab-" + i);
@@ -28,21 +26,21 @@ $(document).ready(function(){
 
 
     $("#tab-1").click(function() {
-      localStorage.setItem("tab", "tab-1");
+      window.localStorage.setItem("tab", "tab-1");
     });
     $("#tab-2").click(function() {
       // Store
-      localStorage.setItem("tab", "tab-2");
+      window.localStorage.setItem("tab", "tab-2");
     });
     $("#tab-3").click(function() {
       // Store
-      localStorage.setItem("tab", "tab-3");
+      window.localStorage.setItem("tab", "tab-3");
     });
     $("#tab-4").click(function() {
-      localStorage.setItem("tab", "tab-4");
+      window.localStorage.setItem("tab", "tab-4");
     });
     $("#tab-5").click(function() {
-      localStorage.setItem("tab", "tab-5");
+      window.localStorage.setItem("tab", "tab-5");
     });
 
 
@@ -52,7 +50,7 @@ $(document).ready(function(){
     }
 
     function getTab(){
-        var item = localStorage.getItem("tab");
+        var item = window.localStorage.getItem("tab");
         console.log(item);
         return item;
     }
