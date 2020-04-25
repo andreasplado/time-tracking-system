@@ -12,10 +12,11 @@ $(document).ready(function(){
     $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
         localStorage.setItem('activeTab', $(e.target).attr('href'));
     });
+    console.log("Töötab");
     var activeTab = localStorage.getItem('activeTab');
     if(activeTab){
-        alert("Aktiivne tab");
         $('#myTab a[href="' + activeTab + '"]').tab('show');
+        console.log("Active tab" + activeTab);
     }
 
 });
