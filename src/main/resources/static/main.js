@@ -10,7 +10,12 @@ $(document).ready(function(){
         }
     });
 
+    $( '.cd-tabs__item' ).on( 'click', function(){
+        window.location.hash = $(this).attr( 'id' );
+    });
+
     function activateTab() {
+        //$( "[href]" ).removeClass( "cd-tabs__item--selected" );
         $( "[href='" + window.location.hash + "']" ).addClass( "cd-tabs__item--selected" );
 
     }
@@ -20,6 +25,17 @@ $(document).ready(function(){
     } );
 
     activateTab();
+
+
+
+
+
+
+
+    function activateTab() {
+        $( "[href='" + window.location.hash + "']" ).addClass( "cd-tabs__item--selected" );
+
+    }
 
 
 });
