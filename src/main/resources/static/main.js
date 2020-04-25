@@ -10,12 +10,21 @@ $(document).ready(function(){
         }
     });
 
+    if(window.location.hash !=undefined){
+
+    }
+
+
     $( '.cd-tabs__item' ).on( 'click', function(){
         window.location.hash = $(this).attr( 'id' );
     });
+
+    $( window ).on( 'hashchange', function( e ) {
+         $( window.location.hash ).addClass( "cd-tabs__item--selected" );
+    } );
     // Check if we need to activate a tab based on the has
-    if ( window.location.hash && $( window.location.hash ).length ) {
-        $( window.location.hash ).addClass( "cd-tabs__item--selected" );
-    }
+    /*if ( window.location.hash && $( window.location.hash ).length ) {
+
+    }*/
 
 });
