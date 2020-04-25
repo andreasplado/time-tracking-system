@@ -10,6 +10,7 @@ $(document).ready(function(){
         }
     });
 
+    window.localStorage;
     var tab = [];
     for(var i = 1; i<6; i++){
         tab[i] = document.getElementById("tab-" + i);
@@ -27,7 +28,8 @@ $(document).ready(function(){
     }
 
     function getTab(){
-        return localStorage.getItem("tab");
+        var item = localStorage.getItem("tab");
+        console.log(item);
     }
 
     function activeTab(){
