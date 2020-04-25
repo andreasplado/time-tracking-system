@@ -15,7 +15,7 @@ $(document).ready(function(){
         tab[i] = document.getElementById("tab-" + i);
 
         $("#tab-" + i).click(function() {
-          alert( "Handler for .click() called." );
+          alert("#tab-" + i);
           // Store
           localStorage.setItem("tab", "tab-" + i);
         });
