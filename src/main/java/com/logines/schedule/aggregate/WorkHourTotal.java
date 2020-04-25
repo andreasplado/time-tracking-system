@@ -1,4 +1,4 @@
-package com.logines.schedule.model;
+package com.logines.schedule.aggregate;
 
 public class WorkHourTotal {
 

@@ -1,7 +1,7 @@
 package com.logines.schedule.service;
 
 import com.logines.schedule.model.WorkHour;
-import com.logines.schedule.model.WorkHourTotal;
+import com.logines.schedule.aggregate.WorkHourTotal;
 import com.logines.schedule.repository.WorkHourRepository;
 import com.logines.schedule.utils.TimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
