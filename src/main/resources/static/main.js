@@ -60,7 +60,7 @@ $(document).ready(function(){
         if(getTab()){
             defaultTab();
         }else{
-            var activatedTabName = document.getElementById("" + getTab());
+            var activatedTabName = document.getElementById("tab-2");
             activatedTabName.class = "cd-tabs__item cd-tabs__item--selected";
         }
     }
