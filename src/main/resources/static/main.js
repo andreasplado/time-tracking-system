@@ -54,8 +54,8 @@ $(document).ready(function(){
             defaultTab();
         }else{
             //var activatedTabName = document.getElementById("" + getTab());
-            $( "#cd-tabs__list > li > a" ).removeClass("cd-tabs__item--selected");
-            $( "#cd-tabs__panel" ).removeClass("cd-tabs__panel--selected");
+            $( "#cd-tabs__list > li > a" ).removeClass("cd-tabs__item");
+            $( "#cd-tabs__panel" ).removeClass("cd-tabs__panel");
             $( "#" + getTab() ).addClass( "cd-tabs__item--selected" );
             $( "#" + getContent() ).addClass( "cd-tabs__panel--selected" );
             window.localStorage.removeItem("content");
