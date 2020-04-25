@@ -37,14 +37,12 @@ $(document).ready(function(){
     }
 
     function getTab(){
-        window.localStorage.removeItem("tab");
         var item = window.localStorage.getItem("tab");
         console.log(item);
         return item;
     }
 
     function getContent(){
-        window.localStorage.removeItem("content");
         var item = window.localStorage.getItem("content");
         console.log(item);
         return item;
@@ -60,6 +58,8 @@ $(document).ready(function(){
             $( "#cd-tabs__panel" ).removeClass("cd-tabs__panel--selected");
             $( "#" + getTab() ).addClass( "cd-tabs__item--selected" );
             $( "#" + getContent() ).addClass( "cd-tabs__panel--selected" );
+            window.localStorage.removeItem("content");
+            window.localStorage.removeItem("tab");
         }
     }
 
