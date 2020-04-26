@@ -138,8 +138,6 @@ $(document).ready(function(){
 
 });
 
-console.log("Test1");
-(function(){
     // Responsive Tabbed Navigation - by CodyHouse.co
   function TabbedNavigation( element ) {
     this.element = element;
@@ -222,5 +220,4 @@ console.log("Test1");
     });
     resizing = false;
   };
-})();
 console.log("Test2");
