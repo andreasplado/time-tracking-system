@@ -79,145 +79,107 @@ $(document).ready(function(){
 
     activeTab();
     */
-
-    var memory = {
-        tabChosen: {},
-        tabHREF: "",
-        tne: [],
-        selectedTab: {}
-    };
-
-    var store = window.localStorage;
-
-    memory.saveItem = function (selectedItem) {
-        console.log("saving:" + selectedItem.href);
-        store.setItem("tab", selectedItem.href);
-    }
-
-    memory.loadItem = function () {
-
-        var tabChosen = memory.findElementByHREF();
-        if(tabChosen){
-            Util.removeClass(document.querySelectorAll(".cd-tabs__item--selected")[0], "cd-tabs__item--selected");
-            Util.addClass(tabChosen, "cd-tabs__item--selected");
-        }
-    }
-
-    memory.hasMemory = function() {
-        if(store.getItem("tab")) {
-            console.log("tab exists in memory");
-            return true;
-        }
-        return false;
-    }
-
-    memory.findElementByHREF = function () {
-        var tabslist = memory.tne;
-        var tabs = document.getElementsByClassName("cd-tabs__item");
-        console.log("array length for tabbed navigation elements" + tabslist.length);
-        memory.tabHREF = store.getItem("tab");
-        console.log("tabhref:" + memory.tabHREF);
-        for(let i = 0; i < tabs.length;i++){
-            var element = tabs[i];
-            console.log(element);
-            if(element.href=== memory.tabHREF){
-                console.log("element found" + element);
-                memory.selectedTab = element;
-                return element;
-            };
-        };
-        console.log("found:" + tabs[0] + "and" + memory.tabHREF);
-    }
-
-    memory.setTNE = function(element){
-        console.log("setting element" + element);
-        memory.tne = element;
-    }
-
-
-
 });
 
-    // Responsive Tabbed Navigation - by CodyHouse.co
-  function TabbedNavigation( element ) {
-    this.element = element;
-    this.navigation = this.element.getElementsByClassName("cd-tabs__navigation")[0];
-    this.navigationElements = this.navigation.getElementsByClassName("cd-tabs__list")[0];
-    this.content = this.element.getElementsByClassName("cd-tabs__panels")[0];
-    this.activeTab;
-    this.activeContent;
-    this.init();
-  };
+(function(){
+  // Responsive Tabbed Navigation - by CodyHouse.co
+function TabbedNavigation( element ) {
+  this.element = element;
+  this.navigation = this.element.getElementsByClassName("cd-tabs__navigation")[0];
+  this.navigationElements = this.navigation.getElementsByClassName("cd-tabs__list")[0];
+  memory.setTNE(document.getElementsByClassName("cd-tabs__list"));
+  this.content = this.element.getElementsByClassName("cd-tabs__panels")[0];
+  this.activeTab;
+  this.activeContent;
+  this.init();
+};
 
-  TabbedNavigation.prototype.init = function() {
-    var self = this;
-    //listen for the click on the tabs navigation
-    this.navigation.addEventListener("click", function(event){
-      event.preventDefault();
-      var selectedItem = event.target.closest('.cd-tabs__item');
-      if(selectedItem && !Util.hasClass(selectedItem, "cd-tabs__item--selected")) {
-        self.activeTab = selectedItem;
-        self.activeContent = document.getElementById(self.activeTab.getAttribute("href").replace('#', ''));
-        self.updateContent();
-      }
-    });
-
-    //listen for the scroll in the tabs navigation
-    this.navigationElements.addEventListener('scroll', function(event){
-      self.toggleNavShadow();
-    });
-  };
-
-  TabbedNavigation.prototype.updateContent = function() {
-    var self = this;
-    var actualHeight = this.content.offsetHeight;
-    //update navigation classes
-    Util.removeClass(this.navigation.querySelectorAll(".cd-tabs__item--selected")[0], "cd-tabs__item--selected");
-    Util.addClass(this.activeTab, "cd-tabs__item--selected");
-    //update content classes
-    Util.removeClass(this.content.querySelectorAll(".cd-tabs__panel--selected")[0], "cd-tabs__panel--selected");
-    Util.addClass(this.activeContent, "cd-tabs__panel--selected");
-    //set new height for the content wrapper
-    if(window.requestAnimationFrame && window.getComputedStyle(this.element).getPropertyValue('display') == 'block') {
-      Util.setHeight(actualHeight, this.activeContent.offsetHeight, this.content, 200, function(){
-        self.content.removeAttribute('style');
-      });
-    }
-  };
-
-  TabbedNavigation.prototype.toggleNavShadow = function() {
-    //show/hide tabs navigation gradient layer
-    this.content.removeAttribute("style");
-    var navItems = this.navigationElements.getElementsByClassName("cd-tabs__item"),
-      navigationRight = Math.floor(this.navigationElements.getBoundingClientRect().right),
-      lastItemRight = Math.ceil(navItems[navItems.length - 1].getBoundingClientRect().right);
-    ( navigationRight >= lastItemRight )
-      ? Util.addClass(this.element, "cd-tabs--scroll-ended")
-      : Util.removeClass(this.element, "cd-tabs--scroll-ended");
-  };
-
-  var tabs = document.getElementsByClassName("js-cd-tabs"),
-    tabsArray = [],
-    resizing = false;
-  if( tabs.length > 0 ) {
-    for( var i = 0; i < tabs.length; i++) {
-      (function(i){
-        tabsArray.push(new TabbedNavigation(tabs[i]));
-      })(i);
-    }
-
-    window.addEventListener("resize", function(event) {
-      if( !resizing ) {
-        resizing = true;
-        (!window.requestAnimationFrame) ? setTimeout(checkTabs, 250) : window.requestAnimationFrame(checkTabs);
-      }
-    });
+TabbedNavigation.prototype.init = function() {
+  var self = this;
+  memory.loadItem();
+  var selectedItem;// = event.target.closest('.cd-tabs__item');
+  if(memory.hasMemory()){
+    selectedItem = memory.selectedTab;
+  }
+  else{
+    selectedItem = event.target.closest('.cd-tabs__item');
   }
 
-  function checkTabs() {
-    tabsArray.forEach(function(tab){
-      tab.toggleNavShadow();
+  self.activeTab = selectedItem;
+  self.activeContent = document.getElementById(self.activeTab.getAttribute("href").replace('#', ''));
+  self.updateContent();
+  //listen for the click on the tabs navigation
+  this.navigation.addEventListener("click", function(event){
+    event.preventDefault();
+
+    selectedItem = event.target.closest('.cd-tabs__item');
+
+    if(selectedItem && !Util.hasClass(selectedItem, "cd-tabs__item--selected")) {
+
+      self.activeTab = selectedItem;
+      self.activeContent = document.getElementById(self.activeTab.getAttribute("href").replace('#', ''));
+      self.updateContent();
+    }
+    memory.saveItem(selectedItem);
+  });
+
+  //listen for the scroll in the tabs navigation
+  this.navigationElements.addEventListener('scroll', function(event){
+    self.toggleNavShadow();
+  });
+};
+
+TabbedNavigation.prototype.updateContent = function() {
+  var self = this;
+  var actualHeight = this.content.offsetHeight;
+  //update navigation classes
+  Util.removeClass(this.navigation.querySelectorAll(".cd-tabs__item--selected")[0], "cd-tabs__item--selected");
+  Util.addClass(this.activeTab, "cd-tabs__item--selected");
+  //update content classes
+  Util.removeClass(this.content.querySelectorAll(".cd-tabs__panel--selected")[0], "cd-tabs__panel--selected");
+  Util.addClass(this.activeContent, "cd-tabs__panel--selected");
+  //set new height for the content wrapper
+  if(window.requestAnimationFrame && window.getComputedStyle(this.element).getPropertyValue('display') == 'block') {
+    Util.setHeight(actualHeight, this.activeContent.offsetHeight, this.content, 200, function(){
+      self.content.removeAttribute('style');
     });
-    resizing = false;
-  };
+  }
+};
+
+TabbedNavigation.prototype.toggleNavShadow = function() {
+  //show/hide tabs navigation gradient layer
+  this.content.removeAttribute("style");
+  var navItems = this.navigationElements.getElementsByClassName("cd-tabs__item"),
+    navigationRight = Math.floor(this.navigationElements.getBoundingClientRect().right),
+    lastItemRight = Math.ceil(navItems[navItems.length - 1].getBoundingClientRect().right);
+  ( navigationRight >= lastItemRight )
+    ? Util.addClass(this.element, "cd-tabs--scroll-ended")
+    : Util.removeClass(this.element, "cd-tabs--scroll-ended");
+};
+
+var tabs = document.getElementsByClassName("js-cd-tabs"),
+  tabsArray = [],
+  resizing = false;
+if( tabs.length > 0 ) {
+  for( var i = 0; i < tabs.length; i++) {
+    (function(i){
+      tabsArray.push(new TabbedNavigation(tabs[i]));
+    })(i);
+  }
+
+  window.addEventListener("resize", function(event) {
+    if( !resizing ) {
+      resizing = true;
+      (!window.requestAnimationFrame) ? setTimeout(checkTabs, 250) : window.requestAnimationFrame(checkTabs);
+    }
+  });
+}
+
+function checkTabs() {
+  tabsArray.forEach(function(tab){
+    tab.toggleNavShadow();
+  });
+  resizing = false;
+};
+})();
 console.log("Test2");
