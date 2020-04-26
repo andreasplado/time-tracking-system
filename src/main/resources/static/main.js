@@ -1,3 +1,5 @@
+/* global memory */
+
 $(document).ready(function(){
 
     $("#workhour-form").submit(function(event){
@@ -81,8 +83,6 @@ $(document).ready(function(){
 
 
 });
-
-/* global memory */
 
 (function(){
     // Responsive Tabbed Navigation - by CodyHouse.co
