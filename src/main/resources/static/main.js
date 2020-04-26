@@ -168,6 +168,8 @@ if( tabs.length > 0 ) {
     })(i);
   }
 
+  console.log(tabsArray);
+
   window.addEventListener("resize", function(event) {
     if( !resizing ) {
       resizing = true;
@@ -183,4 +185,5 @@ function checkTabs() {
   resizing = false;
 };
 //})();
+console.log("");
 console.log("Test2");
