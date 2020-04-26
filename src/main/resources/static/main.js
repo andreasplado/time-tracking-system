@@ -82,6 +82,7 @@ $(document).ready(function(){
 });
 
 (function(){
+console.log("Funkab");
   // Responsive Tabbed Navigation - by CodyHouse.co
 function TabbedNavigation( element ) {
   this.element = element;
