@@ -81,7 +81,7 @@ $(document).ready(function(){
     */
 });
 
-(function(){
+//(function(){
   // Responsive Tabbed Navigation - by CodyHouse.co
 function TabbedNavigation( element ) {
   this.element = element;
@@ -182,5 +182,5 @@ function checkTabs() {
   });
   resizing = false;
 };
-})();
+//})();
 console.log("Test2");
