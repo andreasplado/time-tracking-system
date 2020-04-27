@@ -253,29 +253,29 @@ $( function() {
     <nav class="cd-tabs__navigation">
         <ul class="cd-tabs__list" id="myTab">
             <li>
-                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 6px;" id="tab-1">
+                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 6px;">
                     <img src="images/dashboard.png" width="50px" height="50px" style="padding: 6px;">
                 </a>
             </li>
             <li th:if="${role == 'ADMIN'}">
-                <a href="#tab-workhours" class="cd-tabs__item" id="tab-2">
+                <a href="#tab-workhours" class="cd-tabs__item">
                     <img src="/images/working-hours.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
 
             <li>
-                <a href="#tab-my-profile" class="cd-tabs__item" id="tab-3">
+                <a href="#tab-my-profile" class="cd-tabs__item">
                     <img src="/images/user.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
 
             <li th:if="${role == 'ADMIN'}">
-                <a href="#tab-admin" class="cd-tabs__item" id="tab-4">
+                <a href="#tab-admin" class="cd-tabs__item">
                     <img src="/images/settings.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
             <li th:if="${role == 'ADMIN'}">
-                <a href="#tab-company" class="cd-tabs__item" id="tab-5">
+                <a href="#tab-company" class="cd-tabs__item">
                     <img src="/images/company.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
