@@ -6,7 +6,7 @@ function Util () {};
 */
 Util.hasClass = function(el, className) {
 	if (el.classList) return el.classList.contains(className);
-	else return !!el.className.is(className));
+	else return !!el.className.is(className);
 };
 
 
