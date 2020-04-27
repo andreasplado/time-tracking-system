@@ -2,7 +2,7 @@
 
 console.log("Main2");
 
-var tabs = document.getElementsByClassName("cd-tabs__item"),
+var tabs = document.getElementsByClassName("js-cd-tabs"),
   tabsArray = [],
   resizing = false;
   console.log(tabs.length);
@@ -12,7 +12,6 @@ if( tabs.length > 0 ) {
       tabsArray.push(new TabbedNavigation(tabs[i]));
     })(i);
   }
-
 
 
   window.addEventListener("resize", function(event) {
