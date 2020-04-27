@@ -30,17 +30,6 @@ if( tabs.length > 0 ) {
   });
 }
 
-function TabbedNavigation( element ) {
-  this.element = element;
-  this.navigation = this.element.getElementsByClassName("cd-tabs__navigation")[0];
-  this.navigationElements = this.navigation.getElementsByClassName("cd-tabs__list")[0];
-  memory.setTNE(document.getElementsByClassName("cd-tabs__list"));
-  this.content = this.element.getElementsByClassName("cd-tabs__panels")[0];
-  this.activeTab;
-  this.activeContent;
-  init(this);
-  console.log("Funkab");
-};
  var init = function(self) {
   memory.loadItem();
   var selectedItem;// = event.target.closest('.cd-tabs__item');
@@ -76,6 +65,18 @@ function TabbedNavigation( element ) {
   this.navigationElements.addEventListener('scroll', function(event){
     self.toggleNavShadow();
   });
+};
+
+function TabbedNavigation( element ) {
+  this.element = element;
+  this.navigation = this.element.getElementsByClassName("cd-tabs__navigation")[0];
+  this.navigationElements = this.navigation.getElementsByClassName("cd-tabs__list")[0];
+  memory.setTNE(document.getElementsByClassName("cd-tabs__list"));
+  this.content = this.element.getElementsByClassName("cd-tabs__panels")[0];
+  this.activeTab;
+  this.activeContent;
+  init(this);
+  console.log("Funkab");
 };
 
 
