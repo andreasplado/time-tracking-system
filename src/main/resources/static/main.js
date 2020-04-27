@@ -39,7 +39,7 @@ $(document).ready(function(){
       }
 
       self.activeTab = selectedItem;
-      console.log(self.activeTab.getAttribute("href").replace('#', ''));
+      console.log("Get active tab: ",self.activeTab);
       self.activeContent = document.getElementById();
       //self.activeContent = $( ".cd-tabs__item" ).attr("href").replace('#', '');
       self.updateContent();
