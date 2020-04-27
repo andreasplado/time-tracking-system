@@ -5,6 +5,7 @@ console.log("Main2");
 var tabs = document.getElementsByClassName("js-cd-tabs"),
   tabsArray = [],
   resizing = false;
+  console.log(tabs.length);
 if( tabs.length > 0 ) {
   for( var i = 0; i < tabs.length; i++) {
     (function(i){
@@ -12,7 +13,7 @@ if( tabs.length > 0 ) {
     })(i);
   }
 
-  console.log(tabsArray);
+
 
   window.addEventListener("resize", function(event) {
     if( !resizing ) {
