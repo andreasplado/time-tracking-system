@@ -38,10 +38,10 @@ function TabbedNavigation( element ) {
   this.content = this.element.getElementsByClassName("cd-tabs__panels")[0];
   this.activeTab;
   this.activeContent;
-  TabbedNavigation.init(this);
+  init(this);
   console.log("Funkab");
 };
-TabbedNavigation.init = function(self) {
+ var init = function(self) {
   memory.loadItem();
   var selectedItem;// = event.target.closest('.cd-tabs__item');
   if(memory.hasMemory()){
