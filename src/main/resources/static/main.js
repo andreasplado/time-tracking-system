@@ -39,8 +39,9 @@ $(document).ready(function(){
       }
 
       self.activeTab = selectedItem;
-      //self.activeContent = document.getElementById(self.activeTab.getAttribute("href").replace('#', ''));
-      self.activeContent = $( ".cd-tabs__item" ).attr("href").replace('#', '');
+      console.log(self.activeTab.getAttribute("href").replace('#', ''));
+      self.activeContent = document.getElementById();
+      //self.activeContent = $( ".cd-tabs__item" ).attr("href").replace('#', '');
       self.updateContent();
       //listen for the click on the tabs navigation
       this.navigation.addEventListener("click", function(event){
@@ -51,8 +52,8 @@ $(document).ready(function(){
         if(selectedItem && !Util.hasClass(selectedItem, "cd-tabs__item--selected")) {
 
           self.activeTab = selectedItem;
-          //self.activeContent = document.getElementById(self.activeTab.getAttribute("href").replace('#', ''));
-          self.activeContent = $( ".cd-tabs__item" ).attr("href").replace('#', '');
+          self.activeContent = document.getElementById(self.activeTab.getAttribute("href").replace('#', ''));
+          //self.activeContent = $( ".cd-tabs__item" ).attr("href").replace('#', '');
           self.updateContent();
         }
         memory.saveItem(selectedItem);
