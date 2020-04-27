@@ -1,4 +1,5 @@
-/* global memory,util */
+/* global memory,util
+*/
 
 console.log("Main2");
 
