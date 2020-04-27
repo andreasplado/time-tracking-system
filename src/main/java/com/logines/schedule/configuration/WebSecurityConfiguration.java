@@ -78,6 +78,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/images/background-photo-mobile-devices.jpg",
                         "/assets/css/style.css",
                         "/assets/js/main.js",
+                        "/assets/js/main2.js",
+                        "/assets/js/memory.js",
                         "/assets/js/util.js",
                         "/assets/css/style.scss",
                         "/images/background.svg",
