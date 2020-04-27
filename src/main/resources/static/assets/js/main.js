@@ -14,6 +14,7 @@
 
   TabbedNavigation.prototype.init = function() {
     var self = this;
+    console.log(this);
     //listen for the click on the tabs navigation
     this.navigation.addEventListener("click", function(event){
       event.preventDefault();
