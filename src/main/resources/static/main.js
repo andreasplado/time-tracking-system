@@ -1,4 +1,4 @@
-/* global memory,Util */
+/* global memory,util */
 
 
 $(document).ready(function(){
