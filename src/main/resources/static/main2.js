@@ -1,6 +1,7 @@
 /* global memory,util
 */
-
+import * as m from '/assets/js/memory.js';
+import * as u from '/assets/js/util.js';
 console.log("Main2");
 
 var tabs = document.getElementsByClassName("js-cd-tabs"),
@@ -27,7 +28,7 @@ function TabbedNavigation( element ) {
   this.element = element;
   this.navigation = this.element.getElementsByClassName("cd-tabs__navigation")[0];
   this.navigationElements = this.navigation.getElementsByClassName("cd-tabs__list")[0];
-  memory.setTNE(document.getElementsByClassName("cd-tabs__list"));
+  m.memory.setTNE(document.getElementsByClassName("cd-tabs__list"));
   this.content = this.element.getElementsByClassName("cd-tabs__panels")[0];
   this.activeTab;
   this.activeContent;
@@ -37,7 +38,7 @@ function TabbedNavigation( element ) {
 
 TabbedNavigation.prototype.init = function() {
   var self = this;
-  memory.loadItem();
+  m.memory.loadItem();
   var selectedItem;// = event.target.closest('.cd-tabs__item');
   if(memory.hasMemory()){
     selectedItem = memory.selectedTab;
