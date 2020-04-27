@@ -38,12 +38,10 @@ function TabbedNavigation( element ) {
   this.content = this.element.getElementsByClassName("cd-tabs__panels")[0];
   this.activeTab;
   this.activeContent;
-  this.init();
+  TabbedNavigation.init(this);
   console.log("Funkab");
 };
-
-TabbedNavigation.prototype.init = function() {
-  var self = this;
+TabbedNavigation.init = function(self) {
   memory.loadItem();
   var selectedItem;// = event.target.closest('.cd-tabs__item');
   if(memory.hasMemory()){
@@ -79,6 +77,7 @@ TabbedNavigation.prototype.init = function() {
     self.toggleNavShadow();
   });
 };
+
 
 TabbedNavigation.prototype.updateContent = function() {
   var self = this;
