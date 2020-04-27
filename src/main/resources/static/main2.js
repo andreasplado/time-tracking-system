@@ -42,8 +42,8 @@ function init(self) {
 
   self.activeTab = selectedItem;
   console.log("Get active tab: ",self.activeTab);
-  self.activeContent = document.getElementById();
-  //self.activeContent = $( ".cd-tabs__item" ).attr("href").replace('#', '');
+  //self.activeContent = document.getElementById();
+  self.activeContent = document.getElementById(self.activeTab.getAttribute("href").replace('#', ''));
   self.updateContent();
   //listen for the click on the tabs navigation
   this.navigation.addEventListener("click", function(event){
