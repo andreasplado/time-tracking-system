@@ -1,7 +1,13 @@
 /* global memory,util
 */
-import * as m from '/assets/js/memory.js';
-import * as u from '/assets/js/util.js';
+function dynamicallyLoadScript(url) {
+    var script = document.createElement("script");  // create a script DOM node
+    script.src = url;  // set its src to the provided URL
+
+    document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+}
+dynamicallyLoadScript("/assets/js/util.js");
+dynamicallyLoadScript("/assets/js/memory.js");
 console.log("Main2");
 
 var tabs = document.getElementsByClassName("js-cd-tabs"),
@@ -28,7 +34,7 @@ function TabbedNavigation( element ) {
   this.element = element;
   this.navigation = this.element.getElementsByClassName("cd-tabs__navigation")[0];
   this.navigationElements = this.navigation.getElementsByClassName("cd-tabs__list")[0];
-  m.memory.setTNE(document.getElementsByClassName("cd-tabs__list"));
+  memory.setTNE(document.getElementsByClassName("cd-tabs__list"));
   this.content = this.element.getElementsByClassName("cd-tabs__panels")[0];
   this.activeTab;
   this.activeContent;
@@ -38,7 +44,7 @@ function TabbedNavigation( element ) {
 
 TabbedNavigation.prototype.init = function() {
   var self = this;
-  m.memory.loadItem();
+  memory.loadItem();
   var selectedItem;// = event.target.closest('.cd-tabs__item');
   if(memory.hasMemory()){
     selectedItem = memory.selectedTab;
