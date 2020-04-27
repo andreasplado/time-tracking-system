@@ -1,5 +1,7 @@
 /* global memory,util */
 
+console.log("Main2");
+
 var tabs = document.getElementsByClassName("js-cd-tabs"),
   tabsArray = [],
   resizing = false;
