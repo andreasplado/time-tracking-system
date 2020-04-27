@@ -2,7 +2,7 @@
 
 console.log("Main2");
 
-var tabs = document.getElementsByClassName("js-cd-tabs"),
+var tabs = document.getElementsByClassName("cd-tabs__item"),
   tabsArray = [],
   resizing = false;
   console.log(tabs.length);
