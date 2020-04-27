@@ -29,6 +29,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
     <script>document.getElementsByTagName("html")[0].className += " js";</script>
+
+    <link rel="icon" href="http://sixrevisions.com/favicon.ico" type="image/x-icon"/>
     <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
 
 
@@ -71,12 +73,7 @@
     <!-- Sweet alert -->
     <!-- <script src="//unpkg.com/timeago.js"></script> -->
     <script src="/tiny_ago/tinyAgo.js"></script>
-    <!--<script src="/assests/js/util.js"></script>
-    <script src="/assests/js/memory.js"></script>
-    <script src="/main2.js"></script> -->
     <script src="/main.js"></script>
-
-
 
 </head>
 
@@ -232,17 +229,19 @@ $( function() {
 <body>
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
+    <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <div th:if="${role == 'ADMIN'}">
-        <p style="color:aqua;">Total workhours</p>
-        <h2 th:text="${totalWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
+        <!--<p style="color:aqua;">Total workhours</p>
+        <h2 th:text="${totalWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2> -->
     </div>
     <div th:if="${role == 'USER'}">
         <p style="color:aqua;">My total workhours</p>
         <h2 th:text="${userWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
+        <p style="color:aqua;">My total workhours without lunchtime</p>
+        <h2 th:text="${userWorkHoursSumWithoutLunchtime}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
         <p style="color:aqua;">My total lunchtime</p>
         <h2 th:text="${lunchHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
     </div>
-    <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
           th:action="@{/logout}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -252,31 +251,31 @@ $( function() {
 </header>
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <nav class="cd-tabs__navigation">
-        <ul class="cd-tabs__list">
+        <ul class="cd-tabs__list" id="myTab">
             <li>
-                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 6px;">
+                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 6px;" id="tab-1">
                     <img src="images/dashboard.png" width="50px" height="50px" style="padding: 6px;">
                 </a>
             </li>
             <li th:if="${role == 'ADMIN'}">
-                <a href="#tab-workhours" class="cd-tabs__item">
+                <a href="#tab-workhours" class="cd-tabs__item" id="tab-2">
                     <img src="/images/working-hours.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
 
             <li>
-                <a href="#tab-my-profile" class="cd-tabs__item">
+                <a href="#tab-my-profile" class="cd-tabs__item" id="tab-3">
                     <img src="/images/user.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
 
             <li th:if="${role == 'ADMIN'}">
-                <a href="#tab-admin" class="cd-tabs__item">
+                <a href="#tab-admin" class="cd-tabs__item" id="tab-4">
                     <img src="/images/settings.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
             <li th:if="${role == 'ADMIN'}">
-                <a href="#tab-company" class="cd-tabs__item">
+                <a href="#tab-company" class="cd-tabs__item" id="tab-5">
                     <img src="/images/company.png" width="50px" height="50px" style="padding: 6px;"/>
                 </a>
             </li>
@@ -538,7 +537,8 @@ $( function() {
 
         <li th:if="${role == 'ADMIN'}" id="tab-company" class="cd-tabs__panel text-component">
             <div>
-                <form th:action="@{/add-company}" th:object="${companyForm}" method="post">
+                <p style="display:none; color:red;" id="company-registration-validation-error">Company name is required.</p>
+                <form th:action="@{/add-company}" th:object="${companyForm}" method="post" id="company-form">
                     <label>Company name:</label>
                     <input type="text" id="company_name" name="company_name"
                            class="form-control" th:field="*{company_name}" autocomplete="off"/>
