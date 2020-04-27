@@ -30,19 +30,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
     <script>document.getElementsByTagName("html")[0].className += " js";</script>
 
+    <link rel="icon" href="http://sixrevisions.com/favicon.ico" type="image/x-icon"/>
+    <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
+
 
     <!-- NEW CONTENT -->
     <meta name="author" content="Logines">
     <meta name="description"
           content="Logines time-tracking system for workers."/>
-    <script
-            src="https://code.jquery.com/jquery-1.9.1.min.js"
-            integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ="
-            crossorigin="anonymous"></script>
-    <script
-            src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"
-            integrity="sha256-lnH4vnCtlKU2LmD0ZW1dU7ohTTKrcKP50WA9fa350cE="
-            crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -76,8 +73,7 @@
     <!-- Sweet alert -->
     <!-- <script src="//unpkg.com/timeago.js"></script> -->
     <script src="/tiny_ago/tinyAgo.js"></script>
-    <script src="/assets/js/util.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="/main.js"></script>
 
 </head>
 
@@ -99,20 +95,12 @@ function searchWorkHourByUsername(){
 
 function searchUserByUsername(){
     var username = $("#user-search-by-username").val();
-    if(username==""){
-        $("#user-search-validation-error").show();
-    }else{
-        window.location.href="/search-user/"+ username;
-    }
+    window.location.href="/search-user/"+ username;
 }
 
 function searchUserByFullname(){
     var fullname = $("#user-search-by-fullname").val();
-    if(fullname==""){
-        $("#user-search-validation-error").show();
-    }else{
-        window.location.href="/search-user-by-fullname/"+ fullname;
-    }
+    window.location.href="/search-user-by-fullname/"+ fullname;
 }
 
 function viewWorkHour(id){
@@ -125,6 +113,61 @@ function viewCompany(id){
 
 function viewUser(id){
     window.location.href="/get-user/" + id;
+}
+
+function timeSince(date) {
+    var seconds = Math.floor((new Date() - date) / 1000);
+
+    var interval = Math.floor(seconds / 31536000);
+
+    if (interval > 1) {
+        return interval + " years";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " months";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " days";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " hours";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " minutes";
+    }
+
+    return Math.floor(seconds) + " seconds";
+}
+function timeSince(date) {
+
+  var seconds = Math.floor((new Date() - date) / 1000);
+
+  var interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + " years";
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + " months";
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + " days";
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + " hours";
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + " minutes";
+  }
+  return Math.floor(seconds) + " seconds";
 }
 
 
@@ -233,19 +276,15 @@ $( function() {
 <body>
 <header class="text-component text-center">
     <h1>Logines-time-tracking system</h1>
-    <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <div th:if="${role == 'ADMIN'}">
-        <!--<p style="color:aqua;">Total workhours</p>
-        <h2 th:text="${totalWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2> -->
+        <p style="color:aqua;">Total workhours</p>
+        <h2 th:text="${totalWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
     </div>
     <div th:if="${role == 'USER'}">
-        <p style="color:aqua;">My total workhours</p>
+        <p style="color:aqua;">My workhours</p>
         <h2 th:text="${userWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
-        <p style="color:aqua;">My total workhours without lunchtime</p>
-        <h2 th:text="${userWorkHoursSumWithoutLunchtime}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
-        <p style="color:aqua;">My total lunchtime</p>
-        <h2 th:text="${lunchHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
     </div>
+    <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <form id="logoutForm" class="logout-form" method="POST" style="float: left;padding-left: 65%;"
           th:action="@{/logout}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -255,7 +294,7 @@ $( function() {
 </header>
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <nav class="cd-tabs__navigation">
-        <ul class="cd-tabs__list" id="myTab">
+        <ul class="cd-tabs__list">
             <li>
                 <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 6px;">
                     <img src="images/dashboard.png" width="50px" height="50px" style="padding: 6px;">
@@ -291,8 +330,7 @@ $( function() {
             <h3>Dashboard</h3>
             <div th:style="${role == 'ADMIN' ? 'display:block' : 'display:none'}">
                 <div class="form-group row">
-                    <p style="display:none; color:red;" id="user-search-validation-error">Username is required</p>
-                    <br />
+                    <p style="display:none; color:red;" id="validation-error">Username is required</p>
                     <label class="col-form-label">Username:</label>
                     <input type="text" name="username" id="user-search-by-username" class="form-control"
                            autocomplete="off">
@@ -436,17 +474,17 @@ $( function() {
                 <form method="get" id="search-by-date-range-and-username" th:action="@{/searchquery}"
                       th:object="${workHourForm}">
                     <div class="form-group row">
-                        <label class="col-form-label">Start time:</label>
+                        <label class="col-sm-2 col-form-label">Start time:</label>
                         <input id="start_time_range" name="start_time" th:field="*{start_time}" type="text"
                                th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label pt-n1">End time:</label>
+                        <label class="col-sm-2 col-form-label pt-n1">End time:</label>
                         <input id="end_time_range" name="end_time" th:field="*{end_time}" type="text"
                                th:attr="data-field='datetime'" class="form-control" autocomplete="off" onfocus="blur();"/>
                     </div>
                     <div class="form-group row">
-                        <label class="col-form-label pt-n1">Username:</label>
+                        <label class="col-sm-2 col-form-label pt-n1">Username:</label>
                         <input type="text" name="username" id="search-work-hour-by-username" class="form-control">
                     </div>
                     <div class="form-group row float-right">
@@ -541,8 +579,7 @@ $( function() {
 
         <li th:if="${role == 'ADMIN'}" id="tab-company" class="cd-tabs__panel text-component">
             <div>
-                <p style="display:none; color:red;" id="company-registration-validation-error">Company name is required.</p>
-                <form th:action="@{/add-company}" th:object="${companyForm}" method="post" id="company-form">
+                <form th:action="@{/add-company}" th:object="${companyForm}" method="post">
                     <label>Company name:</label>
                     <input type="text" id="company_name" name="company_name"
                            class="form-control" th:field="*{company_name}" autocomplete="off"/>
@@ -588,6 +625,8 @@ $( function() {
         </li>
     </ul> <!-- cd-tabs__panels -->
 </div> <!-- cd-tabs -->
+<script src="/assets/js/util.js"></script>
+<script src="/assets/js/main.js"></script>
 <script src='/rome-date-time-picker/rome.js'></script>
 <script src='/rome-date-time-picker/example.js'></script>
 <script type="text/javascript" th:inline="javascript">
@@ -629,6 +668,12 @@ $( function() {
     });
 
 /*]]>*/
+
+
+
+
+
+
 </script>
 
 <script src="https://unpkg.com/babel-polyfill@6.2.0/dist/polyfill.js"></script>
