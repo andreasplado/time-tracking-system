@@ -30,16 +30,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-autocomplete/1.0.7/jquery.auto-complete.js"></script>
     <script>document.getElementsByTagName("html")[0].className += " js";</script>
 
-    <link rel="icon" href="http://sixrevisions.com/favicon.ico" type="image/x-icon"/>
-    <link href="http://fonts.googleapis.com/css?family=Kotta+One|Cantarell:400,700" rel="stylesheet" type="text/css">
-
 
     <!-- NEW CONTENT -->
     <meta name="author" content="Logines">
     <meta name="description"
           content="Logines time-tracking system for workers."/>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-1.9.1.min.js"
+            integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ="
+            crossorigin="anonymous"></script>
+    <script
+            src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"
+            integrity="sha256-lnH4vnCtlKU2LmD0ZW1dU7ohTTKrcKP50WA9fa350cE="
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -73,7 +76,10 @@
     <!-- Sweet alert -->
     <!-- <script src="//unpkg.com/timeago.js"></script> -->
     <script src="/tiny_ago/tinyAgo.js"></script>
-    <script src="/main.js"></script>
+    <!--<script src="/assets/js/util.js"></script>
+    <script src="/assets/js/memory.js"></script>
+    <script src="/main2.js"></script>
+    <script src="/main.js"></script> -->
 
 </head>
 
@@ -231,12 +237,14 @@ $( function() {
     <h1>Logines-time-tracking system</h1>
     <h6 th:text="${'Welcome ' + usernameText + '!'}">Welcome username</h6>
     <div th:if="${role == 'ADMIN'}">
-        <p style="color:aqua;">Total workhours</p>
-        <h2 th:text="${totalWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
+        <!--<p style="color:aqua;">Total workhours</p>
+        <h2 th:text="${totalWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2> -->
     </div>
     <div th:if="${role == 'USER'}">
         <p style="color:aqua;">My total workhours</p>
         <h2 th:text="${userWorkHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
+        <p style="color:aqua;">My total workhours without lunchtime</p>
+        <h2 th:text="${userWorkHoursSumWithoutLunchtime}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
         <p style="color:aqua;">My total lunchtime</p>
         <h2 th:text="${lunchHoursSum}" font-family="Bubblegum Sans" font-size="35" fill="aqua"></h2>
     </div>
@@ -249,9 +257,9 @@ $( function() {
 </header>
 <div class="cd-tabs cd-tabs--vertical container max-width-md margin-top-xl margin-bottom-lg js-cd-tabs">
     <nav class="cd-tabs__navigation">
-        <ul class="cd-tabs__list">
+        <ul class="cd-tabs__list" id="myTab">
             <li>
-                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 6px;">
+                <a href="#tab-dashboard" class="cd-tabs__item cd-tabs__item--selected" style="padding: 6px;" id="tab-dashboard-link">
                     <img src="images/dashboard.png" width="50px" height="50px" style="padding: 6px;">
                 </a>
             </li>
@@ -535,7 +543,8 @@ $( function() {
 
         <li th:if="${role == 'ADMIN'}" id="tab-company" class="cd-tabs__panel text-component">
             <div>
-                <form th:action="@{/add-company}" th:object="${companyForm}" method="post">
+                <p style="display:none; color:red;" id="company-registration-validation-error">Company name is required.</p>
+                <form th:action="@{/add-company}" th:object="${companyForm}" method="post" id="company-form">
                     <label>Company name:</label>
                     <input type="text" id="company_name" name="company_name"
                            class="form-control" th:field="*{company_name}" autocomplete="off"/>
@@ -581,8 +590,6 @@ $( function() {
         </li>
     </ul> <!-- cd-tabs__panels -->
 </div> <!-- cd-tabs -->
-<script src="/assets/js/util.js"></script>
-<script src="/assets/js/main.js"></script>
 <script src='/rome-date-time-picker/rome.js'></script>
 <script src='/rome-date-time-picker/example.js'></script>
 <script type="text/javascript" th:inline="javascript">
