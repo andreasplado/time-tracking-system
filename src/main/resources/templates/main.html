@@ -583,7 +583,8 @@ $( function() {
 
         <li th:if="${role == 'ADMIN'}" id="tab-company" class="cd-tabs__panel text-component">
             <div>
-                <form th:action="@{/add-company}" th:object="${companyForm}" method="post">
+                <p style="display:none; color:red;" id="company-registration-validation-error">All fields are required.</p>
+                <form th:action="@{/add-company}" th:object="${companyForm}" method="post" id="company-form">
                     <label>Company name:</label>
                     <input type="text" id="company_name" name="company_name"
                            class="form-control" th:field="*{company_name}" autocomplete="off"/>
