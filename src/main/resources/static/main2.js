@@ -30,7 +30,7 @@ if( tabs.length > 0 ) {
   });
 }
 
- var init = function(self) {
+function init(self) {
   memory.loadItem();
   var selectedItem;// = event.target.closest('.cd-tabs__item');
   if(memory.hasMemory()){
@@ -65,7 +65,7 @@ if( tabs.length > 0 ) {
   this.navigationElements.addEventListener('scroll', function(event){
     self.toggleNavShadow();
   });
-};
+}
 
 function TabbedNavigation( element ) {
   this.element = element;
