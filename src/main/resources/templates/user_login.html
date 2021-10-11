@@ -105,16 +105,6 @@
                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             </form>
             <div id="qrcode"></div>
-            <script type="text/javascript">
-                var qrcode = new QRCode(document.getElementById("qrcode"), {
-                    text: "http://www.xnxx.com",
-                    width: 128,
-                    height: 128,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.H
-                });
-            </script>
         </div>
     </div>
 </div>
@@ -141,7 +131,17 @@
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
-	</script>
+</script>
+<script type="text/javascript">
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: "http://www.xnxx.com",
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+</script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
 </body>
