@@ -82,6 +82,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         "/images/user.png",
                         "/images/working-hours.png",
                         "/datetimepicker/**",
+                        "/davidshimjs-qrcodejs-04f46c6/**",
                         "/login_style/**"
                 ).permitAll().antMatchers("/register").access("hasAuthority('ADMIN')")
                 .anyRequest().authenticated()
