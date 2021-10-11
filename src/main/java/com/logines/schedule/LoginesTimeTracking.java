@@ -8,9 +8,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @ComponentScan(basePackages={"com.logines.schedule"})
 @EnableScheduling
-public class ScheduleApplication {
+public class LoginesTimeTracking {
 
     public static void main( String[] args ){
-        SpringApplication.run( ScheduleApplication.class, args );
+        SpringApplication.run( LoginesTimeTracking.class, args );
     }
 }
