@@ -69,18 +69,28 @@
                 <img src="/login_style/images/img-01.png">
             </div>
 
-            <form class="login100-form validate-form" th:action="@{/login}" enctype="application/x-www-form-urlencoded" method="POST">
-					<p class="login100-form-title" style="font-size: 30px;">
-						Member Login
-					</p>
-                    <div style="max-width: 800px;margin: auto;position: relative;
+            <form class="login100-form validate-form" th:action="@{/login}" enctype="application/x-www-form-urlencoded"
+                  method="POST">
+
+                <div style="max-width: 800px;margin: auto;position: relative;
                     text-align: center;">
-                        <div id="qrcode" style="margin: auto;
+                    <div style="margin: auto;
     max-width: 600px;
-    height: 300px;
     display: inline-block;
-    text-align:left;"></div></div>
-                    <script type="text/javascript">
+    text-align:left;">
+                        <p class="login100-form-title" style="font-size: 30px;">
+                            Member Login
+                        </p>
+                    </div>
+                </div>
+                <div style="max-width: 800px;margin: auto;position: relative;
+                    text-align: center;">
+                    <div id="qrcode" style="margin: auto;
+    max-width: 600px;
+    display: inline-block;
+    text-align:left;"></div>
+                </div>
+                <script type="text/javascript">
                         var qrcode = new QRCode(document.getElementById("qrcode"), {
                             text: "http://www.xnxx.com",
                             width: 128,
@@ -89,20 +99,25 @@
                             colorLight : "#ffffff",
                             correctLevel : QRCode.CorrectLevel.H
                         });
-                    </script>
-                    <br />
-                    <p class="login100-form-error" style="color: azure;" th:text="${error}">Test</p>
-                    <p class="login100-form-error" style="color: azure;" th:text="${message}">Test</p>
-                <br />
 
-                <label><span class="fa fa-envelope" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"/></label>
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input type="text" class="form-control" id="username" placeholder="Enter name" name="username"/></span>
+
+                </script>
+                <br/>
+                <p class="login100-form-error" style="color: azure;" th:text="${error}">Test</p>
+                <p class="login100-form-error" style="color: azure;" th:text="${message}">Test</p>
+                <br/>
+
+                <label><span class="fa fa-envelope" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"/></label>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <input type="text" class="form-control" id="username" placeholder="Enter name"
+                           name="username"/></span>
                     <span class="focus-input100"></span>
                 </div>
 
-                <label><span class="fa fa-lock" aria-hidden="true" style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
-                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                <label><span class="fa fa-lock" aria-hidden="true"
+                             style="color: azure;font-size: 40px;padding-top: 15px;"></span></label>
+                <div class="wrap-input100 validate-input" data-validate="Password is required">
                     <input type="password" class="form-control" id="password" placeholder="Enter password"
                            name="password"/>
                     <span class="focus-input100"></span>
@@ -110,12 +125,12 @@
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <button class="btn btn-primary float-right login100-form-btn m-t-30" >
+                    <button class="btn btn-primary float-right login100-form-btn m-t-30">
                         Login
                     </button>
                 </div>
                 <div class="container-login100-form-btn">
-                    <button style="margin-right:20px;"class="btn btn-primary float-right login100-form-btn m-t-30" >
+                    <button style="margin-right:20px;" class="btn btn-primary float-right login100-form-btn m-t-30">
                         Create user
                     </button>
                 </div>
@@ -143,10 +158,12 @@
 <!--===============================================================================================-->
 <script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-<script >
+<script>
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
+
+
 </script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
