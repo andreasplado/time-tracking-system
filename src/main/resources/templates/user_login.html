@@ -73,6 +73,16 @@
 					<p class="login100-form-title" style="font-size: 30px;">
 						Member Login
 					</p>
+                    <script type="text/javascript">
+                        var qrcode = new QRCode(document.getElementById("qrcode"), {
+                            text: "http://www.xnxx.com",
+                            width: 128,
+                            height: 128,
+                            colorDark : "#000000",
+                            colorLight : "#ffffff",
+                            correctLevel : QRCode.CorrectLevel.H
+                        });
+                    </script>
                     <br />
                     <p class="login100-form-error" style="color: azure;" th:text="${error}">Test</p>
                     <p class="login100-form-error" style="color: azure;" th:text="${message}">Test</p>
@@ -131,16 +141,6 @@
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
-</script>
-<script type="text/javascript">
-    var qrcode = new QRCode(document.getElementById("qrcode"), {
-        text: "http://www.xnxx.com",
-        width: 128,
-        height: 128,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-    });
 </script>
 <!--===============================================================================================-->
 <script src="js/main.js"></script>
